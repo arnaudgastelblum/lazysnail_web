@@ -14,18 +14,14 @@ parent: Other
 <p><!-- wp:heading {"level":1} --></p>
 <h1>Introduction</h1>
 <p><!-- /wp:heading --></p>
-<p><!-- wp:paragraph --></p>
+
 <p>I am not a huge book reader, but I read a ton of different articles on the internet. They cover multiple topics like Power BI, SQL Server, DAX, Running, World news, High Tech review, Blogging, Self-improvement, and many other topics I want to cover at a specific moment. (Now, everything related to my house, design, …)</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
+
+
 <p>When I browse LinkedIn or Twitter, I find interesting articles, but sometimes I do not have time to read it. (Or maybe I am not in the mood to read them right now).</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
+
 <p>I also have a big trouble (and it seems that I am not the only one on earth). On a computer or a smartphone, my focus time is quite small. I like to switch between applications and topics, which decreases completely my learning curve. You know this little monkey in your head who tries to discourage you to finish something he thinks “too serious for him”.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
+
 <p>On this topic, I kindly recommend you to watch this TED video: <a href="https://www.youtube.com/watch?v=arj7oStGLkU">https://www.youtube.com/watch?v=arj7oStGLkU</a></p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:paragraph --></p>
