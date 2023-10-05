@@ -1,0 +1,54 @@
+---
+layout: post
+title: Tabular Editor C#
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: draft
+categories:
+- Non classé
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _last_editor_used_jetpack: block-editor
+  _et_builder_dynamic_assets_loading_attr_threshold: '5'
+  _et_pb_use_builder: 'off'
+  _et_pb_old_content: ''
+  _et_gb_content_width: ''
+  _mi_skip_tracking: ''
+  _edit_last: '2'
+  _et_post_bg_color: "#ffffff"
+  _et_post_bg_layout: light
+  _et_pb_show_title: 'on'
+  _et_pb_post_hide_nav: default
+  _et_pb_page_layout: et_right_sidebar
+  _et_pb_side_nav: 'off'
+  _yoast_wpseo_estimated-reading-time-minutes: '1'
+  _yoast_wpseo_wordproof_timestamp: ''
+author:
+  login: Arnaud
+  email: arnaud@gastelblum.be
+  display_name: Arnaud Gastelblum
+  first_name: Arnaud
+  last_name: Gastelblum
+permalink: "/en/"
+---
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code> // Loop through all currently selected tables:
+foreach(var table in Selected.Tables) {
+    
+    var newMeasure = Model.Tables&#91;"F_CALC"].AddMeasure(
+    "Nb " + table.Name,                         // Name
+    "COUNTROWS(" + table.DaxObjectFullName + ")"       // DAX expression
+    );
+    
+    // Set the format string on the new measure:
+    newMeasure.FormatString = "0";
+
+    // Provide some documentation:
+    newMeasure.Description = "This measure is the number of rows in table " + table.DaxObjectFullName;
+    
+}</code></pre>
+<p><!-- /wp:code --></p>

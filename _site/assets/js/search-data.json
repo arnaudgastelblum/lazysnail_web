@@ -1,0 +1,944 @@
+{"0": {
+    "doc": "SP_WHO3 - Running Queries (Toolbox)",
+    "title": "SP_WHO3 - Running Queries (Toolbox)",
+    "content": "This query is very helpful. It diplays all running queries on your server and some other informations . | Which process is locking another one | Who run the query | And provide the SQL code of the running query | . ",
+    "url": "/en/sp_who3/",
+    "relUrl": "/en/sp_who3/"
+  },"1": {
+    "doc": "SP_WHO3 - Running Queries (Toolbox)",
+    "title": "Source:",
+    "content": "http://sqlserverplanet.com/dba/a-better-sp_who2-using-dmvs-sp_who3 . ",
+    "url": "/en/sp_who3/#source",
+    "relUrl": "/en/sp_who3/#source"
+  },"2": {
+    "doc": "SP_WHO3 - Running Queries (Toolbox)",
+    "title": "SQL Code",
+    "content": "SELECT SPID = er.session_id ,BlkBy = CASE WHEN lb.lead_blocker = 1 THEN -1 ELSE er.blocking_session_id END ,ElapsedMS = er.total_elapsed_time ,CPU = er.cpu_time ,IOReads = er.logical_reads + er.reads ,IOWrites = er.writes ,Executions = ec.execution_count ,CommandType = er.command ,LastWaitType = er.last_wait_type ,ObjectName = OBJECT_SCHEMA_NAME(qt.objectid,dbid) + '.' + OBJECT_NAME(qt.objectid, qt.dbid) ,SQLStatement = qt.text ,STATUS = ses.STATUS ,[Login] = ses.login_name ,Host = ses.host_name ,DBName = DB_Name(er.database_id) ,StartTime = er.start_time ,Protocol = con.net_transport ,transaction_isolation = CASE ses.transaction_isolation_level WHEN 0 THEN 'Unspecified' WHEN 1 THEN 'Read Uncommitted' WHEN 2 THEN 'Read Committed' WHEN 3 THEN 'Repeatable' WHEN 4 THEN 'Serializable' WHEN 5 THEN 'Snapshot' END ,ConnectionWrites = con.num_writes ,ConnectionReads = con.num_reads ,ClientAddress = con.client_net_address ,Authentication = con.auth_scheme ,DatetimeSnapshot = GETDATE() FROM sys.dm_exec_requests er LEFT JOIN sys.dm_exec_sessions ses ON ses.session_id = er.session_id LEFT JOIN sys.dm_exec_connections con ON con.session_id = ses.session_id OUTER APPLY sys.dm_exec_sql_text(er.sql_handle) qt OUTER APPLY ( SELECT execution_count = MAX(cp.usecounts) FROM sys.dm_exec_cached_plans cp WHERE cp.plan_handle = er.plan_handle ) ec OUTER APPLY ( SELECT lead_blocker = 1 FROM master.dbo.sysprocesses sp WHERE sp.spid IN ( SELECT blocked FROM master.dbo.sysprocesses WITH (NOLOCK) WHERE blocked != 0 ) AND sp.blocked = 0 AND sp.spid = er.session_id ) lb WHERE er.sql_handle IS NOT NULL AND er.session_id != @@SPID ORDER BY er.blocking_session_id DESC, er.logical_reads + er.reads DESC, er.session_id . ",
+    "url": "/en/sp_who3/#sql-code",
+    "relUrl": "/en/sp_who3/#sql-code"
+  },"3": {
+    "doc": "SP_WHO3 - Running Queries (Toolbox)",
+    "title": "More informations:",
+    "content": "https://github.com/amachanic/sp_whoisactive/ . https://www.brentozar.com/archive/2019/07/sp_whoisactive-is-now-open-source/ . ",
+    "url": "/en/sp_who3/#more-informations",
+    "relUrl": "/en/sp_who3/#more-informations"
+  },"4": {
+    "doc": "Power BI Desktop: Print in the A4 size",
+    "title": "Power BI Desktop: Print in the A4 size",
+    "content": "As you know, the August 2018 update of Power BI Desktop grants us the possibility to export in PDF directly from the Desktop. Two clicks and it's done. Great news right? I remember all the steps I had to go through to make it before, it still give me headache... But by default, the report will be exported with the standard format of Power BI Desktop which can be for some end users or clients not very pleasant to read especially if they are used to an A4 page. The real question is then, how to export in that specific format? Here is the answer. First, let's take our wonderful LazyDAX file and create a new page. Here is the default view you have when adding a new page. Nothing special until there. What's interesting is the \"Page View\" button under the \"View\" tab. Once we click on it, we can select \"Actual Size\". By choosing \"Actual Size\" we will see the \"real\" size of the page, based on its dimensions. Now we can see that the page size exceed the usual limit of the report. But we want to make it like a A4 portrait page right? So, we are not done yet. You can select the \"Format\" pane of the report page, then \"Page Size\" and select \"Custom\" as \"Type\".&nbsp; Now, we just have to enter the custom size we want. I chose 794*1123 pixels because it is the A4 size at 96 PPI (depending of the printing, you can find more info about it here). Now we have our A4 report page ready to be filled. As you can see, there is now a scroll bar on the right side of the report because of the dimension of the page. We now just have to export as PDF and that's it. You can click on the \"File\" button and then choose \"Export to PDF\". You now just have to let Power BI make the work and here is the result. The last report page is well in portrait format, while the others have been exported in the default format. As you can see, there is nothing really difficult here but you just have to be aware of it. &nbsp; . ",
+    "url": "/en/vertical-export-of-reports/",
+    "relUrl": "/en/vertical-export-of-reports/"
+  },"5": {
+    "doc": "SSIS - Export SSIS Catalog Environments",
+    "title": "SSIS - Export SSIS Catalog Environments",
+    "content": ". You need to: . | Export your SSIS Environments (Variables) | Replicate it on your new server | Assign these variables to your new project | . SSIS Catalog is not complex, but we don’t really want to spend our time to copy manually our configuration from one server to another one.Often, we don’t have access to the production environment.The SQL Code below helps you to create a script and automate all these very ennuying steps. I found the base line of this code on internet:&nbsp;http://www.sqlservercentral.com/articles/Integration+Services+(SSIS)/135173/Jeff Jordan&nbsp;did a really nice work. His code&nbsp;helps you to: . | Create your SSIS Catalog folder | Create your SSIS Environment | Add SSIS Variables in your SSIS Environment | . I added some extra steps: . | Assign your SSIS Environment to your SSIS Project | Assign your SSIS Environment Variables to your SSIS Project Variables | + Some correction | + A super nice ASCII message when everything is done.. Who can help you to have a smile and maybe a better life. (You should trust the power of smiling&nbsp;&nbsp;) | . How does it works? . | Copy the SQL Script below and paste it into a new blank query in SSMS (Management studio) –&gt; Connected to your existing server (The server who has your environment already configured / Not the new one) | Configuration: Change the XXXX value in the query . | @folder : Folder Name (Your configured server) | @env : Environment Name (Your configured server) | @destination_folder_name : Folder Name (Your new server) | @destination_environment_name : Environment Name (Your new server) | @destination_project_name : Project Name (Your new server) | . | Run your query and copy the result into a new blank query in SSMS. –&gt; Connected to your new server | FIRST OF ALL: You should deploy your SSIS Project!! With the Deployment wizard or Visual Studio | Change the configuration information into the generated query | Run the query | Smile  | . ",
+    "url": "/en/ssis-backup-ssis-catalog-environments/",
+    "relUrl": "/en/ssis-backup-ssis-catalog-environments/"
+  },"6": {
+    "doc": "SSIS - Export SSIS Catalog Environments",
+    "title": "SQL Code",
+    "content": "-- Backup / Restore SSIS Catalog Environments -- --http://www.sqlservercentral.com/articles/Integration+Services+(SSIS)/135173/ SET NOCOUNT ON; DECLARE -- --------------------------------------------------------------------------- -- Configuration -- --------------------------------------------------------------------------- -- -------- -- Current environment (For extraction) -- @folder sysname = 'XXXXX', @env sysname = 'XXXXX', -- -------- -- Destination environment (For Deployment) -- @destination_folder_name sysname = N'XXXXX', -- Folder (SSIDB &gt;&gt; \"FolderName\") @destination_environment_name sysname = N'XXXXX', -- Environment Name @destination_project_name sysname = N'XXXXX', -- Project Name -- --------------------------------------------------------------------------- -- End Configuration -- --------------------------------------------------------------------------- @project_id int, @reference_location char(1), @folder_description nvarchar(1024), @sql varchar(max) = '', @name sysname, @cr char(1) = char(10), @tab char(4) = SPACE(4), @ver nvarchar(128) = CAST(serverproperty('ProductVersion') AS nvarchar); SET @ver = CAST(SUBSTRING(@ver, 1, CHARINDEX('.', @ver) - 1) as int); IF (@ver &amp;lt; 11) BEGIN RAISERROR ('This procedure is not supported on versions prior SQL 2012', 16, 1) WITH NOWAIT; END; IF NOT EXISTS(SELECT TOP 1 1 FROM sys.databases WHERE name = 'SSISDB') BEGIN RAISERROR('The SSISDB database does not exist on this server', 16, 1) WITH NOWAIT; END; /* TO DO - get the folder, environment description-*/ SET @sql = '/*------------------------------------------------------------------------------------------' + @cr; SET @sql += @tab + 'This script creates a script to generate and SSIS Environment and its variables.' + @cr; SET @sql += @tab + 'Replace the necessary entries to create a new envrionment' + @cr; SET @sql += @tab + '***NOTE: variables marked as sensitive have their values masked with ''''.' + @cr; SET @sql += @tab + @tab + 'These values will need to be replace with the actual values' + @cr; SET @sql += '------------------------------------------------------------------------------------------*/' + @cr +@cr; SET @sql += 'DECLARE @ReturnCode INT=0, @folder_id bigint' + @cr + @cr; SET @sql += '-- ---------------------------------------------' + @cr; SET @sql += '--'+ @tab + 'Variable declarations, make any changes here' + @cr; SET @sql += '-- ---------------------------------------------' + @cr; SET @sql += 'DECLARE '+ @cr; SET @sql += @tab + @tab + ' @folder sysname = ''' + @destination_folder_name + ''' /* this is the name of the new folder you want to create */' + @cr; SET @sql += @tab + @tab + ',@env sysname = ''' + @destination_environment_name + ''' /* this is the name of the new environment you want to create */' + @cr; SET @sql += @tab + @tab + ',@project sysname = ''' + @destination_project_name + ''' /* this is the name of the new project you want to create */' + @cr; PRINT @sql; /* Generate the variable declarations at the \"top\" this makes it easier to replace/update the values The variable names here map to the name of the variable being created */ IF OBJECT_ID('tempdb..#env_var') IS NOT NULL DROP TABLE #env_var IF OBJECT_ID('tempdb..#cmd') IS NOT NULL DROP TABLE #cmd -- --------------------------------------------- -- Create Variables Declaration -- --------------------------------------------- SELECT [env_var] = @tab + @tab + ',@' + LEFT(ev.name +' ', CASE WHEN( LEN(ev.name) &gt;= 40 ) THEN LEN(ev.name) ELSE 40 END ) + ' ' + CASE WHEN( ev.base_data_type = 'nvarchar' ) THEN ev.base_data_type +'(600) ' ELSE ev.base_data_type END + '= N''' + ISNULL(CONVERT(varchar(max), ev.value), '') + '''' , [name] = ev.name INTO #env_var FROM [SSISDB].[catalog].[folders] f INNER JOIN [SSISDB].[catalog].[environments] e ON f.folder_id = e.folder_id INNER JOIN [SSISDB].[internal].[environment_variables] ev ON e.environment_id = ev.environment_id WHERE (f.name = @folder) AND (e.name = @env) ; /* Yes, I am looping here. We don't know how many variables, sql_variant can be up to 8,000 bytes for the base type and don't want to be limited trying to print varchar(max) to the output window ... so we're going to print them one at a time */ WHILE EXISTS (SELECT TOP 1 1 FROM #env_var) BEGIN SELECT TOP 1 @sql = env_var, @name = name FROM #env_var ORDER BY name; PRINT @sql; DELETE FROM #env_var WHERE name = @name; END; SET @sql = ';' + @cr + '/* Starting the transaction */' + @cr; SET @sql += 'BEGIN TRANSACTION' + @cr; SET @sql += @tab + 'IF NOT EXISTS (SELECT 1 FROM [SSISDB].[catalog].[folders] WHERE name = @folder)' + @cr; SET @sql += @tab + 'BEGIN' + @cr; SET @sql += @tab + @tab + 'RAISERROR(''Creating folder: %s ...'', 10, 1, @folder) WITH NOWAIT;' + @cr; SET @sql += @tab + @tab + 'EXEC @ReturnCode = [SSISDB].[catalog].[create_folder] @folder_name=@folder, @folder_id=@folder_id OUTPUT' + @cr; SET @sql += @tab + @tab + 'IF (@@ERROR &amp;lt;&gt; 0 OR @ReturnCode &amp;lt;&gt; 0) GOTO QuitWithRollback;' + @cr; SET @sql += @tab + 'END' + @cr + @cr; SET @sql += @tab + 'RAISERROR(''Creating Environment: %s'', 10, 1, @env) WITH NOWAIT;' + @cr; SET @sql += @tab + 'EXEC @ReturnCode = [SSISDB].[catalog].[create_environment] @folder_name=@folder, @environment_name=@env' + @cr; SET @sql += @tab + 'IF (@@ERROR &amp;lt;&gt; 0 OR @ReturnCode &amp;lt;&gt; 0) GOTO QuitWithRollback;' + @cr + @cr; SET @sql += @tab +'-- ------------------------------------------ '+ @cr SET @sql += @tab + '-- Variable creation' + @cr; SET @sql += @tab +'-- ------------------------------------------ '+ @cr PRINT @sql; -- --------------------------------------------- -- Generate the variable creation -- --------------------------------------------- SELECT [cmd] = @tab + 'RAISERROR('' Creating variable: ' + ev.name + ' ...'', 10, 1) WITH NOWAIT;' + @cr + @tab + 'EXEC @ReturnCode = [SSISDB].[catalog].[create_environment_variable]' + @cr + @tab + @tab + '@variable_name=N''' + ev.name + '''' + @cr + @tab + @tab + ', @sensitive=' + CONVERT(varchar(2), ev.sensitive) + @cr + @tab + @tab + ', @description=N''' + ev.[description] + '''' + @cr + @tab + @tab + ', @environment_name=@env' + @cr + @tab + @tab + ', @folder_name=@folder' + @cr + @tab + @tab + ', @value=@' + ev.name + @cr + @tab + @tab + ', @data_type=N''' + ev.type + '''' + @cr + @tab + 'IF (@@ERROR &amp;lt;&gt; 0 OR @ReturnCode &amp;lt;&gt; 0) GOTO QuitWithRollback;' + @cr , [name] = ev.name INTO #cmd FROM [SSISDB].[catalog].[folders] f INNER JOIN [SSISDB].[catalog].[environments] e ON f.folder_id = e.folder_id INNER JOIN [SSISDB].[catalog].[environment_variables] ev ON e.environment_id = ev.environment_id WHERE (f.name = @folder) AND (e.name = @env); /*Print out the variable creation procs */ WHILE EXISTS (SELECT TOP 1 1 FROM #cmd) BEGIN SELECT TOP 1 @sql = cmd, @name = name FROM #cmd ORDER BY name; PRINT @sql; DELETE FROM #cmd WHERE name = @name; END; -- ------------------------------------------ -- Set Environment to Project -- ------------------------------------------ SET @sql = 'RAISERROR(''Configure Project: %s ...'', 10, 1, @project) WITH NOWAIT;' + @cr + @cr SET @sql += '-- ------------------------------------------ '+ @cr SET @sql += '-- Set Environment to Project ' + @cr SET @sql += '-- ------------------------------------------ '+ @cr SET @sql += 'RAISERROR('' Set Environment (%s) as Reference ...'', 10, 1, @env) WITH NOWAIT;' + @cr SET @sql += 'DECLARE @reference_id AS BIGINT'+ @cr SET @sql += 'EXEC SSISDB.catalog.create_environment_reference'+ @cr SET @sql += @tab + @tab + '@folder_name = @folder, -- Folder (SSIDB &gt;&gt; \"FolderName\")'+ @cr SET @sql += @tab + @tab + '@environment_name = @env, -- Environment Name '+ @cr SET @sql += @tab + @tab + '@project_name = @project, -- Project Name '+ @cr SET @sql += @tab + @tab + '@reference_type = ''R'','+ @cr SET @sql += @tab + @tab + '@reference_id = @reference_id OUTPUT'+ @cr PRINT @SQL -- ------------------------------------------ -- Set Environment Variable to Project Variables -- ------------------------------------------ IF OBJECT_ID('tempdb..#cmd2') IS NOT NULL DROP TABLE #cmd2 SET @sql = '-- ------------------------------------------ '+ @cr SET @sql += '-- Set Environment Variable to Project Variables '+ @cr SET @sql += '-- ------------------------------------------ '+ @cr PRINT @sql -- ----------------- -- OLD -- -&gt; Assign only project variables (From environment to project variables) --SELECT -- [cmd] = -- 'RAISERROR('' Set Project variable ('+ ev.name +') ...'', 10, 1) WITH NOWAIT;' + @cr -- + 'EXECUTE [SSISDB].[catalog].set_object_parameter_value '+ @cr -- + @tab + @tab + '@object_type = 20,' + @cr -- + @tab + @tab + '@folder_name = @folder, -- Folder (SSIDB &gt;&gt; \"FolderName\")'+ @cr -- + @tab + @tab + '@project_name = @project, -- Environment Name'+ @cr -- + @tab + @tab + '@parameter_name = N'''+ ev.name +''', -- Project Variable Name'+ @cr -- + @tab + @tab + '@parameter_value = N'''+ ev.name +''', -- Environment Variable Name'+ @cr -- + @tab + @tab + '@object_name = N'''','+ @cr -- + @tab + @tab + '@value_type = ''R'''+ @cr -- ,[name] = ev.name -- INTO #cmd2 -- FROM [SSISDB].[catalog].[folders] f -- INNER JOIN [SSISDB].[catalog].[environments] e ON f.folder_id = e.folder_id -- INNER JOIN [SSISDB].[catalog].[environment_variables] ev ON e.environment_id = ev.environment_id -- WHERE (f.name = @folder) AND (e.name = @env); SELECT [cmd] = 'RAISERROR('' Set Project variable ('+ op.parameter_name +') ...'', 10, 1) WITH NOWAIT;' + @cr + 'EXECUTE [SSISDB].[catalog].set_object_parameter_value ' + @cr + @tab + @tab + '@object_type = '+ CONVERT(NVARCHAR(5), op.object_type) +',' + @cr + @tab + @tab + '@folder_name = @folder, -- Folder (SSIDB &gt;&gt; \"FolderName\")' + @cr + @tab + @tab + '@project_name = @project, -- Environment Name' + @cr + @tab + @tab + '@parameter_name = N'''+ op.parameter_name +''', -- Project Variable Name' + @cr + @tab + @tab + '@parameter_value = N'''+ op.referenced_variable_name +''', -- Environment Variable Name'+ @cr + @tab + @tab + '@object_name = N'''+ CASE WHEN op.object_name &amp;lt;&gt; @env THEN op.object_name ELSE '' END +''',' + @cr + @tab + @tab + '@value_type = ''R''' + @cr ,[name] = op.parameter_name INTO #cmd2 FROM SSISDB.catalog.folders INNER JOIN SSISDB.catalog.projects ON projects.folder_id = folders.folder_id INNER JOIN SSISDB.catalog.object_parameters op ON op.project_id = projects.project_id --INNER JOIN SSISDB.catalog.environment_variables ON environment_variables.name = op.parameter_name --INNER JOIN SSISDB.catalog.environments ON -- environments.environment_id = environment_variables.environment_id -- AND environments.folder_id = folders.folder_id WHERE folders.name = @folder --AND environments.name = @env AND projects.name = @env AND op.referenced_variable_name IS NOT NULL /*Print out the variable creation procs */ WHILE EXISTS (SELECT TOP 1 1 FROM #cmd2) BEGIN SELECT TOP 1 @sql = cmd, @name = name FROM #cmd2 ORDER BY name; PRINT @sql; DELETE FROM #cmd2 WHERE name = @name; END; /* finsih the transaction handling */ SET @sql = 'COMMIT TRANSACTION' + @cr; --SET @sql += 'RAISERROR(N''Complete!'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N'' _____ _ _ _ _ '', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N''/ __ \\ | | | |'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N''| / \\/ ___ _ __ ___ _ __ | ___|_ ___ __| |'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N''| / _ \\| ''''_ ` _ \\| ''''_ \\|/ _ \\ __/ _ \\/ _` |'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N''| \\__/\\ (_) | | | |_) | __/ || __/ (_|_|'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N'' \\____/\\___/|_|_|_| .__/|_|\\___|\\__\\___|\\__,_(_)'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N'' | '', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N'' |_| '', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'GOTO EndSave' + @cr + @cr; SET @sql += 'QuitWithRollback:' + @cr; SET @sql += 'IF (@@TRANCOUNT &gt; 0) ROLLBACK TRANSACTION' + @cr; SET @sql += 'RAISERROR(N''Variable creation failed'', 16,1) WITH NOWAIT;' + @cr + @cr; SET @sql += 'EndSave:' + @cr; SET @sql += 'GO'; PRINT @sql; . ",
+    "url": "/en/ssis-backup-ssis-catalog-environments/#sql-code",
+    "relUrl": "/en/ssis-backup-ssis-catalog-environments/#sql-code"
+  },"7": {
+    "doc": "SSIS - Log Execution time",
+    "title": "SSIS - Log Execution time",
+    "content": "This query helps you to have a better view of your SSIS Packages executions. When you run a “master job / package”, you don’t clearly see the execution time for your child packages in SSISDB Reports. With this query, now it’s possible :) . USE SSISDB GO SELECT package_name ,execution_id ,executable_id ,StartTime ,EndTime ,LastStatus ,execution_result ,RowIndex ,DATEDIFF(minute, StartTime, EndTime) AS 'execution_time[min]' FROM ( SELECT DISTINCT executables.package_name AS package_name ,executables.execution_id AS execution_id ,executables.executable_id AS executable_id ,FIRST_VALUE(start_time) OVER(PARTITION BY executables.package_name, executable_statistics.execution_id ORDER BY start_time ASC) AS StartTime ,FIRST_VALUE(end_time) OVER(PARTITION BY executables.package_name, executable_statistics.execution_id ORDER BY end_time DESC) AS EndTime ,FIRST_VALUE(execution_result) OVER(PARTITION BY executables.package_name ORDER BY end_time DESC) AS LastStatus ,execution_result AS execution_result ,ROW_NUMBER() OVER(partition by executables.package_name ORDER BY end_time DESC) AS RowIndex FROM [catalog].[executables] LEFT JOIN [catalog].[executable_statistics] ON executable_statistics.execution_id = executables.execution_id AND executable_statistics.executable_id = executables.executable_id --WHERE executables.package_name = 'YourPackage.dtsx' ) A WHERE a.RowIndex = 1 ORDER BY StartTime ASC&lt;/pre&gt; . ",
+    "url": "/en/ssis-log-execution-time/",
+    "relUrl": "/en/ssis-log-execution-time/"
+  },"8": {
+    "doc": "SSMS - Query Shortcuts : Feel like a superman developer",
+    "title": "SSMS - Query Shortcuts : Feel like a superman developer",
+    "content": "Dear BI Developer, . I’m pretty sure you would be happy to improve your productivity. If not, you should at least read this article to look &gt;like a superman (superwoman) developer. When I start a new mission, the first thing I do is to set up SSMS (SQL Server Management Studio). And because I’m the kind of guy who acts like a Microsoft BI evangelist, I replicate my configuration on my colleague’s machines. ",
+    "url": "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/",
+    "relUrl": "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/"
+  },"9": {
+    "doc": "SSMS - Query Shortcuts : Feel like a superman developer",
+    "title": "Which configuration?",
+    "content": "In this example pressing CTRL + 4 will execute COUNT() . Select the statement you want to execute, Press CTRL and 4 . SSMS will give you the Nb impacted rows. In BI (and not only!), it’s very important to test if we have unexpected behavior with our joins. Does our INNER JOIN filter too much data? Or worst, does our join multiply our result set? . A quick and easy CTRL + 4 will ensure you to respect your grain. ",
+    "url": "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/#which-configuration",
+    "relUrl": "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/#which-configuration"
+  },"10": {
+    "doc": "SSMS - Query Shortcuts : Feel like a superman developer",
+    "title": "How to configure Management Studio",
+    "content": "Open Management Studio, Go to Tools &gt; Option… . Under Environment &gt; Keyboard &gt; Query Shortcuts . You have a list of existing shortcuts. (I don’t change them, but I neither use them too). You should now fill each text box with a query. Queries are available on the next section . ",
+    "url": "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/#how-to-configure-management-studio",
+    "relUrl": "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/#how-to-configure-management-studio"
+  },"11": {
+    "doc": "SSMS - Query Shortcuts : Feel like a superman developer",
+    "title": "Query shortcuts",
+    "content": "Do not forget to add a space after each query. CTRL + 3 1000 First rows . SELECT TOP 1000 * FROM . CTRL + 4 Number of rows . SELECT COUNT(1) AS Nb FROM . CTRL + 5 All rows . SELECT * FROM . CTRL + 6 Describe table . EXEC sp_executesql N' SELECT schemas.name ,tables.name ,columns.name ,types.name ,columns.max_length ,columns.is_nullable ,columns.is_identity FROM sys.tables tables INNER JOIN sys.schemas schemas ON schemas.schema_id = tables.schema_id INNER JOIN sys.all_columns columns ON columns.object_id = tables.object_id INNER JOIN sys.types types ON types.system_type_id = columns.system_type_id WHERE UPPER(RTRIM(LTRIM(tables.name))) = UPPER(RTRIM(LTRIM(REPLACE(REPLACE(@objname, '']'', ''''), ''['', '''')))) ORDER BY tables.object_id, columns.column_id',N'@objname nvarchar(776)', @objname = . Select a table and show a quick description of attributes (Name, Datatype, size, nullable, identity) . CTRL + 0 All running queries . a better SP_Who! List all running queries (Process ID, Status (blocked or running), users, …) . SELECT SPID = er.session_id ,BlkBy = CASE WHEN lead_blocker = 1 THEN -1 ELSE er.blocking_session_id END ,ElapsedMS = er.total_elapsed_time ,CPU = er.cpu_time ,IOReads = er.logical_reads + er.reads ,IOWrites = er.writes ,Executions = ec.execution_count ,CommandType = er.command ,LastWaitType = er.last_wait_type ,ObjectName = OBJECT_SCHEMA_NAME(qt.objectid,dbid) + '.' + OBJECT_NAME(qt.objectid, qt.dbid) ,SQLStatement = qt.text ,STATUS = ses.STATUS ,[Login] = ses.login_name ,Host = ses.host_name ,DBName = DB_Name(er.database_id) ,StartTime = er.start_time ,Protocol = con.net_transport ,transaction_isolation = CASE ses.transaction_isolation_level WHEN 0 THEN 'Unspecified' WHEN 1 THEN 'Read Uncommitted' WHEN 2 THEN 'Read Committed' WHEN 3 THEN 'Repeatable' WHEN 4 THEN 'Serializable' WHEN 5 THEN 'Snapshot' END ,ConnectionWrites = con.num_writes ,ConnectionReads = con.num_reads ,ClientAddress = con.client_net_address ,Authentication = con.auth_scheme ,DatetimeSnapshot = GETDATE() FROM sys.dm_exec_requests er LEFT JOIN sys.dm_exec_sessions ses ON ses.session_id = er.session_id LEFT JOIN sys.dm_exec_connections con ON con.session_id = ses.session_id OUTER APPLY sys.dm_exec_sql_text(er.sql_handle) AS qt OUTER APPLY ( SELECT execution_count = MAX(cp.usecounts) FROM sys.dm_exec_cached_plans cp WHERE cp.plan_handle = er.plan_handle ) ec OUTER APPLY ( SELECT lead_blocker = 1 FROM master.dbo.sysprocesses sp WHERE sp.spid IN (SELECT blocked FROM master.dbo.sysprocesses) AND sp.blocked = 0 AND sp.spid = er.session_id ) lb WHERE er.sql_handle IS NOT NULL AND er.session_id != @@SPID ORDER BY er.blocking_session_id DESC, er.logical_reads + er.reads DESC, er.session_id . ",
+    "url": "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/#query-shortcuts",
+    "relUrl": "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/#query-shortcuts"
+  },"12": {
+    "doc": "Pie Chart is bad!",
+    "title": "Pie Chart is bad!",
+    "content": "During my presentation at Power Saturday in Paris, I wanted to demonstrate to an already very optimistic public that Power BI is a great tool and that modeling is a must-have for their reports. (Data Modelling is not the subject here) Power BI a super tool? Yes, and to complete this idea, I added some slides to highlight each piece of the tool. One of the slides showed the ease and elegance of the visuals. After a quick search on Google images, I copied a screenshot created by a user in Power BI and added it to my presentation. In the audience, two friends looked at me with a horrible face. The damage was done, I had slipped the image of a Pie Chart! . Nothing crazy, isn't it? But when you know a bit of the history of the Pie Chart, we realize that this visual component is not recommended in the world of Data Viz. This blog post also follows some more or less tense discussions between colleagues. I wrote this article for many reasons: . This point is already super documented on internet but some people never read them before. (I provide links at the end) I wanted to convinced myself first, and created a Power BI file to confirm this point. (CFR the following screenshot) . ",
+    "url": "/en/pie-chart-is-bad/",
+    "relUrl": "/en/pie-chart-is-bad/"
+  },"13": {
+    "doc": "Pie Chart is bad!",
+    "title": "I was a Pie Chart lover",
+    "content": ". I know that its use is not recommended and I try not to use it.But yes, I liked it!• It's beautiful!• It's colorful!• It gives a professional look to our reports!• It shows information!• It gives me some pride to not use tables or matrix. (Yes, I like numbers, not you?) . I think we are used to seeing this kind of visualization since our earliest childhood in commercial brochures, professional documents. The Pie Chart is visual, and help us to return informations quickly. But unfortunately, this information is not always the right one. ",
+    "url": "/en/pie-chart-is-bad/",
+    "relUrl": "/en/pie-chart-is-bad/"
+  },"14": {
+    "doc": "Pie Chart is bad!",
+    "title": "Why?",
+    "content": "To compare groups, we evaluate the difference of the amplitude of the angles while a histogram will request us to compare lengths between them. A long description is not needed, I would prefer to show you 2 set of data, both represented in a Pie Chart and histogram. Your first look will give you some information, but not as much precise compared to the two histograms below. It's possible to have quick information, but very hard to have a clear interpretation of them. If I didn't convince you, try to sort each portion from the smallest to the biggest. Try to do the same with the histogram and compare the time elapsed for both. ",
+    "url": "/en/pie-chart-is-bad/",
+    "relUrl": "/en/pie-chart-is-bad/"
+  },"15": {
+    "doc": "Pie Chart is bad!",
+    "title": "More info",
+    "content": "https://www.data-to-viz.com/caveat/pie.html . https://medium.com/@clmentviguier/the-hate-of-pie-charts-harms-good-data-visualization-cc7cfed243b6 . ",
+    "url": "/en/pie-chart-is-bad/#more-info",
+    "relUrl": "/en/pie-chart-is-bad/#more-info"
+  },"16": {
+    "doc": "SSIS - Create Environment from Packages variables",
+    "title": "SSIS - Create Environment from Packages variables",
+    "content": "I created this script to automate some “not funny” tasks with our SSIS Catalog. If you have several SSIS projects configured in project mode (with a project.params file), when deploy them on your servers you unfortunately have to manually create the different environments. After deploying SSIS packages, you can run the following query and use the generated SQL code. the generated SQL script: . | Create the different environment (Based on the name of the projects) | Create variables with default values (value available in packages) | Assigning Environments to Projects | Assign the environment variables to the project variables. | . ",
+    "url": "/en/ssis-create-environment-from-packages-variables-2/",
+    "relUrl": "/en/ssis-create-environment-from-packages-variables-2/"
+  },"17": {
+    "doc": "SSIS - Create Environment from Packages variables",
+    "title": "The following code is not clean, but it does the work! :)",
+    "content": ". USE SSISDB; SET NOCOUNT ON; ------------------- -- Configuration ------------------- DECLARE @FolderToExport VARCHAR(50) = 'BI' DECLARE @folder_id INT ,@name VARCHAR(150) ,@project_id INT ,@sql VARCHAR(MAX) = '' ,@sqlTemp VARCHAR(MAX) = '' ,@cr CHAR(1) = CHAR(10) ,@tab CHAR(4) = SPACE(4) ,@ProjectName VARCHAR(50) ,@VariableName VARCHAR(150) ,@Value VARCHAR(600) SET @sql = ''; SET @sql += 'DECLARE @ReturnCode INT=0, @folder_id bigint' + @cr + @cr; SET @sql += '-- ---------------------------------------------' + @cr; SET @sql += '--'+ @tab + 'Variable declarations, make any changes here' + @cr; SET @sql += '-- ---------------------------------------------' + @cr; SET @sql += 'DECLARE '+ @cr; SET @sql += @tab + @tab + ' @folder sysname' + @cr; SET @sql += @tab + @tab + ',@env sysname' + @cr; SET @sql += @tab + @tab + ',@project sysname;' + @cr; -- Get Folder ID SELECT @folder_id = folder_id FROM [internal].[folders] WHERE name = @FolderToExport PRINT @SQL; SET @SQL = ''; --------------------------------------------- -- Export Current package Configuration --------------------------------------------- DECLARE db_cursor_variable CURSOR FOR SELECT DISTINCT CONVERT(NVARCHAR(50), projects.name ) AS ProjectName ,CONVERT(NVARCHAR(150), projects.name +'__'+ parameter_name) AS VariableName ,CONVERT(NVARCHAR(600), ISNULL(design_default_value, '') ) AS Value FROM internal.object_parameters main INNER JOIN internal.projects ON main.project_id = projects.project_id WHERE project_version_lsn = (SELECT MAX(project_version_lsn) FROM [SSISDB].[internal].[object_parameters] s WHERE s.project_id = main.project_id) AND parameter_name NOT LIKE 'CM.%' AND projects.folder_id = @folder_id ORDER BY CONVERT(NVARCHAR(50), projects.name ) ,CONVERT(NVARCHAR(150), projects.name +'__'+ parameter_name) ,CONVERT(NVARCHAR(600), ISNULL(design_default_value, '')) OPEN db_cursor_variable FETCH NEXT FROM db_cursor_variable INTO @ProjectName ,@VariableName ,@Value WHILE @@FETCH_STATUS = 0 BEGIN PRINT 'DECLARE @'+ @VariableName +' NVARCHAR(600) = N'''+ @Value +''';'; FETCH NEXT FROM db_cursor_variable INTO @ProjectName ,@VariableName ,@Value END CLOSE db_cursor_variable DEALLOCATE db_cursor_variable SET @SQL += 'SET @folder = '''+ @FolderToExport +''''+ @cr + @cr+ @cr; -- Begin transaction SET @sql += ';' + @cr + '/* Starting the transaction */' + @cr; SET @sql += 'BEGIN TRANSACTION' + @cr + @cr + @cr; ---- ---- Test if folder exist -&gt; If not create it --SET @sql += @tab + 'IF NOT EXISTS (SELECT 1 FROM [SSISDB].[catalog].[folders] WHERE name = @folder)' + @cr; --SET @sql += @tab + 'BEGIN' + @cr; --SET @sql += @tab + @tab + 'RAISERROR(''Creating folder: %s ...'', 10, 1, @folder) WITH NOWAIT;' + @cr; --SET @sql += @tab + @tab + 'EXEC @ReturnCode = [SSISDB].[catalog].[create_folder] @folder_name=@folder, @folder_id=@folder_id OUTPUT' + @cr; --SET @sql += @tab + @tab + 'IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback;' + @cr; --SET @sql += @tab + 'END' + @cr + @cr; --------------------------------------------- -- Create environment + variables ----------------------------------------------- DECLARE db_cursor CURSOR FOR SELECT [project_id], [name] FROM [internal].[projects] WHERE folder_id = @folder_id OPEN db_cursor FETCH NEXT FROM db_cursor INTO @project_id, @name WHILE @@FETCH_STATUS = 0 BEGIN SET @sql += @tab + 'SET @env = '''+ @name +'''' + @cr; SET @sql += @tab + 'IF NOT EXISTS (SELECT 1 FROM [SSISDB].[catalog].[environments] WHERE name = @env)' + @cr; SET @sql += @tab + 'BEGIN' + @cr; SET @sql += @tab + @tab +'RAISERROR(''Creating Environment: %s'', 10, 1, @env) WITH NOWAIT;' + @cr; SET @sql += @tab + @tab +'EXEC @ReturnCode = [SSISDB].[catalog].[create_environment] @folder_name=@folder, @environment_name=@env' + @cr; SET @sql += @tab + @tab +'IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback;' + @cr + @cr; SET @sql += @tab + 'END' + @cr; print @sql; SET @sql = ''; -- --------------------------------------------- -- Generate the variable creation -- --------------------------------------------- SET @sql += ' -- ProjectId =&gt; '+ CONVERT(NVARCHAR(50), @project_id) + @cr; SELECT DISTINCT [cmd] = @tab + 'RAISERROR('' Creating variable: ' + parameter_name + ' ...'', 10, 1) WITH NOWAIT;' + @cr + @tab + 'EXEC @ReturnCode = [SSISDB].[catalog].[create_environment_variable]' + @cr + @tab + @tab + ' @variable_name=N''' + parameter_name + '''' + @cr + @tab + @tab + ', @sensitive=' + CONVERT(varchar(2), sensitive) + @cr + @tab + @tab + ', @description=N''' + [description] + '''' + @cr + @tab + @tab + ', @environment_name=@env' + @cr + @tab + @tab + ', @folder_name=@folder' + @cr + @tab + @tab + ', @value=@' + @name +'__'+ parameter_name + @cr + @tab + @tab + ', @data_type=N''' + parameter_data_type + '''' + @cr + @tab + 'IF (@@ERROR &lt;&gt; 0 OR @ReturnCode &lt;&gt; 0) GOTO QuitWithRollback;' + @cr , [name] = parameter_name INTO #cmd FROM [SSISDB].[internal].[object_parameters] WHERE project_id = @project_id AND project_version_lsn = (SELECT MAX(project_version_lsn) FROM [SSISDB].[internal].[object_parameters] WHERE project_id = @project_id) AND parameter_name NOT LIKE 'CM.%' WHILE EXISTS (SELECT TOP 1 1 FROM #cmd) BEGIN SELECT TOP 1 @sql = cmd, @name = name FROM #cmd ORDER BY name; PRINT @sql; DELETE FROM #cmd WHERE name = @name; END; DROP TABLE #cmd; SET @sql = ''; FETCH NEXT FROM db_cursor INTO @project_id, @name END CLOSE db_cursor DEALLOCATE db_cursor --------------------------------------------- -- Set Environment on each Project -- + Set Environment variables on each Project Variables --------------------------------------------- DECLARE db_cursor CURSOR FOR SELECT [project_id], [name] FROM [internal].[projects] WHERE folder_id = @folder_id OPEN db_cursor FETCH NEXT FROM db_cursor INTO @project_id, @name SET @sql = 'DECLARE @reference_id AS BIGINT'+ @cr; PRINT @sql; WHILE @@FETCH_STATUS = 0 BEGIN SET @sql = @tab + 'SET @project = '''+ @name +''';'+ @cr; SET @sql += @tab + 'SET @env = '''+ @name +'''' + @cr; SET @sql += 'RAISERROR(''Configure Project: %s ...'', 10, 1, @project) WITH NOWAIT;' + @cr + @cr SET @sql += '-- ------------------------------------------ '+ @cr SET @sql += '-- Set Environment to Project ' + @cr SET @sql += '-- ------------------------------------------ '+ @cr SET @sql += 'RAISERROR('' Set Environment (%s) as Reference ...'', 10, 1, @env) WITH NOWAIT;' + @cr SET @sql += 'EXEC SSISDB.catalog.create_environment_reference'+ @cr SET @sql += @tab + @tab + '@folder_name = @folder, -- Folder (SSIDB &gt;&gt; \"FolderName\")'+ @cr SET @sql += @tab + @tab + '@environment_name = @env, -- Environment Name '+ @cr SET @sql += @tab + @tab + '@project_name = @project, -- Project Name '+ @cr SET @sql += @tab + @tab + '@reference_type = ''R'','+ @cr SET @sql += @tab + @tab + '@reference_id = @reference_id OUTPUT'+ @cr PRINT @SQL -- ------------------------------------------ -- Set Environment Variable to Project Variables -- ------------------------------------------ IF OBJECT_ID('tempdb..#cmd2') IS NOT NULL DROP TABLE #cmd2 SET @sql = '-- ------------------------------------------ '+ @cr SET @sql += '-- Set Environment Variable to Project Variables '+ @cr SET @sql += '-- ------------------------------------------ '+ @cr SET @sql = @tab + 'SET @project = '''+ @name +''';'+ @cr; SET @sql += @tab + 'SET @env = '''+ @name +'''' + @cr; PRINT @sql SELECT [cmd] = 'RAISERROR('' Set Project variable ('+ parameter_name +') ...'', 10, 1) WITH NOWAIT;' + @cr + 'EXECUTE [SSISDB].[catalog].set_object_parameter_value '+ @cr + @tab + @tab + '@object_type = '+ CONVERT(NVARCHAR(10), object_type) +',' + @cr + @tab + @tab + '@folder_name = @folder, -- Folder (SSIDB &gt;&gt; \"FolderName\")'+ @cr + @tab + @tab + '@project_name = @project, -- Environment Name'+ @cr + @tab + @tab + '@parameter_name = N'''+ parameter_name +''', -- Project Variable Name'+ @cr + @tab + @tab + '@parameter_value = N'''+ parameter_name +''', -- Environment Variable Name'+ @cr + @tab + @tab + '@object_name = N'''+ object_name +''','+ @cr + @tab + @tab + '@value_type = ''R'''+ @cr ,[name] = parameter_name INTO #cmd2 FROM [SSISDB].[internal].[object_parameters] WHERE project_id = @project_id AND project_version_lsn = (SELECT MAX(project_version_lsn) FROM [SSISDB].[internal].[object_parameters] WHERE project_id = @project_id) AND parameter_name NOT LIKE 'CM.%' /*Print out the variable creation procs */ WHILE EXISTS (SELECT TOP 1 1 FROM #cmd2) BEGIN SELECT TOP 1 @sql = cmd, @name = name FROM #cmd2 ORDER BY name; PRINT @sql; DELETE FROM #cmd2 WHERE name = @name; END; FETCH NEXT FROM db_cursor INTO @project_id, @name END CLOSE db_cursor DEALLOCATE db_cursor --------------------------------------------- -- END! --------------------------------------------- SET @sql = ''; /* finsih the transaction handling */ SET @sql += 'COMMIT TRANSACTION' + @cr; --SET @sql += 'RAISERROR(N''Complete!'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N'' _____ _ _ _ _ '', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N''/ __ \\ | | | |'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N''| / \\/ ___ _ __ ___ _ __ | ___|_ ___ __| |'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N''| / _ \\| ''''_ ` _ \\| ''''_ \\|/ _ \\ __/ _ \\/ _` |'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N''| \\__/\\ (_) | | | |_) | __/ || __/ (_|_|'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N'' \\____/\\___/|_|_|_| .__/|_|\\___|\\__\\___|\\__,_(_)'', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N'' | '', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'RAISERROR(N'' |_| '', 10, 1) WITH NOWAIT;' + @cr; SET @sql += 'GOTO EndSave' + @cr + @cr; SET @sql += 'QuitWithRollback:' + @cr; SET @sql += 'IF (@@TRANCOUNT &gt; 0) ROLLBACK TRANSACTION' + @cr; SET @sql += 'RAISERROR(N''Variable creation failed'', 16,1) WITH NOWAIT;' + @cr + @cr; SET @sql += 'EndSave:' + @cr; SET @sql += 'GO'; PRINT @sql; . ",
+    "url": "/en/ssis-create-environment-from-packages-variables-2/",
+    "relUrl": "/en/ssis-create-environment-from-packages-variables-2/"
+  },"18": {
+    "doc": "Management Studio - Faster with multiple select",
+    "title": "Management Studio - Faster with multiple select",
+    "content": "In SQL Server Management Studio (SSMS for close friends) but also in a multitude of text editors (such as Notepad++ for example), you can make multiple selections. I thought it was something everyone knew, but I realize that I often look like a magician every time I do it. I'm delighted to pretend to be Harry Potter, but I think it's time for this little game to stop! . Look by yourself how simple it is! . ",
+    "url": "/en/management-studio-faster-with-multiple-select/",
+    "relUrl": "/en/management-studio-faster-with-multiple-select/"
+  },"19": {
+    "doc": "Management Studio - Faster with multiple select",
+    "title": "How?",
+    "content": "You should press the keys [ALT] + [Shift] simultaneously and move your cursor [Up] and / or [Down] to select your text. ",
+    "url": "/en/management-studio-faster-with-multiple-select/",
+    "relUrl": "/en/management-studio-faster-with-multiple-select/"
+  },"20": {
+    "doc": "Management Studio - Faster with multiple select",
+    "title": "One useful case",
+    "content": "Sometimes we have to surround our text with single quotes. (for example: to add multiple codes to an IN clause in a test query) . No need to add them one by one and make sure you do not have space at the end.Here is the method: . Like mentioned above, this tip is not an exclusivity in SSMS, you can also do the same in many different text editor. ",
+    "url": "/en/management-studio-faster-with-multiple-select/",
+    "relUrl": "/en/management-studio-faster-with-multiple-select/"
+  },"21": {
+    "doc": "PIT Point In Time",
+    "title": "PIT Point In Time",
+    "content": ". ",
+    "url": "/en/pit-point-in-time/",
+    "relUrl": "/en/pit-point-in-time/"
+  },"22": {
+    "doc": "PIT Point In Time",
+    "title": "Introduction",
+    "content": "We often have descriptive data in our Power BI models. Data may vary over time and have validity dates. It can become a real headache when creating a data model. What kind of data ? . | A car could change his production plant through time. | A car can have different **engines over time. | A customer can have through time: . | One or more loyalty cards | One or more addresses | . | . What data types ? . | Multiple data | With a notion of time. (The information is valid from one date to another and potentially followed or overlapped by another) | . PIT - Point In Time - Datavault . Point In Time is a concept widely used when creating a data warehouse in a Datavault flavor. Performing a snapshot and historizing the data makes restitution much easier. (I will not discuss the pros or cons of Datavault, but I have my preferences ^^) If you want to know more, I invite you to read this article. (Written by Dan Linstedt) . ",
+    "url": "/en/pit-point-in-time/#introduction",
+    "relUrl": "/en/pit-point-in-time/#introduction"
+  },"23": {
+    "doc": "PIT Point In Time",
+    "title": "What do we expect?",
+    "content": "It is exciting for our users to navigate through the data by applying a time filter (CFR Slicer Date) How: By creating a DAX measure. (#PIT Shoes) . The following example shows dynamically Pauline’s shoes. ",
+    "url": "/en/pit-point-in-time/#what-do-we-expect",
+    "relUrl": "/en/pit-point-in-time/#what-do-we-expect"
+  },"24": {
+    "doc": "PIT Point In Time",
+    "title": "DataModel",
+    "content": ". ",
+    "url": "/en/pit-point-in-time/#datamodel",
+    "relUrl": "/en/pit-point-in-time/#datamodel"
+  },"25": {
+    "doc": "PIT Point In Time",
+    "title": "Our data model",
+    "content": "The following example is quite simple (The Power BI file is available for download at the end of this article) Many of you know it, I am passionate about Power BI, running, but many ignore my “passion” with running shoes. (Nobody is perfect !) The example refers to a list of runners who have one or more pairs of shoes over time. ",
+    "url": "/en/pit-point-in-time/#our-data-model",
+    "relUrl": "/en/pit-point-in-time/#our-data-model"
+  },"26": {
+    "doc": "PIT Point In Time",
+    "title": "The Runners table:",
+    "content": ". ",
+    "url": "/en/pit-point-in-time/#the-runners-table",
+    "relUrl": "/en/pit-point-in-time/#the-runners-table"
+  },"27": {
+    "doc": "PIT Point In Time",
+    "title": "The Shoes table",
+    "content": ". ",
+    "url": "/en/pit-point-in-time/",
+    "relUrl": "/en/pit-point-in-time/"
+  },"28": {
+    "doc": "PIT Point In Time",
+    "title": "Model specificities",
+    "content": ". | RunnerId (The Runner Table Key) is available for all shoes. | For performance reasons, the date stamps are duplicated and converted into numeric. | ValidFrom - ValidFromInt | ValidTo - ValidToInt | . | . More information . This is denormalization of a star schema generally composed of a Bridge and a dimension table. In a Datawarehouse (Kimball), we should have a Bridge: BridgeRunnerShoes and a dimension: DimShoes . Why . It helps our users to have better comprehension. (Simplicity)The Vertipaq engine will compress the redundant informationTo avoids an extra join / relationship. You want to know more about Bridges: https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/multivalued-dimension-bridge-table/ . ",
+    "url": "/en/pit-point-in-time/#model-specificities",
+    "relUrl": "/en/pit-point-in-time/#model-specificities"
+  },"29": {
+    "doc": "PIT Point In Time",
+    "title": "A more complete model could look like this one",
+    "content": ". ",
+    "url": "/en/pit-point-in-time/#a-more-complete-model-could-look-like-this-one",
+    "relUrl": "/en/pit-point-in-time/#a-more-complete-model-could-look-like-this-one"
+  },"30": {
+    "doc": "PIT Point In Time",
+    "title": "TimeLine",
+    "content": "Graphically analyze the different interactions. | Our user pick a date via the PIT Date slicer | The shoe table changes dynamically and display the one owned on that date. | . NB The blue bar drawn on the timeline has been added manually in MS Paint. (If you know a visual component that can display it, do not hesitate to contact me) . Filter: 01/02/2019 | Pauline . Filter: 01/03/2019 | Pauline . Filter: 01/05/2019 | Pauline . Filter: 10/10/2019 | Pauline . Filter: 01/12/2019 | Pauline . ",
+    "url": "/en/pit-point-in-time/#timeline",
+    "relUrl": "/en/pit-point-in-time/#timeline"
+  },"31": {
+    "doc": "PIT Point In Time",
+    "title": "Implementation",
+    "content": "Create a Calendar table . We have to create a Date table, which will not be associated with our model. (Called here PIT Calendar) To quickly create a Calendar table, I suggest you write an M Query in the Query Builder. The following articles will give you the approach. https://blog.crossjoin.co.uk/2013/11/19/generating-a-date-dimension-table-in-power-query/ https://www.mattmasson.com/2014/02/creating-a-date-dimension-with-a-power-query-script/ . Create a DAX Measure . This measure Filter the Shoes table by the selected date. #PIT Shoes = VAR CurrentDateInt = MAX(PIT_Calendar[DateInt]) RETURN CALCULATE ( DISTINCTCOUNT(Shoes[ShoesId]); FILTER( 'Shoes'; Shoes[ValidFromInt] &lt;= CurrentDateInt &amp;&amp; Shoes[ValidToInt]&gt;= CurrentDateInt ) ; 'Runners' ) . Understand this DAX expression . VAR CurrentDateInt = IF( ISCROSSFILTERED(PIT_Calendar) ;MAX(PIT_Calendar[DateInt]) ;VALUE(YEAR(TODAY())*10000 + MONTH(TODAY())*100 + DAY(TODAY())) ) . Why? . | The user wants to have the situation of the day (without having to modify the PIT slicer at each opening of the report) | The user forgot to create his report with the PIT slicer. Rather than propose the situation in the future, we apply the current one. | . FILTER( 'Shoes'; Shoes[ValidFromInt] &lt;= CurrentDateInt &amp;&amp; Shoes[ValidToInt] &gt;= CurrentDateInt ) . ",
+    "url": "/en/pit-point-in-time/#implementation",
+    "relUrl": "/en/pit-point-in-time/#implementation"
+  },"32": {
+    "doc": "PIT Point In Time",
+    "title": "Conclusion",
+    "content": "Now, you know how to make your data alive. Feel free to comment if you have more ideas, improvements, tips, or comments. Download the Power BI example file here . Edit 02/12/2021: If you want to know more or enjoy another point of view Reza Rad did a nice article on this topic too: Power BI From and To Date Filtering with One Slicer - RADACAD . ",
+    "url": "/en/pit-point-in-time/#conclusion",
+    "relUrl": "/en/pit-point-in-time/#conclusion"
+  },"33": {
+    "doc": "Power BI - Your model matters",
+    "title": "Power BI - Your model matters",
+    "content": "I’m trying to address a crucial topic (to me), but more complex to communicate than a technical feature. This article gives you some tips and may give you the urge to look differently at your data. If so, my bet will be won, and you may significantly improve your Power BI trip. Exciting, right? . ",
+    "url": "/en/power-bi-your-model-matters/",
+    "relUrl": "/en/power-bi-your-model-matters/"
+  },"34": {
+    "doc": "Power BI - Your model matters",
+    "title": "Introduction",
+    "content": "Power BI is a fabulous tool that allows us to bring together the technical world of developers and end-users. | For a developer, it allows us to create beautiful visualizations and highlight the data easily. | For business users, it simplifies the technical work to focus mainly on the result. | . Having worked at several clients, I am amazed by what users initially “non-technical” can achieve! Users quickly become skilled in the tool, but sometimes lack a little methodology. A habit, unfortunately quite common, is to multiply the models and then duplicate the data. A question, a report corresponds to a data model. This is not always the case, but it’s quite often what I saw. Several positive points to this: . | Speed ​​of implementation | The size of the model reduced to the report need (Small size). | It does the work!! | . But also, problems: . | Duplicate data | Several different models and different logics/relations. Risk of having different results from one model to another. | Several models, more maintenance | . As a BI developer, where the situation allows, I am a staunch defender of the unique model. With other Microsoft technologies, SSIS - SQL Server - SSAS Tabular / Multidim, we are trying to create what is called a Datawarehouse. There are several methodologies for modeling this datawarehouse, but I will not dwell on it in this article. A Datawarehouse is a data model that makes it easy to store, access, and understand your data. ",
+    "url": "/en/power-bi-your-model-matters/#introduction",
+    "relUrl": "/en/power-bi-your-model-matters/#introduction"
+  },"35": {
+    "doc": "Power BI - Your model matters",
+    "title": "Load Before, Think After",
+    "content": "Two worlds existed and still exist. BI (Developers / IT Service) . Let’s talk about me since that was the case. I juggled from one project to another by managing the business part as management of apple or pear. I did not bring much interest to the job or the nature of the data. Could I reproduce the reports asked? Yes! And I think everyone was happy like that. Complex SQL queries, performance, calculations, rules implementation were my main concerns. I was the perfect example of developer 1.0. Self BI (Users / Business) . The users I met have very different technical knowledge. | They have no particular interests or are panicked by the sources and structure of the data at their disposal. | They are obviously in a hurry to provide the reports fairly quickly | . For all the reasons mentioned, when creating a new report, users are eager to load the data as is. For both “worlds” the imperatives are: . | Load the source data. | Provide a table or calculation as needed. | . ",
+    "url": "/en/power-bi-your-model-matters/#load-before-think-after",
+    "relUrl": "/en/power-bi-your-model-matters/#load-before-think-after"
+  },"36": {
+    "doc": "Power BI - Your model matters",
+    "title": "Methodologies (Quick Win)",
+    "content": "Without going into the details of the modeling of a Datawarehouse and, more precisely, the Kimball method, I want to dwell on two tips. Denormalization . Brainstorming . The next two topics require the first change in your habits. Do not keep the source tables as they are in your model When you load your data into Power BI, you can make several changes in the Query Builder. In addition to data typing, conditions, it is essential to consolidate the data. This is the perfect introduction for Denormalization. ",
+    "url": "/en/power-bi-your-model-matters/#methodologies-quick-win",
+    "relUrl": "/en/power-bi-your-model-matters/#methodologies-quick-win"
+  },"37": {
+    "doc": "Power BI - Your model matters",
+    "title": "Denormalization",
+    "content": "Normalization / Denormalization ? . In computer science, we tend to standardize information. An example will be more concrete than a definition: A product is available with a color. A Color entity will be created and will contain all available colors. In the source system, a drop-down list allow the user to pick up a color. Often the main table retains a key (foreign key) that references the other table. This way of exploding the model into multiple tables is called “normalization”. For our reporting needs, we have to backtrack and consolidate information into fewer tables. If we denormalize, our example could looks like this simple table. | Simple for your users | Simple for your model | Simple for your DAX measures | . Concrete example . In this example, Bill tooks all the tables and files from his source system. He decided to load the table as is, without any changes. It was easy for him and he knows very well his model. But his users came back to him with a ton of question regarding interactions. Which tables will be impacted if they filter one specific attribute. They were not really sure. Since they have the “Sales Person” in their model, they wanted to know if Gender or Marital Status were link to “Sales Person” or “Client”. (So bill, renamed it to make it clear) . One day Bill wakes up with a giant smile! Is it because his favorite TV show is scheduled today? Not only! He has an idea… And a straightforward one.He decided to group his data into fewer tables. (When there is no many to many relationships).His work life changes to better! . | Less complex DAX expression | More understandable datasets | Less support and more time to watch his TV show. (Yes, both are compatible!) | . ",
+    "url": "/en/power-bi-your-model-matters/#denormalization-1",
+    "relUrl": "/en/power-bi-your-model-matters/#denormalization-1"
+  },"38": {
+    "doc": "Power BI - Your model matters",
+    "title": "Brainstorming",
+    "content": "The title should perhaps have been: Do not keep the focus on the technical problems but think of yourself. We all tend to want technical challenges, it’s addictive, and it gives us the impression of moving forward! In our Professional world, Power BI is the equivalent of Candy Crush! But I have more pleasure in aligning beautiful DAX measures in a table than sweets, do not you? For this point, I invite you to step back and step against our technical world. Ask yourself the following questions: (or ask them to your users) . | What is the nature of your work? Describe it to me. | What are you doing within the company? | What indicators and reports do you consult? | . Take note of the information in the form of keywords and mention the frequency. Some words will stand out and can be likened to what we will call later “Dimensions”. My advice: Take a pen, paper, coffee, soft music. Disconnect from your computers, technical “worries”. Make sure your explanations can be understood by your wife, your husband, your friends, your sports coach, your children … and yourself … . Your notes could look like this word cloud. See if some words do not relate to each other through an idea or logic. For example,[Customer Code] and [Customer Name] could be grouped under the same “Customer” dimension. (While these are potentially in two different tables or source files) The watchword here is: DO NOT THINK TO THE TECHNICAL ASPECTS. Without knowing it, you imagine the data model dreamed for you and your users. It fits your needs, your business, and does not care (yet) about the complexity needed for the data transformation! In this model, an end-user will find it much more comfortable and can even build their reports. Attributes will be displayed, grouped by logical ideas, and will facilitate reporting. The attractiveness of Power BI and BI Self-Service, in general, will not only be available to you, but it will also be accessible to end-users. Now that you’ve sketched out your dimensions, you can link them together. You certainly have information that expresses an event with measurable data. (Additive data) For example: . | A sale with a price, a quantity. | An inscription with a volume, a frequency. | . The relationships mentioned above correspond to Facts. A fact table is defined by its grain, which is itself determined by the list of dimensions attached to it. The sale is made: . | By a customer | For a product | In a store | On a given date | With a means of payment | . The inscription bears: . | On a magazine | By a subscriber | For delivery to a specific address | With a subscription end date | . A brainstorming session can quickly give you a good overview of your next dataset. Your fact table is in the middle and dimensions around. Where is the technical complexity for your users? For your DAX measures? Your users can now keep the focus on their results and to the more complicated question: Do I really avoid to use a Pie Chart ;) You can now look in detail how you will load your dimensions. Dimension by dimension asks you the question: Which is the grain of my dimension? Household, client, client history? And now start your candy crush session, load your data, and play a lot in the query Builder / SQL / … more … And do not forget to enjoy it, our work is exciting! . ",
+    "url": "/en/power-bi-your-model-matters/#brainstorming-1",
+    "relUrl": "/en/power-bi-your-model-matters/#brainstorming-1"
+  },"39": {
+    "doc": "Power BI - Your model matters",
+    "title": "How to put all this into music",
+    "content": "Power BI gives you the ability to consolidate your data into the Query Builder. (Power Query for the intimate) Do not minimize the time spent in this step, it will save you a lot later. You will be able: . | Group your data (multiple source tables can be grouped) into a single table. | Clean up your data. (Filter unnecessary data, edit poorly formatted data) This step will provide more convenience to your users. | Add a type to your data. | . The interface is quite complete and allows you to perform all the desired fantasies. For performance reasons or more flexibility, you can achieve your work on data with SQL queries. I do not have doubts about your technical abilities to perform this task. Take a step back on your technical problems, and nothing stops you! Take the time to rediscover your craft with an outside look! Power BI offers you the technical means to achieve this. And with a little methodology, you’re entering the big family of Datawarehouse’s happy modelers. ",
+    "url": "/en/power-bi-your-model-matters/#how-to-put-all-this-into-music",
+    "relUrl": "/en/power-bi-your-model-matters/#how-to-put-all-this-into-music"
+  },"40": {
+    "doc": "Power BI - Your model matters",
+    "title": "More infos:",
+    "content": "https://en.wikipedia.org/wiki/Dimensional_modeling https://docs.microsoft.com/en-us/power-bi/guidance/star-schema https://en.wikipedia.org/wiki/Dimensional_modeling https://en.wikipedia.org/wiki/Data_warehouse#Dimensional_versus_normalized_approach_for_storage_of_data https://www.sqlbi.com/articles/the-importance-of-star-schemas-in-power-bi/ https://radacad.com/power-bi-basics-of-modeling-star-schema-and-how-to-build-it . ",
+    "url": "/en/power-bi-your-model-matters/#more-infos",
+    "relUrl": "/en/power-bi-your-model-matters/#more-infos"
+  },"41": {
+    "doc": "How I optimized my learning time with Instapaper",
+    "title": "Introduction",
+    "content": ". I am not a huge book reader, but I read a ton of different articles on the internet. They cover multiple topics like Power BI, SQL Server, DAX, Running, World news, High Tech review, Blogging, Self-improvement, and many other topics I want to cover at a specific moment. (Now, everything related to my house, design, …) . . When I browse LinkedIn or Twitter, I find interesting articles, but sometimes I do not have time to read it. (Or maybe I am not in the mood to read them right now). I also have a big trouble (and it seems that I am not the only one on earth). On a computer or a smartphone, my focus time is quite small. I like to switch between applications and topics, which decreases completely my learning curve. You know this little monkey in your head who tries to discourage you to finish something he thinks “too serious for him”. On this topic, I kindly recommend you to watch this TED video: https://www.youtube.com/watch?v=arj7oStGLkU . I found a solution to solve that problem, and it is a technical solution which provides me much more fun. This solution called \"Instapaper\" has also a killing feature!!! Let's see together how it works and how it can help you. ",
+    "url": "/en/how-i-optimized-my-learning-time-with-instapaper/",
+    "relUrl": "/en/how-i-optimized-my-learning-time-with-instapaper/"
+  },"42": {
+    "doc": "How I optimized my learning time with Instapaper",
+    "title": "Instapaper?",
+    "content": ". First of all. Instapaper is an application available on smartphones (IOS, Android), PC, and your internet browser. Follow this link to access Instapaper: https://www.instapaper.com/ . What can you expect with Instapaper? . Instapaper provides a clear and simple interface to collect, store and read all the web pages you like. ",
+    "url": "/en/how-i-optimized-my-learning-time-with-instapaper/",
+    "relUrl": "/en/how-i-optimized-my-learning-time-with-instapaper/"
+  },"43": {
+    "doc": "How I optimized my learning time with Instapaper",
+    "title": "My workflow",
+    "content": ". On a smartphone: When I see an interesting article, I send it to my Instapaper application. This article will be synchronized across the Instapaper servers and all my different machines. On PC: When I have a question, I go to my favorite search engine and pick up 5 or more articles and send them to Instapaper. Later (or not), I open it on Instapaper and start to read. It’s often on my smartphone when I have time. (In the public transport, sofa, waiting time, …) . . ",
+    "url": "/en/how-i-optimized-my-learning-time-with-instapaper/",
+    "relUrl": "/en/how-i-optimized-my-learning-time-with-instapaper/"
+  },"44": {
+    "doc": "How I optimized my learning time with Instapaper",
+    "title": "5 features I like:",
+    "content": ". | Reader mode: Instapaper provide a better interface for you to read the article. Better format, font size, … A dark mode is also available, which is super cool! | Highlight: I don't use it after all, but I feel more concentrated when I Highlight important text and be happy to know that I can found it back if needed. | Offline mode: Ok, now we always have an internet connection. We don't also have a roaming fee in the EU. But it's cool to be able to read your articles and disable your internet connection and be more focused. (Hey Instapaper dev team, if you read this post: A Pomodoro timer inside Instapaper could be a huge improvement!) | Archive: I can archive the articles I liked (or I read) and find it back later. No more sorry when at the coffee corner we said. \"I read an interesting article, I would like to share with you, but I don't find it back\". | Export a list of your links in an HTML format (easy to share with you colleagues or friends) | . And I forgot to mention: THE KILLING FEATURE!! (At least for me) . Which is for me the best thing ever and the reason why I switch to the \"Pro\" / \"Pay\" version. ",
+    "url": "/en/how-i-optimized-my-learning-time-with-instapaper/",
+    "relUrl": "/en/how-i-optimized-my-learning-time-with-instapaper/"
+  },"45": {
+    "doc": "How I optimized my learning time with Instapaper",
+    "title": "A nice Kindle integration!!",
+    "content": ". Instapaper allows me to send my unread articles to my Kindle. The configuration is pretty easy, and the result is very nice! . I receive the file through my kindle email address and can read all the internet articles with the beautiful E Ink screen. On my kindle, all the articles are grouped in \"one book\" and each article is separated by chapter, which allows me to switch easily between articles. All Kindle features are available, you can highlight the text you want to save, search for a translation, or a Wikipedia explanation. Reading with a kindle, I think there is no better choice to keep the focus on this task and it gives a different atmosphere to web articles. I wanted to share with you because I simply think it's super nice!!! . (BTW I'm not paid to promote their tool or the Amazon Kindle :) ) . If you like diversity you can also use: . Pocket: https://getpocket.com/ . Microsoft Edge Browser with the reading list. In the last 6 years, I used Pocket but I quit when I saw the kindle feature on Instapaper. Please comment if it changes your life too (or not), or if you have more tips to add! . ",
+    "url": "/en/how-i-optimized-my-learning-time-with-instapaper/",
+    "relUrl": "/en/how-i-optimized-my-learning-time-with-instapaper/"
+  },"46": {
+    "doc": "How I optimized my learning time with Instapaper",
+    "title": "How I optimized my learning time with Instapaper",
+    "content": ". ",
+    "url": "/en/how-i-optimized-my-learning-time-with-instapaper/",
+    "relUrl": "/en/how-i-optimized-my-learning-time-with-instapaper/"
+  },"47": {
+    "doc": "How to stay always \"Available\" in Microsoft Teams with Excel",
+    "title": "How it started?",
+    "content": "First it was a private joke, with this article it’s now a public joke.&lt;/p&gt; . Our client switched from Skype to Teams and it was a very cool improvement. My colleagues told me with a bit of fun: \"Teams is cool, but you can't change the time before appearing away!\". And it's true, we can't! Somebody said, \"If you install a software who will click randomly on your screen, you will not appear away anymore\". Yes,.. but our software policy does not allow us to install anything on our computers. It gave me an idea! Thanks to our very good old friend, Excel! People will say \"Lazy is smart\", Arnaud is \"funny\" or any other reason. But I had fun with Excel and his perfect VBA editor. My colleague Isabelle (and also Maslow) will say : . https://en.wiktionary.org/wiki/if_all_you_have_is_a_hammer,_everything_looks_like_a_nail . My hammer is Excel and Code.. I agree.. (nail or snail.. it's just a \"s\" who is missing) . I created a small excel sheet who will loop until you ask it to finish and will move your mouse cursor every 5 seconds. My joy is shared between. \"I'm the Microsoft BI guy who uses Microsoft Office and VBA code to do a joke\". and . \"People will see me as a very lazy guy!! isn't the name of his website!?!\". Anyway, if you read this article, then it's because I think you will pick the first idea. I'm I wrong? :) . ",
+    "url": "/en/how-to-stay-available-in-microsoft-teams-with-excel/#how-it-started",
+    "relUrl": "/en/how-to-stay-available-in-microsoft-teams-with-excel/#how-it-started"
+  },"48": {
+    "doc": "How to stay always \"Available\" in Microsoft Teams with Excel",
+    "title": "Where can you download it?",
+    "content": "You can download the excel sheet on my github repo. (If you want your own excel sheet, the code is also available at the end of this post) . Thanks to Rafi for his 64 bits version! . . ",
+    "url": "/en/how-to-stay-available-in-microsoft-teams-with-excel/",
+    "relUrl": "/en/how-to-stay-available-in-microsoft-teams-with-excel/"
+  },"49": {
+    "doc": "How to stay always \"Available\" in Microsoft Teams with Excel",
+    "title": "How does it look like?",
+    "content": ". This is how it looks in Excel. You can start the timer by clicking on the start button or CTRL + l (like lazysnail) or start manually the macro named \"DoNotSleep\". To stop the timer, you have to press any key. . ",
+    "url": "/en/how-to-stay-available-in-microsoft-teams-with-excel/",
+    "relUrl": "/en/how-to-stay-available-in-microsoft-teams-with-excel/"
+  },"50": {
+    "doc": "How to stay always \"Available\" in Microsoft Teams with Excel",
+    "title": "Do you have the VBA code?",
+    "content": ". If you are curious and want to build your own Excel, let's copy the following VBA code: . Public Declare PtrSafe Function SetCursorPos Lib \"user32\" (ByVal x As LongPtr, ByVal y As LongPtr) As LongPtr Public Declare PtrSafe Sub mouse_event Lib \"user32\" (ByVal dwFlags As LongPtr, ByVal dx As LongPtr, ByVal dy As LongPtr, ByVal cButtons As LongPtr, ByVal dwExtraInfo As LongPtr) Public Const MOUSEEVENTF_LEFTDOWN = &amp;amp;H2 Public Const MOUSEEVENTF_LEFTUP = &amp;amp;H4 Public Const MOUSEEVENTF_RIGHTDOWN As LongPtr = &amp;amp;H8 Public Const MOUSEEVENTF_RIGHTUP As LongPtr = &amp;amp;H10 Sub DoNotSleepPlease() Dim i As Integer For i = 1 To 9999 'For Info, number of iteration 'Cells(1, 1) = i If Cells(3, 5) = \"\" Then SetCursorPos 200, 200 'x and y position mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0 mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0 WaitPlease SetCursorPos 300, 300 'x and y position mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0 mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0 WaitPlease SetCursorPos 400, 400 'x and y position mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0 mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0 WaitPlease SetCursorPos 500, 500 'x and y position mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0 mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0 WaitPlease Else Exit For End If Next i End Sub Sub WaitPlease() Dim sngWaitEnd As Single sngWaitEnd = Timer + 5 Do DoEvents Cells(3, 3).Value = Timer Loop Until Timer &gt;= sngWaitEnd End Sub . ",
+    "url": "/en/how-to-stay-available-in-microsoft-teams-with-excel/",
+    "relUrl": "/en/how-to-stay-available-in-microsoft-teams-with-excel/"
+  },"51": {
+    "doc": "How to stay always \"Available\" in Microsoft Teams with Excel",
+    "title": "How to stay always \"Available\" in Microsoft Teams with Excel",
+    "content": "Download the Excel file on GitHub . Or create your own Excel file by reading the text below (and copy / paste the vba code) . I published this article long time ago now, but this is one of the most visited page on my website! You lazy people! . ",
+    "url": "/en/how-to-stay-available-in-microsoft-teams-with-excel/",
+    "relUrl": "/en/how-to-stay-available-in-microsoft-teams-with-excel/"
+  },"52": {
+    "doc": "Power BI Create a Calendar table automatically",
+    "title": "Power BI Create a Calendar table automatically",
+    "content": "In our models, the best way to deals with dates and DAX intelligence functions is to use a Calendar Table (Dimension). Good news, this table can be created in 2 clicks with Power Query (Transform Data) in Power BI! . Go transform data and right click on Queries to create a new Blank Query . Copy / Paste this code . let CreateDateTable = (StartDate as date, EndDate as date, optional Culture as nullable text) as table =&gt; let DayCount = Duration.Days(Duration.From(EndDate - StartDate)), Source = List.Dates(StartDate,DayCount,#duration(1,0,0,0)), TableFromList = Table.FromList(Source, Splitter.SplitByNothing()), ChangedType = Table.TransformColumnTypes(TableFromList,{{\"Column1\", type date}}), RenamedColumns = Table.RenameColumns(ChangedType,{{\"Column1\", \"Date\"}}), InsertYear = Table.AddColumn(RenamedColumns, \"Year\", each Date.Year([Date])), InsertQuarter = Table.AddColumn(InsertYear, \"QuarterOfYear\", each Date.QuarterOfYear([Date])), InsertMonth = Table.AddColumn(InsertQuarter, \"MonthOfYear\", each Date.Month([Date])), InsertDay = Table.AddColumn(InsertMonth, \"DayOfMonth\", each Date.Day([Date])), InsertDayInt = Table.AddColumn(InsertDay, \"DateInt\", each [Year] * 10000 + [MonthOfYear] * 100 + [DayOfMonth]), InsertMonthName = Table.AddColumn(InsertDayInt, \"MonthName\", each Date.ToText([Date], \"MMMM\", Culture), type text), InsertCalendarMonth = Table.AddColumn(InsertMonthName, \"MonthInCalendar\", each (try(Text.Range([MonthName],0,3)) otherwise [MonthName]) &amp; \" \" &amp; Number.ToText([Year])), InsertCalendarQtr = Table.AddColumn(InsertCalendarMonth, \"QuarterInCalendar\", each \"Q\" &amp; Number.ToText([QuarterOfYear]) &amp; \" \" &amp; Number.ToText([Year])), InsertDayWeek = Table.AddColumn(InsertCalendarQtr, \"DayInWeek\", each Date.DayOfWeek([Date])), InsertDayName = Table.AddColumn(InsertDayWeek, \"DayOfWeekName\", each Date.ToText([Date], \"dddd\", Culture), type text), InsertWeekEnding = Table.AddColumn(InsertDayName, \"WeekEnding\", each Date.EndOfWeek([Date]), type date) in InsertWeekEnding in CreateDateTable . Choose a start date and an EndDate, click Invoke . That’s it! You have a beautiful calendar table. Do not forget to mark this table as a data table Credit: I found this code on internet many years ago and used it in the LazyDAX file. I think I changed it, but I can’t redirect and credit the one who created it. I think it can help you a lot, that’s why I’m sharing it with you :) . ",
+    "url": "/en/power-bi-create-a-calendar-table-automatically/",
+    "relUrl": "/en/power-bi-create-a-calendar-table-automatically/"
+  },"53": {
+    "doc": "Your data model first!",
+    "title": "Your data model first!",
+    "content": ". At this end of the year, I thought it’s time for me to bring you a gift!!It’s a very important subject that I mention to my coworkers and it’s 80% of a success power bi story! . . ",
+    "url": "/en/your-data-model-first/",
+    "relUrl": "/en/your-data-model-first/"
+  },"54": {
+    "doc": "Your data model first!",
+    "title": "All the focus is on the tech part.",
+    "content": ". All developers (yes, you are!!), spend a huge amount of time to understand their sources, their transformation, and the magic that happens in their DAX measures!And, to be honest, that’s normal! . . ",
+    "url": "/en/your-data-model-first/",
+    "relUrl": "/en/your-data-model-first/"
+  },"55": {
+    "doc": "Your data model first!",
+    "title": "So why this article?",
+    "content": ". After 1 week, 2 months, or more time, we are very proud of our dataset! (Yes, I’m not talking about reports, but dataset which can be used in many reports)Our model contains a lot of data, all the information needed is there! But is it easy for an external person to use it? (a User, a colleague, your kids, ..)Sometimes yes, sometimes no. Some complexity exists: . | Too many tables | Too many relationships and the difficulty to know the interaction between tables. | The model keeps the complexity of the source systems. | . But ok! We did a huge work to clean and provide this model! Everything work!! Our users can take 2 or 3 hours and try to understand the logic behind it! . I like to mention it. I love cars!! But I know nothing about it!! Do I need to understand how an engine work to drive a car? It’s a real plus, but not mandatory. . ",
+    "url": "/en/your-data-model-first/",
+    "relUrl": "/en/your-data-model-first/"
+  },"56": {
+    "doc": "Your data model first!",
+    "title": "So what do I suggest?",
+    "content": ". It doesn’t take much time, and it can help you to keep an eye on your goal. (Yes!! Provide a very shiny dataset)Before every model, I recommend you to draw your model on a sheet of paper.You already know the information you have to present and how your user group this information. If not, it’s the perfect time to ask your users and write their buzzwords on paper. Before each project, ask them to present you their job and the different tools they use. It would help you to have a clear view of their logic behind, their needs, and also what’s missing now.At this point, I only write huge keywords on paper. . When I’m back on my desk, I’m looking at this brainstorming paper, and try to group the different keywords into a logic.That’s how tables bring to life, and because I’m a Kimball huge fan let's call them Dimensions! . . So now, with these tables you have the user point of view of their data, all the magic (and fun) is to prepare the data to fit in it!But hey, with Power Query, SQL, it’s just a piece of cake! Isn’t? . . ",
+    "url": "/en/your-data-model-first/",
+    "relUrl": "/en/your-data-model-first/"
+  },"57": {
+    "doc": "Your data model first!",
+    "title": "In conclusion",
+    "content": ". Do not jump directly into the source's data, keep an eye on your expectation first. Ask your users, talk to your colleagues and try to build the model of your dream.It’s possible! During your development, you may change some tables, and that’s completely normal! But at least, if you keep your original model, everybody will win in the end. I wish you all the best in your data journey!What a fun job!! . ",
+    "url": "/en/your-data-model-first/",
+    "relUrl": "/en/your-data-model-first/"
+  },"58": {
+    "doc": "Power BI Interview questions: a different way to know your applicants",
+    "title": "Power BI Interview questions: a different way to know your applicants",
+    "content": "One day you will have to recruit or will be involved in a recruitment process for a Power BI position. Nobody knows everything about a tool or a subject, that’s also why our job is fun, we never stop to learn. Asking very precise questions aren’t always the best solution, I think it’s also nice to ask “open” questions. It’s a way to learn from your applicant and to understand how they will deal with their daily job. I tried to write a list of questions I would like to ask (and maybe, yes, to answer) . ",
+    "url": "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/",
+    "relUrl": "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/"
+  },"59": {
+    "doc": "Power BI Interview questions: a different way to know your applicants",
+    "title": "Questions list",
+    "content": ". | What are the different languages used in Power BI? Can you explain their usage? | Do you know one data modeling concept? If yes, can you explain it in your words? | We have to transform our data, where and how can we do it? | What’s the difference between these two visuals: Table and Matrix | By dragging and dropping a field in the Values area we can create implicit measures. Could you give me a shortlist of different aggregation functions available? | We want to implement security in our data. Do you know a way to hide some data to a group of users? | When we select a table in Power BI desktop, we have an option called “Mark as date table”. Do you know why? | Users can filter data in multiple ways! Can you give me some examples? | Do you know what Power BI Datasets are, and why would you use them? | Power BI community gives us a lot of different External tools, do you know some of them? | I’m the IT manager and I never heard about Power BI before. Can you explain to me what it does and what’s the gain to use it? | If you know DAX, can you give me 3 functions that you use the most? | We are wondering if we need to buy Power BI Premium, do you know which functionalities are available in Premium? | When you need to build a report, where do you start your journey? | Which points are the most important to not fail a Power BI project? | You start a new project, your first mission is to reduce the size of the dataset. Which are the different operations you will perform? | . It exists already a ton of different lists of questions available on the internet, I wanted to break the rule with a different kind of question. If you want to add more questions to the list, feel free to send me a message. ",
+    "url": "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/#questions-list",
+    "relUrl": "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/#questions-list"
+  },"60": {
+    "doc": "DAX is case insensitive",
+    "title": "DAX is case insensitive",
+    "content": "This week with my colleague Vincent Philipot, we learned something that many of you already know. (But maybe not!) . You can download the Power BI file on GitHub . DAX is case insensitive!! Yes!! And nobody told me before! . ",
+    "url": "/en/dax-is-case-insensitive/",
+    "relUrl": "/en/dax-is-case-insensitive/"
+  },"61": {
+    "doc": "DAX is case insensitive",
+    "title": "What does it mean?",
+    "content": "Here is a short description available on Wikipedia . But because an example is worth a thousand words, here is some screenshot. (You can download this example in the lazydax file) . In our dataset we have 10 differents Products with a ProductCategory = Vegetable . I wrote 3 differents measures to count the number of product with a ProductCategory equal to: . ",
+    "url": "/en/dax-is-case-insensitive/#what-does-it-mean",
+    "relUrl": "/en/dax-is-case-insensitive/#what-does-it-mean"
+  },"62": {
+    "doc": "DAX is case insensitive",
+    "title": "Vegetable",
+    "content": "Nb Vegetable = CALCULATE( COUNTROWS('Product') ,FILTER('Product', 'Product'[ProductCategory] = \"Vegetable\") ) . ",
+    "url": "/en/dax-is-case-insensitive/#vegetable",
+    "relUrl": "/en/dax-is-case-insensitive/#vegetable"
+  },"63": {
+    "doc": "DAX is case insensitive",
+    "title": "VEGETABLE",
+    "content": "Nb VEGETABLE _ = CALCULATE( COUNTROWS('Product') ,FILTER('Product', 'Product'[ProductCategory] = \"VEGETABLE\") ) . ",
+    "url": "/en/dax-is-case-insensitive/#vegetable-1",
+    "relUrl": "/en/dax-is-case-insensitive/#vegetable-1"
+  },"64": {
+    "doc": "DAX is case insensitive",
+    "title": "VeGeTaBlE",
+    "content": "Nb VeGeTaBlE __ = CALCULATE( COUNTROWS('Product') ,FILTER('Product', 'Product'[ProductCategory] = \"VeGeTaBlE\") ) . And when me and most of my colleagues would expect a different behavior, results are the same . ",
+    "url": "/en/dax-is-case-insensitive/#vegetable-2",
+    "relUrl": "/en/dax-is-case-insensitive/#vegetable-2"
+  },"65": {
+    "doc": "DAX is case insensitive",
+    "title": "Conclusion",
+    "content": "I think I didn’t see it before because I have a strong programmer background, and it seems very weird to me.And when I have to filter to a subset of value, I only base my FILTER on technical codes that have that kind of soft rules already applied. You can download this example in the lazydax file here . ",
+    "url": "/en/dax-is-case-insensitive/#conclusion",
+    "relUrl": "/en/dax-is-case-insensitive/#conclusion"
+  },"66": {
+    "doc": "DAX is case insensitive",
+    "title": "More articles",
+    "content": "After a web search, I saw that our Power BI stars (Data gods in reference to this list from Christopher Wagner) wrote very nice articles about this subject. Letter case-sensitivity in DAX, Power BI and Analysis Services - SQLBI . Chris Webb’s BI Blog: Power BI And Case Sensitivity Chris Webb’s BI Blog (crossjoin.co.uk) . In all the cases, I hope that you learned something new! :) . ",
+    "url": "/en/dax-is-case-insensitive/#more-articles",
+    "relUrl": "/en/dax-is-case-insensitive/#more-articles"
+  },"67": {
+    "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
+    "title": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
+    "content": ". This article seems obvious, but that's something that I do a lot, and this is the first thing I do when somebody asks me a question. After many weeks, some clients tell me: \"Now, I'm using your technique too\" . But I don't feel to own this! It's pretty simple, but in fact, if you didn't use it before, it can help you a lot! . So, yes, I'm duplicating my page! . A lot!!!! ",
+    "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/",
+    "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/"
+  },"68": {
+    "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
+    "title": "A focus version:",
+    "content": ". When I have an issue or a question, the first thing I do (after crying), it's duplicate the page. On this page, I remove everything not useful to test . | Visuals | Images | . I transform all the visuals I want to test (hopefully only one) into a table. Let's call it the \"focus version\" . . ",
+    "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#a-focus-version",
+    "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#a-focus-version"
+  },"69": {
+    "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
+    "title": "Test your filter context:",
+    "content": ". When I have a cleaner version of my report I can duplicate it. (again) . . On this new page, I remove one by one: . | Filter on slicers | Filter in the filter pane (Be careful to remove the one hidden) | Hidden Slicers (Synced slicers) | . Until my values change and I can understand them. This step helps me to trust the data and understand the measure. It also helps me to trust the behavior of each filters. . ",
+    "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#test-your-filter-context",
+    "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#test-your-filter-context"
+  },"70": {
+    "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
+    "title": "Test one particular case:",
+    "content": ". You are the best and main debugger of Power BI! . . Based on the previous topic, now you are confident with your evaluation context! I would recommend you to filter on a very specific case available in your data. For example:&nbsp; . | One transaction ID (one row in your sales table) | One Invoice Id | . Many users don't look their data at a very low level, and trust me, that's very important! . If you know the story and behavior of your DAX measure for a very specific case, you can predict how it will work for 2 and many more. . ",
+    "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#test-one-particular-case",
+    "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#test-one-particular-case"
+  },"71": {
+    "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
+    "title": "Split your measures and display their result",
+    "content": ". In our DAX measure, we can have multiple steps and complexity. That's why the best practice is to use Variables (VAR), and I know that you already use it! . . But do you test it? How to do it? . | Duplicate your measure (yes, Duplicate duplicate everywhere) and change the RETURN section by returning the value of one of your variable. | . Many month after our work some changes can impact our measure!&nbsp; . | Relation between tables can be different | Data aren't the same again | You change the slicer with a different attribute! (Same value, but different attribute, ..) | . By testing your old good variables, you can trust and confirm how they work. (Specially if everything is still ok for your evaluation context) . . ",
+    "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#split-your-measures-and-display-their-result",
+    "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#split-your-measures-and-display-their-result"
+  },"72": {
+    "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
+    "title": "Conclusion:",
+    "content": ". Most of the time, on a report, crowded with many visuals we aren't able to find the main reason for our \"problem\". We keep focus on not useful stuff and we are to scare (or lazy) to have a look deep dive. In two sentences: . | Less is more | Duplicate your page et destroy everything | . Bonus: Duplicate page and measure is one point! But don't forget to duplicate your .PBIX file.. In case of emergency :) . I wish you all the best and a lot of duplication. ",
+    "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#conclusion",
+    "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#conclusion"
+  },"73": {
+    "doc": "Power BI Visuals List: Which Graphic to choose?",
+    "title": "Power BI Visuals List: Which Graphic to choose?",
+    "content": " ",
+    "url": "/en/power-bi-visuals-list/",
+    "relUrl": "/en/power-bi-visuals-list/"
+  },"74": {
+    "doc": "Power BI Visuals List: Which Graphic to choose?",
+    "title": "Power BI Visuals List: Which Graphic to choose?",
+    "content": ". You can download the Power BI file on GitHub . ",
+    "url": "/en/power-bi-visuals-list/",
+    "relUrl": "/en/power-bi-visuals-list/"
+  },"75": {
+    "doc": "Power BI Visuals List: Which Graphic to choose?",
+    "title": "Why this list?",
+    "content": ". Today, I had some time to learn!I think I'm not that bad for data modeling, T-SQL, SQL server performance, Power Query, DAX, coaching and understanding user requirements. (Yes, sometimes it's very good to be kind to yourself :) ) . But putting effort into many different techs skills, I should mention it to the whole world (at least you, because you are reading my blog post). I’m not that good when it’s time to pick the best visual to show our data! . ",
+    "url": "/en/power-bi-visuals-list/#why-this-list",
+    "relUrl": "/en/power-bi-visuals-list/#why-this-list"
+  },"76": {
+    "doc": "Power BI Visuals List: Which Graphic to choose?",
+    "title": "Table and Matrix fan",
+    "content": "You will maybe recognize you in my description! I'm the kind of guy who uses Table and Matrix a lot. For testing and understanding my data!Matrix is wonderful! You can look at the behavior of your measures at the different grain in one minute! List, Sub Total, Total!! Amazing! . ",
+    "url": "/en/power-bi-visuals-list/#table-and-matrix-fan",
+    "relUrl": "/en/power-bi-visuals-list/#table-and-matrix-fan"
+  },"77": {
+    "doc": "Power BI Visuals List: Which Graphic to choose?",
+    "title": "I can't stop my crazy pleasure to click on all that kind of visuals",
+    "content": ". When I'm proud of it, I try to build a visual useful for my users. So I transform this table into a graphic. I click the first button, then I change for the second and I can't stop my crazy pleasure to click on all that kind of visuals!!But do I know what I'm choosing? NO!I knew, yes.. But right now, I'm just clicking to find the best one who will give me the satisfaction between 2 tasty coffees. (And yes, Power BI is also a question of feeling and pleasure. Like a very addictive game) . With the image on top, I tested all these graphics and keep a trace of them. First, to help me the next time I need to pick the right one. (And I hope, it can help you too) . ",
+    "url": "/en/power-bi-visuals-list/#i-can-t-stop-my-crazy-pleasure-to-click-on-all-that-kind-of-visuals",
+    "relUrl": "/en/power-bi-visuals-list/#i-can-t-stop-my-crazy-pleasure-to-click-on-all-that-kind-of-visuals"
+  },"78": {
+    "doc": "Power BI Visuals List: Which Graphic to choose?",
+    "title": "More links",
+    "content": "Visualization types in Power BI - Power BI | Microsoft Docs . Next step? I still need to learn more about visualization! And I will!And you, do you click everywhere until you have the best one? If no, how did you become data artist / story teller? . ",
+    "url": "/en/power-bi-visuals-list/#more-links",
+    "relUrl": "/en/power-bi-visuals-list/#more-links"
+  },"79": {
+    "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
+    "title": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
+    "content": "I created LazyDAX to: . | Present interesting Power BI discoveries to my colleagues and clients | Test my DAX Measures with a simple, concrete and very clean Star schema | Discover multiple DAX Functions and test them | Show different Power BI features by examples | . Download on GitHub . You can change it, publish it and do whatever you want with it. It contains data and is designed in a Star schema model. You don’t need to connect on a server and can change the data, because I used the “Enter Data” method. ",
+    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/",
+    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/"
+  },"80": {
+    "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
+    "title": "It contains:",
+    "content": "DAX: I organized multiple Measure in the same way Microsoft present all the DAX functions in their folders. It was an efficient way for me to test it all. Visuals: On different pages, I used all the existing visuals, and tried to provide you some ideas to build a more fancy report. ",
+    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#it-contains",
+    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#it-contains"
+  },"81": {
+    "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
+    "title": "Test it here",
+    "content": ". ",
+    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#test-it-here",
+    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#test-it-here"
+  },"82": {
+    "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
+    "title": "Why",
+    "content": "I spent a lot of my free time on it, and in this new version I changed the look n’feel and try a dark mode report. (Yes, it’s also a playground for me to test Power BI) I created it more than 4 years ago now, but I still use it every week. (If not every day) I can use it for my presentation, and help people with DAX. I hope it can help you too, and would really enjoy hearing your thoughts, ideas and requests. You can also view all different pages in this PDF file . ",
+    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#why",
+    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#why"
+  },"83": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "Filter a Power BI report passing parameters through URL",
+    "content": ". Power BI offers us a very sympathetic way to bring a bit more flexibility into our Reports. It’s not a brand-new feature, but I’m not sure that you know it! . You can display a report and automatically have a page filtered by the parameters you define in the URL. ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"84": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "Why is it cool?",
+    "content": ". | We can create an embed report and include it on a website/intranet. It’s possible to create a button, or menu to dynamically filter and display our report. (Microsoft provides an example: https://powerbi.microsoft.com/en-us/blog/easily-embed-secure-power-bi-reports-in-your-internal-portals-or-websites/ | It’s also possible to filter a report from a Power Apps | We can create our own bookmarks (in your browser or in your email) | We can add filters on fields that are not suggested / available in the Filter Pane | . . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"85": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "But",
+    "content": ". | It’s indeed not a way to add security to your reports!! (Filter can be removed by your users) =&gt; The Row-level security is what you need. | It’s not possible to use it in an iframe with a report “published to web” | . First, Microsoft wrote already a nice article on this topic. I suggest you read it for more information.https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-url-filters . . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"86": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "How to",
+    "content": ". | Open your report in Power BI Service and go to the page you want to filter | Click on the address bar and at the end of this line, add the following code ?filter= | . This is the example used in this article. (You can also download this Power BI on this website. Search LazyDAX on the main page) . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"87": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "Filter on numeric value",
+    "content": ". ?filter=Calendar/Year eq 2022 . The first part of this expression refers to the dimension (Table) -&gt; CalendarThe second part refers to the attribute name in this dimension -&gt; Yeareq means equals . . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"88": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "Filter multiple numeric values",
+    "content": ". ?filter=Calendar/Year in (2022, 2023) . . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"89": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "Filter on a text value",
+    "content": ". ?filter=Product/ProductCategory eq 'Fruit' . . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"90": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "Filter multiple Text values",
+    "content": ". ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"91": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "Add Multiple filter on differents attributes",
+    "content": ". ?filter=Customer/Country in ('Belgium', 'Nederland') and Product/ProductCategory eq 'Fruit' and Calendar/Year ge 2021 . . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"92": {
+    "doc": "Filter a Power BI report passing parameters through URL",
+    "title": "More operators are available",
+    "content": ". Source: Microsoft website (see url below) . Like mentioned at the beginning, everything is already well explained on the Microsoft website: https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-url-filters . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+  },"93": {
+    "doc": "Power BI Sidetools extensions: A Must have!",
+    "title": "Power BI Sidetools extensions: A Must have!",
+    "content": "Last months I did a presentation for the well-known Club Power BI (Brussels). This session was a brief listing of the most exciting External tools / Third-party software that can help us to work with Power BI. As a Power BI passionate guy, I wanted to be sure to show and explain my favorite applications. DAX Studio and Tabular Editor are indeed at top of my list, and the ones I use a lot. (Almost every day). But as a good student, I wanted to cover more topics and tried to find a lot of different external tools. I don’t want you to read the very long story, but I discovered Power BI Side tools!! . Power BI Sidetools does a very nice job when it comes to documenting and keeping a track of your DAX Measure or Power Query code. By pressing a simple button, it generates multiple files and keeps the tree of your code. (I mean “Display folders” for your Measures and directories for your queries) . And it’s very interesting!! . ",
+    "url": "/en/power-bi-sidetools-extensions-a-must-have/",
+    "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/"
+  },"94": {
+    "doc": "Power BI Sidetools extensions: A Must have!",
+    "title": "Why do I like Power BI Sidetools so much?",
+    "content": "Now, imagine that you work on a new project, or somebody sends you a Power BI file. By using Power BI Sidetools, you can: . | Split all the contents into different files. | Each query goes into a .m file | Each DAX measure goes into a .dax file | . | If it’s a large dataset, you don’t need to open Power BI anymore to verify or analyze the code | Keep a trace of code, by versioning the generated code. It would also be possible to compare the code between - versions or times. Reuse an existing code in a different project. | AND the most useful in my opinion! Search into code! | . Open Power BI Sidetools . Sidetools main window . Folders created by sidetools and opened in Visual Studio Code . Directory generated for measures . Example of M code: Customer table . Example of DAX code: [AVERAGEX Articles by InvoiceNumber] . ",
+    "url": "/en/power-bi-sidetools-extensions-a-must-have/#why-do-i-like-power-bi-sidetools-so-much",
+    "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/#why-do-i-like-power-bi-sidetools-so-much"
+  },"95": {
+    "doc": "Power BI Sidetools extensions: A Must have!",
+    "title": "Search into code",
+    "content": "Didier Terrien (The developer) highly suggests you to use Visual Studio code. (And me too!) . Visual studio code is a very light and powerful text editor. I will not list all features, but when you open the main directory, you can now edit files and search for different patterns. I like the idea to search for: . | A table name: I have multiple projects (where I ran Power BI Sidetools previously), and want to know if and where a specific table is used. I can search that table name in multiple directories and. All impacted *.m files will be listed and show me the code. | A measure name: You can search if a measure is used in another measure. | . search example . ",
+    "url": "/en/power-bi-sidetools-extensions-a-must-have/#search-into-code",
+    "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/#search-into-code"
+  },"96": {
+    "doc": "Power BI Sidetools extensions: A Must have!",
+    "title": "What more?",
+    "content": "Power BI sidetools has many different functionalities, and I only covered one of them. It’s also : . | A DAX generator | A DAX Debugger | A DAX Parser | . To know more about this tool, I recommend you to visit the developer website: https://thebipower.fr/index.php/power-bi-sidetools/ . ",
+    "url": "/en/power-bi-sidetools-extensions-a-must-have/#what-more",
+    "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/#what-more"
+  },"97": {
+    "doc": "Power BI Sidetools extensions: A Must have!",
+    "title": "Visual studio code",
+    "content": "You download Visual studio code (for free) on https://code.visualstudio.com/download . 2 add-in are available and provide you a lovely syntax coloration for M and DAX File . Extension for M and DAX ",
+    "url": "/en/power-bi-sidetools-extensions-a-must-have/#visual-studio-code",
+    "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/#visual-studio-code"
+  },"98": {
+    "doc": "Power BI Sidetools extensions: A Must have!",
+    "title": "I want to download it!",
+    "content": "You can download it from GitHub: https://github.com/didierterrien/Power-BI-Sidetools . But I recommend you to download and install it with Business Ops (From Power BI .tips): https://powerbi.tips/product/business-ops/ . ",
+    "url": "/en/power-bi-sidetools-extensions-a-must-have/",
+    "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/"
+  },"99": {
+    "doc": "Create a gradient background for Power BI",
+    "title": "Create a gradient background for Power BI",
+    "content": "Deep involve in data transformation, data modeling and analytic calculations, my least skill is visualization. But I’m doing my best to improve it! . One rule applies to almost everything but it’s more true when we talk about reports and data visualization. Less is more! No need to add a lot of fancy stuff, keep stuff simple. I do not use many colors for my visuals, I limit the number of visuals and let users understand what they have on a page. ",
+    "url": "/en/create-a-gradient-background-for-power-bi/",
+    "relUrl": "/en/create-a-gradient-background-for-power-bi/"
+  },"100": {
+    "doc": "Create a gradient background for Power BI",
+    "title": "Gradient background",
+    "content": ". But when it’s time to add some unuseful stuff to our report, what I like the most is to add a gradient background. No need to add a flashy color variation!! I like to switch between one color and his very close variation. Like a “middle blue” to a “dark blue”. Many Power BI blogs mention PowerPoint to create a gradient background. And indeed, it’s not that a bad idea. But for some reason, PowerPoint generates images with a very ugly layer. (Like a rainbow) . I only have this issue when I publish my report on Power BI Services, but not on Power BI Desktop. (Is it related to my 4K screen or compression? No idea) . But if you encounter the same issue, or if you want to learn another way to do it, I’m explaining here how to do it with Paint .net. . ",
+    "url": "/en/create-a-gradient-background-for-power-bi/#gradient-background",
+    "relUrl": "/en/create-a-gradient-background-for-power-bi/#gradient-background"
+  },"101": {
+    "doc": "Create a gradient background for Power BI",
+    "title": "Paint.net",
+    "content": ". Paint .net is my favorite images/graphics editor. It’s free, contains almost everything I need, and is not too complex to understand. You can download it here https://www.dotpdn.com/downloads/pdn.html . ",
+    "url": "/en/create-a-gradient-background-for-power-bi/",
+    "relUrl": "/en/create-a-gradient-background-for-power-bi/"
+  },"102": {
+    "doc": "Create a gradient background for Power BI",
+    "title": "How to create a gradient image with paint.net",
+    "content": ". Open Paint .net application and create a new canvas. (I recommend you to keep the same size as you use in your Power BI) . In the toolbox, choose the Gradient tool . Gradient tool . Now that the gradient tool is selected, go to the Colors pane and click \"More\" . . First, you have to select a \"Primary\" Color. It's the one selected by default, but you can select it by using the dropdown list and chose \"Primary\" or by click the square on the top.Use the color picker or paste an Hexadecimal RGB value. (I highly recommend you to use it) . You can find interesting color on https://coolors.co/palettes/trending . When it's done, select the \"Secondary\" color. I usually paste the same color as the primary but change the \"V\" slider to a more lighter value (but very close) . . Go to your canvas and click on the left button of your mouse, drag the cursor and release the button. . Save this image into a .png file and use it in Power BI Desktop. . ",
+    "url": "/en/create-a-gradient-background-for-power-bi/",
+    "relUrl": "/en/create-a-gradient-background-for-power-bi/"
+  },"103": {
+    "doc": "Power BI Scanner API List and document your Power BI tenant",
+    "title": "Power BI Scanner API List and document your Power BI tenant",
+    "content": "Power BI is a powerful data visualization tool that allows users to create insightful reports and dashboards from various data sources. However, to leverage the full potential of Power BI, it’s important to ensure the accuracy and security of your data. The Power BI Scanner API is designed to help you achieve this goal by scanning your Power BI resources for vulnerabilities and data leaks. In this article, we will introduce you to the process of running the Power BI Scanner API in PowerShell. PowerShell is a flexible and powerful command-line tool that can be used to automate a wide range of administrative tasks. It also has a rich set of commandlets and modules that make it easy to work with Power BI. Before getting started, you’ll need to ensure that you have the appropriate permissions and access keys to run the scanner API. Once you have these in place, you can follow the steps below to get started with PowerShell. ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant"
+  },"104": {
+    "doc": "Power BI Scanner API List and document your Power BI tenant",
+    "title": "Configuration",
+    "content": "You need first to configure your Power BI tenant and activate these following options. Go to your Admin portal . and activate these options . ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#configuration",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#configuration"
+  },"105": {
+    "doc": "Power BI Scanner API List and document your Power BI tenant",
+    "title": "Powershell code",
+    "content": " ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#powershell-code",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#powershell-code"
+  },"106": {
+    "doc": "Power BI Scanner API List and document your Power BI tenant",
+    "title": "Parameters",
+    "content": "Before running this code, you should change the path where you would like to save the json file 'C:\\YOURPATH\\result.json' . ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#parameters",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#parameters"
+  },"107": {
+    "doc": "Power BI Scanner API List and document your Power BI tenant",
+    "title": "Description",
+    "content": "This code use the 4 differents REST API method given by Microsoft. More info: . https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-metadata-scanning . GetModifiedWorkspaces: List of workspaces . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-modified-workspaces . GetScanResult: Get the scan result (Download our json file) . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-result . GetScanStatus: To know if our scan is done or still pending . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-status . GetInfo: Ask Powerbi.com to perform our scan . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-post-workspace-info . ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#description",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#description"
+  },"108": {
+    "doc": "Power BI Scanner API List and document your Power BI tenant",
+    "title": "Code",
+    "content": "// Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . # _____ _____ # /\\ | __ \\_ _| # ___ ___ __ _ _ __ _ __ ___ _ __ / \\ |__) || # / __|/ __/ _` | '_ \\| '_ \\ / _ \\ '__| / /\\ \\ | ___/ | # \\__ \\ (_| (_| | | | __/ | / ____ \\| _|_ # |___/\\___\\__,_|_|_|_|_|\\___|_| /_/ \\_\\_|_____| # #--------------------------------- # Configuration $configExportFolderPath = \"C:\\Users\\ArnaudGastelblum\\Desktop\" $batchSize = 50 # End configuration #--------------------------------- Login-PowerBIServiceAccount # Get a list of all workspaces write-host \"Retrieve workspaces list\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/modified\" $WorkspaceList = Invoke-PowerBIRestMethod -Url $url -Method Get | ConvertFrom-Json $k = 1 for($i = 0; $i -lt $WorkspaceList.Length; $i += $batchSize) { # end index $j = $i + $batchSize - 1 if ($j -ge $WorkspaceList.Length) { $j = $WorkspaceList.Length - 1 } $myTmpObj = $WorkspaceList[$i..$j] # show batches \"Batch $k\" $nbLoop = 0 $arg_WorkspaceList = '{ \"workspaces\": [ ' foreach ($record in $myTmpObj) { if($nbLoop -gt 0) { $arg_WorkspaceList += ', ' } $arg_WorkspaceList += '\"'+ $($record.id) +'\"' $nbLoop = $nbLoop + 1 } $arg_WorkspaceList += ' ] }' write-host \"Fetched workspaces: \"+ $arg_WorkspaceList # # Request a full description of our workspaces # write-host \"Ask Power BI server to prepare a full list of infos\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/getInfo?lineage=True&amp;datasourceDetails=True&amp;datasetSchema=True&amp;datasetExpressions=True&amp;getArtifactUsers=True\" $result = Invoke-PowerBIRestMethod -Url $url -Method Post -Body $arg_WorkspaceList | ConvertFrom-Json $scanId = $result.id # Get the scan status # Check with the scanId generated above if the scan is ready or still in progress write-host \"Test if export is available\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/scanStatus/\" + $scanId Do { $result = Invoke-PowerBIRestMethod -Url $url -Method Get | ConvertFrom-Json $status = $result.status write-host $status if($status -ne \"Succeeded\"){ Start-Sleep -s 5 } } while ($status -ne \"Succeeded\") # Download write-host \"Retrieve Export\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/scanResult/\" + $scanId $outputfile = $configExportFolderPath +\"\\result_\"+ $k +\".json\" write-host \"Write result in \"+ $outputfile Invoke-PowerBIRestMethod -Url $url -Method Get | Out-file -FilePath $outputfile write-host \"Export Ok\" $k++ } . ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#code",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#code"
+  },"109": {
+    "doc": "SP_Helptext Get DDL information",
+    "title": "SP_Helptext Get DDL information",
+    "content": "The sp_helptext stored procedure is a system-defined T-SQL procedure that is used to view the definition of a specified object in SQL Server. It is included in all versions of SQL Server and provides an easy way to retrieve the definition of user-defined functions, stored procedures, views, triggers, and other database objects. The sp_helptext procedure output displays the text of the specified object, including comments and white space. With this procedure, developers and database administrators can quickly review and analyze the code of a specific object, which can be useful for debugging, optimization, and documentation purposes. ",
+    "url": "/en/sp_helptext/",
+    "relUrl": "/en/sp_helptext/"
+  },"110": {
+    "doc": "SP_Helptext Get DDL information",
+    "title": "How to use it?",
+    "content": "exec sp_helptext 'SchemaName.ObjectName' . ",
+    "url": "/en/sp_helptext/#how-to-use-it",
+    "relUrl": "/en/sp_helptext/#how-to-use-it"
+  },"111": {
+    "doc": "SP_Helptext Get DDL information",
+    "title": "Example",
+    "content": ". ",
+    "url": "/en/sp_helptext/#example",
+    "relUrl": "/en/sp_helptext/#example"
+  },"112": {
+    "doc": "SP_Helptext Get DDL information",
+    "title": "sp_help",
+    "content": "In addition you can use sp_help procedure to retrieve some interesting informations. ",
+    "url": "/en/sp_helptext/#sp_help",
+    "relUrl": "/en/sp_helptext/#sp_help"
+  },"113": {
+    "doc": "I discovered Obsidian and I love it",
+    "title": "I discovered Obsidian and I love it",
+    "content": "Six months ago, I made a discovery that has revolutionized my note-taking game. It’s called Obsidian, and it’s a note-taking software that’s unlike any other. It’s free and available here: https://obsidian.md . At first glance, Obsidian might look like your typical note-taking app, but it’s so much more than that. Obsidian is all about customization and making your note-taking experience, just yours. That’s why it’s such a powerful tool for anyone who takes notes, whether you’re a student, writer, or just someone who likes to write things down. One of the things I love most about Obsidian is how easy it is to write and organize notes. The interface is clean and uncluttered, which makes it easy to focus on what’s important. You can add tags and links to your notes, which makes it super easy to find related content later on. And because Obsidian stores all your notes in Markdown files, you can easily export your notes if you ever decide to switch to another software. ",
+    "url": "/obsidian/Obsidian",
+    "relUrl": "/obsidian/Obsidian"
+  },"114": {
+    "doc": "I discovered Obsidian and I love it",
+    "title": "A second brain!",
+    "content": "Obsidian team mention on their website: . A second brain, for you, forever. I heard about the zettelkasten method. This method consists of a collection of notes that are organized according to a system of cross-referencing and indexing. The notes can be about anything, from ideas and insights to quotations and references. The key to zettelkasten is that each note is atomic, meaning that it contains only one idea or piece of information. To be honest, I didn’t really use it that way! But I kept some logic! My daily notes, my project note, I’m rewriting note in a more readable format. First, it gives me an impression of control, which it’s already very cool. I don’t fear to lose anything, and I can read my discoveries and thought when I want to. (If it’s not useful, no worries) . ",
+    "url": "/obsidian/Obsidian#a-second-brain",
+    "relUrl": "/obsidian/Obsidian#a-second-brain"
+  },"115": {
+    "doc": "I discovered Obsidian and I love it",
+    "title": "A ton of plugin",
+    "content": "The magic is not Obsidian by itself! There is a ton of plugin to improve the tool! for example: . | Dataview to query your note like SQL does on a database | Daily note and calendar to write your note on a daily basis and maybe structure them later | Webpage HTML Export to export your note on HTML format and keep the beautiful design of your obsidian theme. and many more (for free) | . ",
+    "url": "/obsidian/Obsidian#a-ton-of-plugin",
+    "relUrl": "/obsidian/Obsidian#a-ton-of-plugin"
+  },"116": {
+    "doc": "Managing efficiently your tasks with Obsidian and Dataview",
+    "title": "Managing efficiently your tasks with Obsidian and Dataview",
+    "content": "Managing tasks efficiently is crucial for productivity and success in any field. With the rise of digital note-taking tools, organizing tasks has become much more streamlined and convenient. Obsidian, a popular note-taking app, offers a Dataview plugin that enables users to manage tasks effectively. This plugin allows users to create custom views, set reminders, and track progress, among other features. In this article, we will explore how to use the Dataview plugin in Obsidian to manage tasks efficiently and increase productivity. Prerequisites . You should install the dataview plugin first! . Open Obsidian, go to settings &gt; Community plugins &gt; Browse and search for dataview . Do not forget to enable it when it’s installed. All dataview code present below should be included into a command block. For example: . ",
+    "url": "/obsidian/Obsdian-dataview-tasks",
+    "relUrl": "/obsidian/Obsdian-dataview-tasks"
+  },"117": {
+    "doc": "Managing efficiently your tasks with Obsidian and Dataview",
+    "title": "List all tasks",
+    "content": "The following code lists all the existing tasks in your Obsidian Vault. TASK . ",
+    "url": "/obsidian/Obsdian-dataview-tasks#list-all-tasks",
+    "relUrl": "/obsidian/Obsdian-dataview-tasks#list-all-tasks"
+  },"118": {
+    "doc": "Managing efficiently your tasks with Obsidian and Dataview",
+    "title": "List all opened tasks",
+    "content": "To list only tasks in progress (not yet completed) . TASK WHERE !completed . ",
+    "url": "/obsidian/Obsdian-dataview-tasks#list-all-opened-tasks",
+    "relUrl": "/obsidian/Obsdian-dataview-tasks#list-all-opened-tasks"
+  },"119": {
+    "doc": "Managing efficiently your tasks with Obsidian and Dataview",
+    "title": "List of tasks in a file only (current file and specified file)",
+    "content": "Limit to the tasks created in the file we are in. TASK WHERE file.path = this.file.path AND !completed . ",
+    "url": "/obsidian/Obsdian-dataview-tasks#list-of-tasks-in-a-file-only-current-file-and-specified-file",
+    "relUrl": "/obsidian/Obsdian-dataview-tasks#list-of-tasks-in-a-file-only-current-file-and-specified-file"
+  },"120": {
+    "doc": "Managing efficiently your tasks with Obsidian and Dataview",
+    "title": "List of tasks by tag",
+    "content": "Search in the entire Vault for open tasks containing the tag #todo. This allows me to sort my tasks by project type or need. I personally have a #perso tag to store my personal ideas, a tag by client and also by projects. (Sometime by person) My #todo tag is a bit different, I’ll talk about it later. TASK WHERE !completed AND contains(text, \"#todo\") SORT text ASC . ",
+    "url": "/obsidian/Obsdian-dataview-tasks#list-of-tasks-by-tag",
+    "relUrl": "/obsidian/Obsdian-dataview-tasks#list-of-tasks-by-tag"
+  },"121": {
+    "doc": "Managing efficiently your tasks with Obsidian and Dataview",
+    "title": "Using the upper case",
+    "content": "I use Obsidian from my iPad or iPhone, and when I write a tag the first letter is often capitalized. Rather than manually changing it, I modify my dataview query to force the search on the uppercase tags. TASK WHERE !completed AND contains(upper(text), \"#TODO\") SORT text ASC . ",
+    "url": "/obsidian/Obsdian-dataview-tasks#using-the-upper-case",
+    "relUrl": "/obsidian/Obsdian-dataview-tasks#using-the-upper-case"
+  },"122": {
+    "doc": "Managing efficiently your tasks with Obsidian and Dataview",
+    "title": "Prioritizing tasks with the todo tag",
+    "content": "The #todo tag is part of a thought process. Over time I add tasks to my Vault. But every morning as I start my day I prioritise the tasks that need to be done during the day. (or not to be lost sight of) I use the #todo tag on top of the other tags. The following query is displayed at the top of each Daily note, to highlight them. TASK WHERE !completed AND contains(upper(text), \"#TODO\") SORT text ASC . ",
+    "url": "/obsidian/Obsdian-dataview-tasks#prioritizing-tasks-with-the-todo-tag",
+    "relUrl": "/obsidian/Obsdian-dataview-tasks#prioritizing-tasks-with-the-todo-tag"
+  },"123": {
+    "doc": "Managing efficiently your tasks with Obsidian and Dataview",
+    "title": "Misc",
+    "content": "Search from a variable . TASK WHERE contains(MOC, [[YourYAMLVariable]]) AND !completed SORT file.mtime DESC . ",
+    "url": "/obsidian/Obsdian-dataview-tasks#misc",
+    "relUrl": "/obsidian/Obsdian-dataview-tasks#misc"
+  },"124": {
+    "doc": "Organize your External tools",
+    "title": "Organize your External tools",
+    "content": ". In your journey, you may need additional tools that go beyond the capabilities of what is built into Power BI. This is where external tools for Power BI come in. External tools are add-ons that can be integrated into the Power BI workspace to extend its functionality. They are developed by third-party vendors rather than Microsoft and can be used to enhance data analysis capabilities, provide advanced visuals, and automate various data processing tasks. External tools can come in many forms. They can be standalone executable files, web applications, or plugins that are installed directly into the Power BI desktop application. Some external tools may require a separate license or subscription to use, while others may be free. ",
+    "url": "/power-bi/Organize-your-External-tools",
+    "relUrl": "/power-bi/Organize-your-External-tools"
+  },"125": {
+    "doc": "Organize your External tools",
+    "title": "Most used External tools",
+    "content": ". | Tabular Editor (2.xx - Free version) https://github.com/TabularEditor/TabularEditor | DAX Studio https://daxstudio.org | ALM Toolkit http://alm-toolkit.com | . This tools is pretty useful, it allows you to download and install many different External tools. https://powerbi.tips/product/business-ops . ",
+    "url": "/power-bi/Organize-your-External-tools#most-used-external-tools",
+    "relUrl": "/power-bi/Organize-your-External-tools#most-used-external-tools"
+  },"126": {
+    "doc": "Organize your External tools",
+    "title": "But!!",
+    "content": "Yes! The downside of this! When you install a ton of external tools, just for a test, you can have multiple icons that you no longer use. ",
+    "url": "/power-bi/Organize-your-External-tools#but",
+    "relUrl": "/power-bi/Organize-your-External-tools#but"
+  },"127": {
+    "doc": "Organize your External tools",
+    "title": "Organize your External tools",
+    "content": " ",
+    "url": "/power-bi/Organize-your-External-tools",
+    "relUrl": "/power-bi/Organize-your-External-tools"
+  },"128": {
+    "doc": "Organize your External tools",
+    "title": "Where to change?",
+    "content": "You can organize, remove, rename or change the icon by following this folder on your machine. C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Power BI Desktop\\External Tools . ",
+    "url": "/power-bi/Organize-your-External-tools#where-to-change",
+    "relUrl": "/power-bi/Organize-your-External-tools#where-to-change"
+  },"129": {
+    "doc": "Organize your External tools",
+    "title": "File name == Alphabeticaly sorted == Ribbon sort",
+    "content": ". In the Power BI Ribbon, their file name (which is not the one displayed in Power BI) will be sort alphabeticaly. You can provide a numeric value upfront to help them to be sorted. (This is how sidetools does) . ",
+    "url": "/power-bi/Organize-your-External-tools#file-name--alphabeticaly-sorted--ribbon-sort",
+    "relUrl": "/power-bi/Organize-your-External-tools#file-name--alphabeticaly-sorted--ribbon-sort"
+  },"130": {
+    "doc": "Organize your External tools",
+    "title": "Inside each file",
+    "content": "You can edit each file in your favorite text editor and change the differents value. Image . You can change what’s inside the iconData value and provide a base64 code for you image. It’s possible to generate a base64 text code from an image https://codebeautify.org/image-to-base64-converter . ",
+    "url": "/power-bi/Organize-your-External-tools#inside-each-file",
+    "relUrl": "/power-bi/Organize-your-External-tools#inside-each-file"
+  },"131": {
+    "doc": "About Me",
+    "title": "Hey you want to know who I am?",
+    "content": "With Lazysnail, I wanted to create a place where I can find my toolbox and share my discoveries around Microsoft BI technologies and geek stuff. LinkedIn . A few years ago, I started to share my knowledge with a young colleague. Day after day, I understood that I had more pleasure to explain and see his crazy improvement instead of doing by myself. This guy was not Lazy and slow like a snail, but I gave him this little nickname Lazy snail. This how I took the name for my blog and all my activities.  . ",
+    "url": "/docs/About#hey-you-want-to-know-who-i-am",
+    "relUrl": "/docs/About#hey-you-want-to-know-who-i-am"
+  },"132": {
+    "doc": "About Me",
+    "title": "What’s the story?",
+    "content": ". I’m not only a Star Schema defender, but I also love when code is well aligned. My Windows desktop is clean, and if I don’t disable desktop icons, then you can only see my recycle bin icon. I have a strong developer background in multiple (funny or not) languages. Life has led me from code to the Business Intelligence world. Often, I still have to answer this question: Why did I go so far and denial my own nature? . Well, it’s not so far! Databases, SQL Queries, BI technologies don’t share the same logic but definitely the same patterns. Clean your code Do not repeat your code Keep complexity understandable Think about performance Do not forget your users . Anyway, for all of these reasons, I’m a BI developer! . ",
+    "url": "/docs/About#whats-the-story",
+    "relUrl": "/docs/About#whats-the-story"
+  },"133": {
+    "doc": "About Me",
+    "title": "and my life?",
+    "content": "I’m strange, but my passion is my job! Not you?? Then you should give a try to Power BI! . I have 2 kids: Pauline and Antoine who are the best and the worst things in my life. Dear parents, do you understand my thoughts? . I like running and all the sharing moments you can have in this community. I did multiple Marathon and Half Marathon, my pleasure is to fight myself and cross the finish line. ",
+    "url": "/docs/About#and-my-life",
+    "relUrl": "/docs/About#and-my-life"
+  },"134": {
+    "doc": "About Me",
+    "title": "About Me",
+    "content": " ",
+    "url": "/docs/About",
+    "relUrl": "/docs/About"
+  },"135": {
+    "doc": "Fabric",
+    "title": "Fabric",
+    "content": " ",
+    "url": "/docs/Fabric",
+    "relUrl": "/docs/Fabric"
+  },"136": {
+    "doc": "Links",
+    "title": "List of links",
+    "content": "My colleagues often asked me What tool do you use for this? It’s also a list for me . ",
+    "url": "/docs/Links#list-of-links",
+    "relUrl": "/docs/Links#list-of-links"
+  },"137": {
+    "doc": "Links",
+    "title": "Data Modelling",
+    "content": "DBDiagram.io https://dbdiagram.io Design a database without effort . ",
+    "url": "/docs/Links#data-modelling",
+    "relUrl": "/docs/Links#data-modelling"
+  },"138": {
+    "doc": "Links",
+    "title": "Presentation",
+    "content": "Microsoft ZoomIt https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit Zoom, annotate and record your screen . ",
+    "url": "/docs/Links#presentation",
+    "relUrl": "/docs/Links#presentation"
+  },"139": {
+    "doc": "Links",
+    "title": "Screenshot",
+    "content": "Sharex https://getsharex.com Screenshot tool: PNG, GIF and AVI . ",
+    "url": "/docs/Links#screenshot",
+    "relUrl": "/docs/Links#screenshot"
+  },"140": {
+    "doc": "Links",
+    "title": "Misc",
+    "content": "Microsoft Power Toys https://learn.microsoft.com/en-us/windows/powertoys/install Many different tools in 1 app . | Keep your screen / PC awake | Fancy zone (manage your window size and location) | Image resizer | Power rename (rename files in a batch mode) | Keyboard manager | Mouse utilities | … | . ",
+    "url": "/docs/Links#misc",
+    "relUrl": "/docs/Links#misc"
+  },"141": {
+    "doc": "Links",
+    "title": "Links",
+    "content": " ",
+    "url": "/docs/Links",
+    "relUrl": "/docs/Links"
+  },"142": {
+    "doc": "Obsidian",
+    "title": "Obsidian",
+    "content": ". | Managing efficiently your tasks with Obsidian and Dataview | I discovered Obsidian and I love it | . ",
+    "url": "/docs/Obsidian#obsidian",
+    "relUrl": "/docs/Obsidian#obsidian"
+  },"143": {
+    "doc": "Obsidian",
+    "title": "Obsidian",
+    "content": ". ",
+    "url": "/docs/Obsidian",
+    "relUrl": "/docs/Obsidian"
+  },"144": {
+    "doc": "Other",
+    "title": "Other",
+    "content": "Here is some articles not directly related to Power BI . | How to stay always “Available” in Microsoft Teams with Excel | How I optimized my learning time with Instapaper | . ",
+    "url": "/docs/Other",
+    "relUrl": "/docs/Other"
+  },"145": {
+    "doc": "Power BI",
+    "title": "Power BI",
+    "content": ". | Organize your External tools | Power BI Scanner API List and document your Power BI tenant | Create a gradient background for Power BI | Power BI Sidetools extensions: A Must have! | Filter a Power BI report passing parameters through URL | LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX | Power BI Visuals List: Which Graphic to choose? | Power BI: Duplicate of Duplicate - The best way to test your reports and measures | DAX is case insensitive | Power BI Interview questions: a different way to know your applicants | Your data model first! | Power BI Create a Calendar table automatically | Power BI - Your model matters | PIT Point In Time | Pie Chart is bad! | Power BI Desktop: Print in the A4 size | . ",
+    "url": "/docs/Power-BI#power-bi",
+    "relUrl": "/docs/Power-BI#power-bi"
+  },"146": {
+    "doc": "Power BI",
+    "title": "Power BI",
+    "content": ". ",
+    "url": "/docs/Power-BI",
+    "relUrl": "/docs/Power-BI"
+  },"147": {
+    "doc": "SQL Server",
+    "title": "SQL Server",
+    "content": ". | SP_Helptext Get DDL information | Management Studio - Faster with multiple select | SSIS - Create Environment from Packages variables | SSMS - Query Shortcuts : Feel like a superman developer | SSIS - Log Execution time | SSIS - Export SSIS Catalog Environments | SP_WHO3 - Running Queries (Toolbox) | . ",
+    "url": "/docs/SQL%20Server",
+    "relUrl": "/docs/SQL%20Server"
+  },"148": {
+    "doc": "YouTube",
+    "title": "YouTube",
+    "content": "I’m sharing quick tips on my personal YouTube Channel, and you can also discover a lot of meetup on the Club Power BI Channel. | | | | . | Lazysnail | Club Power BI | DataSprouts | . | My channel, where I share multiple quick tips video around Power BI and Microsoft data in general | Videos from our Club Power BI - Brussels meetup group and many other french cities. (in French) | DataSprouts is a group of Belgium Data consultant, it’s a place where we discuss about Microsoft Data (in French) | . ",
+    "url": "/docs/Youtube",
+    "relUrl": "/docs/Youtube"
+  },"149": {
+    "doc": "Home",
+    "title": "Home",
+    "content": ". ** You landed on a data lover web page! . I’m sharing my discoveries and thought about Microsoft Power BI, SQL Server, Obsidian and Data in general. YouTube Practice DAX . ",
+    "url": "/",
+    "relUrl": "/"
+  },"150": {
+    "doc": "Jekyll Theme - Cheat sheet",
+    "title": "Jekyll Theme - Cheat sheet",
+    "content": " ",
+    "url": "/code",
+    "relUrl": "/code"
+  },"151": {
+    "doc": "Jekyll Theme - Cheat sheet",
+    "title": "Table of contents",
+    "content": ". | | Labels | Callouts | Buttons | Misc . | Comment | New page header | . | . ",
+    "url": "/code#table-of-contents",
+    "relUrl": "/code#table-of-contents"
+  },"152": {
+    "doc": "Jekyll Theme - Cheat sheet",
+    "title": "Table of contents",
+    "content": "## {: .no_toc .text-delta } 1. TOC {:toc} --- . ",
+    "url": "/code#table-of-contents-1",
+    "relUrl": "/code#table-of-contents-1"
+  },"153": {
+    "doc": "Jekyll Theme - Cheat sheet",
+    "title": "Labels",
+    "content": "Default label . Default label {: .label } . Blue label . Blue label {: .label .label-blue } . Green label . Green label {: .label .label-green } . Purple label . Purple label {: .label .label-purple } . Yellow label . Yellow label {: .label .label-yellow } . Red label . Red label {: .label .label-red } . ",
+    "url": "/code#labels",
+    "relUrl": "/code#labels"
+  },"154": {
+    "doc": "Jekyll Theme - Cheat sheet",
+    "title": "Callouts",
+    "content": "Yellow . Text here . {: .highlight-title } &gt; Yellow &gt; &gt; Text here . Blue . Text here . {: .important-title } &gt; Blue &gt; &gt; Text here . Green . Text here . {: .new-title } &gt; Green &gt; &gt; Text here . Violet . Text here . {: .note-title } &gt; Violet &gt; &gt; Text here . Red . Text here . {: .warning-title } &gt; Red &gt; &gt; Text here . ",
+    "url": "/code#callouts",
+    "relUrl": "/code#callouts"
+  },"155": {
+    "doc": "Jekyll Theme - Cheat sheet",
+    "title": "Buttons",
+    "content": "Grey button Purple button Blue button Green button White button . [Grey button](https://just-the-docs.com){: .btn } [Purple button](https://just-the-docs.com){: .btn .btn-purple } [Blue button](https://just-the-docs.com){: .btn .btn-blue } [Green button](https://just-the-docs.com){: .btn .btn-green } [White button](https://just-the-docs.com){: .btn .btn-outline } . ",
+    "url": "/code#buttons",
+    "relUrl": "/code#buttons"
+  },"156": {
+    "doc": "Jekyll Theme - Cheat sheet",
+    "title": "Misc",
+    "content": "Comment . { % comment % } COMMENT HERE { % endcomment % } . New page header . --- parent: Other --- # Title of the page {: .no_toc } ## {: .no_toc .text-delta } 1. TOC {:toc} --- ## First topic . ",
+    "url": "/code#misc",
+    "relUrl": "/code#misc"
+  }
+}

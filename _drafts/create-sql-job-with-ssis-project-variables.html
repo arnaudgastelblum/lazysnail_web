@@ -1,0 +1,121 @@
+---
+layout: post
+title: Create SQL Job with SSIS Project / Variables
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: draft
+categories:
+- SQL Server
+tags: []
+meta:
+  _thumbnail_id: '681'
+  _et_pb_use_builder: 'off'
+  _edit_last: '2'
+  _et_post_bg_color: "#ffffff"
+  _et_post_bg_layout: light
+  _et_pb_show_title: 'on'
+  _et_pb_post_hide_nav: default
+  _et_pb_page_layout: et_no_sidebar
+  _et_pb_side_nav: 'off'
+author:
+  login: Arnaud
+  email: arnaud@gastelblum.be
+  display_name: Arnaud Gastelblum
+  first_name: Arnaud
+  last_name: Gastelblum
+permalink: "/en/"
+---
+<p><!-- wp:code --></p>
+<pre class="wp-block-code"><code>USE [msdb]
+GO
+
+BEGIN TRANSACTION
+DECLARE @ServerName           NVARCHAR(200) = 'fsma0056wi'                                           -- Server destination (could be localhost)
+DECLARE @PackagePath          NVARCHAR(500) = '\SSISDB\External\Import_ICA\AAA_Execute_All.dtsx'     -- SSIS Package to run
+DECLARE @EnvironmentName      NVARCHAR(200) = 'PRD_Import_ICA'                                       -- SSIS Environment Name
+DECLARE @ProjectName          NVARCHAR(200) = 'Import_ICA'                                           -- SSIS Project Name
+DECLARE @JobName              NVARCHAR(100) = 'ICA_Load'                                             -- Job Name [Job created with this script)
+DECLARE @StepName             NVARCHAR(100) = 'ICA'                                                  -- Job Step (Step 1)
+DECLARE @OwnerLoginName       NVARCHAR(100) = 'sa'
+DECLARE @ProxyName            NVARCHAR(100) = 'job_fimis'
+DECLARE @EnvironmentReference NVARCHAR(10)
+DECLARE @ProjectId            NVARCHAR(10)
+--
+-- Get Project Id based on his name
+--
+SELECT @ProjectId = project_id FROM [SSISDB].[internal].[projects] WHERE name = @ProjectName
+
+--
+-- Get Environment Reference based on his name and project Id
+--
+SELECT @EnvironmentReference = [reference_id]
+  FROM [SSISDB].[internal].[environment_references]
+  WHERE 
+        environment_name = @EnvironmentName
+    AND project_id       = @ProjectId
+	
+	
+    
+--
+-- Job Creation
+--
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'[Uncategorized (Local)]' AND category_class=1)
+BEGIN
+    EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'[Uncategorized (Local)]'
+    IF (@@ERROR &lt;> 0 OR @ReturnCode &lt;> 0) GOTO QuitWithRollback
+END
+
+DECLARE @jobId BINARY(16)
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=@JobName, 
+		@enabled=1, 
+		@notify_level_eventlog=0, 
+		@notify_level_email=0, 
+		@notify_level_netsend=0, 
+		@notify_level_page=0, 
+		@delete_level=0, 
+		@description=N'No description available.', 
+		@category_name=N'[Uncategorized (Local)]', 
+		@owner_login_name=@OwnerLoginName, @job_id = @jobId OUTPUT
+
+DECLARE @SSISCommand NVARCHAR(300) = N'/ISSERVER "\"'+ @PackagePath +'\"" /SERVER '+ @ServerName +' /ENVREFERENCE '+ @EnvironmentReference +' /Par "\"$ServerOption::LOGGING_LEVEL(Int16)\"";1 /Par "\"$ServerOption::SYNCHRONIZED(Boolean)\"";True /CALLERINFO SQLAGENT /REPORTING E'
+
+IF (@@ERROR &lt;> 0 OR @ReturnCode &lt;> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=@StepName, 
+		@step_id=1, 
+		@cmdexec_success_code=0, 
+		@on_success_action=1, 
+		@on_success_step_id=0, 
+		@on_fail_action=2, 
+		@on_fail_step_id=0, 
+		@retry_attempts=0, 
+		@retry_interval=0, 
+		@os_run_priority=0, @subsystem=N'SSIS', 
+		@command=@SSISCommand, 
+		@database_name=N'master', 
+		@flags=0, 
+		@proxy_name=@ProxyName
+
+IF (@@ERROR &lt;> 0 OR @ReturnCode &lt;> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+
+IF (@@ERROR &lt;> 0 OR @ReturnCode &lt;> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = N'(local)'
+
+IF (@@ERROR &lt;> 0 OR @ReturnCode &lt;> 0) GOTO QuitWithRollback
+
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+
+
+</code></pre>
+<p><!-- /wp:code --></p>

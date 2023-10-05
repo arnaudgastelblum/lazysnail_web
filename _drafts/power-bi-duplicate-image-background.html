@@ -1,0 +1,112 @@
+---
+layout: post
+title: Power BI Duplicate image background
+date:
+type: post
+parent_id: '0'
+published: false
+password: ''
+status: draft
+categories:
+- Power BI
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _last_editor_used_jetpack: block-editor
+  _et_pb_use_builder: 'off'
+  _et_pb_old_content: ''
+  _et_gb_content_width: ''
+  _mi_skip_tracking: ''
+  spay_email: ''
+  _edit_last: '2'
+  _et_post_bg_color: "#ffffff"
+  _et_post_bg_layout: light
+  _et_pb_show_title: 'on'
+  _et_pb_post_hide_nav: default
+  _et_pb_page_layout: et_right_sidebar
+  _et_pb_side_nav: 'off'
+  _yoast_wpseo_primary_category: '79'
+  _yoast_wpseo_content_score: '90'
+  _yoast_wpseo_estimated-reading-time-minutes: '2'
+  _thumbnail_id: '5379'
+author:
+  login: Arnaud
+  email: arnaud@gastelblum.be
+  display_name: Arnaud Gastelblum
+  first_name: Arnaud
+  last_name: Gastelblum
+permalink: "/en/"
+---
+<p><!-- wp:paragraph --></p>
+<p>In Power BI when we use a background image on our pages, our Power BI file can become a bit more heavier.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:block {"ref":5367} /--></p>
+<p><!-- wp:heading {"level":1} --></p>
+<h1>Keep an eye on the image you use in your background.</h1>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>It’s simple, if your image is heavy, then your report will be too. No need to use a very high definition, if it exceed the one that your Power BI Report use.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:block {"ref":5367} /--></p>
+<p><!-- wp:heading {"level":1} --></p>
+<h1>Power BI store each background</h1>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>No matter if you reuse the same image on each page, when you add an image in the canvas background settings, Power BI will store it in your .PBIX file.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>You can do this experimentation by duplicate your power bi, rename the .pbix extension into a .zip extension, and extract it. If you go to the <strong>Report &gt; StaticResources &gt; RegisteredResources</strong>, all the wallpaper used will be there.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:block {"ref":5367} /--></p>
+<p><!-- wp:image {"align":"center","id":5371,"sizeSlug":"full","linkDestination":"none"} --></p>
+<figure class="wp-block-image aligncenter size-full"><img src="{{ site.baseurl }}/assets/1-1.png" alt="" class="wp-image-5371" /></figure>
+<p><!-- /wp:image --></p>
+<p><!-- wp:block {"ref":5367} /--></p>
+<p><!-- wp:heading {"level":1} --></p>
+<h1>Ways to reduce the size</h1>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>But you can change this behaviour! And how?</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:block {"ref":5367} /--></p>
+<p><!-- wp:heading --></p>
+<h2>Duplicate your page</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>When you duplicate a page where an background image exist, Power BI will reuse it. When your report has 10 pages with a 500Kb background, it starts to be interesting.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:block {"ref":5367} /--></p>
+<p><!-- wp:heading --></p>
+<h2>Use a base 64 image into a theme</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:paragraph --></p>
+<p>This is the option I use. It’s not too complicated (a bit more than the previous one), and it will be applied to all your pages.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>I’m that too lazy, but somebody already explained it very well! <a href="https://pbi-guy.com/2021/11/05/power-bi-theme-with-background-image/">https://pbi-guy.com/2021/11/05/power-bi-theme-with-background-image/</a></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>And use this link to transform your image into base 64 <a href="https://onlinejpgtools.com/convert-jpg-to-base64">https://onlinejpgtools.com/convert-jpg-to-base64</a></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:block {"ref":5367} /--></p>
+<p><!-- wp:enlighter/codeblock {"language":"json"} --></p>
+<pre class="EnlighterJSRAW" data-enlighter-language="json" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">{
+    "name": "MyTheme",
+    "visualStyles": {
+        "page": {
+            "*": {
+                "background": [
+                    {
+                        "image": {
+                            "name": "LazyDAX_Background",
+                            "scaling": "Fit",
+                            "url": "data:image/png;base64,XXXXReplaceByTheGeneratedCodeXXXX"
+                        },
+                        "transparency": 0
+                    }
+                ]
+            }
+        }
+    }
+}</pre>
+<p><!-- /wp:enlighter/codeblock --></p>
