@@ -21,6 +21,8 @@ url: "https://lazysnail.net" # the base hostname & protocol for your site, e.g. 
 #permalink: pretty
 permalink: /:categories/:title
 
+# Rebuild
+
 exclude:
  # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
    - .sass-cache/
