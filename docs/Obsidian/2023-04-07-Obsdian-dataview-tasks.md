@@ -51,19 +51,19 @@ Now go to a note (new or existing), and write a block code.
   </code>
 </pre>
 
+Alright, currently, nothing's occurring!
 
-Another example:
-
-![ObsidianCodeBlock](../assets/ObsidianCodeBlock.png)
 
 ## List All Tasks 📋
 
-The code below displays all the tasks present in your Obsidian Vault.
+Insert `TASK` into the code block you've set up, and watch the magic unfold! ✨
 
 ```
 TASK
 
 ```
+
+The provided code showcases all the tasks within your Obsidian Vault.
 
 ## List All Open Tasks 🚀
 

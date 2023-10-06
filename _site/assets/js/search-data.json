@@ -745,13 +745,13 @@
   },"124": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Usage 📝",
-    "content": "Now go to a note (new or existing), and write a block code. ```dataview ``` . Another example: . ",
+    "content": "Now go to a note (new or existing), and write a block code. ```dataview ``` . Alright, currently, nothing’s occurring! . ",
     "url": "/obsidian/Obsdian-dataview-tasks#usage-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#usage-"
   },"125": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "List All Tasks 📋",
-    "content": "The code below displays all the tasks present in your Obsidian Vault. TASK . ",
+    "content": "Insert TASK into the code block you’ve set up, and watch the magic unfold! ✨ . TASK . The provided code showcases all the tasks within your Obsidian Vault. ",
     "url": "/obsidian/Obsdian-dataview-tasks#list-all-tasks-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#list-all-tasks-"
   },"126": {
