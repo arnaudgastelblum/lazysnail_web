@@ -49,6 +49,7 @@ exclude:
 # Set a path/url to a logo that will be displayed instead of the title
 logo: "/assets/images/logo_lazysnail.png"
 
+
 # Enable or disable the site search
 # Supports true (default) or false
 search_enabled: true
@@ -75,6 +76,9 @@ search:
   # Enable or disable the search button that appears in the bottom right corner of every page
   # Supports true or false (default)
   button: false
+
+# For copy button on code
+enable_copy_code_button: true
 
 # To disable support for mermaid diagrams (https://mermaid-js.github.io/mermaid/),
 # comment out the `mermaid` and `version` keys below

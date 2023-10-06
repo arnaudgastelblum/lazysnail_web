@@ -247,7 +247,7 @@
   },"41": {
     "doc": "How I optimized my learning time with Instapaper",
     "title": "Introduction",
-    "content": ". I am not a huge book reader, but I read a ton of different articles on the internet. They cover multiple topics like Power BI, SQL Server, DAX, Running, World news, High Tech review, Blogging, Self-improvement, and many other topics I want to cover at a specific moment. (Now, everything related to my house, design, …) . . When I browse LinkedIn or Twitter, I find interesting articles, but sometimes I do not have time to read it. (Or maybe I am not in the mood to read them right now). I also have a big trouble (and it seems that I am not the only one on earth). On a computer or a smartphone, my focus time is quite small. I like to switch between applications and topics, which decreases completely my learning curve. You know this little monkey in your head who tries to discourage you to finish something he thinks “too serious for him”. On this topic, I kindly recommend you to watch this TED video: https://www.youtube.com/watch?v=arj7oStGLkU . I found a solution to solve that problem, and it is a technical solution which provides me much more fun. This solution called \"Instapaper\" has also a killing feature!!! Let's see together how it works and how it can help you. ",
+    "content": ". I am not a huge book reader, but I read a ton of different articles on the internet. They cover multiple topics like Power BI, SQL Server, DAX, Running, World news, High Tech review, Blogging, Self-improvement, and many other topics I want to cover at a specific moment. (Now, everything related to my house, design, …) . When I browse LinkedIn or Twitter, I find interesting articles, but sometimes I do not have time to read it. (Or maybe I am not in the mood to read them right now). I also have a big trouble (and it seems that I am not the only one on earth). On a computer or a smartphone, my focus time is quite small. I like to switch between applications and topics, which decreases completely my learning curve. You know this little monkey in your head who tries to discourage you to finish something he thinks “too serious for him”. On this topic, I kindly recommend you to watch this TED video: https://www.youtube.com/watch?v=arj7oStGLkU . I found a solution to solve that problem, and it is a technical solution which provides me much more fun. This solution called \"Instapaper\" has also a killing feature!!! Let's see together how it works and how it can help you. ",
     "url": "/en/how-i-optimized-my-learning-time-with-instapaper/",
     "relUrl": "/en/how-i-optimized-my-learning-time-with-instapaper/"
   },"42": {
@@ -851,93 +851,141 @@
     "url": "/docs/Links",
     "relUrl": "/docs/Links"
   },"142": {
+    "doc": "Backtick key doesn't work like expecting on my macbook",
+    "title": "Backtick key doesn’t work like expecting on my macbook",
+    "content": "Since I switch my PC on windows to a macbook, I had some problem with the backtick caracter. ",
+    "url": "/docs/Other/Mac-backtick-not-working-as-exepected#backtick-key-doesnt-work-like-expecting-on-my-macbook",
+    "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#backtick-key-doesnt-work-like-expecting-on-my-macbook"
+  },"143": {
+    "doc": "Backtick key doesn't work like expecting on my macbook",
+    "title": "Writing code in Teams didn’t work",
+    "content": " ",
+    "url": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-code-in-teams-didnt-work",
+    "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-code-in-teams-didnt-work"
+  },"144": {
+    "doc": "Backtick key doesn't work like expecting on my macbook",
+    "title": "Writing some caracters after give me an accentuated caracter",
+    "content": "a e u i o . à è ù ì ò . ",
+    "url": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-some-caracters-after-give-me-an-accentuated-caracter",
+    "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-some-caracters-after-give-me-an-accentuated-caracter"
+  },"145": {
+    "doc": "Backtick key doesn't work like expecting on my macbook",
+    "title": "Can’t have a pair of the first caracters",
+    "content": "I had to press manually two times the key and I had some weird behavior when I wanted a code block (6 backtip) . Like this block of code . ",
+    "url": "/docs/Other/Mac-backtick-not-working-as-exepected#cant-have-a-pair-of-the-first-caracters",
+    "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#cant-have-a-pair-of-the-first-caracters"
+  },"146": {
+    "doc": "Backtick key doesn't work like expecting on my macbook",
+    "title": "The solution",
+    "content": "To fix this I installed a software named Ukelele . ",
+    "url": "/docs/Other/Mac-backtick-not-working-as-exepected#the-solution",
+    "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#the-solution"
+  },"147": {
+    "doc": "Backtick key doesn't work like expecting on my macbook",
+    "title": "Installation",
+    "content": "From brew . For those who use brew, use this command brew install Ukelele . From their website . https://software.sil.org/ukelele/ . ",
+    "url": "/docs/Other/Mac-backtick-not-working-as-exepected#installation",
+    "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#installation"
+  },"148": {
+    "doc": "Backtick key doesn't work like expecting on my macbook",
+    "title": "Method",
+    "content": "Follow the steps . Open Ukelele . ",
+    "url": "/docs/Other/Mac-backtick-not-working-as-exepected#method",
+    "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#method"
+  },"149": {
+    "doc": "Backtick key doesn't work like expecting on my macbook",
+    "title": "Backtick key doesn't work like expecting on my macbook",
+    "content": " ",
+    "url": "/docs/Other/Mac-backtick-not-working-as-exepected",
+    "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected"
+  },"150": {
     "doc": "Obsidian",
     "title": "Obsidian",
     "content": ". | Managing efficiently your tasks with Obsidian and Dataview | I discovered Obsidian and I love it | . ",
     "url": "/docs/Obsidian#obsidian",
     "relUrl": "/docs/Obsidian#obsidian"
-  },"143": {
+  },"151": {
     "doc": "Obsidian",
     "title": "Obsidian",
     "content": ". ",
     "url": "/docs/Obsidian",
     "relUrl": "/docs/Obsidian"
-  },"144": {
+  },"152": {
     "doc": "Other",
     "title": "Other",
     "content": "Here is some articles not directly related to Power BI . | How to stay always “Available” in Microsoft Teams with Excel | How I optimized my learning time with Instapaper | . ",
     "url": "/docs/Other",
     "relUrl": "/docs/Other"
-  },"145": {
+  },"153": {
     "doc": "Power BI",
     "title": "Power BI",
     "content": ". | Organize your External tools | Power BI Scanner API List and document your Power BI tenant | Create a gradient background for Power BI | Power BI Sidetools extensions: A Must have! | Filter a Power BI report passing parameters through URL | LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX | Power BI Visuals List: Which Graphic to choose? | Power BI: Duplicate of Duplicate - The best way to test your reports and measures | DAX is case insensitive | Power BI Interview questions: a different way to know your applicants | Your data model first! | Power BI Create a Calendar table automatically | Power BI - Your model matters | PIT Point In Time | Pie Chart is bad! | Power BI Desktop: Print in the A4 size | . ",
     "url": "/docs/Power-BI#power-bi",
     "relUrl": "/docs/Power-BI#power-bi"
-  },"146": {
+  },"154": {
     "doc": "Power BI",
     "title": "Power BI",
     "content": ". ",
     "url": "/docs/Power-BI",
     "relUrl": "/docs/Power-BI"
-  },"147": {
+  },"155": {
     "doc": "SQL Server",
     "title": "SQL Server",
     "content": ". | SP_Helptext Get DDL information | Management Studio - Faster with multiple select | SSIS - Create Environment from Packages variables | SSMS - Query Shortcuts : Feel like a superman developer | SSIS - Log Execution time | SSIS - Export SSIS Catalog Environments | SP_WHO3 - Running Queries (Toolbox) | . ",
     "url": "/docs/SQL%20Server",
     "relUrl": "/docs/SQL%20Server"
-  },"148": {
+  },"156": {
     "doc": "YouTube",
     "title": "YouTube",
     "content": "I’m sharing quick tips on my personal YouTube Channel, and you can also discover a lot of meetup on the Club Power BI Channel. | | | | . | Lazysnail | Club Power BI | DataSprouts | . | My channel, where I share multiple quick tips video around Power BI and Microsoft data in general | Videos from our Club Power BI - Brussels meetup group and many other french cities. (in French) | DataSprouts is a group of Belgium Data consultant, it’s a place where we discuss about Microsoft Data (in French) | . ",
     "url": "/docs/Youtube",
     "relUrl": "/docs/Youtube"
-  },"149": {
+  },"157": {
     "doc": "Home",
     "title": "Home",
     "content": ". ** You landed on a data lover web page! . I’m sharing my discoveries and thought about Microsoft Power BI, SQL Server, Obsidian and Data in general. YouTube Practice DAX . ",
     "url": "/",
     "relUrl": "/"
-  },"150": {
+  },"158": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Jekyll Theme - Cheat sheet",
     "content": " ",
     "url": "/code",
     "relUrl": "/code"
-  },"151": {
+  },"159": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
-    "content": ". | | Labels | Callouts | Buttons | Misc . | Comment | New page header | . | . ",
+    "content": ". | | Labels | Callouts | Buttons | Misc . | Comment | New page header | Resize and center images | . | . ",
     "url": "/code#table-of-contents",
     "relUrl": "/code#table-of-contents"
-  },"152": {
+  },"160": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": "## {: .no_toc .text-delta } 1. TOC {:toc} --- . ",
     "url": "/code#table-of-contents-1",
     "relUrl": "/code#table-of-contents-1"
-  },"153": {
+  },"161": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Labels",
     "content": "Default label . Default label {: .label } . Blue label . Blue label {: .label .label-blue } . Green label . Green label {: .label .label-green } . Purple label . Purple label {: .label .label-purple } . Yellow label . Yellow label {: .label .label-yellow } . Red label . Red label {: .label .label-red } . ",
     "url": "/code#labels",
     "relUrl": "/code#labels"
-  },"154": {
+  },"162": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Callouts",
     "content": "Yellow . Text here . {: .highlight-title } &gt; Yellow &gt; &gt; Text here . Blue . Text here . {: .important-title } &gt; Blue &gt; &gt; Text here . Green . Text here . {: .new-title } &gt; Green &gt; &gt; Text here . Violet . Text here . {: .note-title } &gt; Violet &gt; &gt; Text here . Red . Text here . {: .warning-title } &gt; Red &gt; &gt; Text here . ",
     "url": "/code#callouts",
     "relUrl": "/code#callouts"
-  },"155": {
+  },"163": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Buttons",
     "content": "Grey button Purple button Blue button Green button White button . [Grey button](https://just-the-docs.com){: .btn } [Purple button](https://just-the-docs.com){: .btn .btn-purple } [Blue button](https://just-the-docs.com){: .btn .btn-blue } [Green button](https://just-the-docs.com){: .btn .btn-green } [White button](https://just-the-docs.com){: .btn .btn-outline } . ",
     "url": "/code#buttons",
     "relUrl": "/code#buttons"
-  },"156": {
+  },"164": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Misc",
-    "content": "Comment . { % comment % } COMMENT HERE { % endcomment % } . New page header . --- parent: Other --- # Title of the page {: .no_toc } ## {: .no_toc .text-delta } 1. TOC {:toc} --- ## First topic . ",
+    "content": "Comment . { % comment % } COMMENT HERE { % endcomment % } . New page header . --- parent: Other --- # Title of the page {: .no_toc } ## {: .no_toc .text-delta } 1. TOC {:toc} --- ## First topic . Resize and center images . {: .image90 } {: .image80 } {: .image70 } {: .image60 } {: .image50 } {: .image40 } {: .image30 } . ",
     "url": "/code#misc",
     "relUrl": "/code#misc"
   }

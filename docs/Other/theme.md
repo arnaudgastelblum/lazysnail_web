@@ -193,3 +193,13 @@ parent: Other
 
 ## First topic
 ```
+
+### Resize and center images
+
+`{: .image90 }`
+`{: .image80 }`
+`{: .image70 }`
+`{: .image60 }`
+`{: .image50 }`
+`{: .image40 }`
+`{: .image30 }`
