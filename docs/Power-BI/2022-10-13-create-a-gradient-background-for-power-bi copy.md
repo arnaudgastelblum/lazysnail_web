@@ -11,15 +11,13 @@ parent: Power BI
 # {{ page.title }}
 {: .fs-9 }
 
-Deep involve in data transformation, data modeling and analytic calculations, my least skill is visualization. But I’m doing my best to improve it!
-{: .fs-6 .fw-300 }
+![Alt text](../../assets/images/PowerBIGradian.png){: .image60 }
 
-One rule applies to almost everything but it’s more true when we talk about reports and data visualization.
-Less is more! No need to add a lot of fancy stuff, keep stuff simple.
-{: .fs-6 .fw-300 }
+Diving deep into data transformation, modeling, and analytics, visualization has traditionally been my Achilles' heel. Nevertheless, I'm ardently working to enhance this skill!
 
-I do not use many colors for my visuals, I limit the number of visuals and let users understand what they have on a page.
-{: .fs-6 .fw-300 }
+A universal principle that is especially pertinent to reports and data visualization is: simplicity is key. Overcomplicating with excessive frills isn't necessary; straightforwardness often wins the day.
+
+In my visual designs, I opt for a minimalist color palette and limit the number of visuals, ensuring that users can easily grasp the content presented on a page.
 
 
 

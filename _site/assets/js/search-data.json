@@ -1,7 +1,7 @@
 {"0": {
     "doc": "SP_WHO3 - Running Queries (Toolbox)",
     "title": "SP_WHO3 - Running Queries (Toolbox)",
-    "content": "This query is very helpful. It diplays all running queries on your server and some other informations . | Which process is locking another one | Who run the query | And provide the SQL code of the running query | . ",
+    "content": ". This SQL query is invaluable as it showcases all active queries on your server along with additional insights such as: . | Identifying processes that are locking others. | Determining the user executing the query. | Displaying the actual SQL code of the ongoing query. | . ",
     "url": "/en/sp_who3/",
     "relUrl": "/en/sp_who3/"
   },"1": {
@@ -283,7 +283,7 @@
   },"47": {
     "doc": "How to stay always \"Available\" in Microsoft Teams with Excel",
     "title": "Stay available on Microsoft Teams",
-    "content": " ",
+    "content": ". ",
     "url": "/en/how-to-stay-available-in-microsoft-teams-with-excel/#stay-available-on-microsoft-teams",
     "relUrl": "/en/how-to-stay-available-in-microsoft-teams-with-excel/#stay-available-on-microsoft-teams"
   },"48": {
@@ -619,7 +619,7 @@
   },"103": {
     "doc": "Create a gradient background for Power BI",
     "title": "Create a gradient background for Power BI",
-    "content": "Deep involve in data transformation, data modeling and analytic calculations, my least skill is visualization. But I’m doing my best to improve it! . One rule applies to almost everything but it’s more true when we talk about reports and data visualization. Less is more! No need to add a lot of fancy stuff, keep stuff simple. I do not use many colors for my visuals, I limit the number of visuals and let users understand what they have on a page. ",
+    "content": ". Diving deep into data transformation, modeling, and analytics, visualization has traditionally been my Achilles’ heel. Nevertheless, I’m ardently working to enhance this skill! . A universal principle that is especially pertinent to reports and data visualization is: simplicity is key. Overcomplicating with excessive frills isn’t necessary; straightforwardness often wins the day. In my visual designs, I opt for a minimalist color palette and limit the number of visuals, ensuring that users can easily grasp the content presented on a page. ",
     "url": "/en/create-a-gradient-background-for-power-bi/",
     "relUrl": "/en/create-a-gradient-background-for-power-bi/"
   },"104": {
@@ -642,40 +642,40 @@
     "relUrl": "/en/create-a-gradient-background-for-power-bi/"
   },"107": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
-    "title": "Power BI Scanner API List and document your Power BI tenant",
-    "content": "Power BI is a powerful data visualization tool that allows users to create insightful reports and dashboards from various data sources. However, to leverage the full potential of Power BI, it’s important to ensure the accuracy and security of your data. The Power BI Scanner API is designed to help you achieve this goal by scanning your Power BI resources for vulnerabilities and data leaks. In this article, we will introduce you to the process of running the Power BI Scanner API in PowerShell. PowerShell is a flexible and powerful command-line tool that can be used to automate a wide range of administrative tasks. It also has a rich set of commandlets and modules that make it easy to work with Power BI. Before getting started, you’ll need to ensure that you have the appropriate permissions and access keys to run the scanner API. Once you have these in place, you can follow the steps below to get started with PowerShell. ",
-    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant",
-    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant"
+    "title": "Documentation of your Power BI Tenant (With Scanner API)",
+    "content": ". ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#documentation-of-your-power-bi-tenant-with-scanner-api",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#documentation-of-your-power-bi-tenant-with-scanner-api"
   },"108": {
+    "doc": "Power BI Scanner API List and document your Power BI tenant",
+    "title": "Table of contents",
+    "content": ". | Introduction | Configuration | Powershell code . | Parameters | Description . | More info: | . | GetModifiedWorkspaces: List of workspaces | GetScanResult: Get the scan result (Download our json file) . | GetScanStatus: To know if our scan is done or still pending | GetInfo: Ask Powerbi.com to perform our scan | . | Code | . | . ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#table-of-contents",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#table-of-contents"
+  },"109": {
+    "doc": "Power BI Scanner API List and document your Power BI tenant",
+    "title": "Introduction",
+    "content": "Power BI is a powerful data visualization tool that allows users to create insightful reports and dashboards from various data sources. However, to leverage the full potential of Power BI, it’s important to ensure the accuracy and security of your data. The Power BI Scanner API is designed to help you achieve this goal by scanning your Power BI resources for vulnerabilities and data leaks. In this article, we will introduce you to the process of running the Power BI Scanner API in PowerShell. PowerShell is a flexible and powerful command-line tool that can be used to automate a wide range of administrative tasks. It also has a rich set of commandlets and modules that make it easy to work with Power BI. Before getting started, you’ll need to ensure that you have the appropriate permissions and access keys to run the scanner API. Once you have these in place, you can follow the steps below to get started with PowerShell. ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#introduction",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#introduction"
+  },"110": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
     "title": "Configuration",
     "content": "You need first to configure your Power BI tenant and activate these following options. Go to your Admin portal . and activate these options . ",
     "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#configuration",
     "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#configuration"
-  },"109": {
-    "doc": "Power BI Scanner API List and document your Power BI tenant",
-    "title": "Powershell code",
-    "content": " ",
-    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#powershell-code",
-    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#powershell-code"
-  },"110": {
-    "doc": "Power BI Scanner API List and document your Power BI tenant",
-    "title": "Parameters",
-    "content": "Before running this code, you should change the path where you would like to save the json file 'C:\\YOURPATH\\result.json' . ",
-    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#parameters",
-    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#parameters"
   },"111": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
-    "title": "Description",
-    "content": "This code use the 4 differents REST API method given by Microsoft. More info: . https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-metadata-scanning . GetModifiedWorkspaces: List of workspaces . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-modified-workspaces . GetScanResult: Get the scan result (Download our json file) . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-result . GetScanStatus: To know if our scan is done or still pending . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-status . GetInfo: Ask Powerbi.com to perform our scan . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-post-workspace-info . ",
-    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#description",
-    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#description"
+    "title": "Powershell code",
+    "content": "Parameters . Before running this code, you should change the path where you would like to save the json file 'C:\\YOURPATH\\result.json' . Description . This code use the 4 differents REST API method given by Microsoft. More info: . https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-metadata-scanning . GetModifiedWorkspaces: List of workspaces . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-modified-workspaces . GetScanResult: Get the scan result (Download our json file) . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-result . GetScanStatus: To know if our scan is done or still pending . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-status . GetInfo: Ask Powerbi.com to perform our scan . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-post-workspace-info . Code . // Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . # _____ _____ # /\\ | __ \\_ _| # ___ ___ __ _ _ __ _ __ ___ _ __ / \\ |__) || # / __|/ __/ _` | '_ \\| '_ \\ / _ \\ '__| / /\\ \\ | ___/ | # \\__ \\ (_| (_| | | | __/ | / ____ \\| _|_ # |___/\\___\\__,_|_|_|_|_|\\___|_| /_/ \\_\\_|_____| # #--------------------------------- # Configuration $configExportFolderPath = \"C:\\Users\\ArnaudGastelblum\\Desktop\" $batchSize = 50 # End configuration #--------------------------------- Login-PowerBIServiceAccount # Get a list of all workspaces write-host \"Retrieve workspaces list\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/modified\" $WorkspaceList = Invoke-PowerBIRestMethod -Url $url -Method Get | ConvertFrom-Json $k = 1 for($i = 0; $i -lt $WorkspaceList.Length; $i += $batchSize) { # end index $j = $i + $batchSize - 1 if ($j -ge $WorkspaceList.Length) { $j = $WorkspaceList.Length - 1 } $myTmpObj = $WorkspaceList[$i..$j] # show batches \"Batch $k\" $nbLoop = 0 $arg_WorkspaceList = '{ \"workspaces\": [ ' foreach ($record in $myTmpObj) { if($nbLoop -gt 0) { $arg_WorkspaceList += ', ' } $arg_WorkspaceList += '\"'+ $($record.id) +'\"' $nbLoop = $nbLoop + 1 } $arg_WorkspaceList += ' ] }' write-host \"Fetched workspaces: \"+ $arg_WorkspaceList # # Request a full description of our workspaces # write-host \"Ask Power BI server to prepare a full list of infos\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/getInfo?lineage=True&amp;datasourceDetails=True&amp;datasetSchema=True&amp;datasetExpressions=True&amp;getArtifactUsers=True\" $result = Invoke-PowerBIRestMethod -Url $url -Method Post -Body $arg_WorkspaceList | ConvertFrom-Json $scanId = $result.id # Get the scan status # Check with the scanId generated above if the scan is ready or still in progress write-host \"Test if export is available\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/scanStatus/\" + $scanId Do { $result = Invoke-PowerBIRestMethod -Url $url -Method Get | ConvertFrom-Json $status = $result.status write-host $status if($status -ne \"Succeeded\"){ Start-Sleep -s 5 } } while ($status -ne \"Succeeded\") # Download write-host \"Retrieve Export\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/scanResult/\" + $scanId $outputfile = $configExportFolderPath +\"\\result_\"+ $k +\".json\" write-host \"Write result in \"+ $outputfile Invoke-PowerBIRestMethod -Url $url -Method Get | Out-file -FilePath $outputfile write-host \"Export Ok\" $k++ } . ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#powershell-code",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#powershell-code"
   },"112": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
-    "title": "Code",
-    "content": "// Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . # _____ _____ # /\\ | __ \\_ _| # ___ ___ __ _ _ __ _ __ ___ _ __ / \\ |__) || # / __|/ __/ _` | '_ \\| '_ \\ / _ \\ '__| / /\\ \\ | ___/ | # \\__ \\ (_| (_| | | | __/ | / ____ \\| _|_ # |___/\\___\\__,_|_|_|_|_|\\___|_| /_/ \\_\\_|_____| # #--------------------------------- # Configuration $configExportFolderPath = \"C:\\Users\\ArnaudGastelblum\\Desktop\" $batchSize = 50 # End configuration #--------------------------------- Login-PowerBIServiceAccount # Get a list of all workspaces write-host \"Retrieve workspaces list\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/modified\" $WorkspaceList = Invoke-PowerBIRestMethod -Url $url -Method Get | ConvertFrom-Json $k = 1 for($i = 0; $i -lt $WorkspaceList.Length; $i += $batchSize) { # end index $j = $i + $batchSize - 1 if ($j -ge $WorkspaceList.Length) { $j = $WorkspaceList.Length - 1 } $myTmpObj = $WorkspaceList[$i..$j] # show batches \"Batch $k\" $nbLoop = 0 $arg_WorkspaceList = '{ \"workspaces\": [ ' foreach ($record in $myTmpObj) { if($nbLoop -gt 0) { $arg_WorkspaceList += ', ' } $arg_WorkspaceList += '\"'+ $($record.id) +'\"' $nbLoop = $nbLoop + 1 } $arg_WorkspaceList += ' ] }' write-host \"Fetched workspaces: \"+ $arg_WorkspaceList # # Request a full description of our workspaces # write-host \"Ask Power BI server to prepare a full list of infos\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/getInfo?lineage=True&amp;datasourceDetails=True&amp;datasetSchema=True&amp;datasetExpressions=True&amp;getArtifactUsers=True\" $result = Invoke-PowerBIRestMethod -Url $url -Method Post -Body $arg_WorkspaceList | ConvertFrom-Json $scanId = $result.id # Get the scan status # Check with the scanId generated above if the scan is ready or still in progress write-host \"Test if export is available\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/scanStatus/\" + $scanId Do { $result = Invoke-PowerBIRestMethod -Url $url -Method Get | ConvertFrom-Json $status = $result.status write-host $status if($status -ne \"Succeeded\"){ Start-Sleep -s 5 } } while ($status -ne \"Succeeded\") # Download write-host \"Retrieve Export\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/scanResult/\" + $scanId $outputfile = $configExportFolderPath +\"\\result_\"+ $k +\".json\" write-host \"Write result in \"+ $outputfile Invoke-PowerBIRestMethod -Url $url -Method Get | Out-file -FilePath $outputfile write-host \"Export Ok\" $k++ } . ",
-    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#code",
-    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#code"
+    "title": "Power BI Scanner API List and document your Power BI tenant",
+    "content": " ",
+    "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant",
+    "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant"
   },"113": {
     "doc": "SP_Helptext Get DDL information",
     "title": "SP_Helptext Get DDL information",
@@ -703,7 +703,7 @@
   },"117": {
     "doc": "I discovered Obsidian and I love it",
     "title": "I discovered Obsidian and I love it",
-    "content": "Six months ago, I made a discovery that has revolutionized my note-taking game. It’s called Obsidian, and it’s a note-taking software that’s unlike any other. It’s free and available here: https://obsidian.md . At first glance, Obsidian might look like your typical note-taking app, but it’s so much more than that. Obsidian is all about customization and making your note-taking experience, just yours. That’s why it’s such a powerful tool for anyone who takes notes, whether you’re a student, writer, or just someone who likes to write things down. One of the things I love most about Obsidian is how easy it is to write and organize notes. The interface is clean and uncluttered, which makes it easy to focus on what’s important. You can add tags and links to your notes, which makes it super easy to find related content later on. And because Obsidian stores all your notes in Markdown files, you can easily export your notes if you ever decide to switch to another software. ",
+    "content": ". Six months ago, I made a discovery that has revolutionized my note-taking game. It’s called Obsidian, and it’s a note-taking software that’s unlike any other. It’s free and available here: https://obsidian.md . At first glance, Obsidian might look like your typical note-taking app, but it’s so much more than that. Obsidian is all about customization and making your note-taking experience, just yours. That’s why it’s such a powerful tool for anyone who takes notes, whether you’re a student, writer, or just someone who likes to write things down. One of the things I love most about Obsidian is how easy it is to write and organize notes. The interface is clean and uncluttered, which makes it easy to focus on what’s important. You can add tags and links to your notes, which makes it super easy to find related content later on. And because Obsidian stores all your notes in Markdown files, you can easily export your notes if you ever decide to switch to another software. ",
     "url": "/obsidian/Obsidian",
     "relUrl": "/obsidian/Obsidian"
   },"118": {
@@ -721,7 +721,7 @@
   },"120": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Managing efficiently your tasks with Obsidian and Dataview",
-    "content": " ",
+    "content": ". ",
     "url": "/obsidian/Obsdian-dataview-tasks",
     "relUrl": "/obsidian/Obsdian-dataview-tasks"
   },"121": {

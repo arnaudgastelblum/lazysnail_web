@@ -11,6 +11,10 @@ permalink: /obsidian/Obsdian-dataview-tasks
 # {{ page.title }}
 {: .no_toc }
 
+
+![](/../assets/images/obsidianTask.png){: .image80 }
+
+
 ## Table of contents
 {: .no_toc .text-delta }
 

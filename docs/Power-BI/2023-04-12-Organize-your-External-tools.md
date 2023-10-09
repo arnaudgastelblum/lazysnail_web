@@ -11,13 +11,19 @@ permalink: /power-bi/Organize-your-External-tools
 # {{ page.title }}
 {: .fs-9 }
 
-![](../../assets/2023/Power%20BI%20Extensions/Ribbon.png)
+![Alt text](../../assets/images/PBIOrganizeExternalTools.png){: .image50 }
+
 
 In your journey, you may need additional tools that go beyond the capabilities of what is built into Power BI. This is where external tools for Power BI come in.
 
 External tools are add-ons that can be integrated into the Power BI workspace to extend its functionality. They are developed by third-party vendors rather than Microsoft and can be used to enhance data analysis capabilities, provide advanced visuals, and automate various data processing tasks.
 
+
+![](../../assets/2023/Power%20BI%20Extensions/Ribbon.png)
+
 External tools can come in many forms. They can be standalone executable files, web applications, or plugins that are installed directly into the Power BI desktop application. Some external tools may require a separate license or subscription to use, while others may be free.
+
+
 
 
 # Most used External tools

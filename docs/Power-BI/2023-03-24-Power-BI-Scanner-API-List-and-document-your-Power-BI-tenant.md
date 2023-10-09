@@ -8,9 +8,22 @@ comments: true
 parent: Power BI
 permalink: /power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant
 ---
-# {{ page.title }}
-{: .fs-9 }
+# Documentation of your Power BI Tenant (With Scanner API)
+{: .no_toc }
 
+
+![Alt text](../../assets/images/PBIScannerAPI.png){: .image50 }
+
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+## Introduction
 Power BI is a powerful data visualization tool that allows users to create insightful reports and dashboards from various data sources. However, to leverage the full potential of Power BI, it's important to ensure the accuracy and security of your data. The Power BI Scanner API is designed to help you achieve this goal by scanning your Power BI resources for vulnerabilities and data leaks.
 
 In this article, we will introduce you to the process of running the Power BI Scanner API in PowerShell. PowerShell is a flexible and powerful command-line tool that can be used to automate a wide range of administrative tasks. It also has a rich set of commandlets and modules that make it easy to work with Power BI.
@@ -18,7 +31,7 @@ In this article, we will introduce you to the process of running the Power BI Sc
 Before getting started, you'll need to ensure that you have the appropriate permissions and access keys to run the scanner API. Once you have these in place, you can follow the steps below to get started with PowerShell.
 
 
-# Configuration
+## Configuration
 You need first to configure your Power BI tenant and activate these following options.
 
 Go to your Admin portal
@@ -33,17 +46,17 @@ and activate these options
 
 
 
-# Powershell code
+## Powershell code
 
-## Parameters
+### Parameters
 Before running this code, you should change the path where you would like to save the json file
 `'C:\YOURPATH\result.json'`
 
 
-## Description
+### Description
 This code use the 4 differents REST API method given by Microsoft.
 
-### More info:
+#### More info:
 [https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-metadata-scanning](https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-metadata-scanning)
 
 ### GetModifiedWorkspaces: List of workspaces
@@ -52,15 +65,15 @@ This code use the 4 differents REST API method given by Microsoft.
 ### GetScanResult: Get the scan result (Download our json file)
 [https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-result](https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-result)
 
-### GetScanStatus: To know if our scan is done or still pending
+#### GetScanStatus: To know if our scan is done or still pending
 [https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-status](https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-status)
 
-### GetInfo: Ask Powerbi.com to perform our scan
+#### GetInfo: Ask Powerbi.com to perform our scan
 [https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-post-workspace-info](https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-post-workspace-info)
 
 
 
-## Code
+### Code
 
 ```js
 // Javascript code with syntax highlighting.

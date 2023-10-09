@@ -11,6 +11,10 @@ parent: Other
 ## Stay available on Microsoft Teams
 {: .no_toc }
 
+
+![](/../assets/images/TeamsAway.png){: .image80 }
+
+
 ## Table of contents
 {: .no_toc .text-delta }
 
