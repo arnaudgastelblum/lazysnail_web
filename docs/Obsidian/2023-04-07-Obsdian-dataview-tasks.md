@@ -12,7 +12,7 @@ permalink: /obsidian/Obsdian-dataview-tasks
 {: .no_toc }
 
 
-![](/../assets/images/obsidianTask.png){: .image80 }
+![](../../assets/images/obsidianTask.png){: .image80 }
 
 
 ## Table of contents

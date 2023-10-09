@@ -12,7 +12,7 @@ parent: Other
 {: .no_toc }
 
 
-![](/../assets/images/TeamsAway.png){: .image80 }
+![](../../assets/images/TeamsAway.png){: .image80 }
 
 
 ## Table of contents
