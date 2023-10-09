@@ -11,7 +11,7 @@ parent: Power BI
 # {{ page.title }}
 {: .fs-9 }
 
-![Alt text](../../assets/images/PowerBIGradian.png){: .image60 }
+![Alt text](../../assets/2023/PowerBIGradian.png){: .image60 }
 
 Diving deep into data transformation, modeling, and analytics, visualization has traditionally been my Achilles' heel. Nevertheless, I'm ardently working to enhance this skill!
 

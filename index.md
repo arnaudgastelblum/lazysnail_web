@@ -7,7 +7,7 @@ permalink: /
 ---
 
 {:refdef: style="text-align: center;"}
-  ![LazySnail](assets/images/logo_lazysnail.png)
+  ![LazySnail](assets/logo_lazysnail.png)
 {: refdef}
 
 {: .note-title } 

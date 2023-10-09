@@ -5,7 +5,7 @@ nav_order: 5
 has_children: false
 ---
 {:refdef: style="text-align: center;"}
-  ![Obsidian](../assets/images/ObsidianLazysnail.png){: .image30}
+  ![Obsidian](../assets/2023/ObsidianLazysnail.png){: .image30}
 {: refdef}
 
 # Obsidian

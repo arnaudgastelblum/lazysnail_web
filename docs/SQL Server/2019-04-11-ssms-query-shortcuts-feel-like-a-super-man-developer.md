@@ -28,7 +28,7 @@ Select the statement you want to execute, Press `CTRL` and `4`
 SSMS will give you the **Nb impacted rows**.
 
 
-![](../../assets/SSMS_QueryShortcuts/SSMS_QueryShortcut.webp)
+![](../../assets/2019/SSMS_QueryShortcuts/SSMS_QueryShortcut.webp)
 
 
 {: .note :}
@@ -45,7 +45,7 @@ SSMS will give you the **Nb impacted rows**.
 
 Open Management Studio, Go to `Tools > Option…`
 
-![](../../assets/SSMS_QueryShortcuts/SSMS_Query_Shortcut-1.webp)
+![](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-1.webp)
 
 
 Under `Environment > Keyboard > Query Shortcuts`
@@ -54,13 +54,13 @@ You have a list of existing shortcuts. (I don’t change them, but I neither use
 You should now fill each text box with a query.
 
 
-![](../../assets/SSMS_QueryShortcuts/SSMS_Query_Shortcut-2.webp)
+![](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-2.webp)
 
 
 Queries are available on the next section
 
 
-![](../../assets/SSMS_QueryShortcuts/SSMS_Query_Shortcut-3.webp)
+![](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-3.webp)
 
 
 ## Query shortcuts
@@ -98,7 +98,7 @@ EXEC sp_executesql N' SELECT schemas.name ,tables.name ,columns.name ,types.name
 
 Select a table and show a quick description of attributes `(Name, Datatype, size, nullable, identity)`
 
-![](../../assets/SSMS_QueryShortcuts/SSMS_QueryShortcut_Describe.webp)
+![](../../assets/2019/SSMS_QueryShortcuts/SSMS_QueryShortcut_Describe.webp)
 
 
 

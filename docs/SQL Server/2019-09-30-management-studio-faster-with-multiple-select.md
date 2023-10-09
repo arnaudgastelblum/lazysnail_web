@@ -22,7 +22,7 @@ parent: SQL Server
 
 <p>You should press the keys <strong>[ALT]</strong> + <strong>[Shift]</strong> simultaneously and move your cursor <strong>[Up]</strong> and / or <strong>[Down]</strong> to select your text.</p>
 
-![](../../assets/SSMS_FasterWithMultipleSelect/MultipleSelect_BasicSelection.webp)
+![](../../assets/2019/SSMS_FasterWithMultipleSelect/MultipleSelect_BasicSelection.webp)
 
 
 <h2>One useful case</h2>
@@ -30,7 +30,7 @@ parent: SQL Server
 <p>Sometimes we have to surround our text with<strong> single quotes</strong>. (for example: to add multiple codes to an IN clause in a test query)</p>
 <p><strong>No need to add them one by one and make sure you do not have space at the end</strong>.<br />Here is the method:</p>
 
-![](../../assets/SSMS_FasterWithMultipleSelect/MultipleSelect_Surround-1.webp)
+![](../../assets/2019/SSMS_FasterWithMultipleSelect/MultipleSelect_Surround-1.webp)
 
 <p>Like mentioned above, this tip is not an exclusivity in SSMS, you can also do the same in <g class="gr_ gr_3 gr-alert gr_gramm gr_inline_cards gr_run_anim Grammar multiReplace" id="3" data-gr-id="3">many</g> different text editor.</p>
 

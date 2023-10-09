@@ -12,7 +12,7 @@ parent: Power BI
 {: .fs-9 }
 
 {:refdef: style="text-align: center;"}
-  ![Point in time](../../assets/PIT/Splash_PIT.webp)
+  ![Point in time](../../assets/2019/PIT/Splash_PIT.webp)
 {: refdef}
 
 # Introduction
@@ -44,13 +44,13 @@ It is exciting for our users to navigate through the data by applying a time fil
 **How**: By creating a DAX measure. (#PIT Shoes)
 
 The following example shows dynamically Pauline's shoes.
-![PIT demo](../../assets/PIT/PIT_Demo.webp)
+![PIT demo](../../assets/2019/PIT/PIT_Demo.webp)
 
 
 
 ## DataModel
 
-![PIT datamodel](../../assets/PIT/PIT_Intro_Datamodel.webp)
+![PIT datamodel](../../assets/2019/PIT/PIT_Intro_Datamodel.webp)
 
 ## Our data model
 The following example is quite simple (<em>**The Power BI file is available for download at the end of this article**</em>)
@@ -59,10 +59,10 @@ Many of you know it, I am passionate about Power BI, running, but many ignore my
 
 
 ## The **Runners** table:
-![Runner table](../../assets/PIT/PIT_Intro_Runners.webp)
+![Runner table](../../assets/2019/PIT/PIT_Intro_Runners.webp)
 
 ## The **<g class="gr_ gr_7 gr-alert gr_gramm gr_inline_cards gr_run_anim Grammar multiReplace" id="7" data-gr-id="7">Shoes</g>** table**<br />**
-![Shoes table](../../assets/PIT/PIT_Intro_Shoes.webp)
+![Shoes table](../../assets/2019/PIT/PIT_Intro_Shoes.webp)
 
 
 ## Model specificities
@@ -87,7 +87,7 @@ Many of you know it, I am passionate about Power BI, running, but many ignore my
 
 
 ## A more complete model could look like this one
-![complete model](../../assets/PIT/PIT_Intro_Datamodel_Complete.webp)
+![complete model](../../assets/2019/PIT/PIT_Intro_Datamodel_Complete.webp)
 
 
 ## TimeLine
@@ -102,23 +102,23 @@ Many of you know it, I am passionate about Power BI, running, but many ignore my
 
 
 ### Filter: 01/02/2019 | Pauline
-![timeline](../../assets/PIT/timeline_1.webp)
+![timeline](../../assets/2019/PIT/timeline_1.webp)
 
 
 ### Filter: 01/03/2019 | Pauline
-![timeline](../../assets/PIT/timeline_2.webp)
+![timeline](../../assets/2019/PIT/timeline_2.webp)
 
 
 ### Filter: 01/05/2019 | Pauline
-![timeline](../../assets/PIT/timeline_3.webp)
+![timeline](../../assets/2019/PIT/timeline_3.webp)
 
 
 ### Filter: 10/10/2019 | Pauline
-![timeline](../../assets/PIT/timeline_4.webp)
+![timeline](../../assets/2019/PIT/timeline_4.webp)
 
 
 ### Filter: 01/12/2019 | Pauline
-![timeline](../../assets/PIT/timeline_5.webp)
+![timeline](../../assets/2019/PIT/timeline_5.webp)
 
 
 ## Implementation
@@ -126,7 +126,7 @@ Many of you know it, I am passionate about Power BI, running, but many ignore my
 
 ### Create a Calendar table
 
-![calendar table](../../assets/PIT/PIT_Intro_Datamodel_Calendar.webp)
+![calendar table](../../assets/2019/PIT/PIT_Intro_Datamodel_Calendar.webp)
 
 We have to create a Date table, which will **not be associated with our model**. (Called here **PIT Calendar**)
 To quickly create a Calendar table, I suggest you write an M Query in the Query Builder. The following articles will give you the approach.

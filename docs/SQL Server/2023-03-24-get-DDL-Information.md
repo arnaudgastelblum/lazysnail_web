@@ -29,11 +29,11 @@ exec sp_helptext 'SchemaName.ObjectName'
 
 # Example
 
-![sp_helptext](../../assets/sp_helptext.png)
+![sp_helptext](../../assets/2023/sp_helptext/sp_helptext.png)
 
 
 # `sp_help`
 
 In addition you can use `sp_help` procedure to retrieve some interesting informations.
 
-![sp_help](../../assets/sp_help.png)
+![sp_help](../../assets/2023/sp_helptext/sp_help.png)

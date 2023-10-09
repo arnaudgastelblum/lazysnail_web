@@ -28,7 +28,7 @@ Power BI a super tool? Yes, and to complete this idea, I added some slides to hi
 
 <h2>I was a Pie Chart lover</h2>
 
-![pie chart lover](../../assets/PieChartIsBad/PieChart_1.jpeg)
+![pie chart lover](../../assets/2019/PieChartIsBad/PieChart_1.jpeg)
 
 
 <p>I know that its use is not recommended and I try not to use it.<br />But yes, I liked it!<br />• It's beautiful!<br />• It's colorful!<br />• <strong>It gives a professional look to our reports!</strong><br />• It shows information!<br />• <strong>It gives me some pride to not use tables or matrix. (Yes, I like numbers, not you?)</strong></p>
@@ -44,7 +44,7 @@ Power BI a super tool? Yes, and to complete this idea, I added some slides to hi
 <p><span style="color: #ff6600;"><strong>Your first look</strong> will give you some information, but not as much precise compared to the two histograms below. It's possible to have quick information, but very hard to have a clear interpretation of them.<br /> </span></p>
 <p><strong><span style="color: #ff6600;">If I didn't <g class="gr_ gr_12 gr-alert gr_gramm gr_inline_cards gr_run_anim Grammar multiReplace" id="12" data-gr-id="12">convince</g> you, try to sort each portion from the smallest to the biggest. Try to do the same with the histogram and compare the time elapsed for both.</span></strong></p>
 
-![pie chart](../../assets/PieChartIsBad/PieChart_2.webp)
+![pie chart](../../assets/2019/PieChartIsBad/PieChart_2.webp)
 
 ## More info
 

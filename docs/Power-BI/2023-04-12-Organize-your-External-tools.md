@@ -11,7 +11,7 @@ permalink: /power-bi/Organize-your-External-tools
 # {{ page.title }}
 {: .fs-9 }
 
-![Alt text](../../assets/images/PBIOrganizeExternalTools.png){: .image50 }
+![Alt text](../../assets/2023/PBIOrganizeExternalTools.png){: .image50 }
 
 
 In your journey, you may need additional tools that go beyond the capabilities of what is built into Power BI. This is where external tools for Power BI come in.

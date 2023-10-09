@@ -83,7 +83,7 @@ I think I didn't see it before because I have a strong programmer background, an
 
 <a href="https://lazysnail.net/en/lazydax/" data-type="URL" data-id="https://lazysnail.net/en/lazydax/">You can download this example in the lazydax file here</a>
 
-![DAX is case insensitive](../assets/../../assets/PBIDesktop_DAXisCaseInsensitive.png)
+![DAX is case insensitive](../../assets/2022/PBIDesktop_DAXisCaseInsensitive.png)
 
 
 ## More articles

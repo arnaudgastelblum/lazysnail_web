@@ -13,7 +13,8 @@ parent: Power BI
 
 # {{page.title}}
 
-![powerbi-visuallist](../../assets/PBIDesktop_LazyDAX_Visuals.png)
+![powerbi-visuallist](../../assets/2022/PBIDesktop_LazyDAX_Visuals.png)
+
 
 
 You can download the [Power BI file on GitHub](https://github.com/arnaudgastelblum/LazyDAX/raw/master/LazyDAX.pbix)

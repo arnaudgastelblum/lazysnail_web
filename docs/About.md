@@ -22,7 +22,7 @@ A few years ago, I started to share my knowledge with a young colleague. Day aft
 ## What's the story?
 
 {:refdef: style="text-align: center;"}
-  ![Arnaud](assets/../../assets/Arnaud_Cartoon.png)
+  ![Arnaud](../../assets/2023/Arnaud_Cartoon.png)
 {: refdef}
 
 I’m not only a Star Schema defender, but I also love when code is well aligned. My Windows desktop is clean, and if I don’t disable desktop icons, then you can only see my recycle bin icon.

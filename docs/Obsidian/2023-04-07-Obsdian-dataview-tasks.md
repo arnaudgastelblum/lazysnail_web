@@ -12,7 +12,7 @@ permalink: /obsidian/Obsdian-dataview-tasks
 {: .no_toc }
 
 
-![](../../assets/images/obsidianTask.png){: .image80 }
+![](../../assets/2023/obsidianTask.png){: .image80 }
 
 
 ## Table of contents
@@ -154,16 +154,16 @@ This assists in pinpointing tasks associated with the specified YAML variable th
 Imagine writing checkbox with multiple #tag
 For example:
 
-![](/../assets/images/2023-10-06-15-45-19.png)
+![](/../assets/2023/2023-10-06-15-45-19.png)
 
 By writing this code into Obsidian
 
-![](/../assets/images/2023-10-06-15-45-59.png)
+![](/../assets/2023/2023-10-06-15-45-59.png)
 
 
 I get this result
 
-![](/../assets/images/2023-10-06-15-46-22.png)
+![](/../assets/2023/2023-10-06-15-46-22.png)
 
 
 Tags become really handy when you use them for different purposes, like identifying a project, naming a person, marking a status, or even setting a category.

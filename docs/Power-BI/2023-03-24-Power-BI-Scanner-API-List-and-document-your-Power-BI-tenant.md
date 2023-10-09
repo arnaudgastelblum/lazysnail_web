@@ -12,7 +12,7 @@ permalink: /power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant
 {: .no_toc }
 
 
-![Alt text](../../assets/images/PBIScannerAPI.png){: .image50 }
+![Alt text](../../assets/2023/PBI_ScannerAPI/PBIScannerAPI.png){: .image50 }
 
 
 ## Table of contents
@@ -36,12 +36,12 @@ You need first to configure your Power BI tenant and activate these following op
 
 Go to your Admin portal
 
-![Admin portal](../../assets/scanner_api_1.png)
+![Admin portal](../../assets/2023/PBI_ScannerAPI/scanner_api_1.png)
 
 
 and activate these options
 
-![API enable config](../../assets/scanner_api_2.png)
+![API enable config](../../assets/2023/PBI_ScannerAPI/scanner_api_2.png)
 
 
 

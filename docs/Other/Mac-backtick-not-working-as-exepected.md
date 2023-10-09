@@ -45,9 +45,9 @@ Follow the steps
 
 Open `Ukelele`
 
-![](/../assets/images/2023-10-05-17-58-01.png){: .image50 }
+![](/../assets/2023/2023-10-05-17-58-01.png){: .image50 }
 
-![](/../assets/images/2023-10-05-17-59-01.png)
+![](/../assets/2023/2023-10-05-17-59-01.png)
 
-![](/../assets/images/2023-10-05-18-00-26.png)
+![](/../assets/2023/2023-10-05-18-00-26.png)
 
