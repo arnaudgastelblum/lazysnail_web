@@ -337,694 +337,712 @@
   },"56": {
     "doc": "Power BI Create a Calendar table automatically",
     "title": "Power BI Create a Calendar table automatically",
-    "content": "In our models, the best way to deals with dates and DAX intelligence functions is to use a Calendar Table (Dimension). Good news, this table can be created in 2 clicks with Power Query (Transform Data) in Power BI! . Go transform data and right click on Queries to create a new Blank Query . Copy / Paste this code . let CreateDateTable = (StartDate as date, EndDate as date, optional Culture as nullable text) as table =&gt; let DayCount = Duration.Days(Duration.From(EndDate - StartDate)), Source = List.Dates(StartDate,DayCount,#duration(1,0,0,0)), TableFromList = Table.FromList(Source, Splitter.SplitByNothing()), ChangedType = Table.TransformColumnTypes(TableFromList,{{\"Column1\", type date}}), RenamedColumns = Table.RenameColumns(ChangedType,{{\"Column1\", \"Date\"}}), InsertYear = Table.AddColumn(RenamedColumns, \"Year\", each Date.Year([Date])), InsertQuarter = Table.AddColumn(InsertYear, \"QuarterOfYear\", each Date.QuarterOfYear([Date])), InsertMonth = Table.AddColumn(InsertQuarter, \"MonthOfYear\", each Date.Month([Date])), InsertDay = Table.AddColumn(InsertMonth, \"DayOfMonth\", each Date.Day([Date])), InsertDayInt = Table.AddColumn(InsertDay, \"DateInt\", each [Year] * 10000 + [MonthOfYear] * 100 + [DayOfMonth]), InsertMonthName = Table.AddColumn(InsertDayInt, \"MonthName\", each Date.ToText([Date], \"MMMM\", Culture), type text), InsertCalendarMonth = Table.AddColumn(InsertMonthName, \"MonthInCalendar\", each (try(Text.Range([MonthName],0,3)) otherwise [MonthName]) &amp; \" \" &amp; Number.ToText([Year])), InsertCalendarQtr = Table.AddColumn(InsertCalendarMonth, \"QuarterInCalendar\", each \"Q\" &amp; Number.ToText([QuarterOfYear]) &amp; \" \" &amp; Number.ToText([Year])), InsertDayWeek = Table.AddColumn(InsertCalendarQtr, \"DayInWeek\", each Date.DayOfWeek([Date])), InsertDayName = Table.AddColumn(InsertDayWeek, \"DayOfWeekName\", each Date.ToText([Date], \"dddd\", Culture), type text), InsertWeekEnding = Table.AddColumn(InsertDayName, \"WeekEnding\", each Date.EndOfWeek([Date]), type date) in InsertWeekEnding in CreateDateTable . Choose a start date and an EndDate, click Invoke . That’s it! You have a beautiful calendar table. Do not forget to mark this table as a data table Credit: I found this code on internet many years ago and used it in the LazyDAX file. I think I changed it, but I can’t redirect and credit the one who created it. I think it can help you a lot, that’s why I’m sharing it with you :) . ",
+    "content": ". ",
     "url": "/en/power-bi-create-a-calendar-table-automatically/",
     "relUrl": "/en/power-bi-create-a-calendar-table-automatically/"
   },"57": {
-    "doc": "Your data model first!",
-    "title": "Your data model first!",
-    "content": ". At this end of the year, I thought it’s time for me to bring you a gift!!It’s a very important subject that I mention to my coworkers and it’s 80% of a success power bi story! . . ",
-    "url": "/en/your-data-model-first/",
-    "relUrl": "/en/your-data-model-first/"
+    "doc": "Power BI Create a Calendar table automatically",
+    "title": "Calendar Dimension",
+    "content": "In our Power BI datasets, the best way to deals with dates and DAX intelligence functions is to use a Calendar Table. This table should be link to your Fact table. Good news, this table can be created in 2 clicks with Power Query (Transform Data) in Power BI! . ",
+    "url": "/en/power-bi-create-a-calendar-table-automatically/#calendar-dimension",
+    "relUrl": "/en/power-bi-create-a-calendar-table-automatically/#calendar-dimension"
   },"58": {
-    "doc": "Your data model first!",
-    "title": "All the focus is on the tech part.",
-    "content": ". All developers (yes, you are!!), spend a huge amount of time to understand their sources, their transformation, and the magic that happens in their DAX measures!And, to be honest, that’s normal! . . ",
-    "url": "/en/your-data-model-first/",
-    "relUrl": "/en/your-data-model-first/"
+    "doc": "Power BI Create a Calendar table automatically",
+    "title": "How to create the table",
+    "content": "Go to transform data and right click on Queries to create a new Blank Query . Now Copy the following code and paste it to the blank query create. let CreateDateTable = (StartDate as date, EndDate as date, optional Culture as nullable text) as table =&gt; let DayCount = Duration.Days(Duration.From(EndDate - StartDate)), Source = List.Dates(StartDate,DayCount,#duration(1,0,0,0)), TableFromList = Table.FromList(Source, Splitter.SplitByNothing()), ChangedType = Table.TransformColumnTypes(TableFromList,{{\"Column1\", type date}}), RenamedColumns = Table.RenameColumns(ChangedType,{{\"Column1\", \"Date\"}}), InsertYear = Table.AddColumn(RenamedColumns, \"Year\", each Date.Year([Date])), InsertQuarter = Table.AddColumn(InsertYear, \"QuarterOfYear\", each Date.QuarterOfYear([Date])), InsertMonth = Table.AddColumn(InsertQuarter, \"MonthOfYear\", each Date.Month([Date])), InsertDay = Table.AddColumn(InsertMonth, \"DayOfMonth\", each Date.Day([Date])), InsertDayInt = Table.AddColumn(InsertDay, \"DateInt\", each [Year] * 10000 + [MonthOfYear] * 100 + [DayOfMonth]), InsertMonthName = Table.AddColumn(InsertDayInt, \"MonthName\", each Date.ToText([Date], \"MMMM\", Culture), type text), InsertCalendarMonth = Table.AddColumn(InsertMonthName, \"MonthInCalendar\", each (try(Text.Range([MonthName],0,3)) otherwise [MonthName]) &amp; \" \" &amp; Number.ToText([Year])), InsertCalendarQtr = Table.AddColumn(InsertCalendarMonth, \"QuarterInCalendar\", each \"Q\" &amp; Number.ToText([QuarterOfYear]) &amp; \" \" &amp; Number.ToText([Year])), InsertDayWeek = Table.AddColumn(InsertCalendarQtr, \"DayInWeek\", each Date.DayOfWeek([Date])), InsertDayName = Table.AddColumn(InsertDayWeek, \"DayOfWeekName\", each Date.ToText([Date], \"dddd\", Culture), type text), InsertWeekEnding = Table.AddColumn(InsertDayName, \"WeekEnding\", each Date.EndOfWeek([Date]), type date) in InsertWeekEnding in CreateDateTable . ",
+    "url": "/en/power-bi-create-a-calendar-table-automatically/#how-to-create-the-table",
+    "relUrl": "/en/power-bi-create-a-calendar-table-automatically/#how-to-create-the-table"
   },"59": {
-    "doc": "Your data model first!",
-    "title": "So why this article?",
-    "content": ". After 1 week, 2 months, or more time, we are very proud of our dataset! (Yes, I’m not talking about reports, but dataset which can be used in many reports)Our model contains a lot of data, all the information needed is there! But is it easy for an external person to use it? (a User, a colleague, your kids, ..)Sometimes yes, sometimes no. Some complexity exists: . | Too many tables | Too many relationships and the difficulty to know the interaction between tables. | The model keeps the complexity of the source systems. | . But ok! We did a huge work to clean and provide this model! Everything work!! Our users can take 2 or 3 hours and try to understand the logic behind it! . I like to mention it. I love cars!! But I know nothing about it!! Do I need to understand how an engine work to drive a car? It’s a real plus, but not mandatory. . ",
-    "url": "/en/your-data-model-first/",
-    "relUrl": "/en/your-data-model-first/"
+    "doc": "Power BI Create a Calendar table automatically",
+    "title": "Run the function",
+    "content": ". Choose a StartDate and an EndDate, click Invoke . That’s it! You have a beautiful calendar table. Do not forget to mark this table as a data table . Credit: I found this code on internet many years ago and used it in the LazyDAX file. I changed it, but I can’t redirect and credit the one who created it. I think it can help you a lot, that’s why I’m sharing it with you :) . ",
+    "url": "/en/power-bi-create-a-calendar-table-automatically/#run-the-function",
+    "relUrl": "/en/power-bi-create-a-calendar-table-automatically/#run-the-function"
   },"60": {
     "doc": "Your data model first!",
-    "title": "So what do I suggest?",
-    "content": ". It doesn’t take much time, and it can help you to keep an eye on your goal. (Yes!! Provide a very shiny dataset)Before every model, I recommend you to draw your model on a sheet of paper.You already know the information you have to present and how your user group this information. If not, it’s the perfect time to ask your users and write their buzzwords on paper. Before each project, ask them to present you their job and the different tools they use. It would help you to have a clear view of their logic behind, their needs, and also what’s missing now.At this point, I only write huge keywords on paper. . When I’m back on my desk, I’m looking at this brainstorming paper, and try to group the different keywords into a logic.That’s how tables bring to life, and because I’m a Kimball huge fan let's call them Dimensions! . . So now, with these tables you have the user point of view of their data, all the magic (and fun) is to prepare the data to fit in it!But hey, with Power Query, SQL, it’s just a piece of cake! Isn’t? . . ",
+    "title": "Your data model first!",
+    "content": ". As we approach year’s end, I wanted to share a special gift with you! It’s a topic that I often emphasize with my team and makes up 80% of a successful Power BI journey. ",
     "url": "/en/your-data-model-first/",
     "relUrl": "/en/your-data-model-first/"
   },"61": {
     "doc": "Your data model first!",
-    "title": "In conclusion",
-    "content": ". Do not jump directly into the source's data, keep an eye on your expectation first. Ask your users, talk to your colleagues and try to build the model of your dream.It’s possible! During your development, you may change some tables, and that’s completely normal! But at least, if you keep your original model, everybody will win in the end. I wish you all the best in your data journey!What a fun job!! . ",
-    "url": "/en/your-data-model-first/",
-    "relUrl": "/en/your-data-model-first/"
+    "title": "Technology Takes Center Stage",
+    "content": "Most developers, and yes, I’m referring to you, invest significant time diving deep into their data sources, the transformation processes, and the intriguing dynamics of their DAX measures. And rightly so! . ",
+    "url": "/en/your-data-model-first/#technology-takes-center-stage",
+    "relUrl": "/en/your-data-model-first/#technology-takes-center-stage"
   },"62": {
+    "doc": "Your data model first!",
+    "title": "Why this piece?",
+    "content": "After spending days, weeks, or even months, we often find ourselves proud of our datasets – not just the reports, but the underlying datasets that can power numerous reports. Although our model may contain ample data, the pressing question is, how user-friendly is it? Whether it’s for an external user, a peer, or even your children, the usability can vary. There are inherent complexities, such as: . | Excessive tables | A myriad of relationships and the challenge in deciphering interactions between tables. | A model that retains the intricacy of its source systems. | . Yes, we’ve put in hard work to craft this model, and it functions seamlessly! A user might need a couple of hours to grasp its nuances, but is that efficient? Think about it: I adore cars, yet lack technical knowledge. Should I understand engine mechanics to drive? It’s a bonus, but not a prerequisite. ",
+    "url": "/en/your-data-model-first/#why-this-piece",
+    "relUrl": "/en/your-data-model-first/#why-this-piece"
+  },"63": {
+    "doc": "Your data model first!",
+    "title": "My proposal?",
+    "content": "With little effort, you can maintain clarity about your objectives, chiefly to deliver an exceptional dataset. I suggest sketching your model on paper before starting. You should be familiar with the data’s presentation and how users categorize it. If unclear, now’s the time to engage users and jot down key terminologies. Engage with users before projects to understand their roles and tools better. This helps gain insights into their thought processes, requirements, and current gaps. I typically scribble down essential terms at this stage. Back at my workspace, I review this sketch and attempt to categorize these terms, giving birth to tables. And since I’m an ardent Kimball admirer, let’s dub them Dimensions! . Having these tables means possessing a user-centric view of the data. The exciting challenge lies in molding the data to fit this view, but with tools like Power Query and SQL, it’s fairly straightforward, right? . ",
+    "url": "/en/your-data-model-first/#my-proposal",
+    "relUrl": "/en/your-data-model-first/#my-proposal"
+  },"64": {
+    "doc": "Your data model first!",
+    "title": "To sum up",
+    "content": "Rather than diving straight into the data, first set clear objectives. Engage with users, liaise with peers, and aim to create the ideal model. Adaptations might occur during development, which is natural. However, sticking to your foundational model ensures a win-win outcome for all. Cheers to your data adventures! It’s indeed a thrilling profession! . ",
+    "url": "/en/your-data-model-first/#to-sum-up",
+    "relUrl": "/en/your-data-model-first/#to-sum-up"
+  },"65": {
     "doc": "Power BI Interview questions: a different way to know your applicants",
     "title": "Power BI Interview questions: a different way to know your applicants",
     "content": "One day you will have to recruit or will be involved in a recruitment process for a Power BI position. Nobody knows everything about a tool or a subject, that’s also why our job is fun, we never stop to learn. Asking very precise questions aren’t always the best solution, I think it’s also nice to ask “open” questions. It’s a way to learn from your applicant and to understand how they will deal with their daily job. I tried to write a list of questions I would like to ask (and maybe, yes, to answer) . ",
     "url": "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/",
     "relUrl": "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/"
-  },"63": {
+  },"66": {
     "doc": "Power BI Interview questions: a different way to know your applicants",
     "title": "Questions list",
     "content": ". | What are the different languages used in Power BI? Can you explain their usage? | Do you know one data modeling concept? If yes, can you explain it in your words? | We have to transform our data, where and how can we do it? | What’s the difference between these two visuals: Table and Matrix | By dragging and dropping a field in the Values area we can create implicit measures. Could you give me a shortlist of different aggregation functions available? | We want to implement security in our data. Do you know a way to hide some data to a group of users? | When we select a table in Power BI desktop, we have an option called “Mark as date table”. Do you know why? | Users can filter data in multiple ways! Can you give me some examples? | Do you know what Power BI Datasets are, and why would you use them? | Power BI community gives us a lot of different External tools, do you know some of them? | I’m the IT manager and I never heard about Power BI before. Can you explain to me what it does and what’s the gain to use it? | If you know DAX, can you give me 3 functions that you use the most? | We are wondering if we need to buy Power BI Premium, do you know which functionalities are available in Premium? | When you need to build a report, where do you start your journey? | Which points are the most important to not fail a Power BI project? | You start a new project, your first mission is to reduce the size of the dataset. Which are the different operations you will perform? | . It exists already a ton of different lists of questions available on the internet, I wanted to break the rule with a different kind of question. If you want to add more questions to the list, feel free to send me a message. ",
     "url": "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/#questions-list",
     "relUrl": "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/#questions-list"
-  },"64": {
+  },"67": {
     "doc": "DAX is case insensitive",
     "title": "DAX is case insensitive",
-    "content": "This week with my colleague Vincent Philipot, we learned something that many of you already know. (But maybe not!) . You can download the Power BI file on GitHub . DAX is case insensitive!! Yes!! And nobody told me before! . ",
+    "content": ". This week with my colleague Vincent Philipot, we learned something that many of you already know. (But maybe not!) . You can download the Power BI file on GitHub . DAX is case insensitive!! Yes!! And nobody told me before! . ",
     "url": "/en/dax-is-case-insensitive/",
     "relUrl": "/en/dax-is-case-insensitive/"
-  },"65": {
+  },"68": {
     "doc": "DAX is case insensitive",
     "title": "What does it mean?",
     "content": "Here is a short description available on Wikipedia . But because an example is worth a thousand words, here is some screenshot. (You can download this example in the lazydax file) . In our dataset we have 10 differents Products with a ProductCategory = Vegetable . I wrote 3 differents measures to count the number of product with a ProductCategory equal to: . ",
     "url": "/en/dax-is-case-insensitive/#what-does-it-mean",
     "relUrl": "/en/dax-is-case-insensitive/#what-does-it-mean"
-  },"66": {
+  },"69": {
     "doc": "DAX is case insensitive",
     "title": "Vegetable",
     "content": "Nb Vegetable = CALCULATE( COUNTROWS('Product') ,FILTER('Product', 'Product'[ProductCategory] = \"Vegetable\") ) . ",
     "url": "/en/dax-is-case-insensitive/#vegetable",
     "relUrl": "/en/dax-is-case-insensitive/#vegetable"
-  },"67": {
+  },"70": {
     "doc": "DAX is case insensitive",
     "title": "VEGETABLE",
     "content": "Nb VEGETABLE _ = CALCULATE( COUNTROWS('Product') ,FILTER('Product', 'Product'[ProductCategory] = \"VEGETABLE\") ) . ",
     "url": "/en/dax-is-case-insensitive/#vegetable-1",
     "relUrl": "/en/dax-is-case-insensitive/#vegetable-1"
-  },"68": {
+  },"71": {
     "doc": "DAX is case insensitive",
     "title": "VeGeTaBlE",
     "content": "Nb VeGeTaBlE __ = CALCULATE( COUNTROWS('Product') ,FILTER('Product', 'Product'[ProductCategory] = \"VeGeTaBlE\") ) . And when me and most of my colleagues would expect a different behavior, results are the same . ",
     "url": "/en/dax-is-case-insensitive/#vegetable-2",
     "relUrl": "/en/dax-is-case-insensitive/#vegetable-2"
-  },"69": {
+  },"72": {
     "doc": "DAX is case insensitive",
     "title": "Conclusion",
     "content": "I think I didn’t see it before because I have a strong programmer background, and it seems very weird to me.And when I have to filter to a subset of value, I only base my FILTER on technical codes that have that kind of soft rules already applied. You can download this example in the lazydax file here . ",
     "url": "/en/dax-is-case-insensitive/#conclusion",
     "relUrl": "/en/dax-is-case-insensitive/#conclusion"
-  },"70": {
+  },"73": {
     "doc": "DAX is case insensitive",
     "title": "More articles",
     "content": "After a web search, I saw that our Power BI stars (Data gods in reference to this list from Christopher Wagner) wrote very nice articles about this subject. Letter case-sensitivity in DAX, Power BI and Analysis Services - SQLBI . Chris Webb’s BI Blog: Power BI And Case Sensitivity Chris Webb’s BI Blog (crossjoin.co.uk) . In all the cases, I hope that you learned something new! :) . ",
     "url": "/en/dax-is-case-insensitive/#more-articles",
     "relUrl": "/en/dax-is-case-insensitive/#more-articles"
-  },"71": {
+  },"74": {
     "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
     "title": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
     "content": ". This article seems obvious, but that's something that I do a lot, and this is the first thing I do when somebody asks me a question. After many weeks, some clients tell me: \"Now, I'm using your technique too\" . But I don't feel to own this! It's pretty simple, but in fact, if you didn't use it before, it can help you a lot! . So, yes, I'm duplicating my page! . A lot!!!! ",
     "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/",
     "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/"
-  },"72": {
+  },"75": {
     "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
     "title": "A focus version:",
     "content": ". When I have an issue or a question, the first thing I do (after crying), it's duplicate the page. On this page, I remove everything not useful to test . | Visuals | Images | . I transform all the visuals I want to test (hopefully only one) into a table. Let's call it the \"focus version\" . . ",
     "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#a-focus-version",
     "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#a-focus-version"
-  },"73": {
+  },"76": {
     "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
     "title": "Test your filter context:",
     "content": ". When I have a cleaner version of my report I can duplicate it. (again) . . On this new page, I remove one by one: . | Filter on slicers | Filter in the filter pane (Be careful to remove the one hidden) | Hidden Slicers (Synced slicers) | . Until my values change and I can understand them. This step helps me to trust the data and understand the measure. It also helps me to trust the behavior of each filters. . ",
     "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#test-your-filter-context",
     "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#test-your-filter-context"
-  },"74": {
+  },"77": {
     "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
     "title": "Test one particular case:",
     "content": ". You are the best and main debugger of Power BI! . . Based on the previous topic, now you are confident with your evaluation context! I would recommend you to filter on a very specific case available in your data. For example:&nbsp; . | One transaction ID (one row in your sales table) | One Invoice Id | . Many users don't look their data at a very low level, and trust me, that's very important! . If you know the story and behavior of your DAX measure for a very specific case, you can predict how it will work for 2 and many more. . ",
     "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#test-one-particular-case",
     "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#test-one-particular-case"
-  },"75": {
+  },"78": {
     "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
     "title": "Split your measures and display their result",
     "content": ". In our DAX measure, we can have multiple steps and complexity. That's why the best practice is to use Variables (VAR), and I know that you already use it! . . But do you test it? How to do it? . | Duplicate your measure (yes, Duplicate duplicate everywhere) and change the RETURN section by returning the value of one of your variable. | . Many month after our work some changes can impact our measure!&nbsp; . | Relation between tables can be different | Data aren't the same again | You change the slicer with a different attribute! (Same value, but different attribute, ..) | . By testing your old good variables, you can trust and confirm how they work. (Specially if everything is still ok for your evaluation context) . . ",
     "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#split-your-measures-and-display-their-result",
     "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#split-your-measures-and-display-their-result"
-  },"76": {
+  },"79": {
     "doc": "Power BI: Duplicate of Duplicate - The best way to test your reports and measures",
     "title": "Conclusion:",
     "content": ". Most of the time, on a report, crowded with many visuals we aren't able to find the main reason for our \"problem\". We keep focus on not useful stuff and we are to scare (or lazy) to have a look deep dive. In two sentences: . | Less is more | Duplicate your page et destroy everything | . Bonus: Duplicate page and measure is one point! But don't forget to duplicate your .PBIX file.. In case of emergency :) . I wish you all the best and a lot of duplication. ",
     "url": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#conclusion",
     "relUrl": "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/#conclusion"
-  },"77": {
+  },"80": {
     "doc": "Power BI Visuals List: Which Graphic to choose?",
     "title": "Power BI Visuals List: Which Graphic to choose?",
     "content": " ",
     "url": "/en/power-bi-visuals-list/",
     "relUrl": "/en/power-bi-visuals-list/"
-  },"78": {
+  },"81": {
     "doc": "Power BI Visuals List: Which Graphic to choose?",
     "title": "Power BI Visuals List: Which Graphic to choose?",
     "content": ". You can download the Power BI file on GitHub . ",
     "url": "/en/power-bi-visuals-list/",
     "relUrl": "/en/power-bi-visuals-list/"
-  },"79": {
+  },"82": {
     "doc": "Power BI Visuals List: Which Graphic to choose?",
     "title": "Why this list?",
     "content": ". Today, I had some time to learn!I think I'm not that bad for data modeling, T-SQL, SQL server performance, Power Query, DAX, coaching and understanding user requirements. (Yes, sometimes it's very good to be kind to yourself :) ) . But putting effort into many different techs skills, I should mention it to the whole world (at least you, because you are reading my blog post). I’m not that good when it’s time to pick the best visual to show our data! . ",
     "url": "/en/power-bi-visuals-list/#why-this-list",
     "relUrl": "/en/power-bi-visuals-list/#why-this-list"
-  },"80": {
+  },"83": {
     "doc": "Power BI Visuals List: Which Graphic to choose?",
     "title": "Table and Matrix fan",
     "content": "You will maybe recognize you in my description! I'm the kind of guy who uses Table and Matrix a lot. For testing and understanding my data!Matrix is wonderful! You can look at the behavior of your measures at the different grain in one minute! List, Sub Total, Total!! Amazing! . ",
     "url": "/en/power-bi-visuals-list/#table-and-matrix-fan",
     "relUrl": "/en/power-bi-visuals-list/#table-and-matrix-fan"
-  },"81": {
+  },"84": {
     "doc": "Power BI Visuals List: Which Graphic to choose?",
     "title": "I can't stop my crazy pleasure to click on all that kind of visuals",
     "content": ". When I'm proud of it, I try to build a visual useful for my users. So I transform this table into a graphic. I click the first button, then I change for the second and I can't stop my crazy pleasure to click on all that kind of visuals!!But do I know what I'm choosing? NO!I knew, yes.. But right now, I'm just clicking to find the best one who will give me the satisfaction between 2 tasty coffees. (And yes, Power BI is also a question of feeling and pleasure. Like a very addictive game) . With the image on top, I tested all these graphics and keep a trace of them. First, to help me the next time I need to pick the right one. (And I hope, it can help you too) . ",
     "url": "/en/power-bi-visuals-list/#i-can-t-stop-my-crazy-pleasure-to-click-on-all-that-kind-of-visuals",
     "relUrl": "/en/power-bi-visuals-list/#i-can-t-stop-my-crazy-pleasure-to-click-on-all-that-kind-of-visuals"
-  },"82": {
+  },"85": {
     "doc": "Power BI Visuals List: Which Graphic to choose?",
     "title": "More links",
     "content": "Visualization types in Power BI - Power BI | Microsoft Docs . Next step? I still need to learn more about visualization! And I will!And you, do you click everywhere until you have the best one? If no, how did you become data artist / story teller? . ",
     "url": "/en/power-bi-visuals-list/#more-links",
     "relUrl": "/en/power-bi-visuals-list/#more-links"
-  },"83": {
+  },"86": {
     "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
     "title": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
     "content": "I created LazyDAX to: . | Present interesting Power BI discoveries to my colleagues and clients | Test my DAX Measures with a simple, concrete and very clean Star schema | Discover multiple DAX Functions and test them | Show different Power BI features by examples | . Download on GitHub . You can change it, publish it and do whatever you want with it. It contains data and is designed in a Star schema model. You don’t need to connect on a server and can change the data, because I used the “Enter Data” method. ",
     "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/",
     "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/"
-  },"84": {
+  },"87": {
     "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
     "title": "It contains:",
     "content": "DAX: I organized multiple Measure in the same way Microsoft present all the DAX functions in their folders. It was an efficient way for me to test it all. Visuals: On different pages, I used all the existing visuals, and tried to provide you some ideas to build a more fancy report. ",
     "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#it-contains",
     "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#it-contains"
-  },"85": {
+  },"88": {
     "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
     "title": "Test it here",
     "content": ". ",
     "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#test-it-here",
     "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#test-it-here"
-  },"86": {
+  },"89": {
     "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
     "title": "Why",
     "content": "I spent a lot of my free time on it, and in this new version I changed the look n’feel and try a dark mode report. (Yes, it’s also a playground for me to test Power BI) I created it more than 4 years ago now, but I still use it every week. (If not every day) I can use it for my presentation, and help people with DAX. I hope it can help you too, and would really enjoy hearing your thoughts, ideas and requests. You can also view all different pages in this PDF file . ",
     "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#why",
     "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#why"
-  },"87": {
+  },"90": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter a Power BI report passing parameters through URL",
     "content": ". Power BI provides a unique feature that adds flexibility to our reports. Though it isn’t a recent addition, many may still be unaware of it! . This feature lets you display a report with filters applied directly via the URL parameters. ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
-  },"88": {
+  },"91": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Why is this feature noteworthy?",
     "content": ". | It allows for embedded reports on websites or intranets. With the potential to dynamically adjust and present our report through buttons or menus. Microsoft illustrates this with an example: Embed Secure Power BI Reports . | Filtering a report directly from Power Apps is feasible. | You can set custom bookmarks, either in your browser or email. | It permits filtering on fields, even those not presented in the Filter Pane. | . ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#why-is-this-feature-noteworthy",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#why-is-this-feature-noteworthy"
-  },"89": {
+  },"92": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "However, some caveats to keep in mind:",
     "content": ". | This isn’t a security enhancement for your reports. Filters can be modified by end-users. For security, consider Row-level security. | It’s infeasible to utilize within an iframe for reports “published to web”. | . Microsoft has penned an insightful article on this very topic. Dive deeper by checking it out here. ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#however-some-caveats-to-keep-in-mind",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#however-some-caveats-to-keep-in-mind"
-  },"90": {
+  },"93": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Steps to Implement:",
     "content": ". | Launch your report within the Power BI Service, navigating to your desired page. | Focus on the address bar. Append ?filter= to the end of the URL. | . For a practical demonstration, reference the example showcased in this article. This Power BI example is available for download on this site—just search for ‘LazyDAX’ on the homepage. ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#steps-to-implement",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#steps-to-implement"
-  },"91": {
+  },"94": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter on numeric value",
     "content": "?filter=Calendar/Year eq 2022 . The first part of this expression references the dimension (Table) -&gt; Calendar The second part mentions the attribute in this dimension -&gt; Year eq translates to equals . ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-on-numeric-value",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-on-numeric-value"
-  },"92": {
+  },"95": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter multiple numeric values",
     "content": "?filter=Calendar/Year in (2022, 2023) . ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-multiple-numeric-values",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-multiple-numeric-values"
-  },"93": {
+  },"96": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter on a text value",
     "content": "?filter=Product/ProductCategory eq 'Fruit' . ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-on-a-text-value",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-on-a-text-value"
-  },"94": {
+  },"97": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter multiple Text values",
     "content": ". ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-multiple-text-values",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-multiple-text-values"
-  },"95": {
+  },"98": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Add Multiple filter on differents attributes",
     "content": "?filter=Customer/Country in ('Belgium', 'Nederland') and Product/ProductCategory eq 'Fruit' and Calendar/Year ge 2021 . ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#add-multiple-filter-on-differents-attributes",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#add-multiple-filter-on-differents-attributes"
-  },"96": {
+  },"99": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "More operators are available",
     "content": "Source: Microsoft website (see url below) . As initially mentioned, an in-depth explanation can be found on the Microsoft website: Microsoft Service URL Filters . ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#more-operators-are-available",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#more-operators-are-available"
-  },"97": {
+  },"100": {
     "doc": "Power BI Sidetools extensions: A Must have!",
     "title": "Power BI Sidetools extensions: A Must have!",
     "content": ". Last months I did a presentation for the well-known Club Power BI (Brussels). This session was a brief listing of the most exciting External tools / Third-party software that can help us to work with Power BI. As a Power BI passionate guy, I wanted to be sure to show and explain my favorite applications. DAX Studio and Tabular Editor are indeed at top of my list, and the ones I use a lot. (Almost every day). But as a good student, I wanted to cover more topics and tried to find a lot of different external tools. I don’t want you to read the very long story, but I discovered Power BI Side tools!! . Power BI Sidetools does a very nice job when it comes to documenting and keeping a track of your DAX Measure or Power Query code. By pressing a simple button, it generates multiple files and keeps the tree of your code. (I mean “Display folders” for your Measures and directories for your queries) . And it’s very interesting!! . ",
     "url": "/en/power-bi-sidetools-extensions-a-must-have/",
     "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/"
-  },"98": {
+  },"101": {
     "doc": "Power BI Sidetools extensions: A Must have!",
     "title": "Why do I like Power BI Sidetools so much?",
     "content": "Now, imagine that you work on a new project, or somebody sends you a Power BI file. By using Power BI Sidetools, you can: . | Split all the contents into different files. | Each query goes into a .m file | Each DAX measure goes into a .dax file | . | If it’s a large dataset, you don’t need to open Power BI anymore to verify or analyze the code | Keep a trace of code, by versioning the generated code. It would also be possible to compare the code between - versions or times. Reuse an existing code in a different project. | AND the most useful in my opinion! Search into code! | . Open Power BI Sidetools . Sidetools main window . Folders created by sidetools and opened in Visual Studio Code . Directory generated for measures . Example of M code: Customer table . Example of DAX code: [AVERAGEX Articles by InvoiceNumber] . ",
     "url": "/en/power-bi-sidetools-extensions-a-must-have/#why-do-i-like-power-bi-sidetools-so-much",
     "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/#why-do-i-like-power-bi-sidetools-so-much"
-  },"99": {
+  },"102": {
     "doc": "Power BI Sidetools extensions: A Must have!",
     "title": "Search into code",
     "content": "Didier Terrien (The developer) highly suggests you to use Visual Studio code. (And me too!) . Visual studio code is a very light and powerful text editor. I will not list all features, but when you open the main directory, you can now edit files and search for different patterns. I like the idea to search for: . | A table name: I have multiple projects (where I ran Power BI Sidetools previously), and want to know if and where a specific table is used. I can search that table name in multiple directories and. All impacted *.m files will be listed and show me the code. | A measure name: You can search if a measure is used in another measure. | . search example . ",
     "url": "/en/power-bi-sidetools-extensions-a-must-have/#search-into-code",
     "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/#search-into-code"
-  },"100": {
+  },"103": {
     "doc": "Power BI Sidetools extensions: A Must have!",
     "title": "What more?",
     "content": "Power BI sidetools has many different functionalities, and I only covered one of them. It’s also : . | A DAX generator | A DAX Debugger | A DAX Parser | . To know more about this tool, I recommend you to visit the developer website: https://thebipower.fr/index.php/power-bi-sidetools/ . ",
     "url": "/en/power-bi-sidetools-extensions-a-must-have/#what-more",
     "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/#what-more"
-  },"101": {
+  },"104": {
     "doc": "Power BI Sidetools extensions: A Must have!",
     "title": "Visual studio code",
     "content": "You download Visual studio code (for free) on https://code.visualstudio.com/download . 2 add-in are available and provide you a lovely syntax coloration for M and DAX File . Extension for M and DAX ",
     "url": "/en/power-bi-sidetools-extensions-a-must-have/#visual-studio-code",
     "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/#visual-studio-code"
-  },"102": {
+  },"105": {
     "doc": "Power BI Sidetools extensions: A Must have!",
     "title": "I want to download it!",
     "content": "You can download it from GitHub: https://github.com/didierterrien/Power-BI-Sidetools . But I recommend you to download and install it with Business Ops (From Power BI .tips): https://powerbi.tips/product/business-ops/ . ",
     "url": "/en/power-bi-sidetools-extensions-a-must-have/",
     "relUrl": "/en/power-bi-sidetools-extensions-a-must-have/"
-  },"103": {
+  },"106": {
     "doc": "Create a gradient background for Power BI",
     "title": "Create a gradient background for Power BI",
     "content": ". Diving deep into data transformation, modeling, and analytics, visualization has traditionally been my Achilles’ heel. Nevertheless, I’m ardently working to enhance this skill! . A universal principle that is especially pertinent to reports and data visualization is: simplicity is key. Overcomplicating with excessive frills isn’t necessary; straightforwardness often wins the day. In my visual designs, I opt for a minimalist color palette and limit the number of visuals, ensuring that users can easily grasp the content presented on a page. ",
     "url": "/en/create-a-gradient-background-for-power-bi/",
     "relUrl": "/en/create-a-gradient-background-for-power-bi/"
-  },"104": {
+  },"107": {
     "doc": "Create a gradient background for Power BI",
     "title": "Gradient background",
     "content": ". But when it’s time to add some unuseful stuff to our report, what I like the most is to add a gradient background. No need to add a flashy color variation!! I like to switch between one color and his very close variation. Like a “middle blue” to a “dark blue”. Many Power BI blogs mention PowerPoint to create a gradient background. And indeed, it’s not that a bad idea. But for some reason, PowerPoint generates images with a very ugly layer. (Like a rainbow) . I only have this issue when I publish my report on Power BI Services, but not on Power BI Desktop. (Is it related to my 4K screen or compression? No idea) . But if you encounter the same issue, or if you want to learn another way to do it, I’m explaining here how to do it with Paint .net. . ",
     "url": "/en/create-a-gradient-background-for-power-bi/#gradient-background",
     "relUrl": "/en/create-a-gradient-background-for-power-bi/#gradient-background"
-  },"105": {
+  },"108": {
     "doc": "Create a gradient background for Power BI",
     "title": "Paint.net",
     "content": ". Paint .net is my favorite images/graphics editor. It’s free, contains almost everything I need, and is not too complex to understand. You can download it here https://www.dotpdn.com/downloads/pdn.html . ",
     "url": "/en/create-a-gradient-background-for-power-bi/",
     "relUrl": "/en/create-a-gradient-background-for-power-bi/"
-  },"106": {
+  },"109": {
     "doc": "Create a gradient background for Power BI",
     "title": "How to create a gradient image with paint.net",
     "content": ". Open Paint .net application and create a new canvas. (I recommend you to keep the same size as you use in your Power BI) . In the toolbox, choose the Gradient tool . Gradient tool . Now that the gradient tool is selected, go to the Colors pane and click \"More\" . . First, you have to select a \"Primary\" Color. It's the one selected by default, but you can select it by using the dropdown list and chose \"Primary\" or by click the square on the top.Use the color picker or paste an Hexadecimal RGB value. (I highly recommend you to use it) . You can find interesting color on https://coolors.co/palettes/trending . When it's done, select the \"Secondary\" color. I usually paste the same color as the primary but change the \"V\" slider to a more lighter value (but very close) . . Go to your canvas and click on the left button of your mouse, drag the cursor and release the button. . Save this image into a .png file and use it in Power BI Desktop. . ",
     "url": "/en/create-a-gradient-background-for-power-bi/",
     "relUrl": "/en/create-a-gradient-background-for-power-bi/"
-  },"107": {
+  },"110": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
     "title": "Documentation of your Power BI Tenant (With Scanner API)",
     "content": ". ",
     "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#documentation-of-your-power-bi-tenant-with-scanner-api",
     "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#documentation-of-your-power-bi-tenant-with-scanner-api"
-  },"108": {
+  },"111": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
     "title": "Table of contents",
     "content": ". | Introduction | Configuration | Powershell code . | Parameters | Description . | More info: | . | GetModifiedWorkspaces: List of workspaces | GetScanResult: Get the scan result (Download our json file) . | GetScanStatus: To know if our scan is done or still pending | GetInfo: Ask Powerbi.com to perform our scan | . | Code | . | . ",
     "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#table-of-contents",
     "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#table-of-contents"
-  },"109": {
+  },"112": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
     "title": "Introduction",
     "content": "Power BI is a powerful data visualization tool that allows users to create insightful reports and dashboards from various data sources. However, to leverage the full potential of Power BI, it’s important to ensure the accuracy and security of your data. The Power BI Scanner API is designed to help you achieve this goal by scanning your Power BI resources for vulnerabilities and data leaks. In this article, we will introduce you to the process of running the Power BI Scanner API in PowerShell. PowerShell is a flexible and powerful command-line tool that can be used to automate a wide range of administrative tasks. It also has a rich set of commandlets and modules that make it easy to work with Power BI. Before getting started, you’ll need to ensure that you have the appropriate permissions and access keys to run the scanner API. Once you have these in place, you can follow the steps below to get started with PowerShell. ",
     "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#introduction",
     "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#introduction"
-  },"110": {
+  },"113": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
     "title": "Configuration",
     "content": "You need first to configure your Power BI tenant and activate these following options. Go to your Admin portal . and activate these options . ",
     "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#configuration",
     "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#configuration"
-  },"111": {
+  },"114": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
     "title": "Powershell code",
     "content": "Parameters . Before running this code, you should change the path where you would like to save the json file 'C:\\YOURPATH\\result.json' . Description . This code use the 4 differents REST API method given by Microsoft. More info: . https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-metadata-scanning . GetModifiedWorkspaces: List of workspaces . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-modified-workspaces . GetScanResult: Get the scan result (Download our json file) . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-result . GetScanStatus: To know if our scan is done or still pending . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-get-scan-status . GetInfo: Ask Powerbi.com to perform our scan . https://learn.microsoft.com/en-us/rest/api/power-bi/admin/workspace-info-post-workspace-info . Code . // Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . # _____ _____ # /\\ | __ \\_ _| # ___ ___ __ _ _ __ _ __ ___ _ __ / \\ |__) || # / __|/ __/ _` | '_ \\| '_ \\ / _ \\ '__| / /\\ \\ | ___/ | # \\__ \\ (_| (_| | | | __/ | / ____ \\| _|_ # |___/\\___\\__,_|_|_|_|_|\\___|_| /_/ \\_\\_|_____| # #--------------------------------- # Configuration $configExportFolderPath = \"C:\\Users\\ArnaudGastelblum\\Desktop\" $batchSize = 50 # End configuration #--------------------------------- Login-PowerBIServiceAccount # Get a list of all workspaces write-host \"Retrieve workspaces list\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/modified\" $WorkspaceList = Invoke-PowerBIRestMethod -Url $url -Method Get | ConvertFrom-Json $k = 1 for($i = 0; $i -lt $WorkspaceList.Length; $i += $batchSize) { # end index $j = $i + $batchSize - 1 if ($j -ge $WorkspaceList.Length) { $j = $WorkspaceList.Length - 1 } $myTmpObj = $WorkspaceList[$i..$j] # show batches \"Batch $k\" $nbLoop = 0 $arg_WorkspaceList = '{ \"workspaces\": [ ' foreach ($record in $myTmpObj) { if($nbLoop -gt 0) { $arg_WorkspaceList += ', ' } $arg_WorkspaceList += '\"'+ $($record.id) +'\"' $nbLoop = $nbLoop + 1 } $arg_WorkspaceList += ' ] }' write-host \"Fetched workspaces: \"+ $arg_WorkspaceList # # Request a full description of our workspaces # write-host \"Ask Power BI server to prepare a full list of infos\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/getInfo?lineage=True&amp;datasourceDetails=True&amp;datasetSchema=True&amp;datasetExpressions=True&amp;getArtifactUsers=True\" $result = Invoke-PowerBIRestMethod -Url $url -Method Post -Body $arg_WorkspaceList | ConvertFrom-Json $scanId = $result.id # Get the scan status # Check with the scanId generated above if the scan is ready or still in progress write-host \"Test if export is available\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/scanStatus/\" + $scanId Do { $result = Invoke-PowerBIRestMethod -Url $url -Method Get | ConvertFrom-Json $status = $result.status write-host $status if($status -ne \"Succeeded\"){ Start-Sleep -s 5 } } while ($status -ne \"Succeeded\") # Download write-host \"Retrieve Export\" $url = \"https://api.powerbi.com/v1.0/myorg/admin/workspaces/scanResult/\" + $scanId $outputfile = $configExportFolderPath +\"\\result_\"+ $k +\".json\" write-host \"Write result in \"+ $outputfile Invoke-PowerBIRestMethod -Url $url -Method Get | Out-file -FilePath $outputfile write-host \"Export Ok\" $k++ } . ",
     "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#powershell-code",
     "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant#powershell-code"
-  },"112": {
+  },"115": {
     "doc": "Power BI Scanner API List and document your Power BI tenant",
     "title": "Power BI Scanner API List and document your Power BI tenant",
     "content": " ",
     "url": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant",
     "relUrl": "/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant"
-  },"113": {
+  },"116": {
     "doc": "SP_Helptext Get DDL information",
     "title": "SP_Helptext Get DDL information",
     "content": "The sp_helptext stored procedure is a system-defined T-SQL procedure that is used to view the definition of a specified object in SQL Server. It is included in all versions of SQL Server and provides an easy way to retrieve the definition of user-defined functions, stored procedures, views, triggers, and other database objects. The sp_helptext procedure output displays the text of the specified object, including comments and white space. With this procedure, developers and database administrators can quickly review and analyze the code of a specific object, which can be useful for debugging, optimization, and documentation purposes. ",
     "url": "/en/sp_helptext/",
     "relUrl": "/en/sp_helptext/"
-  },"114": {
+  },"117": {
     "doc": "SP_Helptext Get DDL information",
     "title": "How to use it?",
     "content": "exec sp_helptext 'SchemaName.ObjectName' . ",
     "url": "/en/sp_helptext/#how-to-use-it",
     "relUrl": "/en/sp_helptext/#how-to-use-it"
-  },"115": {
+  },"118": {
     "doc": "SP_Helptext Get DDL information",
     "title": "Example",
     "content": ". ",
     "url": "/en/sp_helptext/#example",
     "relUrl": "/en/sp_helptext/#example"
-  },"116": {
+  },"119": {
     "doc": "SP_Helptext Get DDL information",
     "title": "sp_help",
     "content": "In addition you can use sp_help procedure to retrieve some interesting informations. ",
     "url": "/en/sp_helptext/#sp_help",
     "relUrl": "/en/sp_helptext/#sp_help"
-  },"117": {
+  },"120": {
     "doc": "I discovered Obsidian and I love it",
     "title": "I discovered Obsidian and I love it",
     "content": ". Six months ago, I made a discovery that has revolutionized my note-taking game. It’s called Obsidian, and it’s a note-taking software that’s unlike any other. It’s free and available here: https://obsidian.md . At first glance, Obsidian might look like your typical note-taking app, but it’s so much more than that. Obsidian is all about customization and making your note-taking experience, just yours. That’s why it’s such a powerful tool for anyone who takes notes, whether you’re a student, writer, or just someone who likes to write things down. One of the things I love most about Obsidian is how easy it is to write and organize notes. The interface is clean and uncluttered, which makes it easy to focus on what’s important. You can add tags and links to your notes, which makes it super easy to find related content later on. And because Obsidian stores all your notes in Markdown files, you can easily export your notes if you ever decide to switch to another software. ",
     "url": "/obsidian/Obsidian",
     "relUrl": "/obsidian/Obsidian"
-  },"118": {
+  },"121": {
     "doc": "I discovered Obsidian and I love it",
     "title": "A second brain!",
     "content": "Obsidian team mention on their website: . A second brain, for you, forever. I heard about the zettelkasten method. This method consists of a collection of notes that are organized according to a system of cross-referencing and indexing. The notes can be about anything, from ideas and insights to quotations and references. The key to zettelkasten is that each note is atomic, meaning that it contains only one idea or piece of information. To be honest, I didn’t really use it that way! But I kept some logic! My daily notes, my project note, I’m rewriting note in a more readable format. First, it gives me an impression of control, which it’s already very cool. I don’t fear to lose anything, and I can read my discoveries and thought when I want to. (If it’s not useful, no worries) . ",
     "url": "/obsidian/Obsidian#a-second-brain",
     "relUrl": "/obsidian/Obsidian#a-second-brain"
-  },"119": {
+  },"122": {
     "doc": "I discovered Obsidian and I love it",
     "title": "A ton of plugin",
     "content": "The magic is not Obsidian by itself! There is a ton of plugin to improve the tool! for example: . | Dataview to query your note like SQL does on a database | Daily note and calendar to write your note on a daily basis and maybe structure them later | Webpage HTML Export to export your note on HTML format and keep the beautiful design of your obsidian theme. and many more (for free) | . ",
     "url": "/obsidian/Obsidian#a-ton-of-plugin",
     "relUrl": "/obsidian/Obsidian#a-ton-of-plugin"
-  },"120": {
+  },"123": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Managing efficiently your tasks with Obsidian and Dataview",
     "content": ". ",
     "url": "/obsidian/Obsdian-dataview-tasks",
     "relUrl": "/obsidian/Obsdian-dataview-tasks"
-  },"121": {
+  },"124": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Table of contents",
     "content": ". | Efficient Task Management for Enhanced Productivity 💼 | Install Dataview 📥 | Usage 📝 | List All Tasks 📋 | List All Open Tasks 🚀 | Displaying Tasks Exclusive to a File (either current or specified) 📁 | Sorting Tasks Using Tags 🏷️ | Capitalization in Tags 🔠 | Task Prioritization Using the #todo Tag 🌟 | Search from a Variable 🔍 | Using Tags Effectively 🏷️ | . ",
     "url": "/obsidian/Obsdian-dataview-tasks#table-of-contents",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#table-of-contents"
-  },"122": {
+  },"125": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Efficient Task Management for Enhanced Productivity 💼",
     "content": "In any profession, mastering task management is the cornerstone to achieving success and maintaining productivity. The digital age has graced us with a plethora of note-taking tools that have revolutionized the way we organize our tasks. One standout is Obsidian — a top-tier note-taking app that boasts the Dataview plugin. With the Dataview plugin, users can: . | Craft custom views 🎨 | Set timely reminders ⏰ | Monitor their progress 📈 | And so much more! | . In the course of this guide, we’ll dive deep into harnessing the power of the Dataview plugin within Obsidian, setting you on the path to optimal productivity. ",
     "url": "/obsidian/Obsdian-dataview-tasks#efficient-task-management-for-enhanced-productivity-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#efficient-task-management-for-enhanced-productivity-"
-  },"123": {
+  },"126": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Install Dataview 📥",
     "content": "You should install the dataview plugin first! Open Obsidian, go to settings &gt; Community plugins &gt; Browse and search for dataview Do not forget to enable it when it’s installed. ",
     "url": "/obsidian/Obsdian-dataview-tasks#install-dataview-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#install-dataview-"
-  },"124": {
+  },"127": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Usage 📝",
     "content": "Now go to a note (new or existing), and write a block code. ```dataview ``` . Alright, currently, nothing’s occurring! . ",
     "url": "/obsidian/Obsdian-dataview-tasks#usage-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#usage-"
-  },"125": {
+  },"128": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "List All Tasks 📋",
     "content": "Insert TASK into the code block you’ve set up, and watch the magic unfold! ✨ . TASK . The provided code showcases all the tasks within your Obsidian Vault. ",
     "url": "/obsidian/Obsdian-dataview-tasks#list-all-tasks-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#list-all-tasks-"
-  },"126": {
+  },"129": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "List All Open Tasks 🚀",
     "content": "To display tasks that are still ongoing (not finished) . TASK WHERE !completed . ",
     "url": "/obsidian/Obsdian-dataview-tasks#list-all-open-tasks-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#list-all-open-tasks-"
-  },"127": {
+  },"130": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Displaying Tasks Exclusive to a File (either current or specified) 📁",
     "content": "Show only the tasks originating from the file we’re currently viewing. TASK WHERE file.path = this.file.path AND !completed . ",
     "url": "/obsidian/Obsdian-dataview-tasks#displaying-tasks-exclusive-to-a-file-either-current-or-specified-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#displaying-tasks-exclusive-to-a-file-either-current-or-specified-"
-  },"128": {
+  },"131": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Sorting Tasks Using Tags 🏷️",
     "content": "Scan the entire Vault for unresolved tasks labeled with the #todo tag. This method facilitates the organization of my tasks based on the project category or specific requirement. I utilize the #perso tag for cataloging personal thoughts, and I have distinct tags for each client and project (occasionally by individual). The usage of my #todo tag is unique, which I’ll elaborate on shortly. TASK WHERE !completed AND contains(text, \"#todo\") SORT text ASC . ",
     "url": "/obsidian/Obsdian-dataview-tasks#sorting-tasks-using-tags-%EF%B8%8F",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#sorting-tasks-using-tags-️"
-  },"129": {
+  },"132": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Capitalization in Tags 🔠",
     "content": "When I access Obsidian from my iPad or iPhone, the initial letter of a tag often gets capitalized automatically. Instead of adjusting it by hand, I’ve tweaked my dataview query to specifically target tags that start with an uppercase letter. TASK WHERE !completed AND contains(upper(text), \"#TODO\") SORT text ASC . ",
     "url": "/obsidian/Obsdian-dataview-tasks#capitalization-in-tags-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#capitalization-in-tags-"
-  },"130": {
+  },"133": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Task Prioritization Using the #todo Tag 🌟",
     "content": "The #todo tag is integral to my workflow. As days progress, I continually add tasks to my Vault. However, at the start of each day, I sift through and determine which tasks warrant immediate attention (or which ones I need to keep at the forefront). I overlay the #todo tag on any existing tags for this purpose. The subsequent query is showcased at the beginning of every Daily note to accentuate these tasks. TASK WHERE !completed AND contains(upper(text), \"#TODO\") SORT text ASC . ",
     "url": "/obsidian/Obsdian-dataview-tasks#task-prioritization-using-the-todo-tag-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#task-prioritization-using-the-todo-tag-"
-  },"131": {
+  },"134": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Search from a Variable 🔍",
     "content": "Previously, that was my method of operation. However, now I lean more towards using #tags. In various notes, you might opt to utilize YAML variables. If so, the code below will be beneficial in fetching a list of uncompleted tasks from notes that have a particular result: . TASK WHERE contains(MOC, YourYAMLVariable) AND !completed SORT file.mtime DESC . This assists in pinpointing tasks associated with the specified YAML variable that haven’t been completed yet. ",
     "url": "/obsidian/Obsdian-dataview-tasks#search-from-a-variable-",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#search-from-a-variable-"
-  },"132": {
+  },"135": {
     "doc": "Managing efficiently your tasks with Obsidian and Dataview",
     "title": "Using Tags Effectively 🏷️",
     "content": "Imagine writing checkbox with multiple #tag For example: . By writing this code into Obsidian . I get this result . Tags become really handy when you use them for different purposes, like identifying a project, naming a person, marking a status, or even setting a category. What I love about this system is its flexibility. You can add these tags in any note, be it your daily thoughts, meeting notes, or just any random jotting. And the best part? You can pull all this tagged information together in one place. I made a central note called Index. This is where I link to all my main content maps, project ideas, or any other major thoughts. I’ve also added several to-do lists right there for easy reference. I hope you’ll find it beneficial and assign meanings to the tags that assist you in your daily routine. 🌟 . ",
     "url": "/obsidian/Obsdian-dataview-tasks#using-tags-effectively-%EF%B8%8F",
     "relUrl": "/obsidian/Obsdian-dataview-tasks#using-tags-effectively-️"
-  },"133": {
+  },"136": {
     "doc": "Organize your External tools",
     "title": "Organize your External tools",
     "content": ". In your journey, you may need additional tools that go beyond the capabilities of what is built into Power BI. This is where external tools for Power BI come in. External tools are add-ons that can be integrated into the Power BI workspace to extend its functionality. They are developed by third-party vendors rather than Microsoft and can be used to enhance data analysis capabilities, provide advanced visuals, and automate various data processing tasks. External tools can come in many forms. They can be standalone executable files, web applications, or plugins that are installed directly into the Power BI desktop application. Some external tools may require a separate license or subscription to use, while others may be free. ",
     "url": "/power-bi/Organize-your-External-tools",
     "relUrl": "/power-bi/Organize-your-External-tools"
-  },"134": {
+  },"137": {
     "doc": "Organize your External tools",
     "title": "Most used External tools",
     "content": ". | Tabular Editor (2.xx - Free version) https://github.com/TabularEditor/TabularEditor | DAX Studio https://daxstudio.org | ALM Toolkit http://alm-toolkit.com | . This tools is pretty useful, it allows you to download and install many different External tools. https://powerbi.tips/product/business-ops . ",
     "url": "/power-bi/Organize-your-External-tools#most-used-external-tools",
     "relUrl": "/power-bi/Organize-your-External-tools#most-used-external-tools"
-  },"135": {
+  },"138": {
     "doc": "Organize your External tools",
     "title": "But!!",
     "content": "Yes! The downside of this! When you install a ton of external tools, just for a test, you can have multiple icons that you no longer use. ",
     "url": "/power-bi/Organize-your-External-tools#but",
     "relUrl": "/power-bi/Organize-your-External-tools#but"
-  },"136": {
+  },"139": {
     "doc": "Organize your External tools",
     "title": "Organize your External tools",
     "content": " ",
     "url": "/power-bi/Organize-your-External-tools",
     "relUrl": "/power-bi/Organize-your-External-tools"
-  },"137": {
+  },"140": {
     "doc": "Organize your External tools",
     "title": "Where to change?",
     "content": "You can organize, remove, rename or change the icon by following this folder on your machine. C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Power BI Desktop\\External Tools . ",
     "url": "/power-bi/Organize-your-External-tools#where-to-change",
     "relUrl": "/power-bi/Organize-your-External-tools#where-to-change"
-  },"138": {
+  },"141": {
     "doc": "Organize your External tools",
     "title": "File name == Alphabeticaly sorted == Ribbon sort",
     "content": ". In the Power BI Ribbon, their file name (which is not the one displayed in Power BI) will be sort alphabeticaly. You can provide a numeric value upfront to help them to be sorted. (This is how sidetools does) . ",
     "url": "/power-bi/Organize-your-External-tools#file-name--alphabeticaly-sorted--ribbon-sort",
     "relUrl": "/power-bi/Organize-your-External-tools#file-name--alphabeticaly-sorted--ribbon-sort"
-  },"139": {
+  },"142": {
     "doc": "Organize your External tools",
     "title": "Inside each file",
     "content": "You can edit each file in your favorite text editor and change the differents value. Image . You can change what’s inside the iconData value and provide a base64 code for you image. It’s possible to generate a base64 text code from an image https://codebeautify.org/image-to-base64-converter . ",
     "url": "/power-bi/Organize-your-External-tools#inside-each-file",
     "relUrl": "/power-bi/Organize-your-External-tools#inside-each-file"
-  },"140": {
+  },"143": {
     "doc": "About Me",
     "title": "Curious about the person behind Lazysnail?",
     "content": "Through Lazysnail, I’ve created a hub to catalog my tools and share my explorations, particularly in Microsoft BI technologies and all things geeky. Connect with me on LinkedIn . The journey began when I started mentoring a younger colleague. Over time, I realized I derived immense joy from imparting knowledge and watching him blossom. Even though he was anything but lethargic or slow-moving, I playfully dubbed him Lazy snail. That’s the inspiration behind the name of my blog and all my pursuits. ",
     "url": "/docs/About#curious-about-the-person-behind-lazysnail",
     "relUrl": "/docs/About#curious-about-the-person-behind-lazysnail"
-  },"141": {
+  },"144": {
     "doc": "About Me",
     "title": "My Journey",
     "content": ". Beyond championing the Star Schema, I have an affinity for neatly written code. My Windows desktop is a reflection of that penchant for order. Should I enable icons, the lone one you’d find is the recycle bin. From diverse programming languages to the realm of Business Intelligence, life has taken me on an intriguing path. I’m often asked: Did I stray too far from my roots? . Actually, I haven’t! Databases, SQL Queries, and BI technologies may not follow identical logic but echo similar principles: . - Maintain clean code - Avoid code redundancy - Keep complexity at a comprehensible level - Prioritize performance - Always keep users in mind . Given these beliefs, I proudly identify as a BI developer! . ",
     "url": "/docs/About#my-journey",
     "relUrl": "/docs/About#my-journey"
-  },"142": {
+  },"145": {
     "doc": "About Me",
     "title": "A Glimpse into My Personal Life",
     "content": ". Although it may sound unusual, my job is my passion! If it’s not yours, perhaps Power BI might change your perspective. Life blessed me with two kids: Pauline and Antoine. They’re my greatest joys and challenges rolled into one. Fellow parents might resonate with this sentiment. Running is another passion of mine. The camaraderie in the running community is unparalleled. Having completed multiple Marathons and Half Marathons, the thrill for me lies in challenging myself and relishing the moment I cross the finish line. ",
     "url": "/docs/About#a-glimpse-into-my-personal-life",
     "relUrl": "/docs/About#a-glimpse-into-my-personal-life"
-  },"143": {
+  },"146": {
     "doc": "About Me",
     "title": "About Me",
     "content": " ",
     "url": "/docs/About",
     "relUrl": "/docs/About"
-  },"144": {
+  },"147": {
     "doc": "Fabric",
     "title": "Fabric",
     "content": " ",
     "url": "/docs/Fabric",
     "relUrl": "/docs/Fabric"
-  },"145": {
+  },"148": {
     "doc": "Links",
     "title": "List of links",
     "content": "My colleagues often asked me What tool do you use for this? It’s also a list for me . ",
     "url": "/docs/Links#list-of-links",
     "relUrl": "/docs/Links#list-of-links"
-  },"146": {
+  },"149": {
     "doc": "Links",
     "title": "Data Modelling",
     "content": "DBDiagram.io https://dbdiagram.io Design a database without effort . ",
     "url": "/docs/Links#data-modelling",
     "relUrl": "/docs/Links#data-modelling"
-  },"147": {
+  },"150": {
     "doc": "Links",
     "title": "Presentation",
     "content": "Microsoft ZoomIt https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit Zoom, annotate and record your screen . ",
     "url": "/docs/Links#presentation",
     "relUrl": "/docs/Links#presentation"
-  },"148": {
+  },"151": {
     "doc": "Links",
     "title": "Screenshot",
     "content": "Sharex https://getsharex.com Screenshot tool: PNG, GIF and AVI . ",
     "url": "/docs/Links#screenshot",
     "relUrl": "/docs/Links#screenshot"
-  },"149": {
+  },"152": {
     "doc": "Links",
     "title": "Misc",
     "content": "Microsoft Power Toys https://learn.microsoft.com/en-us/windows/powertoys/install Many different tools in 1 app . | Keep your screen / PC awake | Fancy zone (manage your window size and location) | Image resizer | Power rename (rename files in a batch mode) | Keyboard manager | Mouse utilities | … | . ",
     "url": "/docs/Links#misc",
     "relUrl": "/docs/Links#misc"
-  },"150": {
+  },"153": {
     "doc": "Links",
     "title": "Links",
     "content": " ",
     "url": "/docs/Links",
     "relUrl": "/docs/Links"
-  },"151": {
+  },"154": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Backtick key doesn’t work like expecting on my macbook",
     "content": "Since I switch my PC on windows to a macbook, I had some problem with the backtick caracter. ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#backtick-key-doesnt-work-like-expecting-on-my-macbook",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#backtick-key-doesnt-work-like-expecting-on-my-macbook"
-  },"152": {
+  },"155": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Writing code in Teams didn’t work",
     "content": " ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-code-in-teams-didnt-work",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-code-in-teams-didnt-work"
-  },"153": {
+  },"156": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Writing some caracters after give me an accentuated caracter",
     "content": "a e u i o . à è ù ì ò . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-some-caracters-after-give-me-an-accentuated-caracter",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-some-caracters-after-give-me-an-accentuated-caracter"
-  },"154": {
+  },"157": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Can’t have a pair of the first caracters",
     "content": "I had to press manually two times the key and I had some weird behavior when I wanted a code block (6 backtip) . Like this block of code . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#cant-have-a-pair-of-the-first-caracters",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#cant-have-a-pair-of-the-first-caracters"
-  },"155": {
+  },"158": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "The solution",
     "content": "To fix this I installed a software named Ukelele . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#the-solution",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#the-solution"
-  },"156": {
+  },"159": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Installation",
     "content": "From brew . For those who use brew, use this command brew install Ukelele . From their website . https://software.sil.org/ukelele/ . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#installation",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#installation"
-  },"157": {
+  },"160": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Method",
     "content": "Follow the steps . Open Ukelele . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#method",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#method"
-  },"158": {
+  },"161": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Backtick key doesn't work like expecting on my macbook",
     "content": " ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected"
-  },"159": {
+  },"162": {
     "doc": "Obsidian",
     "title": "Obsidian",
     "content": ". | Managing efficiently your tasks with Obsidian and Dataview | I discovered Obsidian and I love it | . ",
     "url": "/docs/Obsidian",
     "relUrl": "/docs/Obsidian"
-  },"160": {
+  },"163": {
     "doc": "Other",
     "title": "Other",
     "content": ". | How to stay always “Available” in Microsoft Teams with Excel | How I optimized my learning time with Instapaper | . ",
     "url": "/docs/Other",
     "relUrl": "/docs/Other"
-  },"161": {
+  },"164": {
     "doc": "Power BI",
     "title": "Power BI",
     "content": ". | Organize your External tools | Power BI Scanner API List and document your Power BI tenant | Create a gradient background for Power BI | Power BI Sidetools extensions: A Must have! | Filter a Power BI report passing parameters through URL | LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX | Power BI Visuals List: Which Graphic to choose? | Power BI: Duplicate of Duplicate - The best way to test your reports and measures | DAX is case insensitive | Power BI Interview questions: a different way to know your applicants | Your data model first! | Power BI Create a Calendar table automatically | Power BI - Your model matters | PIT Point In Time | Pie Chart is bad! | Power BI Desktop: Print in the A4 size | . ",
     "url": "/docs/Power-BI",
     "relUrl": "/docs/Power-BI"
-  },"162": {
+  },"165": {
     "doc": "SQL Server",
     "title": "SQL Server",
     "content": ". | SP_Helptext Get DDL information | Management Studio - Faster with multiple select | SSIS - Create Environment from Packages variables | SSMS - Query Shortcuts : Feel like a superman developer | SSIS - Log Execution time | SSIS - Export SSIS Catalog Environments | SP_WHO3 - Running Queries (Toolbox) | . ",
     "url": "/docs/SQL%20Server",
     "relUrl": "/docs/SQL%20Server"
-  },"163": {
+  },"166": {
     "doc": "YouTube",
     "title": "YouTube",
     "content": "I’m sharing quick tips on my personal YouTube Channel, and you can also discover a lot of meetup on the Club Power BI Channel. | | | | . | Lazysnail | Club Power BI | DataSprouts | . | My channel, where I share multiple quick tips video around Power BI and Microsoft data in general | Videos from our Club Power BI - Brussels meetup group and many other french cities. (in French) | DataSprouts is a group of Belgium Data consultant, it’s a place where we discuss about Microsoft Data (in French) | . ",
     "url": "/docs/Youtube",
     "relUrl": "/docs/Youtube"
-  },"164": {
+  },"167": {
     "doc": "Home",
     "title": "Home",
     "content": ". ** 🪐 Welcome to the Universe of Data Enthusiasts! . Dive into my explorations and reflections on Microsoft Fabric, Power BI, SQL Server, Obsidian, and the vast realm of Data. YouTube Practice DAX . ",
     "url": "/",
     "relUrl": "/"
-  },"165": {
+  },"168": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Jekyll Theme - Cheat sheet",
     "content": " ",
     "url": "/code",
     "relUrl": "/code"
-  },"166": {
+  },"169": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": ". | | Labels | Callouts | Buttons | Misc . | Comment | New page header | Resize and center images | . | . ",
     "url": "/code#table-of-contents",
     "relUrl": "/code#table-of-contents"
-  },"167": {
+  },"170": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": "## {: .no_toc .text-delta } 1. TOC {:toc} --- . ",
     "url": "/code#table-of-contents-1",
     "relUrl": "/code#table-of-contents-1"
-  },"168": {
+  },"171": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Labels",
     "content": "Default label . Default label {: .label } . Blue label . Blue label {: .label .label-blue } . Green label . Green label {: .label .label-green } . Purple label . Purple label {: .label .label-purple } . Yellow label . Yellow label {: .label .label-yellow } . Red label . Red label {: .label .label-red } . ",
     "url": "/code#labels",
     "relUrl": "/code#labels"
-  },"169": {
+  },"172": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Callouts",
     "content": "Yellow . Text here . {: .highlight-title } &gt; Yellow &gt; &gt; Text here . Blue . Text here . {: .important-title } &gt; Blue &gt; &gt; Text here . Green . Text here . {: .new-title } &gt; Green &gt; &gt; Text here . Violet . Text here . {: .note-title } &gt; Violet &gt; &gt; Text here . Red . Text here . {: .warning-title } &gt; Red &gt; &gt; Text here . ",
     "url": "/code#callouts",
     "relUrl": "/code#callouts"
-  },"170": {
+  },"173": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Buttons",
     "content": "Grey button Purple button Blue button Green button White button . [Grey button](https://just-the-docs.com){: .btn } [Purple button](https://just-the-docs.com){: .btn .btn-purple } [Blue button](https://just-the-docs.com){: .btn .btn-blue } [Green button](https://just-the-docs.com){: .btn .btn-green } [White button](https://just-the-docs.com){: .btn .btn-outline } . ",
     "url": "/code#buttons",
     "relUrl": "/code#buttons"
-  },"171": {
+  },"174": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Misc",
     "content": "Comment . { % comment % } COMMENT HERE { % endcomment % } . New page header . --- parent: Other --- # Title of the page {: .no_toc } ## {: .no_toc .text-delta } 1. TOC {:toc} --- ## First topic . Resize and center images . {: .image90 } {: .image80 } {: .image70 } {: .image60 } {: .image50 } {: .image40 } {: .image30 } . ",

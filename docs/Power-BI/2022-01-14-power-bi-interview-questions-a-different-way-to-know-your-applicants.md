@@ -22,7 +22,7 @@ One day you will have to recruit or will be involved in a recruitment process fo
 ---
 
 {:refdef: style="text-align: center;"}
-  ![LazySnail]({{ site.baseurl }}/assets/2022/01/929FDA43-A2D1-4A82-9C1B-46054865BDAB.jpeg)
+  ![LazySnail](../../assets/2022/01/929FDA43-A2D1-4A82-9C1B-46054865BDAB.jpeg)
 {: refdef}
 
 ## Questions list

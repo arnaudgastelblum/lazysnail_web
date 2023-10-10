@@ -11,6 +11,8 @@ parent: Power BI
 # {{ page.title }}
 {: .fs-9 }
 
+![Alt text](../../assets/2023/DAXcase_500.png){: .image40 }
+
 
 This week with my colleague <a href="https://www.linkedin.com/in/vincent-philippot-227bb2139/" data-type="URL" data-id="https://www.linkedin.com/in/vincent-philippot-227bb2139/">Vincent Philipot</a>, we learned something that many of you already know. (But maybe not!)
 
@@ -26,13 +28,13 @@ You can download the [Power BI file on GitHub](https://github.com/arnaudgastelbl
 
 Here is a short description available on <a href="https://en.wikipedia.org/wiki/Case_sensitivity" data-type="URL" data-id="https://en.wikipedia.org/wiki/Case_sensitivity">Wikipedia</a>
 
-<img src="{{ site.baseurl }}/assets/2022/01/image.png" alt="" class="wp-image-5136" />
+<img src="../../assets/2022/01/image.png" alt="" class="wp-image-5136" />
 
 But because an example is worth a thousand words, here is some screenshot. (<a href="https://lazysnail.net/en/lazydax/" data-type="URL" data-id="https://lazysnail.net/en/lazydax/">You can download this example in the lazydax file</a>)
 
 In our dataset we have 10 differents Products with a **ProductCategory = Vegetable**
 
-<img src="{{ site.baseurl }}/assets/2022/01/image-1.png" alt="" class="wp-image-5139" />
+<img src="../../assets/2022/01/image-1.png" alt="" class="wp-image-5139" />
 
 ---
 
@@ -73,7 +75,7 @@ Nb VeGeTaBlE __ =
 
 And when me and most of my colleagues would expect a different behavior, **results are the same**
 
-<img src="{{ site.baseurl }}/assets/2022/01/image-2.png" alt="" class="wp-image-5144" />
+<img src="../../assets/2022/01/image-2.png" alt="" class="wp-image-5144" />
 
 
 ## Conclusion

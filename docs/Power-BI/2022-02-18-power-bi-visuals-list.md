@@ -43,7 +43,7 @@ You can download the [Power BI file on GitHub](https://github.com/arnaudgastelbl
 <p><!-- /wp:heading --></p>
 <p><!-- wp:image {"align":"center","id":5178,"sizeSlug":"full","linkDestination":"none"} --></p>
 <div class="wp-block-image">
-<figure class="aligncenter size-full"><img src="{{ site.baseurl }}/assets/2022/02/image-6.png" alt="" class="wp-image-5178" /></figure>
+<figure class="aligncenter size-full"><img src="../../assets/2022/02/image-6.png" alt="" class="wp-image-5178" /></figure>
 </div>
 <p><!-- /wp:image --></p>
 <p><!-- wp:paragraph --></p>

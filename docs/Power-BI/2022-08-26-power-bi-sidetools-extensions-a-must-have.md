@@ -117,10 +117,10 @@ You download Visual studio code (for free) on [https://code.visualstudio.com/dow
 
 <!-- wp:gallery {"linkTo":"none"} -->
 <figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":5346,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="{{ site.baseurl }}/assets/2022/08/10-Power-Query-Extension-1-1024x309.png" alt="" class="wp-image-5346" /></figure>
+<figure class="wp-block-image size-large"><img src="../../assets/2022/08/10-Power-Query-Extension-1-1024x309.png" alt="" class="wp-image-5346" /></figure>
 <!-- /wp:image -->
 <!-- wp:image {"id":5345,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="{{ site.baseurl }}/assets/2022/08/11-DAX-extension-1-1024x349.png" alt="" class="wp-image-5345" /></figure>
+<figure class="wp-block-image size-large"><img src="../../assets/2022/08/11-DAX-extension-1-1024x349.png" alt="" class="wp-image-5345" /></figure>
 <!-- /wp:image --><br />
 <figcaption class="blocks-gallery-caption">Extension for M and DAX</figcaption>
 </figure>

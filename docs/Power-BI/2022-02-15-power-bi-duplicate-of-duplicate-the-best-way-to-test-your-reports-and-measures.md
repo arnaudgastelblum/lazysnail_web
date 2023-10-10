@@ -63,7 +63,7 @@ parent: Power BI
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center"} --></p>
 <div class="wp-block-image">
-<figure class="aligncenter"><img src="{{ site.baseurl }}/assets/2022/02/f6e80202aad027758143bbb97a6f856f.png" alt="Introduction To Textures in Direct3D 11 (Windows) | Data design, Texture,  Visualisation" /></figure>
+<figure class="aligncenter"><img src="../../assets/2022/02/f6e80202aad027758143bbb97a6f856f.png" alt="Introduction To Textures in Direct3D 11 (Windows) | Data design, Texture,  Visualisation" /></figure>
 </div>
 <p><!-- /wp:image --></p>
 <p><!-- wp:paragraph --></p>
@@ -94,7 +94,7 @@ parent: Power BI
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center"} --></p>
 <div class="wp-block-image">
-<figure class="aligncenter"><img src="{{ site.baseurl }}/assets/2022/02/83827-200.png" alt="debug Icon - Download debug Icon 83827 | Noun Project" /></figure>
+<figure class="aligncenter"><img src="../../assets/2022/02/83827-200.png" alt="debug Icon - Download debug Icon 83827 | Noun Project" /></figure>
 </div>
 <p><!-- /wp:image --></p>
 <p><!-- wp:paragraph --></p>
@@ -127,7 +127,7 @@ parent: Power BI
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center"} --></p>
 <div class="wp-block-image">
-<figure class="aligncenter"><img src="{{ site.baseurl }}/assets/2022/02/Metal-Cover-VGA-Touch-Screen-Monitor-voor-Industri-le-PC-Mini-pc-monitor-MINI-itx.jpg" alt="Metal Cover VGA Touch Screen Monitor voor Industriële PC. Mini pc monitor  MINI itx Display|touch screen monitor|vga touch screentouch screen -  AliExpress" /></figure>
+<figure class="aligncenter"><img src="../../assets/2022/02/Metal-Cover-VGA-Touch-Screen-Monitor-voor-Industri-le-PC-Mini-pc-monitor-MINI-itx.jpg" alt="Metal Cover VGA Touch Screen Monitor voor Industriële PC. Mini pc monitor  MINI itx Display|touch screen monitor|vga touch screentouch screen -  AliExpress" /></figure>
 </div>
 <p><!-- /wp:image --></p>
 <p><!-- wp:paragraph --></p>

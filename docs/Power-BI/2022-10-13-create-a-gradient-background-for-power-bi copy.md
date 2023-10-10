@@ -59,7 +59,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>In the toolbox, choose the Gradient tool</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5356,"width":123,"height":281,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="{{ site.baseurl }}/assets/2022/10/1.png" alt="" class="wp-image-5356" width="123" height="281" /><br />
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/1.png" alt="" class="wp-image-5356" width="123" height="281" /><br />
 <figcaption>Gradient tool</figcaption>
 </figure>
 <p><!-- /wp:image --></p>
@@ -67,7 +67,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>Now that the gradient tool is selected, go to the Colors pane and click "More"</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5357,"width":288,"height":391,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="{{ site.baseurl }}/assets/2022/10/2_Primary_Secondary.png" alt="" class="wp-image-5357" width="288" height="391" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/2_Primary_Secondary.png" alt="" class="wp-image-5357" width="288" height="391" /></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:spacer {"height":"33px"} --></p>
 <div style="height:33px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -82,7 +82,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>When it's done, <strong>select the "Secondary" color</strong>. I usually paste the same color as the primary but change the "V" slider to a more lighter value (but very close)</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5358,"width":484,"height":412,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="{{ site.baseurl }}/assets/2022/10/3_Hexa.png" alt="" class="wp-image-5358" width="484" height="412" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/3_Hexa.png" alt="" class="wp-image-5358" width="484" height="412" /></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:spacer {"height":"24px"} --></p>
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -91,7 +91,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>Go to your canvas and click on the left button of your mouse, drag the cursor and release the button.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5359,"width":622,"height":467,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="{{ site.baseurl }}/assets/2022/10/4_Draw-1024x770.png" alt="" class="wp-image-5359" width="622" height="467" /></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="../../assets/2022/10/4_Draw-1024x770.png" alt="" class="wp-image-5359" width="622" height="467" /></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:spacer {"height":"37px"} --></p>
 <div style="height:37px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -100,5 +100,5 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>Save this image into a .png file and use it in Power BI Desktop.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5360,"width":666,"height":400,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="{{ site.baseurl }}/assets/2022/10/5_PowerBI-1024x615.png" alt="" class="wp-image-5360" width="666" height="400" /></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="../../assets/2022/10/5_PowerBI-1024x615.png" alt="" class="wp-image-5360" width="666" height="400" /></figure>
 <p><!-- /wp:image --></p>

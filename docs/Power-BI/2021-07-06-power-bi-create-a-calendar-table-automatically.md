@@ -11,13 +11,21 @@ parent: Power BI
 # {{ page.title }}
 {: .fs-9 }
 
-In our models, the best way to deals with dates and DAX intelligence functions is to use a Calendar Table (Dimension). Good news, this table can be created in 2 clicks with Power Query (Transform Data) in Power BI!
+![Alt text](../../assets/2023/DateTable_500.png){: .image40 }
 
-Go transform data and right click on Queries to create a new Blank Query
+## Calendar Dimension
 
-<img src="{{ site.baseurl }}/assets/2021/07/image-2.png" alt="" class="wp-image-4920" />
+In our Power BI datasets, the best way to deals with dates and DAX intelligence functions is to use a Calendar Table.
+This table should be link to your Fact table.
+Good news, this table can be created in 2 clicks with Power Query (Transform Data) in Power BI!
 
-*Copy / Paste this code*
+## How to create the table
+
+Go to `transform data` and right click on `Queries` to create a new Blank Query
+
+![](../../assets/2021/07/image-2.png){: .image50 }
+
+Now Copy the following code and paste it to the blank query create.
 
 {% highlight html %}{% raw %}
 let CreateDateTable = (StartDate as date, EndDate as date, optional Culture as nullable text) as table =>
@@ -44,15 +52,26 @@ in
   CreateDateTable
 {% endraw %}{% endhighlight %}
 
-<img src="{{ site.baseurl }}/assets/2021/07/image-3.png" alt="" class="wp-image-4921" width="818" height="303" />
-Choose a start date and an EndDate, click Invoke
 
-<img src="{{ site.baseurl }}/assets/2021/07/image-1-1024x366.png" alt="" class="wp-image-4919" />
+## Run the function
+
+
+![](../../assets/2021/07/image-3.png){: .image90 }
+
+Choose a `StartDate` and an `EndDate`, click Invoke
+
+
+![](../../assets/2021/07/image-1-1024x366.png){: .image90 }
+
 That's it! You have a beautiful calendar table.
 
 
-<figure class="wp-block-image size-large"><img src="{{ site.baseurl }}/assets/2021/07/image-4.png" alt="" class="wp-image-4922" /><br />
-<figcaption>Do not forget to mark this table as a data table</figcaption>
-</figure>
 
-<strong><span class="has-inline-color has-vivid-purple-color">Credit: I found this code on internet many years ago and used it in the LazyDAX file. I think I changed it, but I can't redirect and credit the one who created it. I think it can help you a lot, that's why I'm sharing it with you :)</span></strong>
+![](../../assets/2021/07/image-4.png){: .image90 }
+
+Do not forget to mark this table as a data table
+
+{: .note :}
+> Credit: I found this code on internet many years ago and used it in the LazyDAX file. 
+> I changed it, but I can't redirect and credit the one who created it. 
+> I think it can help you a lot, that's why I'm sharing it with you :)
