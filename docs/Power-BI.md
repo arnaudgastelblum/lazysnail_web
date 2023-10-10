@@ -4,11 +4,10 @@ title: Power BI
 nav_order: 3
 has_children: false
 ---
-{:refdef: style="text-align: center;"}
-  ![Laptop PBI](../assets/laptop_PBI_25pct.png)
-{: refdef}
-
 # Power BI
+
+![Alt text](../assets/2023/PowerBI_IceCream_500.png){: .image60 }
+
 
 
 - [Organize your External tools](/power-bi/Organize-your-External-tools)

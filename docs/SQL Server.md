@@ -6,8 +6,7 @@ has_children: false
 ---
 # SQL Server
 
-![Alt text](../assets/2023/LazysnailSQL.png){: .image60 }
-
+![Alt text](../assets/2023/SQL-Server_500.png){: .image50}
 
 - [SP_Helptext Get DDL information](/en/sp_helptext/)
 - [Management Studio - Faster with multiple select](/en/management-studio-faster-with-multiple-select/)

@@ -956,87 +956,75 @@
     "doc": "Obsidian",
     "title": "Obsidian",
     "content": ". | Managing efficiently your tasks with Obsidian and Dataview | I discovered Obsidian and I love it | . ",
-    "url": "/docs/Obsidian#obsidian",
-    "relUrl": "/docs/Obsidian#obsidian"
-  },"160": {
-    "doc": "Obsidian",
-    "title": "Obsidian",
-    "content": ". ",
     "url": "/docs/Obsidian",
     "relUrl": "/docs/Obsidian"
-  },"161": {
+  },"160": {
     "doc": "Other",
     "title": "Other",
     "content": ". | How to stay always “Available” in Microsoft Teams with Excel | How I optimized my learning time with Instapaper | . ",
     "url": "/docs/Other",
     "relUrl": "/docs/Other"
-  },"162": {
+  },"161": {
     "doc": "Power BI",
     "title": "Power BI",
     "content": ". | Organize your External tools | Power BI Scanner API List and document your Power BI tenant | Create a gradient background for Power BI | Power BI Sidetools extensions: A Must have! | Filter a Power BI report passing parameters through URL | LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX | Power BI Visuals List: Which Graphic to choose? | Power BI: Duplicate of Duplicate - The best way to test your reports and measures | DAX is case insensitive | Power BI Interview questions: a different way to know your applicants | Your data model first! | Power BI Create a Calendar table automatically | Power BI - Your model matters | PIT Point In Time | Pie Chart is bad! | Power BI Desktop: Print in the A4 size | . ",
-    "url": "/docs/Power-BI#power-bi",
-    "relUrl": "/docs/Power-BI#power-bi"
-  },"163": {
-    "doc": "Power BI",
-    "title": "Power BI",
-    "content": ". ",
     "url": "/docs/Power-BI",
     "relUrl": "/docs/Power-BI"
-  },"164": {
+  },"162": {
     "doc": "SQL Server",
     "title": "SQL Server",
     "content": ". | SP_Helptext Get DDL information | Management Studio - Faster with multiple select | SSIS - Create Environment from Packages variables | SSMS - Query Shortcuts : Feel like a superman developer | SSIS - Log Execution time | SSIS - Export SSIS Catalog Environments | SP_WHO3 - Running Queries (Toolbox) | . ",
     "url": "/docs/SQL%20Server",
     "relUrl": "/docs/SQL%20Server"
-  },"165": {
+  },"163": {
     "doc": "YouTube",
     "title": "YouTube",
     "content": "I’m sharing quick tips on my personal YouTube Channel, and you can also discover a lot of meetup on the Club Power BI Channel. | | | | . | Lazysnail | Club Power BI | DataSprouts | . | My channel, where I share multiple quick tips video around Power BI and Microsoft data in general | Videos from our Club Power BI - Brussels meetup group and many other french cities. (in French) | DataSprouts is a group of Belgium Data consultant, it’s a place where we discuss about Microsoft Data (in French) | . ",
     "url": "/docs/Youtube",
     "relUrl": "/docs/Youtube"
-  },"166": {
+  },"164": {
     "doc": "Home",
     "title": "Home",
     "content": ". ** 🪐 Welcome to the Universe of Data Enthusiasts! . Dive into my explorations and reflections on Microsoft Fabric, Power BI, SQL Server, Obsidian, and the vast realm of Data. YouTube Practice DAX . ",
     "url": "/",
     "relUrl": "/"
-  },"167": {
+  },"165": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Jekyll Theme - Cheat sheet",
     "content": " ",
     "url": "/code",
     "relUrl": "/code"
-  },"168": {
+  },"166": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": ". | | Labels | Callouts | Buttons | Misc . | Comment | New page header | Resize and center images | . | . ",
     "url": "/code#table-of-contents",
     "relUrl": "/code#table-of-contents"
-  },"169": {
+  },"167": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": "## {: .no_toc .text-delta } 1. TOC {:toc} --- . ",
     "url": "/code#table-of-contents-1",
     "relUrl": "/code#table-of-contents-1"
-  },"170": {
+  },"168": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Labels",
     "content": "Default label . Default label {: .label } . Blue label . Blue label {: .label .label-blue } . Green label . Green label {: .label .label-green } . Purple label . Purple label {: .label .label-purple } . Yellow label . Yellow label {: .label .label-yellow } . Red label . Red label {: .label .label-red } . ",
     "url": "/code#labels",
     "relUrl": "/code#labels"
-  },"171": {
+  },"169": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Callouts",
     "content": "Yellow . Text here . {: .highlight-title } &gt; Yellow &gt; &gt; Text here . Blue . Text here . {: .important-title } &gt; Blue &gt; &gt; Text here . Green . Text here . {: .new-title } &gt; Green &gt; &gt; Text here . Violet . Text here . {: .note-title } &gt; Violet &gt; &gt; Text here . Red . Text here . {: .warning-title } &gt; Red &gt; &gt; Text here . ",
     "url": "/code#callouts",
     "relUrl": "/code#callouts"
-  },"172": {
+  },"170": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Buttons",
     "content": "Grey button Purple button Blue button Green button White button . [Grey button](https://just-the-docs.com){: .btn } [Purple button](https://just-the-docs.com){: .btn .btn-purple } [Blue button](https://just-the-docs.com){: .btn .btn-blue } [Green button](https://just-the-docs.com){: .btn .btn-green } [White button](https://just-the-docs.com){: .btn .btn-outline } . ",
     "url": "/code#buttons",
     "relUrl": "/code#buttons"
-  },"173": {
+  },"171": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Misc",
     "content": "Comment . { % comment % } COMMENT HERE { % endcomment % } . New page header . --- parent: Other --- # Title of the page {: .no_toc } ## {: .no_toc .text-delta } 1. TOC {:toc} --- ## First topic . Resize and center images . {: .image90 } {: .image80 } {: .image70 } {: .image60 } {: .image50 } {: .image40 } {: .image30 } . ",
