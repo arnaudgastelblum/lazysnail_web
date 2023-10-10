@@ -4,52 +4,50 @@ title: About Me
 nav_order: 9
 has_toc: true
 ---
-# Hey you want to know who I am?
 
-With Lazysnail, I wanted to create a place where I can find my toolbox and share my discoveries around Microsoft BI technologies and geek stuff.
+
+# Curious about the person behind Lazysnail?
+
+Through Lazysnail, I've created a hub to catalog my tools and share my explorations, particularly in Microsoft BI technologies and all things geeky.
 {: .fs-6 .fw-300 }
 
-[LinkedIn](https://www.linkedin.com/in/arnaud-gastelblum/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[Connect with me on LinkedIn](https://www.linkedin.com/in/arnaud-gastelblum/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 
 ---
 
+{: .note }
+The journey began when I started mentoring a younger colleague. Over time, I realized I derived immense joy from imparting knowledge and watching him blossom. Even though he was anything but lethargic or slow-moving, I playfully dubbed him `Lazy snail`. That's the inspiration behind the name of my blog and all my pursuits.
 
-
-{: .note :}
-A few years ago, I started to share my knowledge with a young colleague. Day after day, I understood that I had more pleasure to explain and see his crazy improvement instead of doing by myself. This guy was not Lazy and slow like a snail, but I gave him this little nickname `Lazy snail`. This how I took the name for my blog and all my activities. 
-
-
-## What's the story?
+## My Journey
 
 {:refdef: style="text-align: center;"}
   ![Arnaud](../../assets/2023/Arnaud_Cartoon.png)
 {: refdef}
 
-I’m not only a Star Schema defender, but I also love when code is well aligned. My Windows desktop is clean, and if I don’t disable desktop icons, then you can only see my recycle bin icon.
+Beyond championing the Star Schema, I have an affinity for neatly written code. My Windows desktop is a reflection of that penchant for order. Should I enable icons, the lone one you'd find is the recycle bin.
 
-I have a strong developer background in multiple (funny or not) languages. Life has led me from code to the Business Intelligence world.
+From diverse programming languages to the realm of Business Intelligence, life has taken me on an intriguing path.
 
-Often, I still have to answer this question: **Why did I go so far and denial my own nature?**
+I'm often asked: **Did I stray too far from my roots?**
 
-Well, it’s not so far! Databases, SQL Queries, BI technologies don’t share the same logic but definitely the same patterns.
+Actually, I haven't! Databases, SQL Queries, and BI technologies may not follow identical logic but echo similar principles:
 
-```
-    Clean your code
-    Do not repeat your code
-    Keep complexity understandable
-    Think about performance
-    Do not forget your users
-```
+    - Maintain clean code
+    - Avoid code redundancy
+    - Keep complexity at a comprehensible level
+    - Prioritize performance
+    - Always keep users in mind
 
-Anyway, for all of these reasons, I’m a **BI developer**!
+Given these beliefs, I proudly identify as a **BI developer**!
 
+## A Glimpse into My Personal Life
 
-## and my life?
+![Alt text](<../assets/2023/AboutMe_Illustration copy_500.png>){: .image40 }
 
-I’m strange, but my passion is my job! Not you?? Then you should give a try to **Power BI**!
+Although it may sound unusual, my job is my passion! If it's not yours, perhaps **Power BI** might change your perspective.
 
-I have 2 kids: Pauline and Antoine who are the best and the worst things in my life. Dear parents, do you understand my thoughts?
+Life blessed me with two kids: Pauline and Antoine. They're my greatest joys and challenges rolled into one. Fellow parents might resonate with this sentiment.
 
-I like running and all the sharing moments you can have in this community. I did multiple Marathon and Half Marathon, my pleasure is to fight myself and cross the finish line.
+Running is another passion of mine. The camaraderie in the running community is unparalleled. Having completed multiple Marathons and Half Marathons, the thrill for me lies in challenging myself and relishing the moment I cross the finish line.
 
 

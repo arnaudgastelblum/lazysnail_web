@@ -7,13 +7,13 @@ permalink: /
 ---
 
 {:refdef: style="text-align: center;"}
-  ![LazySnail](assets/logo_lazysnail.png)
+![Lazysnail](assets/logo_lazysnail.png)
 {: refdef}
 
-{: .note-title } 
->**   You landed on a data lover web page!
+{: .note-title }
+>** 🪐 Welcome to the Universe of Data Enthusiasts!
 >
-> I’m sharing my discoveries and thought about **Microsoft Power BI**, **SQL Server**, **Obsidian** and **Data** in general.
+> Dive into my explorations and reflections on **Microsoft Fabric**, **Power BI**, **SQL Server**, **Obsidian**, and the vast realm of **Data**.
 
 {:refdef: style="text-align: center;"}
   [YouTube](docs/Youtube){: .btn .btn-purple .mr-4  } 

@@ -840,22 +840,22 @@
     "relUrl": "/power-bi/Organize-your-External-tools#inside-each-file"
   },"140": {
     "doc": "About Me",
-    "title": "Hey you want to know who I am?",
-    "content": "With Lazysnail, I wanted to create a place where I can find my toolbox and share my discoveries around Microsoft BI technologies and geek stuff. LinkedIn . A few years ago, I started to share my knowledge with a young colleague. Day after day, I understood that I had more pleasure to explain and see his crazy improvement instead of doing by myself. This guy was not Lazy and slow like a snail, but I gave him this little nickname Lazy snail. This how I took the name for my blog and all my activities.  . ",
-    "url": "/docs/About#hey-you-want-to-know-who-i-am",
-    "relUrl": "/docs/About#hey-you-want-to-know-who-i-am"
+    "title": "Curious about the person behind Lazysnail?",
+    "content": "Through Lazysnail, I’ve created a hub to catalog my tools and share my explorations, particularly in Microsoft BI technologies and all things geeky. Connect with me on LinkedIn . The journey began when I started mentoring a younger colleague. Over time, I realized I derived immense joy from imparting knowledge and watching him blossom. Even though he was anything but lethargic or slow-moving, I playfully dubbed him Lazy snail. That’s the inspiration behind the name of my blog and all my pursuits. ",
+    "url": "/docs/About#curious-about-the-person-behind-lazysnail",
+    "relUrl": "/docs/About#curious-about-the-person-behind-lazysnail"
   },"141": {
     "doc": "About Me",
-    "title": "What’s the story?",
-    "content": ". I’m not only a Star Schema defender, but I also love when code is well aligned. My Windows desktop is clean, and if I don’t disable desktop icons, then you can only see my recycle bin icon. I have a strong developer background in multiple (funny or not) languages. Life has led me from code to the Business Intelligence world. Often, I still have to answer this question: Why did I go so far and denial my own nature? . Well, it’s not so far! Databases, SQL Queries, BI technologies don’t share the same logic but definitely the same patterns. Clean your code Do not repeat your code Keep complexity understandable Think about performance Do not forget your users . Anyway, for all of these reasons, I’m a BI developer! . ",
-    "url": "/docs/About#whats-the-story",
-    "relUrl": "/docs/About#whats-the-story"
+    "title": "My Journey",
+    "content": ". Beyond championing the Star Schema, I have an affinity for neatly written code. My Windows desktop is a reflection of that penchant for order. Should I enable icons, the lone one you’d find is the recycle bin. From diverse programming languages to the realm of Business Intelligence, life has taken me on an intriguing path. I’m often asked: Did I stray too far from my roots? . Actually, I haven’t! Databases, SQL Queries, and BI technologies may not follow identical logic but echo similar principles: . - Maintain clean code - Avoid code redundancy - Keep complexity at a comprehensible level - Prioritize performance - Always keep users in mind . Given these beliefs, I proudly identify as a BI developer! . ",
+    "url": "/docs/About#my-journey",
+    "relUrl": "/docs/About#my-journey"
   },"142": {
     "doc": "About Me",
-    "title": "and my life?",
-    "content": "I’m strange, but my passion is my job! Not you?? Then you should give a try to Power BI! . I have 2 kids: Pauline and Antoine who are the best and the worst things in my life. Dear parents, do you understand my thoughts? . I like running and all the sharing moments you can have in this community. I did multiple Marathon and Half Marathon, my pleasure is to fight myself and cross the finish line. ",
-    "url": "/docs/About#and-my-life",
-    "relUrl": "/docs/About#and-my-life"
+    "title": "A Glimpse into My Personal Life",
+    "content": ". Although it may sound unusual, my job is my passion! If it’s not yours, perhaps Power BI might change your perspective. Life blessed me with two kids: Pauline and Antoine. They’re my greatest joys and challenges rolled into one. Fellow parents might resonate with this sentiment. Running is another passion of mine. The camaraderie in the running community is unparalleled. Having completed multiple Marathons and Half Marathons, the thrill for me lies in challenging myself and relishing the moment I cross the finish line. ",
+    "url": "/docs/About#a-glimpse-into-my-personal-life",
+    "relUrl": "/docs/About#a-glimpse-into-my-personal-life"
   },"143": {
     "doc": "About Me",
     "title": "About Me",
@@ -997,7 +997,7 @@
   },"166": {
     "doc": "Home",
     "title": "Home",
-    "content": ". ** You landed on a data lover web page! . I’m sharing my discoveries and thought about Microsoft Power BI, SQL Server, Obsidian and Data in general. YouTube Practice DAX . ",
+    "content": ". ** 🪐 Welcome to the Universe of Data Enthusiasts! . Dive into my explorations and reflections on Microsoft Fabric, Power BI, SQL Server, Obsidian, and the vast realm of Data. YouTube Practice DAX . ",
     "url": "/",
     "relUrl": "/"
   },"167": {
