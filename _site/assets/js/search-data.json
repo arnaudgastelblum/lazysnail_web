@@ -523,63 +523,63 @@
   },"87": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter a Power BI report passing parameters through URL",
-    "content": ". Power BI offers us a very sympathetic way to bring a bit more flexibility into our Reports. It’s not a brand-new feature, but I’m not sure that you know it! . You can display a report and automatically have a page filtered by the parameters you define in the URL. ",
+    "content": ". Power BI provides a unique feature that adds flexibility to our reports. Though it isn’t a recent addition, many may still be unaware of it! . This feature lets you display a report with filters applied directly via the URL parameters. ",
     "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
     "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
   },"88": {
     "doc": "Filter a Power BI report passing parameters through URL",
-    "title": "Why is it cool?",
-    "content": ". | We can create an embed report and include it on a website/intranet. It’s possible to create a button, or menu to dynamically filter and display our report. (Microsoft provides an example: https://powerbi.microsoft.com/en-us/blog/easily-embed-secure-power-bi-reports-in-your-internal-portals-or-websites/ | It’s also possible to filter a report from a Power Apps | We can create our own bookmarks (in your browser or in your email) | We can add filters on fields that are not suggested / available in the Filter Pane | . . ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "title": "Why is this feature noteworthy?",
+    "content": ". | It allows for embedded reports on websites or intranets. With the potential to dynamically adjust and present our report through buttons or menus. Microsoft illustrates this with an example: Embed Secure Power BI Reports . | Filtering a report directly from Power Apps is feasible. | You can set custom bookmarks, either in your browser or email. | It permits filtering on fields, even those not presented in the Filter Pane. | . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#why-is-this-feature-noteworthy",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#why-is-this-feature-noteworthy"
   },"89": {
     "doc": "Filter a Power BI report passing parameters through URL",
-    "title": "But",
-    "content": ". | It’s indeed not a way to add security to your reports!! (Filter can be removed by your users) =&gt; The Row-level security is what you need. | It’s not possible to use it in an iframe with a report “published to web” | . First, Microsoft wrote already a nice article on this topic. I suggest you read it for more information.https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-url-filters . . ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "title": "However, some caveats to keep in mind:",
+    "content": ". | This isn’t a security enhancement for your reports. Filters can be modified by end-users. For security, consider Row-level security. | It’s infeasible to utilize within an iframe for reports “published to web”. | . Microsoft has penned an insightful article on this very topic. Dive deeper by checking it out here. ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#however-some-caveats-to-keep-in-mind",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#however-some-caveats-to-keep-in-mind"
   },"90": {
     "doc": "Filter a Power BI report passing parameters through URL",
-    "title": "How to",
-    "content": ". | Open your report in Power BI Service and go to the page you want to filter | Click on the address bar and at the end of this line, add the following code ?filter= | . This is the example used in this article. (You can also download this Power BI on this website. Search LazyDAX on the main page) . ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "title": "Steps to Implement:",
+    "content": ". | Launch your report within the Power BI Service, navigating to your desired page. | Focus on the address bar. Append ?filter= to the end of the URL. | . For a practical demonstration, reference the example showcased in this article. This Power BI example is available for download on this site—just search for ‘LazyDAX’ on the homepage. ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#steps-to-implement",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#steps-to-implement"
   },"91": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter on numeric value",
-    "content": ". ?filter=Calendar/Year eq 2022 . The first part of this expression refers to the dimension (Table) -&gt; CalendarThe second part refers to the attribute name in this dimension -&gt; Yeareq means equals . . ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "content": "?filter=Calendar/Year eq 2022 . The first part of this expression references the dimension (Table) -&gt; Calendar The second part mentions the attribute in this dimension -&gt; Year eq translates to equals . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-on-numeric-value",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-on-numeric-value"
   },"92": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter multiple numeric values",
-    "content": ". ?filter=Calendar/Year in (2022, 2023) . . ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "content": "?filter=Calendar/Year in (2022, 2023) . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-multiple-numeric-values",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-multiple-numeric-values"
   },"93": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter on a text value",
-    "content": ". ?filter=Product/ProductCategory eq 'Fruit' . . ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "content": "?filter=Product/ProductCategory eq 'Fruit' . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-on-a-text-value",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-on-a-text-value"
   },"94": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter multiple Text values",
     "content": ". ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-multiple-text-values",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#filter-multiple-text-values"
   },"95": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Add Multiple filter on differents attributes",
-    "content": ". ?filter=Customer/Country in ('Belgium', 'Nederland') and Product/ProductCategory eq 'Fruit' and Calendar/Year ge 2021 . . ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "content": "?filter=Customer/Country in ('Belgium', 'Nederland') and Product/ProductCategory eq 'Fruit' and Calendar/Year ge 2021 . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#add-multiple-filter-on-differents-attributes",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#add-multiple-filter-on-differents-attributes"
   },"96": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "More operators are available",
-    "content": ". Source: Microsoft website (see url below) . Like mentioned at the beginning, everything is already well explained on the Microsoft website: https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-url-filters . ",
-    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/",
-    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/"
+    "content": "Source: Microsoft website (see url below) . As initially mentioned, an in-depth explanation can be found on the Microsoft website: Microsoft Service URL Filters . ",
+    "url": "/en/filter-a-power-bi-report-passing-parameters-through-url/#more-operators-are-available",
+    "relUrl": "/en/filter-a-power-bi-report-passing-parameters-through-url/#more-operators-are-available"
   },"97": {
     "doc": "Power BI Sidetools extensions: A Must have!",
     "title": "Power BI Sidetools extensions: A Must have!",
