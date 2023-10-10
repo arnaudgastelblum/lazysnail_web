@@ -11,7 +11,9 @@ parent: Power BI
 # {{ page.title }}
 {: .fs-9 }
 
-<p><!-- wp:paragraph --></p>
+
+![Alt text](<../../assets/2023/DuplicateOfDuplicate copy_500.png>){: .image60 }
+
 <p>This article seems obvious, but that's something that I do a lot, and this is the first thing I do when somebody asks me a question.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:paragraph --></p>

@@ -11,6 +11,9 @@ parent: Power BI
 # {{ page.title }}
 {: .fs-9 }
 
+
+![Alt text](<../../assets/2023/Sidetools copy_500.png>){: .image50 }
+
 {: .note :}
 >
 >Last months I did a presentation for the well-known <a href="http://clubpowerbi.com/">Club Power BI (Brussels)</a>. This session was a brief listing of the most exciting External tools / Third-party software that can help us to work with Power BI.
