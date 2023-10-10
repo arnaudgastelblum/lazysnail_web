@@ -23,7 +23,7 @@ I'm trying to address a crucial topic (to me), but more complex to communicate t
 ---
 
 
-![one model to rule them all](../../assets/your-model-matters/Datamodelling_OneModel.webp)
+![one model to rule them all](../../assets/2022/your-model-matters/Datamodelling_OneModel.webp)
 
 ## Introduction
 
@@ -60,7 +60,7 @@ There are several methodologies for modeling this datawarehouse, but I will not 
 
 Two worlds existed and still exist.
 
-![two world](../../assets/your-model-matters/Datamodelling_1_SelfBI.webp)
+![two world](../../assets/2022/your-model-matters/Datamodelling_1_SelfBI.webp)
 
 ### BI (Developers / IT Service)
 Let's talk about me since that was the case. I juggled from one project to another by managing the business part as management of apple or pear. I did not bring much interest to the job or the nature of the data. Could I reproduce the reports asked? Yes! And I think everyone was happy like that.
@@ -101,7 +101,7 @@ Without going into the details of the modeling of a Datawarehouse and, more prec
 
 ### In computer science, we tend to standardize information.
 
-![normalization](../../assets/your-model-matters/Datamodelling_5_ProductColor_norm.webp)
+![normalization](../../assets/2022/your-model-matters/Datamodelling_5_ProductColor_norm.webp)
 
 An example will be more concrete than a definition:
 A product is available with a color.
@@ -113,7 +113,7 @@ Often the main table retains a key (foreign key) that references the other table
 <span style="color: #ff9900;"><strong>For our reporting needs, we have to backtrack and consolidate information into fewer tables.</strong></span>
 
 
-![denormalization](../../assets/your-model-matters/Datamodelling_5_ProductColor_Denorm.webp)
+![denormalization](../../assets/2022/your-model-matters/Datamodelling_5_ProductColor_Denorm.webp)
 
 If we **denormalize**, our example could looks like this simple table.
 - Simple for your **users**
@@ -123,17 +123,17 @@ If we **denormalize**, our example could looks like this simple table.
 
 ### Concrete example
 
-![concrete example](../../assets/your-model-matters/Datamodelling_2_Complex_Model.webp)
-![fields list](../../assets/your-model-matters/Datamodelling_2_ComplexFieldsList.webp)
+![concrete example](../../assets/2022/your-model-matters/Datamodelling_2_Complex_Model.webp)
+![fields list](../../assets/2022/your-model-matters/Datamodelling_2_ComplexFieldsList.webp)
 
 In this example, Bill tooks all the tables and files from his source system. **He decided to load the table as is, without any changes.**
 It was easy for him and he knows very well his model. But his users came back to him with a ton of question regarding interactions. Which tables will be impacted if they filter one specific attribute. They were not really sure.
 Since they have the "Sales Person" in their model, they wanted to know if Gender or Marital Status were link to "Sales Person" or "Client". (So bill, renamed it to make it clear)
 
 
-![denorm](../../assets/your-model-matters/Datamodelling_3_Denormalization.webp)
-![fields](../../assets/your-model-matters/Datamodelling_4_StarSchema_Fields.webp)
-![star schema](../../assets/your-model-matters/Datamodelling_4_StarSchema.webp)
+![denorm](../../assets/2022/your-model-matters/Datamodelling_3_Denormalization.webp)
+![fields](../../assets/2022/your-model-matters/Datamodelling_4_StarSchema_Fields.webp)
+![star schema](../../assets/2022/your-model-matters/Datamodelling_4_StarSchema.webp)
 
 One day Bill wakes up with a giant smile! Is it because his favorite TV show is scheduled today? Not only! He has an idea... And a straightforward one.<br /><strong>He decided to group his data into fewer tables</strong>. (When there is no many to many relationships).<br />His work life changes to better!
 - Less complex DAX expression
@@ -146,7 +146,7 @@ One day Bill wakes up with a giant smile! Is it because his favorite TV show is 
 The title should perhaps have been: <span style="color: #ff9900;"><strong>Do not keep the focus on the technical problems but think of yourself</strong>.</span>
 <span style="font-size: 14px;">We all tend to want technical challenges, it's addictive, and it gives us the impression of moving forward! </span><strong style="font-size: 14px;">In our Professional world, Power BI is the equivalent of Candy Crush!</strong><span style="font-size: 14px;"> But I have more pleasure in aligning beautiful DAX measures in a table than sweets, do not you? For this point, I invite you to step back and step against our technical world.</span>
 
-![brainstorming](../../assets/your-model-matters/Datamodelling_5_Brainstorming.webp)
+![brainstorming](../../assets/2022/your-model-matters/Datamodelling_5_Brainstorming.webp)
 
 Ask yourself the following questions: (or ask them to your users)
 - What is the nature of your work? Describe it to me.
@@ -159,7 +159,7 @@ Take note of the information in the form of keywords and mention the frequency. 
 >My advice: Take a pen, paper, coffee, soft music. Disconnect from your computers, technical "worries". Make sure your explanations can be understood by your wife, your husband, your friends, your sports coach, your children ... and yourself ...
 
 
-![word cloud](../../assets/your-model-matters/Datamodelling_5_Brainstorming_Note.webp)
+![word cloud](../../assets/2022/your-model-matters/Datamodelling_5_Brainstorming_Note.webp)
 
 Your notes could look like this word cloud.
 
@@ -196,7 +196,7 @@ The inscription bears:
 ### A brainstorming session can quickly give you a good overview of your next dataset.
 
 
-![star](../../assets/your-model-matters/Datamodelling_5_Brainstorming_Result.webp)
+![star](../../assets/2022/your-model-matters/Datamodelling_5_Brainstorming_Result.webp)
 
 Your fact table is in the middle and dimensions around.
 Where is the technical complexity for your users? For your DAX measures? Your users can now keep the focus on their results and to the more complicated question: Do I really avoid to use a Pie Chart ;)
