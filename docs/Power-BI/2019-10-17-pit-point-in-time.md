@@ -21,7 +21,7 @@ We often have descriptive data in our Power BI models. Data may vary over time a
 
 **What kind of data ?**
 - A **car** could change his **production plant** through time.
-- A **car** can have different **engines over time.
+- A **car** can have different **engines over time**.
 - A customer can have **through time**:
   - One or more **loyalty cards**
   - One or more **addresses**
