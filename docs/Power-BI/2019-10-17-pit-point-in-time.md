@@ -43,7 +43,7 @@ We often have descriptive data in our Power BI models. Data may vary over time a
 It is exciting for our users to navigate through the data by applying a time filter (CFR Slicer Date)
 **How**: By creating a DAX measure. (#PIT Shoes)
 
-The following example shows dynamically Pauline's shoes.
+The following example shows dynamically Pauline's shoes over the time.
 ![PIT demo](../../assets/2019/PIT/PIT_Demo.webp)
 
 
