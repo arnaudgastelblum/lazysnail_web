@@ -133,13 +133,13 @@
   },"22": {
     "doc": "PIT Point In Time",
     "title": "Introduction",
-    "content": "We often have descriptive data in our Power BI models. Data may vary over time and have validity dates. It can become a real headache when creating a data model. What kind of data ? . | A car could change his production plant through time. | A car can have different **engines over time. | A customer can have through time: . | One or more loyalty cards | One or more addresses | . | . What data types ? . | Multiple data | With a notion of time. (The information is valid from one date to another and potentially followed or overlapped by another) | . PIT - Point In Time - Datavault . Point In Time is a concept widely used when creating a data warehouse in a Datavault flavor. Performing a snapshot and historizing the data makes restitution much easier. (I will not discuss the pros or cons of Datavault, but I have my preferences ^^) If you want to know more, I invite you to read this article. (Written by Dan Linstedt) . ",
+    "content": "We often have descriptive data in our Power BI models. Data may vary over time and have validity dates. It can become a real headache when creating a data model. What kind of data ? . | A car could change his production plant through time. | A car can have different engines over time. | A customer can have through time: . | One or more loyalty cards | One or more addresses | . | . What data types ? . | Multiple data | With a notion of time. (The information is valid from one date to another and potentially followed or overlapped by another) | . PIT - Point In Time - Datavault . Point In Time is a concept widely used when creating a data warehouse in a Datavault flavor. Performing a snapshot and historizing the data makes restitution much easier. (I will not discuss the pros or cons of Datavault, but I have my preferences ^^) If you want to know more, I invite you to read this article. (Written by Dan Linstedt) . ",
     "url": "/en/pit-point-in-time/#introduction",
     "relUrl": "/en/pit-point-in-time/#introduction"
   },"23": {
     "doc": "PIT Point In Time",
     "title": "What do we expect?",
-    "content": "It is exciting for our users to navigate through the data by applying a time filter (CFR Slicer Date) How: By creating a DAX measure. (#PIT Shoes) . The following example shows dynamically Pauline’s shoes. ",
+    "content": "It is exciting for our users to navigate through the data by applying a time filter (CFR Slicer Date) How: By creating a DAX measure. (#PIT Shoes) . The following example shows dynamically Pauline’s shoes over the time. ",
     "url": "/en/pit-point-in-time/#what-do-we-expect",
     "relUrl": "/en/pit-point-in-time/#what-do-we-expect"
   },"24": {
