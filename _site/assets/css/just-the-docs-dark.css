@@ -2477,9 +2477,9 @@ blockquote.warning-title { margin-left: 0; margin-right: 0; }
 blockquote.warning-title > p:nth-child(2) { margin-top: 0; }
 blockquote.warning-title > p:last-child { margin-bottom: 0; }
 
-a { color: #dd2cd4; }
+a { color: #3498db; }
 
-a:hover { color: #dd2cd4; }
+a:hover { color: #3498db; }
 
 .image90 { margin: 0 auto; display: block; width: 90%; }
 
