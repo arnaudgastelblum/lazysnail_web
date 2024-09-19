@@ -2,3 +2,14 @@ $pink-000: #f77ef1;
 $pink-100: #f967f1;
 $pink-200: #e94ee1;
 $pink-300: #dd2cd4;
+
+
+// Changer la couleur des liens
+a {
+    color: #dd2cd4; // Remplace #hexcode par la couleur souhaitée
+  }
+  
+  // Changer la couleur des liens lors du survol
+  a:hover {
+    color: #dd2cd4; // Remplace #hexcode_hover par la couleur souhaitée lors du survol
+  }

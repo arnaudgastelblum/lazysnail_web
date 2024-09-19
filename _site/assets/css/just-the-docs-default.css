@@ -9,7 +9,7 @@
 
 .highlight .err { color: #fff; background-color: #e05151; }
 
-.highlight .k { color: #a625a4; }
+.highlight .k { color: #3498db; }
 
 .highlight .l { color: #50a04f; }
 
@@ -141,7 +141,7 @@
 
 .highlight .err { color: #fff; background-color: #e05151; }
 
-.highlight .k { color: #a625a4; }
+.highlight .k { color: #3498db; }
 
 .highlight .l { color: #50a04f; }
 
@@ -2480,6 +2480,10 @@ blockquote.warning > p:last-child { margin-bottom: 0; }
 blockquote.warning-title { margin-left: 0; margin-right: 0; }
 blockquote.warning-title > p:nth-child(2) { margin-top: 0; }
 blockquote.warning-title > p:last-child { margin-bottom: 0; }
+
+a { color: #dd2cd4; }
+
+a:hover { color: #dd2cd4; }
 
 .image90 { margin: 0 auto; display: block; width: 90%; }
 
