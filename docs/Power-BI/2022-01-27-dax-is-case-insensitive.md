@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DAX is case insensitive
-date: 2022-01-27 09:41:05.000000000 +01:00
+date: 2022-01-27
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

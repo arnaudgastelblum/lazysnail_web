@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Power BI - Your model matters
-date: 2019-11-26 08:18:57.000000000 +01:00
+date: 2019-11-26
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

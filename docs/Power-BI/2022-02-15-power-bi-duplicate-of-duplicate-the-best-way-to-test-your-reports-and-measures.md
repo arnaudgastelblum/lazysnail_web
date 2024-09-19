@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Power BI: Duplicate of Duplicate - The best way to test your reports and measures'
-date: 2022-02-15 08:55:11.000000000 +01:00
+date: 2022-02-15
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

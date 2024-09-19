@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SSIS - Export SSIS Catalog Environments
-date: 2018-10-26 16:00:37.000000000 +02:00
+date: 2018-10-26
 categories: "SQL-Server"
 tags: [other, sql-server]
 comments: true

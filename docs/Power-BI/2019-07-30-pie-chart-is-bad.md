@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pie Chart is bad!
-date: 2019-07-30 18:01:52.000000000 +02:00
+date: 2019-07-30
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

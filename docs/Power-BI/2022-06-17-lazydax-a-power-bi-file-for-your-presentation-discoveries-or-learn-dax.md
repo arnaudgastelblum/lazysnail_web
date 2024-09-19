@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX'
-date: 2022-06-17 16:10:22.000000000 +02:00
+date: 2022-06-17
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

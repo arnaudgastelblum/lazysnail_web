@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Filter a Power BI report passing parameters through URL
-date: 2022-06-24 13:32:32.000000000 +02:00
+date: 2022-06-24
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Power BI Interview questions: a different way to know your applicants'
-date: 2022-01-14 12:44:33.000000000 +01:00
+date: 2022-01-14
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

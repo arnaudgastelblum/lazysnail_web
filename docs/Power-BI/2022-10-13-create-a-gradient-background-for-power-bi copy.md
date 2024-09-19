@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Create a gradient background for Power BI
-date: 2022-10-13 12:36:04.000000000 +02:00
+date: 2022-10-13
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

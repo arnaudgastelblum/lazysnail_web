@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Your data model first!
-date: 2021-12-23 09:25:20.000000000 +01:00
+date: 2021-12-23
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

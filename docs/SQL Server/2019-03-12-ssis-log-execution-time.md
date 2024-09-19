@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SSIS - Log Execution time
-date: 2019-03-12 13:02:25.000000000 +01:00
+date: 2019-03-12
 categories: "SQL-Server"
 tags: [other, sql-server]
 comments: true

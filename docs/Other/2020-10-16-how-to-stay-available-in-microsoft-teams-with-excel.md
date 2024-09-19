@@ -2,6 +2,7 @@
 layout: post
 title: How to stay always "Available" in Microsoft Teams with Excel
 categories: "other"
+date: 2020-10-16
 tags: [misc]
 comments: true
 permalink: "/en/how-to-stay-available-in-microsoft-teams-with-excel/"

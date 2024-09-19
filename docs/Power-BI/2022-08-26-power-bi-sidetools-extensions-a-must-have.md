@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Power BI Sidetools extensions: A Must have!'
-date: 2022-08-26 14:43:01.000000000 +02:00
+date: 2022-08-26
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

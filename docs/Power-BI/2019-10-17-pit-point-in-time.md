@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PIT Point In Time
-date: 2019-10-17 17:05:39.000000000 +02:00
+date: 2019-10-17
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

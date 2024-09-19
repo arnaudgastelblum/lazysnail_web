@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Management Studio - Faster with multiple select
-date: 2019-09-30 18:21:54.000000000 +02:00
+date: 2019-09-30
 categories: "SQL-Server"
 tags: [other, sql-server]
 comments: true

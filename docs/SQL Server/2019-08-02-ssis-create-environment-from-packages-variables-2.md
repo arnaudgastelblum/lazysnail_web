@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SSIS - Create Environment from Packages variables
-date: 2019-08-02 10:09:06.000000000 +02:00
+date: 2019-08-02
 categories: "SQL-Server"
 tags: [other, sql-server]
 comments: true

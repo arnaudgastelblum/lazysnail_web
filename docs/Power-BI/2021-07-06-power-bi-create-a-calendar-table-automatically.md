@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Power BI Create a Calendar table automatically
-date: 2021-07-06 15:16:37.000000000 +02:00
+date: 2021-07-06
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

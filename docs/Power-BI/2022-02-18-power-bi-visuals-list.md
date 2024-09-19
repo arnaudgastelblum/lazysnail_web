@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Power BI Visuals List: Which Graphic to choose?'
-date: 2022-02-18 09:49:00.000000000 +01:00
+date: 2022-02-18
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true

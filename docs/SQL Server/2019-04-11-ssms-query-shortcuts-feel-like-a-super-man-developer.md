@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'SSMS - Query Shortcuts : Feel like a superman developer'
-date: 2019-04-11 07:45:10.000000000 +02:00
+date: 2019-04-11
 categories: "SQL-Server"
 tags: [other, sql-server]
 comments: true

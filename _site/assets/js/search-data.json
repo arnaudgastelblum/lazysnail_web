@@ -857,195 +857,195 @@
     "url": "/power-bi/Organize-your-External-tools#inside-each-file",
     "relUrl": "/power-bi/Organize-your-External-tools#inside-each-file"
   },"143": {
-    "doc": "Organize your External tools",
-    "title": "Organize your External tools",
-    "content": ". ",
-    "url": "/fabric/Organize-your-External-tools",
-    "relUrl": "/fabric/Organize-your-External-tools"
-  },"144": {
     "doc": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "title": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "content": ". As models become more complex, it’s essential to understand the relationships between various elements, such as measures, columns, and tables, especially when you’re planning to make changes. In this article, I will introduce the DAX function INFO.CALCDEPENDENCY(), which allows you to see how different objects in your model are connected. This function helps you assess the impact of changes, such as modifying a measure, removing a column, or altering data. Below, I’ll provide examples of how to use this function for analyzing dependencies in Power BI. ",
     "url": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency",
     "relUrl": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency"
-  },"145": {
+  },"144": {
     "doc": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "title": "Understanding All Object Dependencies in Your Power BI Model",
     "content": "EVALUATE INFO.CALCDEPENDENCY() . This query retrieves all the dependencies within the current Power BI model. It lists every object and its references, which allows you to see how different columns, measures, and tables interact. This is a great starting point for a broad analysis before making any changes to your model. ",
     "url": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#understanding-all-object-dependencies-in-your-power-bi-model",
     "relUrl": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#understanding-all-object-dependencies-in-your-power-bi-model"
-  },"146": {
+  },"145": {
     "doc": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "title": "Filtering Dependencies for a Specific Measure",
     "content": "EVALUATE FILTER( INFO.CALCDEPENDENCY() ,[OBJECT] = \"Churn New Customers\" ) . In this query, we focus specifically on a measure called “Churn New Customers.” It filters the dependency results to show only the references related to this particular measure. This is useful if you’re planning to modify or delete the measure and want to see all the areas in your model that could be impacted. ",
     "url": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#filtering-dependencies-for-a-specific-measure",
     "relUrl": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#filtering-dependencies-for-a-specific-measure"
-  },"147": {
+  },"146": {
     "doc": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "title": "Checking Dependencies on a Specific Column in a Table",
     "content": "EVALUATE FILTER( INFO.CALCDEPENDENCY() , [REFERENCED_TABLE] = \"Calendar\" &amp;&amp; [REFERENCED_OBJECT] = \"Year\" ) . Here, we are filtering the dependencies to focus on any references to the “Year” column in the “Calendar” table. If you’re planning to update or delete this column, this query will give you a list of all the places where it is being used, ensuring that any changes you make won’t inadvertently break other parts of your model. ",
     "url": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#checking-dependencies-on-a-specific-column-in-a-table",
     "relUrl": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#checking-dependencies-on-a-specific-column-in-a-table"
-  },"148": {
+  },"147": {
     "doc": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "title": "Exploring Query Dependencies for a Measure",
     "content": "EVALUATE INFO.CALCDEPENDENCY(\"QUERY\", \"EVALUATE \") . This query allows you to check the dependencies of a specific query involving the “Churn New Customers” measure. By explicitly defining the query, you can ensure that you are analyzing the exact scenario where this measure is used. It’s helpful when troubleshooting specific calculations or exploring the impact of updates on a particular analysis. ",
     "url": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#exploring-query-dependencies-for-a-measure",
     "relUrl": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#exploring-query-dependencies-for-a-measure"
-  },"149": {
+  },"148": {
     "doc": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "title": "Analyzing Dependencies with Filtered Data",
     "content": "EVALUATE INFO.CALCDEPENDENCY(\"QUERY\", \" EVALUATE ROW( \"\"MyColumn\"\", CALCULATE( ,FILTER(Customer, Customer[City] = \"\"Brussel\"\") ) ) \") . In this query, we’re looking at a more complex dependency by evaluating a measure with additional filtering. The INFO.CALCDEPENDENCY() function checks how the “Churn New Customers” measure interacts with specific filters, in this case, where the city is “Brussel.” This query helps you understand how changing filters or measures in such a scenario may impact the data. ",
     "url": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#analyzing-dependencies-with-filtered-data",
     "relUrl": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#analyzing-dependencies-with-filtered-data"
-  },"150": {
+  },"149": {
     "doc": "About Me",
     "title": "Curious about the person behind Lazysnail?",
     "content": "Through Lazysnail, I’ve created a hub to catalog my tools and share my explorations, particularly in Microsoft BI technologies and all things geeky. Connect with me on LinkedIn . The journey began when I started mentoring a younger colleague. Over time, I realized I derived immense joy from imparting knowledge and watching him blossom. Even though he was anything but lethargic or slow-moving, I playfully dubbed him Lazy snail. That’s the inspiration behind the name of my blog and all my pursuits. ",
     "url": "/docs/About#curious-about-the-person-behind-lazysnail",
     "relUrl": "/docs/About#curious-about-the-person-behind-lazysnail"
-  },"151": {
+  },"150": {
     "doc": "About Me",
     "title": "My Journey",
     "content": ". Beyond championing the Star Schema, I have an affinity for neatly written code. My Windows desktop is a reflection of that penchant for order. Should I enable icons, the lone one you’d find is the recycle bin. From diverse programming languages to the realm of Business Intelligence, life has taken me on an intriguing path. I’m often asked: Did I stray too far from my roots? . Actually, I haven’t! Databases, SQL Queries, and BI technologies may not follow identical logic but echo similar principles: . - Maintain clean code - Avoid code redundancy - Keep complexity at a comprehensible level - Prioritize performance - Always keep users in mind . Given these beliefs, I proudly identify as a BI developer! . ",
     "url": "/docs/About#my-journey",
     "relUrl": "/docs/About#my-journey"
-  },"152": {
+  },"151": {
     "doc": "About Me",
     "title": "A Glimpse into My Personal Life",
     "content": ". Although it may sound unusual, my job is my passion! If it’s not yours, perhaps Power BI might change your perspective. Life blessed me with two kids: Pauline and Antoine. They’re my greatest joys and challenges rolled into one. Fellow parents might resonate with this sentiment. Running is another passion of mine. The camaraderie in the running community is unparalleled. Having completed multiple Marathons and Half Marathons, the thrill for me lies in challenging myself and relishing the moment I cross the finish line. ",
     "url": "/docs/About#a-glimpse-into-my-personal-life",
     "relUrl": "/docs/About#a-glimpse-into-my-personal-life"
-  },"153": {
+  },"152": {
     "doc": "About Me",
     "title": "About Me",
     "content": " ",
     "url": "/docs/About",
     "relUrl": "/docs/About"
-  },"154": {
+  },"153": {
     "doc": "Fabric",
     "title": "Fabric",
     "content": " ",
     "url": "/docs/Fabric",
     "relUrl": "/docs/Fabric"
-  },"155": {
+  },"154": {
     "doc": "Links",
     "title": "List of links",
     "content": "My colleagues often asked me What tool do you use for this? It’s also a list for me . ",
     "url": "/docs/Links#list-of-links",
     "relUrl": "/docs/Links#list-of-links"
-  },"156": {
+  },"155": {
     "doc": "Links",
     "title": "Data Modelling",
     "content": "DBDiagram.io https://dbdiagram.io Design a database without effort . ",
     "url": "/docs/Links#data-modelling",
     "relUrl": "/docs/Links#data-modelling"
-  },"157": {
+  },"156": {
     "doc": "Links",
     "title": "Presentation",
     "content": "Microsoft ZoomIt https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit Zoom, annotate and record your screen . ",
     "url": "/docs/Links#presentation",
     "relUrl": "/docs/Links#presentation"
-  },"158": {
+  },"157": {
     "doc": "Links",
     "title": "Screenshot",
     "content": "Sharex https://getsharex.com Screenshot tool: PNG, GIF and AVI . ",
     "url": "/docs/Links#screenshot",
     "relUrl": "/docs/Links#screenshot"
-  },"159": {
+  },"158": {
     "doc": "Links",
     "title": "Misc",
     "content": "Microsoft Power Toys https://learn.microsoft.com/en-us/windows/powertoys/install Many different tools in 1 app . | Keep your screen / PC awake | Fancy zone (manage your window size and location) | Image resizer | Power rename (rename files in a batch mode) | Keyboard manager | Mouse utilities | … | . ",
     "url": "/docs/Links#misc",
     "relUrl": "/docs/Links#misc"
-  },"160": {
+  },"159": {
     "doc": "Links",
     "title": "Links",
     "content": " ",
     "url": "/docs/Links",
     "relUrl": "/docs/Links"
-  },"161": {
+  },"160": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Backtick key doesn’t work like expecting on my macbook",
     "content": "Since I switch my PC on windows to a macbook, I had some problem with the backtick caracter. ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#backtick-key-doesnt-work-like-expecting-on-my-macbook",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#backtick-key-doesnt-work-like-expecting-on-my-macbook"
-  },"162": {
+  },"161": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Writing code in Teams didn’t work",
     "content": " ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-code-in-teams-didnt-work",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-code-in-teams-didnt-work"
-  },"163": {
+  },"162": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Writing some caracters after give me an accentuated caracter",
     "content": "a e u i o . à è ù ì ò . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-some-caracters-after-give-me-an-accentuated-caracter",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-some-caracters-after-give-me-an-accentuated-caracter"
-  },"164": {
+  },"163": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Can’t have a pair of the first caracters",
     "content": "I had to press manually two times the key and I had some weird behavior when I wanted a code block (6 backtip) . Like this block of code . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#cant-have-a-pair-of-the-first-caracters",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#cant-have-a-pair-of-the-first-caracters"
-  },"165": {
+  },"164": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "The solution",
     "content": "To fix this I installed a software named Ukelele . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#the-solution",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#the-solution"
-  },"166": {
+  },"165": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Installation",
     "content": "From brew . For those who use brew, use this command brew install Ukelele . From their website . https://software.sil.org/ukelele/ . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#installation",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#installation"
-  },"167": {
+  },"166": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Method",
     "content": "Follow the steps . Open Ukelele . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#method",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#method"
-  },"168": {
+  },"167": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Backtick key doesn't work like expecting on my macbook",
     "content": " ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected"
-  },"169": {
+  },"168": {
     "doc": "Obsidian",
     "title": "Obsidian",
     "content": ". | Managing efficiently your tasks with Obsidian and Dataview | I discovered Obsidian and I love it | . ",
     "url": "/docs/Obsidian",
     "relUrl": "/docs/Obsidian"
-  },"170": {
+  },"169": {
     "doc": "Other",
     "title": "Other",
     "content": ". | How to stay always “Available” in Microsoft Teams with Excel | How I optimized my learning time with Instapaper | . ",
     "url": "/docs/Other",
     "relUrl": "/docs/Other"
-  },"171": {
+  },"170": {
     "doc": "Power BI",
     "title": "Power BI",
     "content": ". | Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY() | Organize your External tools | Power BI Scanner API List and document your Power BI tenant | Create a gradient background for Power BI | Power BI Sidetools extensions: A Must have! | Filter a Power BI report passing parameters through URL | LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX | Power BI Visuals List: Which Graphic to choose? | Power BI: Duplicate of Duplicate - The best way to test your reports and measures | DAX is case insensitive | Power BI Interview questions: a different way to know your applicants | Your data model first! | Power BI Create a Calendar table automatically | Power BI - Your model matters | PIT Point In Time | Pie Chart is bad! | Power BI Desktop: Print in the A4 size | . ",
     "url": "/docs/Power-BI",
     "relUrl": "/docs/Power-BI"
-  },"172": {
+  },"171": {
     "doc": "SQL Server",
     "title": "SQL Server",
     "content": ". | SP_Helptext Get DDL information | Management Studio - Faster with multiple select | SSIS - Create Environment from Packages variables | SSMS - Query Shortcuts : Feel like a superman developer | SSIS - Log Execution time | SSIS - Export SSIS Catalog Environments | SP_WHO3 - Running Queries (Toolbox) | . ",
     "url": "/docs/SQL%20Server",
     "relUrl": "/docs/SQL%20Server"
-  },"173": {
+  },"172": {
     "doc": "YouTube",
     "title": "YouTube",
     "content": "I’m sharing quick tips on my personal YouTube Channel, and you can also discover a lot of meetup on the Club Power BI Channel. | | | | . | Lazysnail | Club Power BI | DataSprouts | . | My channel, where I share multiple quick tips video around Power BI and Microsoft data in general | Videos from our Club Power BI - Brussels meetup group and many other french cities. (in French) | DataSprouts is a group of Belgium Data consultant, it’s a place where we discuss about Microsoft Data (in French) | . ",
     "url": "/docs/Youtube",
     "relUrl": "/docs/Youtube"
+  },"173": {
+    "doc": "Home",
+    "title": "📚 Latest Articles",
+    "content": ". | Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY() - 19/09/2024 | Organize your External tools - 12/04/2023 | Managing efficiently your tasks with Obsidian and Dataview - 07/04/2023 | I discovered Obsidian and I love it - 06/04/2023 | Power BI Scanner API List and document your Power BI tenant - 24/03/2023 | . ",
+    "url": "/",
+    "relUrl": "/"
   },"174": {
     "doc": "Home",
     "title": "Home",
-    "content": ". ** 🪐 Welcome to the Universe of Data Enthusiasts! . Dive into my explorations and reflections on Microsoft Fabric, Power BI, SQL Server, Obsidian, and the vast realm of Data. YouTube Practice DAX . ",
+    "content": ". 🚀 Welcome to Lazy Snail’s Data Trails! Join me as I explore Microsoft Fabric, Power BI, SQL Server, Obsidian, and share my personal tips and reflections on unlocking the power of data. ",
     "url": "/",
     "relUrl": "/"
   },"175": {

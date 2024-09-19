@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Power BI Desktop: Print in the A4 size'
-date: 2018-08-24 11:30:52.000000000 +02:00
+date: 2018-08-24
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
