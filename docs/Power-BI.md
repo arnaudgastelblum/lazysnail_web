@@ -10,7 +10,7 @@ has_children: false
 
 
 
-- [Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()](/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency/)
+- [Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()](/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency)
 - [Organize your External tools](/power-bi/Organize-your-External-tools)
 - [Power BI Scanner API List and document your Power BI tenant](/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant)
 - [Create a gradient background for Power BI](/en/create-a-gradient-background-for-power-bi/)
