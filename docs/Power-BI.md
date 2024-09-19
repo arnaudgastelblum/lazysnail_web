@@ -9,21 +9,16 @@ has_children: false
 ![Alt text](../assets/2023/PowerBI_IceCream_500.png){: .image60 }
 
 
-
-- [Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()](/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency)
-- [Organize your External tools](/power-bi/Organize-your-External-tools)
-- [Power BI Scanner API List and document your Power BI tenant](/power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant)
-- [Create a gradient background for Power BI](/en/create-a-gradient-background-for-power-bi/)
-- [Power BI Sidetools extensions: A Must have!](/en/power-bi-sidetools-extensions-a-must-have/)
-- [Filter a Power BI report passing parameters through URL](/en/filter-a-power-bi-report-passing-parameters-through-url/)
-- [LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX](/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/)
-- [Power BI Visuals List: Which Graphic to choose?](/en/power-bi-visuals-list/)
-- [Power BI: Duplicate of Duplicate - The best way to test your reports and measures](/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/)
-- [DAX is case insensitive](/en/dax-is-case-insensitive/)
-- [Power BI Interview questions: a different way to know your applicants](/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/)
-- [Your data model first!](/en/your-data-model-first/)
-- [Power BI Create a Calendar table automatically](/en/power-bi-create-a-calendar-table-automatically/)
-- [Power BI - Your model matters](/en/power-bi-your-model-matters/)
-- [PIT Point In Time](/en/pit-point-in-time/)
-- [Pie Chart is bad!](/en/pie-chart-is-bad/)
-- [Power BI Desktop: Print in the A4 size](/en/vertical-export-of-reports/)
+<div style="background-color: #f0f4f8; border-left: 5px solid #3498db; padding: 20px; margin-top: 30px; border-radius: 5px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+  <h2 style="font-size: 1.6em; color: #2c3e50; margin-bottom: 15px;">📊 Latest Articles on Power BI</h2>
+    {% assign sorted_pages = site.pages | sort: 'date' | reverse %}
+    {% for post in sorted_pages %}
+      {% if post.date and post.categories contains "power-bi" %}
+          <a href="{{ post.url }}" style="font-size: 1em; color: #3498db; text-decoration: none; transition: color 0.3s ease;">
+            {{ post.title }}
+          </a>
+          <span style="font-size: 0.8em; color: #888;"> - {{ post.date | date: "%d/%m/%Y" }}</span>
+          <div style="height: 5px;"></div> <!-- Custom small space -->
+      {% endif %}
+    {% endfor %}
+</div>
