@@ -5,7 +5,7 @@ date: 2024-09-20
 categories: "fabric"
 tags: [powerbi, tips]
 comments: true
-parent: Power BI
+parent: Fabric
 permalink: /fabric/handling-data-type-conflicts-in-sql-for-merging-tables
 ---
 # {{ page.title }}
