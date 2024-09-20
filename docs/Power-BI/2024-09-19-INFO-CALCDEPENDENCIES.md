@@ -77,10 +77,14 @@ Here, we are filtering the dependencies to focus on any references to the “Yea
 ## 	Exploring Query Dependencies for a Measure
 
 
+
+{% raw %}
 ```sql
-EVALUATE
-    INFO.CALCDEPENDENCY("QUERY", "EVALUATE {{[Churn New Customers]}}")
+EVALUATE INFO.CALCDEPENDENCY("QUERY", "EVALUATE {{'Measures Group'[Churn New Customers]}}")
 ```
+{% endraw %}
+
+
 
 This query allows you to check the dependencies of a specific query involving the “Churn New Customers” measure. By explicitly defining the query, you can ensure that you are analyzing the exact scenario where this measure is used. It’s helpful when troubleshooting specific calculations or exploring the impact of updates on a particular analysis.
 
@@ -100,7 +104,7 @@ EVALUATE
             ROW(
                 ""MyColumn"",
                 CALCULATE(
-                        {{[Churn New Customers]}}
+                        [Churn New Customers]
                         ,FILTER(Customer, Customer[City] = ""Brussel"")
                 )
             )

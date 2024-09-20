@@ -883,13 +883,13 @@
   },"147": {
     "doc": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "title": "Exploring Query Dependencies for a Measure",
-    "content": "EVALUATE INFO.CALCDEPENDENCY(\"QUERY\", \"EVALUATE \") . This query allows you to check the dependencies of a specific query involving the “Churn New Customers” measure. By explicitly defining the query, you can ensure that you are analyzing the exact scenario where this measure is used. It’s helpful when troubleshooting specific calculations or exploring the impact of updates on a particular analysis. ",
+    "content": "EVALUATE INFO.CALCDEPENDENCY(\"QUERY\", \"EVALUATE {{'Measures Group'[Churn New Customers]}}\") . This query allows you to check the dependencies of a specific query involving the “Churn New Customers” measure. By explicitly defining the query, you can ensure that you are analyzing the exact scenario where this measure is used. It’s helpful when troubleshooting specific calculations or exploring the impact of updates on a particular analysis. ",
     "url": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#exploring-query-dependencies-for-a-measure",
     "relUrl": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#exploring-query-dependencies-for-a-measure"
   },"148": {
     "doc": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY()",
     "title": "Analyzing Dependencies with Filtered Data",
-    "content": "EVALUATE INFO.CALCDEPENDENCY(\"QUERY\", \" EVALUATE ROW( \"\"MyColumn\"\", CALCULATE( ,FILTER(Customer, Customer[City] = \"\"Brussel\"\") ) ) \") . In this query, we’re looking at a more complex dependency by evaluating a measure with additional filtering. The INFO.CALCDEPENDENCY() function checks how the “Churn New Customers” measure interacts with specific filters, in this case, where the city is “Brussel.” This query helps you understand how changing filters or measures in such a scenario may impact the data. ",
+    "content": "EVALUATE INFO.CALCDEPENDENCY(\"QUERY\", \" EVALUATE ROW( \"\"MyColumn\"\", CALCULATE( [Churn New Customers] ,FILTER(Customer, Customer[City] = \"\"Brussel\"\") ) ) \") . In this query, we’re looking at a more complex dependency by evaluating a measure with additional filtering. The INFO.CALCDEPENDENCY() function checks how the “Churn New Customers” measure interacts with specific filters, in this case, where the city is “Brussel.” This query helps you understand how changing filters or measures in such a scenario may impact the data. ",
     "url": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#analyzing-dependencies-with-filtered-data",
     "relUrl": "/power-bi/analyzing-power-bi-dependencies-with-info-calcdependency#analyzing-dependencies-with-filtered-data"
   },"149": {
