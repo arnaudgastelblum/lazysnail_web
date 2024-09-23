@@ -117,6 +117,10 @@ DataTypeSelection AS
 	UNION ALL
 	SELECT 'varbinary' AS DataType1, 'binary' AS DataType2, 'varbinary' AS TargetDataType
 	UNION ALL
+	SELECT 'bigint' AS DataType1, 'int' AS DataType2, 'bigint' AS TargetDataType
+	UNION ALL
+	SELECT 'int' AS DataType1, 'bigint' AS DataType2, 'bigint' AS TargetDataType
+	UNION ALL
 
 	--
 	-- Perfect Match
