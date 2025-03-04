@@ -1,1 +1,1 @@
-# lazysnail_web - Test
+# lazysnail_web
