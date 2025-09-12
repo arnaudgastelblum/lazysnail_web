@@ -517,27 +517,27 @@
   },"86": {
     "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
     "title": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
-    "content": "I created LazyDAX to: . | Present interesting Power BI discoveries to my colleagues and clients | Test my DAX Measures with a simple, concrete and very clean Star schema | Discover multiple DAX Functions and test them | Show different Power BI features by examples | . Download on GitHub . You can change it, publish it and do whatever you want with it. It contains data and is designed in a Star schema model. You don’t need to connect on a server and can change the data, because I used the “Enter Data” method. ",
+    "content": "🎯 LazyDAX at a Glance A comprehensive, free Power BI file designed to accelerate your DAX learning journey and enhance your Power BI presentations. Built with over 4 years of real-world experience and used daily by data professionals worldwide. Why I Created LazyDAX . After years of working with Power BI, I realized the need for a comprehensive, ready-to-use file that could serve multiple purposes: . | Present discoveries to colleagues and clients with professional-grade visuals | Test DAX measures in a clean, well-structured star schema environment | Learn DAX functions through practical, organized examples | Demonstrate Power BI features with real-world scenarios | Save time on creating demo datasets and basic report structures | . 📥 Download LazyDAX.pbix 🔍 View on GitHub 100% Free &amp; Open . LazyDAX is completely free to use, modify, and distribute. No server connections required, no licenses needed. Built using Power BI’s “Enter Data” feature, making it instantly usable anywhere. ",
     "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/",
     "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/"
   },"87": {
     "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
-    "title": "It contains:",
-    "content": "DAX: I organized multiple Measure in the same way Microsoft present all the DAX functions in their folders. It was an efficient way for me to test it all. Visuals: On different pages, I used all the existing visuals, and tried to provide you some ideas to build a more fancy report. ",
-    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#it-contains",
-    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#it-contains"
+    "title": "🏗️ What’s Inside LazyDAX",
+    "content": "📊 Data Model Architecture . LazyDAX features a clean star schema design that mirrors real-world business scenarios: . | Fact Table: Sales transactions with measures for revenue, quantity, and profit | Dimension Tables: Products, Customers, Geography, and Date | Relationships: Properly configured one-to-many relationships | Data Quality: Clean, consistent data perfect for learning and testing | . 🧮 DAX Functions Library . I’ve organized multiple DAX measures following Microsoft’s official function categories: . 📈 Aggregation Functions . | SUM, AVERAGE, MIN, MAX | SUMX, AVERAGEX | DISTINCTCOUNT, COUNTROWS | . 🎯 Filter Functions . | CALCULATE, FILTER | ALL, ALLEXCEPT, ALLSELECTED | KEEPFILTERS, REMOVEFILTERS | . 📅 Time Intelligence . | DATESYTD, DATESQTD, DATESMTD | SAMEPERIODLASTYEAR | DATEADD, DATESBETWEEN | . 📊 Statistical Functions . | RANKX, TOPN | PERCENTILE, MEDIAN | VAR, STDEV | . ",
+    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#%EF%B8%8F-whats-inside-lazydax",
+    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#️-whats-inside-lazydax"
   },"88": {
     "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
-    "title": "Test it here",
-    "content": ". ",
-    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#test-it-here",
-    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#test-it-here"
+    "title": "🔍 Interactive Preview",
+    "content": "Experience LazyDAX directly in your browser: . 📄 View All Pages in PDF Format ",
+    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#-interactive-preview",
+    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#-interactive-preview"
   },"89": {
     "doc": "LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX",
-    "title": "Why",
-    "content": "I spent a lot of my free time on it, and in this new version I changed the look n’feel and try a dark mode report. (Yes, it’s also a playground for me to test Power BI) I created it more than 4 years ago now, but I still use it every week. (If not every day) I can use it for my presentation, and help people with DAX. I hope it can help you too, and would really enjoy hearing your thoughts, ideas and requests. You can also view all different pages in this PDF file . ",
-    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#why",
-    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#why"
+    "title": "🌟 Community &amp; Feedback",
+    "content": "💬 Share Your Experience . I'd love to hear how you're using LazyDAX! Share your thoughts, suggestions, or creative modifications: . | Submit issues or suggestions on GitHub | Connect with me on LinkedIn for discussions | Share your custom modifications with the community | . LazyDAX is maintained with ❤️ and countless hours of refinement. If it helps you in your Power BI journey, consider sharing it with others who might benefit from it too! . ",
+    "url": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#-community--feedback",
+    "relUrl": "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/#-community--feedback"
   },"90": {
     "doc": "Filter a Power BI report passing parameters through URL",
     "title": "Filter a Power BI report passing parameters through URL",
@@ -1218,47 +1218,53 @@
     "relUrl": "/"
   },"203": {
     "doc": "Home",
+    "title": "📊 LazyDAX - Free Power BI Practice File",
+    "content": "A comprehensive Power BI file designed to help you learn DAX, test measures, and explore Power BI features. Perfect for presentations, training, or personal practice. ✨ What's included: . | Complete star schema with sample data | DAX measures organized by function type | Multiple visual examples and templates | Ready-to-use without server connections | . 🎯 Perfect for: . | Learning and testing DAX functions | Creating presentations and demos | Exploring Power BI capabilities | Training sessions and workshops | . 📥 Download LazyDAX.pbix 📖 Learn More ",
+    "url": "/",
+    "relUrl": "/"
+  },"204": {
+    "doc": "Home",
     "title": "Home",
     "content": ". 🚀 Welcome to Lazy Snail’s Data Trails! Join me as I explore Microsoft Fabric, Power BI, SQL Server, Obsidian, and share my personal tips and reflections on unlocking the power of data. ",
     "url": "/",
     "relUrl": "/"
-  },"204": {
+  },"205": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Jekyll Theme - Cheat sheet",
     "content": " ",
     "url": "/code",
     "relUrl": "/code"
-  },"205": {
+  },"206": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": ". | | Labels | Callouts | Buttons | Misc . | Comment | New page header | Resize and center images | . | . ",
     "url": "/code#table-of-contents",
     "relUrl": "/code#table-of-contents"
-  },"206": {
+  },"207": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": "## {: .no_toc .text-delta } 1. TOC {:toc} --- . ",
     "url": "/code#table-of-contents-1",
     "relUrl": "/code#table-of-contents-1"
-  },"207": {
+  },"208": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Labels",
     "content": "Default label . Default label {: .label } . Blue label . Blue label {: .label .label-blue } . Green label . Green label {: .label .label-green } . Purple label . Purple label {: .label .label-purple } . Yellow label . Yellow label {: .label .label-yellow } . Red label . Red label {: .label .label-red } . ",
     "url": "/code#labels",
     "relUrl": "/code#labels"
-  },"208": {
+  },"209": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Callouts",
     "content": "Yellow . Text here . {: .highlight-title } &gt; Yellow &gt; &gt; Text here . Blue . Text here . {: .important-title } &gt; Blue &gt; &gt; Text here . Green . Text here . {: .new-title } &gt; Green &gt; &gt; Text here . Violet . Text here . {: .note-title } &gt; Violet &gt; &gt; Text here . Red . Text here . {: .warning-title } &gt; Red &gt; &gt; Text here . ",
     "url": "/code#callouts",
     "relUrl": "/code#callouts"
-  },"209": {
+  },"210": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Buttons",
     "content": "Grey button Purple button Blue button Green button White button . [Grey button](https://just-the-docs.com){: .btn } [Purple button](https://just-the-docs.com){: .btn .btn-purple } [Blue button](https://just-the-docs.com){: .btn .btn-blue } [Green button](https://just-the-docs.com){: .btn .btn-green } [White button](https://just-the-docs.com){: .btn .btn-outline } . ",
     "url": "/code#buttons",
     "relUrl": "/code#buttons"
-  },"210": {
+  },"211": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Misc",
     "content": "Comment . { % comment % } COMMENT HERE { % endcomment % } . New page header . --- parent: Other --- # Title of the page {: .no_toc } ## {: .no_toc .text-delta } 1. TOC {:toc} --- ## First topic . Resize and center images . {: .image90 } {: .image80 } {: .image70 } {: .image60 } {: .image50 } {: .image40 } {: .image30 } . ",
