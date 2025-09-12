@@ -63,7 +63,7 @@ permalink: /
   <a href="https://github.com/arnaudgastelblum/LazyDAX/raw/master/LazyDAX.pbix" style="display: inline-block; background-color: #27ae60; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-right: 10px;">
    📥 Download LazyDAX.pbix
   </a>
-  <a href="/power-bi/lazydax" style="display: inline-block; background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+  <a href="/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/" style="display: inline-block; background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">
    📖 Learn More
   </a>
  </div>
