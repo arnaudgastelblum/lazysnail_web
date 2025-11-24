@@ -1037,234 +1037,264 @@
     "url": "/fabric/exploring-power-bi-semantic-models-python-microsoft-fabric#checking-refresh-status-of-a-semantic-model",
     "relUrl": "/fabric/exploring-power-bi-semantic-models-python-microsoft-fabric#checking-refresh-status-of-a-semantic-model"
   },"173": {
+    "doc": "Documenting Power BI Semantic Model sources Using DAX And AI",
+    "title": "Documenting Power BI Semantic Model sources Using DAX And AI",
+    "content": ". What? . This post shows how to extract all Power Query M definitions from a Power BI semantic model with a single DAX query, then use a dedicated AI prompt to generate structured technical documentation of your tables and data sources. ",
+    "url": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai",
+    "relUrl": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai"
+  },"174": {
+    "doc": "Documenting Power BI Semantic Model sources Using DAX And AI",
+    "title": "Goal",
+    "content": "With this approach you can: . | Get a complete list of tables and their M code from a semantic model using one EVALUATE query. | Feed the result to an AI model with a precise prompt to document your model. | Generate a consistent overview of table purposes, dependencies and external data sources without manual copy-paste in Power Query. | . ",
+    "url": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai#goal",
+    "relUrl": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai#goal"
+  },"175": {
+    "doc": "Documenting Power BI Semantic Model sources Using DAX And AI",
+    "title": "Step 1: Extract all M queries with a DAX query",
+    "content": "The first step is to query the model metadata to retrieve partitions and their Power Query definitions. Run the following DAX query against your model (for example from DAX Studio, SSMS, or any tool that can send DAX to the XMLA endpoint): . EVALUATE VAR _partitions = SELECTCOLUMNS ( INFO.PARTITIONS (), \"PartitionName\", [Name], \"QueryDefinition\", [QueryDefinition], \"TableID\", [TableID] ) VAR _tables = SELECTCOLUMNS ( INFO.TABLES (), \"TableID\", [ID], \"TableName\", [Name] ) RETURN SELECTCOLUMNS ( NATURALLEFTOUTERJOIN ( _partitions, _tables ), \"TableName\", [TableName], // \"PartitionName\", [PartitionName], \"QueryDefinition\", [QueryDefinition] ) ORDER BY [TableName] . Result . The query returns a table like: . | TableName | QueryDefinition | . | DimDate | let Source = ... in ... | . | DimCustomer | let Source = ... in ... | . | FactSales | let Source = ... in ... | . | … | … | . Export this result as text (for example to CSV or copy-paste) to use it in the next step. Run the DAX query directly from Power BI Service (You can also download the Semantic Model and run it in Power BI Desktop) I prefer Power BI Service, it’s faster. Run the DAX Evaluate Query to export the table list. ",
+    "url": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai#step-1-extract-all-m-queries-with-a-dax-query",
+    "relUrl": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai#step-1-extract-all-m-queries-with-a-dax-query"
+  },"176": {
+    "doc": "Documenting Power BI Semantic Model sources Using DAX And AI",
+    "title": "Step 2: Use AI to document each table’s M code",
+    "content": "Once you have the list of tables and their M code, you can delegate the documentation work to an AI model with a specialized prompt. Below is the prompt I use to analyze and document the Power Query M code. Power BI M Code Analysis Prompt . Paste the extracted M code for your tables and use this instruction for the AI: . # Power BI M Code Analysis Prompt You are an experienced Power BI architect specializing in Power Query M transformations. I will provide Power Query M code for tables in a Power BI semantic model. Analyze each table's M code and produce comprehensive documentation: --- ## 1) Tables Overview Output a markdown table with these columns: - **Table Name**: Name of the table - **Source Type**: `Calculated` (M code creates/transforms data), `Direct Query`, `Import`, or `Composite` - **Data Sources**: List of source systems/tables/files referenced in M code (one per line) - **Source Origin**: For each source - `Internal` if references another table in this model, otherwise `External` - **Referenced By**: List of other tables that use this table as a source (from analyzing their M code) - **Purpose**: Brief description of table's purpose based on name, transformations, and data sources - **M Complexity**: `Simple / Medium / Complex` **M Complexity Guidelines:** - **Simple**: Direct source connection, basic column selection, simple renames/filters (e.g., `Source{0}[Data]`, `Table.SelectColumns`, `Table.RenameColumns`) - **Medium**: Multiple merge operations, pivot/unpivot, basic transformations, conditional columns, group by operations (e.g., `Table.NestedJoin`, `Table.Pivot`, `Table.AddColumn` with conditionals) - **Complex**: Multiple data source combinations, complex M functions, nested transforms, advanced filtering logic, recursive operations, custom functions, error handling patterns --- ## 2) Data Source Inventory Create a consolidated list of all external data sources: **Format:** External Data Sources: ├── SQL Server: sql-prod-01.database.windows.net │ ├── Database: DW_Sales │ │ ├── Used by: Sales_Fact, Returns_Fact │ │ └── Tables: dbo.FactSales, dbo.FactReturns │ └── Database: DW_HR │ ├── Used by: Employee_Dim │ └── Tables: dbo.DimEmployee ├── Excel File: \"\\\\shared\\\\data\\\\Budget2024.xlsx\" │ ├── Used by: Budget_Targets │ └── Sheets: MonthlyTargets └── Web API: https://api.exchangerate.com ├── Used by: Exchange_Rates └── Authentication: API Key --- **Important Guidelines:** * Base analysis ONLY on the M code provided * In the Data Source Inventory, I don't want to see the column list * Stay focus to provide me a clear documentation, do not add to much information, stay concise. * Be explicit about what can be inferred vs. what is uncertain * Prioritize actionable insights over generic observations * Use proper markdown formatting throughout * Flag any code smells or anti-patterns * Do not provide recommandations, the goal is to provide a documentation . What the prompt produces . In practice, this prompt gives you two key outputs: . | Tables Overview . | One row per table. | Source type (Import, Direct Query, etc.) inferred from M patterns. | External vs internal references based on Source and Merged tables. | High-level purpose and complexity. | . | Data Source Inventory . | Consolidated list of external systems (SQL, files, APIs). | For each system: which tables use it and which physical objects are referenced. | No column-level details to keep the documentation readable. | . | . This gives you a compact but precise view of how your model is wired, without opening each query in Power Query. ",
+    "url": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai#step-2-use-ai-to-document-each-tables-m-code",
+    "relUrl": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai#step-2-use-ai-to-document-each-tables-m-code"
+  },"177": {
+    "doc": "Documenting Power BI Semantic Model sources Using DAX And AI",
+    "title": "Summary",
+    "content": ". | A single DAX query using INFO.PARTITIONS() and INFO.TABLES() is enough to extract all Power Query M scripts from a Power BI model. | An AI prompt tailored for M analysis can convert raw M code into structured documentation. | The result is a consistent, model-level view of tables, dependencies and data sources that you can maintain alongside your semantic model. | . ",
+    "url": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai#summary",
+    "relUrl": "/power-bi/documenting-power-bi-semantic-model-sources-dax-ai#summary"
+  },"178": {
     "doc": "About Me",
     "title": "Curious about the person behind Lazysnail?",
     "content": "Through Lazysnail, I’ve created a hub to catalog my tools and share my explorations, particularly in Microsoft BI technologies and all things geeky. Connect with me on LinkedIn . The journey began when I started mentoring a younger colleague. Over time, I realized I derived immense joy from imparting knowledge and watching him blossom. Even though he was anything but lethargic or slow-moving, I playfully dubbed him Lazy snail. That’s the inspiration behind the name of my blog and all my pursuits. ",
     "url": "/docs/About#curious-about-the-person-behind-lazysnail",
     "relUrl": "/docs/About#curious-about-the-person-behind-lazysnail"
-  },"174": {
+  },"179": {
     "doc": "About Me",
     "title": "My Journey",
     "content": ". Beyond championing the Star Schema, I have an affinity for neatly written code. My Windows desktop is a reflection of that penchant for order. Should I enable icons, the lone one you’d find is the recycle bin. From diverse programming languages to the realm of Business Intelligence, life has taken me on an intriguing path. I’m often asked: Did I stray too far from my roots? . Actually, I haven’t! Databases, SQL Queries, and BI technologies may not follow identical logic but echo similar principles: . - Maintain clean code - Avoid code redundancy - Keep complexity at a comprehensible level - Prioritize performance - Always keep users in mind . Given these beliefs, I proudly identify as a BI developer! . ",
     "url": "/docs/About#my-journey",
     "relUrl": "/docs/About#my-journey"
-  },"175": {
+  },"180": {
     "doc": "About Me",
     "title": "A Glimpse into My Personal Life",
     "content": ". Although it may sound unusual, my job is my passion! If it’s not yours, perhaps Power BI might change your perspective. Life blessed me with two kids: Pauline and Antoine. They’re my greatest joys and challenges rolled into one. Fellow parents might resonate with this sentiment. Running is another passion of mine. The camaraderie in the running community is unparalleled. Having completed multiple Marathons and Half Marathons, the thrill for me lies in challenging myself and relishing the moment I cross the finish line. ",
     "url": "/docs/About#a-glimpse-into-my-personal-life",
     "relUrl": "/docs/About#a-glimpse-into-my-personal-life"
-  },"176": {
+  },"181": {
     "doc": "About Me",
     "title": "About Me",
     "content": " ",
     "url": "/docs/About",
     "relUrl": "/docs/About"
-  },"177": {
+  },"182": {
     "doc": "Fabric",
     "title": "Fabric",
     "content": ". ",
     "url": "/docs/Fabric",
     "relUrl": "/docs/Fabric"
-  },"178": {
+  },"183": {
     "doc": "Fabric",
     "title": "🧵 Microsoft Fabric Insights",
     "content": "Exploring Power BI Semantic Models with Python in Microsoft Fabric - 13/03/2025 Create a Calendar Dimension with SQL in a Fabric Warehouse - 04/02/2025 Handling Data Type Conflicts in SQL for Merging Tables - 20/09/2024 ",
     "url": "/docs/Fabric",
     "relUrl": "/docs/Fabric"
-  },"179": {
+  },"184": {
     "doc": "Links",
     "title": "List of links",
     "content": "My colleagues often asked me What tool do you use for this? It’s also a list for me . ",
     "url": "/docs/Links#list-of-links",
     "relUrl": "/docs/Links#list-of-links"
-  },"180": {
+  },"185": {
     "doc": "Links",
     "title": "Data Modelling",
     "content": "DBDiagram.io https://dbdiagram.io Design a database without effort . ",
     "url": "/docs/Links#data-modelling",
     "relUrl": "/docs/Links#data-modelling"
-  },"181": {
+  },"186": {
     "doc": "Links",
     "title": "Presentation",
     "content": "Microsoft ZoomIt https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit Zoom, annotate and record your screen . ",
     "url": "/docs/Links#presentation",
     "relUrl": "/docs/Links#presentation"
-  },"182": {
+  },"187": {
     "doc": "Links",
     "title": "Screenshot",
     "content": "Sharex https://getsharex.com Screenshot tool: PNG, GIF and AVI . ",
     "url": "/docs/Links#screenshot",
     "relUrl": "/docs/Links#screenshot"
-  },"183": {
+  },"188": {
     "doc": "Links",
     "title": "Misc",
     "content": "Microsoft Power Toys https://learn.microsoft.com/en-us/windows/powertoys/install Many different tools in 1 app . | Keep your screen / PC awake | Fancy zone (manage your window size and location) | Image resizer | Power rename (rename files in a batch mode) | Keyboard manager | Mouse utilities | … | . ",
     "url": "/docs/Links#misc",
     "relUrl": "/docs/Links#misc"
-  },"184": {
+  },"189": {
     "doc": "Links",
     "title": "Links",
     "content": " ",
     "url": "/docs/Links",
     "relUrl": "/docs/Links"
-  },"185": {
+  },"190": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Backtick key doesn’t work like expecting on my macbook",
     "content": "Since I switch my PC on windows to a macbook, I had some problem with the backtick caracter. ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#backtick-key-doesnt-work-like-expecting-on-my-macbook",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#backtick-key-doesnt-work-like-expecting-on-my-macbook"
-  },"186": {
+  },"191": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Writing code in Teams didn’t work",
     "content": " ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-code-in-teams-didnt-work",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-code-in-teams-didnt-work"
-  },"187": {
+  },"192": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Writing some caracters after give me an accentuated caracter",
     "content": "a e u i o . à è ù ì ò . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-some-caracters-after-give-me-an-accentuated-caracter",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#writing-some-caracters-after-give-me-an-accentuated-caracter"
-  },"188": {
+  },"193": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Can’t have a pair of the first caracters",
     "content": "I had to press manually two times the key and I had some weird behavior when I wanted a code block (6 backtip) . Like this block of code . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#cant-have-a-pair-of-the-first-caracters",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#cant-have-a-pair-of-the-first-caracters"
-  },"189": {
+  },"194": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "The solution",
     "content": "To fix this I installed a software named Ukelele . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#the-solution",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#the-solution"
-  },"190": {
+  },"195": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Installation",
     "content": "From brew . For those who use brew, use this command brew install Ukelele . From their website . https://software.sil.org/ukelele/ . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#installation",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#installation"
-  },"191": {
+  },"196": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Method",
     "content": "Follow the steps . Open Ukelele . ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected#method",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected#method"
-  },"192": {
+  },"197": {
     "doc": "Backtick key doesn't work like expecting on my macbook",
     "title": "Backtick key doesn't work like expecting on my macbook",
     "content": " ",
     "url": "/docs/Other/Mac-backtick-not-working-as-exepected",
     "relUrl": "/docs/Other/Mac-backtick-not-working-as-exepected"
-  },"193": {
+  },"198": {
     "doc": "Obsidian",
     "title": "Obsidian",
     "content": ". ",
     "url": "/docs/Obsidian",
     "relUrl": "/docs/Obsidian"
-  },"194": {
+  },"199": {
     "doc": "Obsidian",
     "title": "🧠 Latest Articles on Obsidian",
     "content": "Managing efficiently your tasks with Obsidian and Dataview - 07/04/2023 I discovered Obsidian and I love it - 06/04/2023 ",
     "url": "/docs/Obsidian",
     "relUrl": "/docs/Obsidian"
-  },"195": {
+  },"200": {
     "doc": "Other",
     "title": "Other",
     "content": ". ",
     "url": "/docs/Other",
     "relUrl": "/docs/Other"
-  },"196": {
+  },"201": {
     "doc": "Other",
     "title": "📚 Latest Articles on Other",
     "content": "How to stay always \"Available\" in Microsoft Teams with Excel - 16/10/2020 How I optimized my learning time with Instapaper - 20/05/2020 ",
     "url": "/docs/Other",
     "relUrl": "/docs/Other"
-  },"197": {
+  },"202": {
     "doc": "Power BI",
     "title": "Power BI",
     "content": ". ",
     "url": "/docs/Power-BI",
     "relUrl": "/docs/Power-BI"
-  },"198": {
+  },"203": {
     "doc": "Power BI",
     "title": "📊 Latest Articles on Power BI",
-    "content": "Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY() - 19/09/2024 Organize your External tools - 12/04/2023 Power BI Scanner API List and document your Power BI tenant - 24/03/2023 Create a gradient background for Power BI - 13/10/2022 Power BI Sidetools extensions: A Must have! - 26/08/2022 Filter a Power BI report passing parameters through URL - 24/06/2022 LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX - 17/06/2022 Power BI Visuals List: Which Graphic to choose? - 18/02/2022 Power BI: Duplicate of Duplicate - The best way to test your reports and measures - 15/02/2022 DAX is case insensitive - 27/01/2022 Power BI Interview questions: a different way to know your applicants - 14/01/2022 Your data model first! - 23/12/2021 Power BI Create a Calendar table automatically - 06/07/2021 Power BI - Your model matters - 26/11/2019 PIT Point In Time - 17/10/2019 Pie Chart is bad! - 30/07/2019 Power BI Desktop: Print in the A4 size - 24/08/2018 ",
+    "content": "Documenting Power BI Semantic Model sources Using DAX And AI - 23/11/2025 Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY() - 19/09/2024 Organize your External tools - 12/04/2023 Power BI Scanner API List and document your Power BI tenant - 24/03/2023 Create a gradient background for Power BI - 13/10/2022 Power BI Sidetools extensions: A Must have! - 26/08/2022 Filter a Power BI report passing parameters through URL - 24/06/2022 LazyDAX: a Power BI File for your presentation, discoveries, or learn DAX - 17/06/2022 Power BI Visuals List: Which Graphic to choose? - 18/02/2022 Power BI: Duplicate of Duplicate - The best way to test your reports and measures - 15/02/2022 DAX is case insensitive - 27/01/2022 Power BI Interview questions: a different way to know your applicants - 14/01/2022 Your data model first! - 23/12/2021 Power BI Create a Calendar table automatically - 06/07/2021 Power BI - Your model matters - 26/11/2019 PIT Point In Time - 17/10/2019 Pie Chart is bad! - 30/07/2019 Power BI Desktop: Print in the A4 size - 24/08/2018 ",
     "url": "/docs/Power-BI",
     "relUrl": "/docs/Power-BI"
-  },"199": {
+  },"204": {
     "doc": "SQL Server",
     "title": "SQL Server",
     "content": ". ",
     "url": "/docs/SQL%20Server",
     "relUrl": "/docs/SQL%20Server"
-  },"200": {
+  },"205": {
     "doc": "SQL Server",
     "title": "🛢️ Latest Articles on SQL Server",
     "content": "SP_Helptext Get DDL information - 24/03/2023 Management Studio - Faster with multiple select - 30/09/2019 SSIS - Create Environment from Packages variables - 02/08/2019 SSMS - Query Shortcuts : Feel like a superman developer - 11/04/2019 SSIS - Log Execution time - 12/03/2019 SSIS - Export SSIS Catalog Environments - 26/10/2018 SP_WHO3 - Running Queries (Toolbox) - 17/08/2018 ",
     "url": "/docs/SQL%20Server",
     "relUrl": "/docs/SQL%20Server"
-  },"201": {
+  },"206": {
     "doc": "YouTube",
     "title": "YouTube",
     "content": "I’m sharing quick tips on my personal YouTube Channel, and you can also discover a lot of meetup on the Club Power BI Channel. | | | | . | Lazysnail | Club Power BI | DataSprouts | . | My channel, where I share multiple quick tips video around Power BI and Microsoft data in general | Videos from our Club Power BI - Brussels meetup group and many other french cities. (in French) | DataSprouts is a group of Belgium Data consultant, it’s a place where we discuss about Microsoft Data (in French) | . ",
     "url": "/docs/Youtube",
     "relUrl": "/docs/Youtube"
-  },"202": {
+  },"207": {
     "doc": "Home",
     "title": "📚 Latest Articles",
-    "content": ". | Exploring Power BI Semantic Models with Python in Microsoft Fabric - 13/03/2025 | Create a Calendar Dimension with SQL in a Fabric Warehouse - 04/02/2025 | Handling Data Type Conflicts in SQL for Merging Tables - 20/09/2024 | Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY() - 19/09/2024 | Organize your External tools - 12/04/2023 | . ",
+    "content": ". | Documenting Power BI Semantic Model sources Using DAX And AI - 23/11/2025 | Exploring Power BI Semantic Models with Python in Microsoft Fabric - 13/03/2025 | Create a Calendar Dimension with SQL in a Fabric Warehouse - 04/02/2025 | Handling Data Type Conflicts in SQL for Merging Tables - 20/09/2024 | Analyzing Model Dependencies in Power BI with INFO.CALCDEPENDENCY() - 19/09/2024 | . ",
     "url": "/",
     "relUrl": "/"
-  },"203": {
+  },"208": {
     "doc": "Home",
     "title": "📊 LazyDAX - Free Power BI Practice File",
     "content": "A comprehensive Power BI file designed to help you learn DAX, test measures, and explore Power BI features. Perfect for presentations, training, or personal practice. ✨ What's included: . | Complete star schema with sample data | DAX measures organized by function type | Multiple visual examples and templates | Ready-to-use without server connections | . 🎯 Perfect for: . | Learning and testing DAX functions | Creating presentations and demos | Exploring Power BI capabilities | Training sessions and workshops | . 📥 Download LazyDAX.pbix 📖 Learn More ",
     "url": "/",
     "relUrl": "/"
-  },"204": {
+  },"209": {
     "doc": "Home",
     "title": "Home",
     "content": ". 🚀 Welcome to Lazy Snail’s Data Trails! Join me as I explore Microsoft Fabric, Power BI, SQL Server, Obsidian, and share my personal tips and reflections on unlocking the power of data. ",
     "url": "/",
     "relUrl": "/"
-  },"205": {
+  },"210": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Jekyll Theme - Cheat sheet",
     "content": " ",
     "url": "/code",
     "relUrl": "/code"
-  },"206": {
+  },"211": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": ". | | Labels | Callouts | Buttons | Misc . | Comment | New page header | Resize and center images | . | . ",
     "url": "/code#table-of-contents",
     "relUrl": "/code#table-of-contents"
-  },"207": {
+  },"212": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Table of contents",
     "content": "## {: .no_toc .text-delta } 1. TOC {:toc} --- . ",
     "url": "/code#table-of-contents-1",
     "relUrl": "/code#table-of-contents-1"
-  },"208": {
+  },"213": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Labels",
     "content": "Default label . Default label {: .label } . Blue label . Blue label {: .label .label-blue } . Green label . Green label {: .label .label-green } . Purple label . Purple label {: .label .label-purple } . Yellow label . Yellow label {: .label .label-yellow } . Red label . Red label {: .label .label-red } . ",
     "url": "/code#labels",
     "relUrl": "/code#labels"
-  },"209": {
+  },"214": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Callouts",
     "content": "Yellow . Text here . {: .highlight-title } &gt; Yellow &gt; &gt; Text here . Blue . Text here . {: .important-title } &gt; Blue &gt; &gt; Text here . Green . Text here . {: .new-title } &gt; Green &gt; &gt; Text here . Violet . Text here . {: .note-title } &gt; Violet &gt; &gt; Text here . Red . Text here . {: .warning-title } &gt; Red &gt; &gt; Text here . ",
     "url": "/code#callouts",
     "relUrl": "/code#callouts"
-  },"210": {
+  },"215": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Buttons",
     "content": "Grey button Purple button Blue button Green button White button . [Grey button](https://just-the-docs.com){: .btn } [Purple button](https://just-the-docs.com){: .btn .btn-purple } [Blue button](https://just-the-docs.com){: .btn .btn-blue } [Green button](https://just-the-docs.com){: .btn .btn-green } [White button](https://just-the-docs.com){: .btn .btn-outline } . ",
     "url": "/code#buttons",
     "relUrl": "/code#buttons"
-  },"211": {
+  },"216": {
     "doc": "Jekyll Theme - Cheat sheet",
     "title": "Misc",
     "content": "Comment . { % comment % } COMMENT HERE { % endcomment % } . New page header . --- parent: Other --- # Title of the page {: .no_toc } ## {: .no_toc .text-delta } 1. TOC {:toc} --- ## First topic . Resize and center images . {: .image90 } {: .image80 } {: .image70 } {: .image60 } {: .image50 } {: .image40 } {: .image30 } . ",
