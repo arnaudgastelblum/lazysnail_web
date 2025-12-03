@@ -44,7 +44,7 @@ Given these beliefs, I proudly identify as a **BI developer**!
 
 ![Alt text](<../assets/2023/AboutMe_Illustration copy_500.png>){: .image40 }
 
-Although it may sound unusual, my job is my passion! If it's not yours, perhaps **Power BI** might change your perspective.
+Although it may sound unusual, my job is my passion! If it's not yours, perhaps **Fabric** and **Power BI** might change your perspective.
 
 Life blessed me with two kids: Pauline and Antoine. They're my greatest joys and challenges rolled into one. Fellow parents might resonate with this sentiment.
 
