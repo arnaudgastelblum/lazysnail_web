@@ -54,6 +54,13 @@ The custom keybindings file remaps VS Code to behave like SSMS:
 | `Shift+Arrow` | Normal text selection (no multi-cursor) |
 | `Ctrl+Shift+Arrow` | Word-level selection |
 | `Shift+Home/End` | Select to start/end of line |
+| `Ctrl+R` | Toggle the results/terminal panel (same as SSMS `Ctrl+R`) |
+
+### Toggle the results panel with Ctrl+R
+
+In SSMS, pressing `Ctrl+R` hides or shows the results pane. This is very handy when you want more screen space for your query, or when you want to quickly check results and hide them again.
+
+The keybindings file maps `Ctrl+R` to VS Code's `workbench.action.togglePanel` command, which toggles the bottom panel (terminal, results, problems). Same shortcut, same behavior.
 
 ### Important: freeing up Ctrl+1 to Ctrl+4
 
