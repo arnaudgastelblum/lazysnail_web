@@ -149,4 +149,9 @@
         "key": "ctrl+4",
         "command": "-workbench.action.openEditorAtIndex4"
     }
+    ,
+    {
+        "key": "ctrl+r",
+        "command": "workbench.action.togglePanel"
+    }
 ]
