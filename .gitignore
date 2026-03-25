@@ -1,0 +1,19 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby
+vendor/
+Gemfile.lock
+
+# Node
+node_modules/
+
+# Claude Code
+CLAUDE.md
+
+# OS files
+.DS_Store
+Thumbs.db

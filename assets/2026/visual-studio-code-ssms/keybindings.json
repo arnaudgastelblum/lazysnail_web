@@ -1,0 +1,152 @@
+// VS Code keybindings for SSMS-style column/box selection
+// ---------------------------------------------------------
+// Alt+Shift+Arrows  → Column (box) select (stays on column, no line wrapping)
+// Shift+Arrows      → Normal text selection (no multi-cursor)
+//
+// To install:
+//   1. Open VS Code
+//   2. Ctrl+Shift+P → "Preferences: Open Keyboard Shortcuts (JSON)"
+//   3. Paste the contents of this array into the file
+//   4. Save and restart VS Code
+// ---------------------------------------------------------
+[
+    // =====================================================
+    // ALT + SHIFT + ARROW KEYS → Column (box) selection
+    // =====================================================
+    {
+        "key": "alt+shift+down",
+        "command": "cursorColumnSelectDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+up",
+        "command": "cursorColumnSelectUp",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+left",
+        "command": "cursorColumnSelectLeft",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+right",
+        "command": "cursorColumnSelectRight",
+        "when": "editorTextFocus"
+    },
+
+    // =====================================================
+    // ALT + SHIFT + PAGE keys → Column select by page
+    // =====================================================
+    {
+        "key": "alt+shift+pagedown",
+        "command": "cursorColumnSelectPageDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+pageup",
+        "command": "cursorColumnSelectPageUp",
+        "when": "editorTextFocus"
+    },
+
+    // =====================================================
+    // SHIFT + ARROW KEYS → Normal selection (no multi-cursor)
+    // Remove any conflicting defaults, then rebind explicitly
+    // =====================================================
+    {
+        "key": "shift+down",
+        "command": "cursorDownSelect",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+up",
+        "command": "cursorUpSelect",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+left",
+        "command": "cursorLeftSelect",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+right",
+        "command": "cursorRightSelect",
+        "when": "editorTextFocus"
+    },
+
+    // =====================================================
+    // SHIFT + CTRL + ARROW KEYS → Normal word selection
+    // =====================================================
+    {
+        "key": "ctrl+shift+left",
+        "command": "cursorWordLeftSelect",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+right",
+        "command": "cursorWordRightSelect",
+        "when": "editorTextFocus"
+    },
+
+    // =====================================================
+    // SHIFT + HOME/END → Normal line selection
+    // =====================================================
+    {
+        "key": "shift+home",
+        "command": "cursorHomeSelect",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+end",
+        "command": "cursorEndSelect",
+        "when": "editorTextFocus"
+    },
+
+    // =====================================================
+    // Disable default Alt+Click multi-cursor add
+    // (optional — remove this block if you want to keep it)
+    // =====================================================
+    {
+        "key": "alt+click",
+        "command": "-editor.action.insertCursorAtPosition"
+    },
+
+    // =====================================================
+    // Disable default VS Code Ctrl+1..4 (switch editor group)
+    // so they don't conflict with query shortcuts
+    // =====================================================
+    // =====================================================
+    // Disable ALL default VS Code Ctrl+1..4 bindings
+    // =====================================================
+    {
+        "key": "ctrl+1",
+        "command": "-workbench.action.focusFirstEditorGroup"
+    },
+    {
+        "key": "ctrl+1",
+        "command": "-workbench.action.openEditorAtIndex1"
+    },
+    {
+        "key": "ctrl+2",
+        "command": "-workbench.action.focusSecondEditorGroup"
+    },
+    {
+        "key": "ctrl+2",
+        "command": "-workbench.action.openEditorAtIndex2"
+    },
+    {
+        "key": "ctrl+3",
+        "command": "-workbench.action.focusThirdEditorGroup"
+    },
+    {
+        "key": "ctrl+3",
+        "command": "-workbench.action.openEditorAtIndex3"
+    },
+    {
+        "key": "ctrl+4",
+        "command": "-workbench.action.focusFourthEditorGroup"
+    },
+    {
+        "key": "ctrl+4",
+        "command": "-workbench.action.openEditorAtIndex4"
+    }
+]
