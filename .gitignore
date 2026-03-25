@@ -13,6 +13,7 @@ node_modules/
 
 # Claude Code
 CLAUDE.md
+.claude/
 
 # OS files
 .DS_Store

@@ -14,8 +14,6 @@ parent: SQL Server
 {:toc}
 
 {: .note-title :}
->TL;DR
->
 >Two free tools to bring your favorite SSMS features into VS Code:
 >1. A **keybindings.json** file for SSMS-style column/box selection, and to free up `Ctrl+1` to `Ctrl+4` for query shortcuts
 >2. A **VS Code extension** that replicates SSMS Query Shortcuts (`Ctrl+3` = `SELECT TOP 1000 * FROM ...`)
