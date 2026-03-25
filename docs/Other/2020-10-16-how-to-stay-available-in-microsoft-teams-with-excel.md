@@ -8,6 +8,8 @@ comments: true
 permalink: "/en/how-to-stay-available-in-microsoft-teams-with-excel/"
 parent: Other
 ---
+# {{ page.title }}
+{: .fs-9 }
 
 ## Stay available on Microsoft Teams
 {: .no_toc }
@@ -27,7 +29,7 @@ parent: Other
 {: .warning-title :}
 >`^^`
 >
->I wrote this article quite a while back, yet it remains one of the most frequented pages on my site! Oh, you lazy people! 😉
+>I wrote this article quite a while back, yet it remains one of the most frequented pages on my site! Oh, you lazy people!
 
 {: .new-title :}
 >Download
@@ -38,7 +40,7 @@ parent: Other
 
 ---
 
-## How Did It Begin? 🚀
+## How Did It Begin?
 
 Initially, it was an inside joke. But now, thanks to this article, it's **a public jest**.
 
@@ -50,14 +52,14 @@ And they were right; there's no such option. Someone then suggested:
 
 While this might work, our software guidelines prohibit us from adding any external programs to our systems.
 
-## Inspiration Struck! 💡
+## Inspiration Struck!
 
 That's when inspiration struck, courtesy of our trusty old friend, **Excel**. Some might quip:
-> "Laziness breeds innovation," 
+> "Laziness breeds innovation,"
 
 while others might jest about my quirky sense of humor. Regardless, I had a blast utilizing Excel and its versatile VBA editor.
 
-My colleague Isabelle (and perhaps Maslow) would reference this: 
+My colleague Isabelle (and perhaps Maslow) would reference this:
 
 [If all you have is a hammer, everything looks like a nail](https://en.wiktionary.org/wiki/if_all_you_have_is_a_hammer,_everything_looks_like_a_nail)
 
@@ -65,34 +67,34 @@ To me, Excel and coding are like my trusty hammer. Whether you see it as a 'nail
 
 I devised a simple Excel sheet that runs in a loop until terminated, moving your mouse cursor every five seconds.
 
-## Emotions & Perceptions 🎭
+## Emotions & Perceptions
 
 My emotions are a mix of:
 
 - **Proud**: "I'm the Microsoft BI enthusiast who employed Microsoft Office and VBA code for a playful purpose."
-  
+
 - **Amused**: "Am I now perceived as the ultimate procrastinator, mirroring the theme of my website?"
 
 Regardless, if you're reading this, I believe you'd lean towards the former sentiment. **Am I off the mark?** :)
 
 
-## What's the Appearance? 🖼️
+## What's the Appearance?
 
 ![](/assets/2020/10/image-1.png)
 
-This is its appearance in Excel. 
-Initiate the timer by either clicking the start button, pressing CTRL + L (as in 'lazysnail'), or manually activating the macro titled "DoNotSleep". 
+This is its appearance in Excel.
+Initiate the timer by either clicking the start button, pressing CTRL + L (as in 'lazysnail'), or manually activating the macro titled "DoNotSleep".
 To halt the timer, simply press any key.
 
 
-## Download the Excel 📥
+## Download the Excel
 
 The file is available on GitHub
 [https://github.com/arnaudgastelblum/Misc/raw/main/LazySnail.xlsm](https://github.com/arnaudgastelblum/Misc/raw/main/LazySnail.xlsm)
 
 
 
-## Construct Your VBA Macro 🛠️
+## Construct Your VBA Macro
 
 *Thanks to Rafi for his 64 bits version!*
 
@@ -101,10 +103,10 @@ The file is available on GitHub
 ```vb
 Public Declare PtrSafe Function SetCursorPos Lib "user32" (ByVal x As LongPtr, ByVal y As LongPtr) As LongPtr
 Public Declare PtrSafe Sub mouse_event Lib "user32" (ByVal dwFlags As LongPtr, ByVal dx As LongPtr, ByVal dy As LongPtr, ByVal cButtons As LongPtr, ByVal dwExtraInfo As LongPtr)
-Public Const MOUSEEVENTF_LEFTDOWN = &amp;H2
-Public Const MOUSEEVENTF_LEFTUP = &amp;H4
-Public Const MOUSEEVENTF_RIGHTDOWN As LongPtr = &amp;H8
-Public Const MOUSEEVENTF_RIGHTUP As LongPtr = &amp;H10
+Public Const MOUSEEVENTF_LEFTDOWN = &H2
+Public Const MOUSEEVENTF_LEFTUP = &H4
+Public Const MOUSEEVENTF_RIGHTDOWN As LongPtr = &H8
+Public Const MOUSEEVENTF_RIGHTUP As LongPtr = &H10
 
 Sub DoNotSleepPlease()
 
@@ -118,18 +120,18 @@ For i = 1 To 9999
         mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0
         mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0
         WaitPlease
-        
-        
+
+
         SetCursorPos 300, 300 'x and y position
         mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0
         mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0
         WaitPlease
-        
+
         SetCursorPos 400, 400 'x and y position
         mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0
         mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0
         WaitPlease
-        
+
         SetCursorPos 500, 500 'x and y position
         mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0
         mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0

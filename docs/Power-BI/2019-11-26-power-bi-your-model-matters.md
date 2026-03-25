@@ -15,6 +15,8 @@ parent: Power BI
 I'm trying to address a crucial topic (to me), but more complex to communicate than a technical feature.
 {: .fs-6 .fw-300 }
 
+{:toc}
+
 {: .note :}
 >This article gives you some tips and may give you the urge to look differently at your data. If so, my bet will be won, and you may significantly improve your Power BI trip.
 >         Exciting, right?
@@ -82,7 +84,7 @@ The users I met have very different technical knowledge.
 
 ## Methodologies (Quick Win)
 
-Without going into the details of the modeling of a Datawarehouse and, more precisely, the <span style="color: #ff9900;">Kimball </span>method, I want to dwell on two tips.
+Without going into the details of the modeling of a Datawarehouse and, more precisely, the Kimball method, I want to dwell on two tips.
 
 ### Denormalization
 ### Brainstorming
@@ -105,12 +107,12 @@ Without going into the details of the modeling of a Datawarehouse and, more prec
 
 An example will be more concrete than a definition:
 A product is available with a color.
-<strong>A Color entity will be created and will contain all available colors.</strong>
-In the source system, a <strong>drop-down list</strong> allow the user to pick up a color.
+**A Color entity will be created and will contain all available colors.**
+In the source system, a **drop-down list** allow the user to pick up a color.
 Often the main table retains a key (foreign key) that references the other table.
-<strong>This way of exploding the model into multiple tables is called "normalization".</strong>
-<strong></strong>
-<span style="color: #ff9900;"><strong>For our reporting needs, we have to backtrack and consolidate information into fewer tables.</strong></span>
+**This way of exploding the model into multiple tables is called "normalization".**
+
+**For our reporting needs, we have to backtrack and consolidate information into fewer tables.**
 
 
 ![denormalization](../../assets/2022/your-model-matters/Datamodelling_5_ProductColor_Denorm.webp)
@@ -135,7 +137,9 @@ Since they have the "Sales Person" in their model, they wanted to know if Gender
 ![fields](../../assets/2022/your-model-matters/Datamodelling_4_StarSchema_Fields.webp)
 ![star schema](../../assets/2022/your-model-matters/Datamodelling_4_StarSchema.webp)
 
-One day Bill wakes up with a giant smile! Is it because his favorite TV show is scheduled today? Not only! He has an idea... And a straightforward one.<br /><strong>He decided to group his data into fewer tables</strong>. (When there is no many to many relationships).<br />His work life changes to better!
+One day Bill wakes up with a giant smile! Is it because his favorite TV show is scheduled today? Not only! He has an idea... And a straightforward one.
+**He decided to group his data into fewer tables**. (When there is no many to many relationships).
+His work life changes to better!
 - Less complex DAX expression
 - More understandable datasets
 - Less support and more time to watch his TV show. (Yes, both are compatible!)
@@ -143,8 +147,8 @@ One day Bill wakes up with a giant smile! Is it because his favorite TV show is 
 
 ## Brainstorming
 
-The title should perhaps have been: <span style="color: #ff9900;"><strong>Do not keep the focus on the technical problems but think of yourself</strong>.</span>
-<span style="font-size: 14px;">We all tend to want technical challenges, it's addictive, and it gives us the impression of moving forward! </span><strong style="font-size: 14px;">In our Professional world, Power BI is the equivalent of Candy Crush!</strong><span style="font-size: 14px;"> But I have more pleasure in aligning beautiful DAX measures in a table than sweets, do not you? For this point, I invite you to step back and step against our technical world.</span>
+The title should perhaps have been: **Do not keep the focus on the technical problems but think of yourself**.
+We all tend to want technical challenges, it's addictive, and it gives us the impression of moving forward! **In our Professional world, Power BI is the equivalent of Candy Crush!** But I have more pleasure in aligning beautiful DAX measures in a table than sweets, do not you? For this point, I invite you to step back and step against our technical world.
 
 ![brainstorming](../../assets/2022/your-model-matters/Datamodelling_5_Brainstorming.webp)
 
@@ -166,7 +170,7 @@ Your notes could look like this word cloud.
 ### See if some words do not relate to each other through an idea or logic.
 
 For example,`[Customer Code]` and `[Customer Name]` could be grouped under the same "Customer" dimension. (While these are potentially in two different tables or source files)
-The watchword here is: <span style="color: #ff9900;"><strong>DO NOT THINK TO THE TECHNICAL ASPECTS</strong></span>. Without knowing it, you imagine the data model dreamed for you and your users. It fits your needs, your business, and does not care (yet) about the complexity needed for the data transformation!
+The watchword here is: **DO NOT THINK TO THE TECHNICAL ASPECTS**. Without knowing it, you imagine the data model dreamed for you and your users. It fits your needs, your business, and does not care (yet) about the complexity needed for the data transformation!
 In this model, an end-user will find it much more comfortable and can even build their reports. Attributes will be displayed, grouped by logical ideas, and will facilitate reporting.
 The attractiveness of Power BI and BI Self-Service, in general, will not only be available to you, but it will also be accessible to end-users.
 Now that you've sketched out your dimensions, you can link them together.
@@ -201,7 +205,8 @@ The inscription bears:
 Your fact table is in the middle and dimensions around.
 Where is the technical complexity for your users? For your DAX measures? Your users can now keep the focus on their results and to the more complicated question: Do I really avoid to use a Pie Chart ;)
 You can now look in detail how you will load your dimensions. Dimension by dimension asks you the question: Which is the grain of my dimension? Household, client, client history?
-<strong>And now start your candy crush session, load your data, and play a lot in the query Builder / SQL / ... more ... </strong><br /><strong>And do not forget to enjoy it, our work is exciting!</strong>
+**And now start your candy crush session, load your data, and play a lot in the query Builder / SQL / ... more ...**
+**And do not forget to enjoy it, our work is exciting!**
 
 
 
@@ -230,4 +235,3 @@ I do not have doubts about your technical abilities to perform this task.
 [https://en.wikipedia.org/wiki/Data_warehouse#Dimensional_versus_normalized_approach_for_storage_of_data](https://en.wikipedia.org/wiki/Data_warehouse#Dimensional_versus_normalized_approach_for_storage_of_data)
 [https://www.sqlbi.com/articles/the-importance-of-star-schemas-in-power-bi/](https://www.sqlbi.com/articles/the-importance-of-star-schemas-in-power-bi/)
 [https://radacad.com/power-bi-basics-of-modeling-star-schema-and-how-to-build-it](https://radacad.com/power-bi-basics-of-modeling-star-schema-and-how-to-build-it)
-

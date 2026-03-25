@@ -9,17 +9,11 @@ parent: Obsidian
 permalink: /obsidian/Obsdian-dataview-tasks
 ---
 # {{ page.title }}
-{: .no_toc }
+{: .fs-9 }
 
-![Alt text](../../assets/2023/ObsidianTask.png){: .image80 }
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
 {:toc}
 
----
+![Alt text](../../assets/2023/ObsidianTask.png){: .image80 }
 
 
 ## Efficient Task Management for Enhanced Productivity 💼

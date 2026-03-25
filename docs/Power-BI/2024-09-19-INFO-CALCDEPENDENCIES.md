@@ -11,11 +11,14 @@ permalink: /power-bi/analyzing-power-bi-dependencies-with-info-calcdependency
 # {{ page.title }}
 {: .fs-9 }
 
-
 {:refdef: style="text-align: center;"}
-  ![image](../../assets/2024/INFO_CALCDEPENDENCIES/analyzing-power-bi-dependencies-with-info-calcdependency.png
-)
+  ![image](../../assets/2024/INFO_CALCDEPENDENCIES/analyzing-power-bi-dependencies-with-info-calcdependency.png)
 {: refdef .image50 }
+
+{:toc}
+
+{: .note :}
+>The DAX function `INFO.CALCDEPENDENCY()` lets you explore how measures, columns, and tables are connected in your Power BI model. This is essential when planning changes to your model.
 
 As models become more complex, it’s essential to understand the relationships between various elements, such as measures, columns, and tables, especially when you’re planning to make changes.
 

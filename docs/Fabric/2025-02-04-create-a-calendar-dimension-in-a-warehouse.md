@@ -11,6 +11,7 @@ permalink: /fabric/create-a-calendar-dimension-in-a-warehouse
 # {{ page.title }}
 {: .fs-9 }
 
+{:toc}
 
 {:refdef: style="text-align: center;"}
   ![image](../../assets/2025/create-a-calendar-dimension-in-a-warehouse/FeaturedImage.jpeg)

@@ -11,6 +11,8 @@ parent: SQL Server
 # {{ page.title }}
 {: .fs-9 }
 
+{: .note :}
+>A SQL query to get a clear view of SSIS package execution times, including child packages that are not easily visible in SSISDB reports.
 
 This query helps you to have a better view of your SSIS Packages executions.
 
@@ -51,5 +53,5 @@ FROM
 	--WHERE executables.package_name = 'YourPackage.dtsx'
 ) A
  WHERE a.RowIndex = 1
- ORDER BY StartTime ASC</pre>
+ ORDER BY StartTime ASC
 ```

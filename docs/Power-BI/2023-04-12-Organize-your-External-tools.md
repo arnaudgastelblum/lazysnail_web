@@ -11,6 +11,8 @@ permalink: /power-bi/Organize-your-External-tools
 # {{ page.title }}
 {: .fs-9 }
 
+{:toc}
+
 ![Alt text](../../assets/2023/PBIOrganizeExternalTools.png){: .image50 }
 
 

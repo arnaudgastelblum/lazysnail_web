@@ -6,21 +6,23 @@ has_children: false
 ---
 # SQL Server
 
-![Alt text](../assets/2023/SQL-Server_500.png){: .image50}
+<div class="category-header">
 
+![SQL Server](../assets/2023/SQL-Server_500.png){: .image50}
 
-
-
-<div style="background-color: #f0f4f8; border-left: 5px solid #3498db; padding: 20px; margin-top: 30px; border-radius: 5px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-  <h2 style="font-size: 1.6em; color: #2c3e50; margin-bottom: 15px;">🛢️ Latest Articles on SQL Server</h2>
-    {% assign sorted_pages = site.pages | sort: 'date' | reverse %}
-    {% for post in sorted_pages %}
-      {% if post.date and post.categories contains "SQL-Server" %}
-          <a href="{{ post.url }}" style="font-size: 1em; color: #3498db; text-decoration: none; transition: color 0.3s ease;">
-            {{ post.title }}
-          </a>
-          <span style="font-size: 0.8em; color: #888;"> - {{ post.date | date: "%d/%m/%Y" }}</span>
-          <div style="height: 5px;"></div> <!-- Custom small space -->
-      {% endif %}
-    {% endfor %}
 </div>
+
+## All Articles
+{: .section-title }
+
+<ul class="article-list">
+  {% assign sorted_pages = site.pages | sort: 'date' | reverse %}
+  {% for post in sorted_pages %}
+    {% if post.date and post.categories contains "SQL-Server" %}
+      <li class="article-item">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <span class="article-date">{{ post.date | date: "%d %b %Y" }}</span>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

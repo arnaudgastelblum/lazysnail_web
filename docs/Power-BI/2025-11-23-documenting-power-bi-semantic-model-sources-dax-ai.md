@@ -8,9 +8,10 @@ comments: true
 parent: Power BI
 permalink: /power-bi/documenting-power-bi-semantic-model-sources-dax-ai
 ---
-
 # {{ page.title }}
 {: .fs-9 }
+
+{:toc}
 
 {:refdef: style="text-align: center;"}
 ![image](../../assets/2025/documenting-power-bi-semantic-model-sources-dax-ai/image.png)

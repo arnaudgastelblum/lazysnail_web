@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: LazySnail
-description: Power BI Fan page
+description: Tips and tools for Power BI, SQL Server, and Microsoft Fabric developers
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://lazysnail.net" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -121,7 +121,7 @@ enable_copy_code_button: true
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2015-2025 Arnaud Gastelblum."
+footer_content: "Copyright &copy; 2015-2026 Arnaud Gastelblum."
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
@@ -159,9 +159,9 @@ callouts:
     color: red
 
 # Google Analytics Tracking (optional)
-# e.g, UA-1234567-89
-ga_tracking: UA-108906622-1
-ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
+# Legacy UA tracking was removed. To enable GA4, add your measurement ID below:
+# ga_tracking: G-XXXXXXXXXX
+# ga_tracking_anonymize_ip: true
 
 plugins:
   - jekyll-seo-tag

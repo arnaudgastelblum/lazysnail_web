@@ -11,20 +11,22 @@ parent: SQL Server
 # {{ page.title }}
 {: .fs-9 }
 
-I created this script to automate some "not funny" tasks with our SSIS Catalog. If you have several SSIS projects configured <strong>in project mode</strong> (with a project.params file), when deploy them on your servers you unfortunately have to manually create the different environments.
+{:toc}
+
+{: .note :}
+>A SQL script that automates SSIS Catalog environment creation from your deployed packages, including variable setup and project assignment.
+
+I created this script to automate some "not funny" tasks with our SSIS Catalog. If you have several SSIS projects configured **in project mode** (with a project.params file), when deploy them on your servers you unfortunately have to manually create the different environments.
 After deploying SSIS packages, you can run the following query and use the generated SQL code.
-the generated SQL script:
-<ul>
-<li><strong><em>Create the different environment (Based on the name of the projects)</em></strong></li>
-<li><strong><em>Create variables with default values (value available in packages)</em></strong></li>
-<li><strong><em>Assigning Environments to Projects</em></strong></li>
-<li><strong><em>Assign the environment variables to the project variables.</em></strong></li>
-</ul>
+The generated SQL script:
+
+- ***Create the different environment (Based on the name of the projects)***
+- ***Create variables with default values (value available in packages)***
+- ***Assigning Environments to Projects***
+- ***Assign the environment variables to the project variables.***
 
 
-<h2>The following code is not clean, but it does the work! :)</h2>
-<ul></ul>
-
+## The following code is not clean, but it does the work! :)
 
 
 ```
@@ -33,7 +35,7 @@ SET NOCOUNT ON;
 -------------------
 -- Configuration
 -------------------
-DECLARE @FolderToExport VARCHAR(50) = 'BI' 
+DECLARE @FolderToExport VARCHAR(50) = 'BI'
 DECLARE
     @folder_id          INT
    ,@name               VARCHAR(150)
@@ -73,7 +75,7 @@ WHERE project_version_lsn = (SELECT MAX(project_version_lsn) FROM [SSISDB].[inte
   AND projects.folder_id = @folder_id
    ORDER BY  CONVERT(NVARCHAR(50),  projects.name                    )
             ,CONVERT(NVARCHAR(150), projects.name  +'__'+ parameter_name)
-            ,CONVERT(NVARCHAR(600), ISNULL(design_default_value, ''))   
+            ,CONVERT(NVARCHAR(600), ISNULL(design_default_value, ''))
 OPEN db_cursor_variable
 FETCH NEXT FROM db_cursor_variable
 INTO
@@ -81,20 +83,20 @@ INTO
      ,@VariableName
      ,@Value
 WHILE @@FETCH_STATUS = 0
-BEGIN 
+BEGIN
     PRINT 'DECLARE @'+ @VariableName +' NVARCHAR(600) = N'''+ @Value +''';';
     FETCH NEXT FROM db_cursor_variable
     INTO
           @ProjectName
          ,@VariableName
          ,@Value
-END 
+END
 CLOSE db_cursor_variable
-DEALLOCATE db_cursor_variable 
+DEALLOCATE db_cursor_variable
 SET @SQL += 'SET @folder = '''+ @FolderToExport +''''+ @cr + @cr+ @cr;
 -- Begin transaction
 SET @sql += ';' + @cr + '/* Starting the transaction */' + @cr;
-SET @sql += 'BEGIN TRANSACTION' + @cr + @cr + @cr;                  
+SET @sql += 'BEGIN TRANSACTION' + @cr + @cr + @cr;
 ----
 ---- Test if folder exist -> If not create it
 --SET @sql += @tab + 'IF NOT EXISTS (SELECT 1 FROM [SSISDB].[catalog].[folders] WHERE name = @folder)' + @cr;
@@ -102,7 +104,7 @@ SET @sql += 'BEGIN TRANSACTION' + @cr + @cr + @cr;
 --SET @sql += @tab + @tab + 'RAISERROR(''Creating folder: %s ...'', 10, 1, @folder) WITH NOWAIT;' + @cr;
 --SET @sql += @tab + @tab + 'EXEC @ReturnCode = [SSISDB].[catalog].[create_folder] @folder_name=@folder, @folder_id=@folder_id OUTPUT' + @cr;
 --SET @sql += @tab + @tab + 'IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback;' + @cr;
---SET @sql += @tab + 'END' + @cr + @cr;   
+--SET @sql += @tab + 'END' + @cr + @cr;
 ---------------------------------------------
 -- Create environment + variables
 -----------------------------------------------
@@ -110,18 +112,18 @@ DECLARE db_cursor CURSOR FOR
   SELECT [project_id], [name] FROM [internal].[projects] WHERE folder_id = @folder_id
 OPEN db_cursor
 FETCH NEXT FROM db_cursor
-INTO @project_id, @name  
+INTO @project_id, @name
 WHILE @@FETCH_STATUS = 0
-BEGIN 
+BEGIN
     SET @sql += @tab + 'SET @env = '''+ @name +'''' + @cr;
     SET @sql += @tab + 'IF NOT EXISTS (SELECT 1 FROM [SSISDB].[catalog].[environments] WHERE name = @env)' + @cr;
     SET @sql += @tab + 'BEGIN' + @cr;
     SET @sql += @tab + @tab +'RAISERROR(''Creating Environment: %s'', 10, 1, @env) WITH NOWAIT;' + @cr;
     SET @sql += @tab + @tab +'EXEC @ReturnCode = [SSISDB].[catalog].[create_environment] @folder_name=@folder, @environment_name=@env'  + @cr;
     SET @sql += @tab + @tab +'IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback;' + @cr + @cr;
-    SET @sql += @tab + 'END' + @cr;  
+    SET @sql += @tab + 'END' + @cr;
         print @sql;
-        SET @sql = '';               
+        SET @sql = '';
         -- ---------------------------------------------
         -- Generate the variable creation
         -- ---------------------------------------------
@@ -151,9 +153,9 @@ BEGIN
         DROP TABLE #cmd;
         SET @sql = '';
     FETCH NEXT FROM db_cursor INTO @project_id, @name
-END 
+END
 CLOSE db_cursor
-DEALLOCATE db_cursor 
+DEALLOCATE db_cursor
 ---------------------------------------------
 -- Set Environment on each Project
 --       + Set Environment variables on each Project Variables
@@ -162,7 +164,7 @@ DECLARE db_cursor CURSOR FOR
   SELECT [project_id], [name] FROM [internal].[projects] WHERE folder_id = @folder_id
 OPEN db_cursor
 FETCH NEXT FROM db_cursor
-INTO @project_id, @name  
+INTO @project_id, @name
 SET @sql = 'DECLARE @reference_id AS BIGINT'+ @cr;
 PRINT @sql;
 WHILE @@FETCH_STATUS = 0
@@ -216,9 +218,9 @@ BEGIN
                 DELETE FROM #cmd2 WHERE name = @name;
         END;
     FETCH NEXT FROM db_cursor INTO @project_id, @name
-END 
+END
 CLOSE db_cursor
-DEALLOCATE db_cursor 
+DEALLOCATE db_cursor
 ---------------------------------------------
 -- END!
 ---------------------------------------------

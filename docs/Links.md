@@ -4,35 +4,26 @@ title: Links
 nav_order: 8
 ---
 
-# List of links
+# Useful Tools
 
 {: .note :}
->My colleagues often asked me `What tool do you use for this?`
-> It's also a list for me
+>My colleagues often ask me "What tool do you use for this?" Here is my list.
 
-## Data Modelling
-
-**DBDiagram.io** [https://dbdiagram.io](https://dbdiagram.io/d) 
-Design a database without effort
-
-
-## Presentation
-**Microsoft ZoomIt** [https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit](https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit) 
-Zoom, annotate and record your screen
-
-
-## Screenshot
-**Sharex** [https://getsharex.com](https://getsharex.com/downloads) 
-Screenshot tool: PNG, GIF and AVI
-
-
-## Misc
-**Microsoft Power Toys** [https://learn.microsoft.com/en-us/windows/powertoys/install](https://learn.microsoft.com/en-us/windows/powertoys/install)
-Many different tools in 1 app
-- Keep your screen / PC awake
-- Fancy zone (manage your window size and location)
-- Image resizer 
-- Power rename (rename files in a batch mode)
-- Keyboard manager
-- Mouse utilities
-- ...
+<div class="tool-grid">
+  <div class="tool-card">
+    <div class="tool-card__name"><a href="https://dbdiagram.io/d">DBDiagram.io</a></div>
+    <div class="tool-card__description">Design database diagrams without effort. Great for data modeling and documentation.</div>
+  </div>
+  <div class="tool-card">
+    <div class="tool-card__name"><a href="https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit">Microsoft ZoomIt</a></div>
+    <div class="tool-card__description">Zoom, annotate, and record your screen. Essential for presentations and demos.</div>
+  </div>
+  <div class="tool-card">
+    <div class="tool-card__name"><a href="https://getsharex.com/downloads">ShareX</a></div>
+    <div class="tool-card__description">Screenshot and screen recording tool. Supports PNG, GIF, and AVI output.</div>
+  </div>
+  <div class="tool-card">
+    <div class="tool-card__name"><a href="https://learn.microsoft.com/en-us/windows/powertoys/install">Microsoft PowerToys</a></div>
+    <div class="tool-card__description">A collection of utilities: FancyZones for window management, image resizer, batch rename, keyboard manager, and more.</div>
+  </div>
+</div>

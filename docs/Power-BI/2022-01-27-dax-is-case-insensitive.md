@@ -11,6 +11,8 @@ parent: Power BI
 # {{ page.title }}
 {: .fs-9 }
 
+{:toc}
+
 ![Alt text](../../assets/2023/DAXcase_500.png){: .image40 }
 
 

@@ -8,20 +8,13 @@ comments: true
 parent: Power BI
 permalink: /power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant
 ---
-# Documentation of your Power BI Tenant (With Scanner API)
-{: .no_toc }
+# {{ page.title }}
+{: .fs-9 }
 
+{:toc}
 
 ![Alt text](../../assets/2023/PBI_ScannerAPI/PBIScannerAPI.png){: .image50 }
 
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## Introduction
 Power BI is a powerful data visualization tool that allows users to create insightful reports and dashboards from various data sources. However, to leverage the full potential of Power BI, it's important to ensure the accuracy and security of your data. The Power BI Scanner API is designed to help you achieve this goal by scanning your Power BI resources for vulnerabilities and data leaks.
