@@ -153,5 +153,17 @@
     {
         "key": "ctrl+r",
         "command": "workbench.action.togglePanel"
+    },
+    // =====================================================
+    // Ctrl+E → Execute query (like SSMS)
+    // =====================================================
+    {
+        "key": "ctrl+e",
+        "command": "mssql.runQuery",
+        "when": "editorTextFocus && editorLangId == sql"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
     }
 ]
