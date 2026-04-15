@@ -201,6 +201,11 @@ a {
     gap: 0.75rem;
     flex-wrap: wrap;
   }
+
+  &--blue {
+    background-color: #eef5fc;
+    border-color: #b8d4f0;
+  }
 }
 
 .btn-primary-custom {

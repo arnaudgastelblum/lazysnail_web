@@ -107,6 +107,8 @@ nav_sort: case_sensitive # Capital letters sorted before lowercase
 
 # External navigation links
 nav_external_links:
+  - title: Code Formatter
+    url: https://code.lazysnail.net
  # - title: My GitHub repos
  #   url: https://github.com/arnaudgastelblum
  # - title: YouTube

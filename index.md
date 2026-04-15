@@ -76,6 +76,14 @@ permalink: /
   {% endfor %}
 </ul>
 
+<div class="promo-box promo-box--blue">
+  <div class="promo-box__title">Code Formatter - DAX & SQL</div>
+  <p class="promo-box__description">Format your DAX and SQL code instantly. A free online tool to keep your queries clean and readable.</p>
+  <div class="promo-box__buttons">
+    <a href="https://code.lazysnail.net" class="btn-primary-custom" target="_blank">Open Code Formatter</a>
+  </div>
+</div>
+
 <div class="promo-box">
   <div class="promo-box__title">LazyDAX - Free Power BI Practice File</div>
   <p class="promo-box__description">A comprehensive Power BI file designed to help you learn DAX, test measures, and explore Power BI features. Perfect for presentations, training, or personal practice.</p>
