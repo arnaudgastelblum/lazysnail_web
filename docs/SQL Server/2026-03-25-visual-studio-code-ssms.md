@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'How to Make VS Code Look and Feel Like SSMS (SQL Server Management Studio)'
+title: 'How to Make VS Code Look and Feel Like SSMS'
 date: 2026-03-25
 categories: "SQL-Server"
 tags: [sql-server, vscode, ssms, productivity, keybindings, extension, query-shortcuts, column-selection]
