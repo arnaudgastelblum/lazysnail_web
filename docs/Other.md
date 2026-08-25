@@ -6,11 +6,7 @@ has_children: false
 ---
 # Other
 
-<div class="category-header">
-
 ![Other](<../assets/2023/Other copy_500.png>){: .image50 }
-
-</div>
 
 ## All Articles
 {: .section-title }

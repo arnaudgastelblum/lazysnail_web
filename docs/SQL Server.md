@@ -6,11 +6,7 @@ has_children: false
 ---
 # SQL Server
 
-<div class="category-header">
-
 ![SQL Server](../assets/2023/SQL-Server_500.png){: .image50}
-
-</div>
 
 ## All Articles
 {: .section-title }

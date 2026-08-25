@@ -6,13 +6,9 @@ has_children: false
 ---
 # Obsidian
 
-<div class="category-header">
-
 {:refdef: style="text-align: center;"}
   ![Obsidian](../assets/2023/ObsidianLazysnail copy_500.png){: .image50}
 {: refdef}
-
-</div>
 
 ## All Articles
 {: .section-title }

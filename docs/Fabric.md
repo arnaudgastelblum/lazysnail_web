@@ -6,13 +6,10 @@ has_children: false
 ---
 # Fabric
 
-<div class="category-header">
-
 {:refdef: style="text-align: center;"}
   ![Fabric](../assets/2024/Fabric.webp){: .image50}
 {: refdef}
 
-</div>
 
 ## All Articles
 {: .section-title }
