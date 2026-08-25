@@ -6,11 +6,8 @@ has_children: false
 ---
 # Power BI
 
-<div class="category-header">
-
 ![Power BI](../assets/2023/PowerBI_IceCream_500.png){: .image50 }
 
-</div>
 
 ## All Articles
 {: .section-title }

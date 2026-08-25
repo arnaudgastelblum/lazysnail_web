@@ -6,56 +6,6 @@ description: "Tips and tools for Power BI, SQL Server, and Microsoft Fabric deve
 permalink: /
 ---
 
-<div class="hero">
-  <img src="assets/logo_lazysnail.png" alt="LazySnail" class="hero__logo">
-  <p class="hero__tagline">
-    Practical tips, tools, and tutorials for <strong>Power BI</strong>, <strong>SQL Server</strong>, and <strong>Microsoft Fabric</strong> developers.
-  </p>
-</div>
-
-## Browse by Topic
-{: .section-title }
-
-<div class="category-grid">
-  {% assign fabric_count = 0 %}{% assign pbi_count = 0 %}{% assign sql_count = 0 %}{% assign obsidian_count = 0 %}{% assign other_count = 0 %}
-  {% for page in site.pages %}{% if page.date %}{% if page.categories contains "fabric" %}{% assign fabric_count = fabric_count | plus: 1 %}{% endif %}{% if page.categories contains "power-bi" %}{% assign pbi_count = pbi_count | plus: 1 %}{% endif %}{% if page.categories contains "SQL-Server" %}{% assign sql_count = sql_count | plus: 1 %}{% endif %}{% if page.categories contains "Obsidian" %}{% assign obsidian_count = obsidian_count | plus: 1 %}{% endif %}{% if page.categories contains "other" %}{% assign other_count = other_count | plus: 1 %}{% endif %}{% endif %}{% endfor %}
-  <a href="/docs/Power-BI" class="category-card">
-    <span class="category-card__icon">📊</span>
-    <span class="category-card__info">
-      <span class="category-card__name">Power BI</span>
-      <span class="category-card__count">{{ pbi_count }} articles</span>
-    </span>
-  </a>
-  <a href="/docs/SQL%20Server" class="category-card">
-    <span class="category-card__icon">🛢️</span>
-    <span class="category-card__info">
-      <span class="category-card__name">SQL Server</span>
-      <span class="category-card__count">{{ sql_count }} articles</span>
-    </span>
-  </a>
-  <a href="/docs/Fabric" class="category-card">
-    <span class="category-card__icon">🧵</span>
-    <span class="category-card__info">
-      <span class="category-card__name">Microsoft Fabric</span>
-      <span class="category-card__count">{{ fabric_count }} articles</span>
-    </span>
-  </a>
-  <a href="/docs/Obsidian" class="category-card">
-    <span class="category-card__icon">🧠</span>
-    <span class="category-card__info">
-      <span class="category-card__name">Obsidian</span>
-      <span class="category-card__count">{{ obsidian_count }} articles</span>
-    </span>
-  </a>
-  <a href="/docs/Other" class="category-card">
-    <span class="category-card__icon">📚</span>
-    <span class="category-card__info">
-      <span class="category-card__name">Other</span>
-      <span class="category-card__count">{{ other_count }} articles</span>
-    </span>
-  </a>
-</div>
-
 ## Latest Articles
 {: .section-title }
 
