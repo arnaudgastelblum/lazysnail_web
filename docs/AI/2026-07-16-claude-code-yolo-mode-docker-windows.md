@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Claude Code YOLO Mode on Windows: Skip Permissions Safely with Docker"
-date: 2026-08-25
+date: 2026-07-16
 categories: "ai"
 tags: [claude-code, docker, windows]
 comments: true
