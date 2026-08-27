@@ -134,7 +134,7 @@ The formatter only touches whitespace and keyword casing. It never moves tokens 
 
 Version 0.11.0. Needs VS Code 1.85 or newer. Single `.vsix` file, no dependencies, nothing to configure.
 
-1. Download [lazy-dbt-formatter-0.11.0.vsix](/assets/lazy-dbt-formatter/lazy-dbt-formatter-0.11.0.vsix).
+1. Download [lazy-dbt-formatter-0.11.1.vsix](/assets/lazy-dbt-formatter/lazy-dbt-formatter-0.11.1.vsix).
 2. In VS Code, open the Extensions view, click the `...` menu at the top right, choose **Install from VSIX...** and pick the file. Or from a terminal: `code --install-extension lazy-dbt-formatter-0.11.0.vsix`
 3. Reload VS Code, right-click in a `.sql` model file and look for **Lazy DBT**.
 
