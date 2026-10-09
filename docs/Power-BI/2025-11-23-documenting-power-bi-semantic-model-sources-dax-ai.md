@@ -5,7 +5,7 @@ date: 2025-11-23
 categories: "power-bi"
 tags: [powerbi, tips, documentation, fabric]
 comments: true
-parent: Power BI
+parent: Power BI & Fabric
 permalink: /power-bi/documenting-power-bi-semantic-model-sources-dax-ai
 ---
 # {{ page.title }}

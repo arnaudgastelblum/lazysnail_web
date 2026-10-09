@@ -299,3 +299,356 @@ a {
     line-height: 1.4;
   }
 }
+
+// ============================================
+// 2026 refresh: a calmer, more professional look
+// ============================================
+
+$ink: #0f1b2a;
+$muted: #5b6676;
+$line: #e6e8ec;
+$navy: #163b5e;
+$teal: #1b8aa6;
+$soft: #f6f7f9;
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.main-content {
+  h1, h2, h3 {
+    letter-spacing: -0.01em;
+  }
+
+  img {
+    border-radius: 10px;
+  }
+
+  p, li {
+    line-height: 1.7;
+  }
+}
+
+// Buttons: navy first, outline second.
+.btn-primary-custom {
+  background-color: $navy;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+
+  &:hover {
+    background-color: lighten($navy, 8%);
+  }
+}
+
+.btn-secondary-custom {
+  background-color: transparent;
+  color: $navy !important;
+  border: 1.5px solid rgba($navy, 0.25);
+  border-radius: 999px;
+  padding: 0.55rem 1.35rem;
+
+  &:hover {
+    background-color: rgba($navy, 0.06);
+  }
+}
+
+// Section titles: quiet, small capitals.
+.section-title {
+  margin-top: 2.5rem;
+  font-size: 0.8rem !important;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $muted;
+  border-bottom: 1px solid $line;
+}
+
+.section-lead {
+  font-size: 1.1rem;
+  color: $muted;
+  max-width: 640px;
+}
+
+// Article lists: airy rows, a soft hover.
+.article-item {
+  padding: 0.75rem 0.5rem;
+  margin: 0 -0.5rem;
+  border-bottom: 1px solid $line;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $soft;
+  }
+
+  a {
+    color: $ink;
+    font-weight: 500;
+  }
+}
+
+.article-category {
+  background-color: rgba($teal, 0.1);
+  color: darken($teal, 10%);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  padding: 0.18rem 0.6rem;
+}
+
+// Home: who I am, in one look.
+.hero-pro {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0 2rem;
+  padding: 2rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0f2a44 0%, #163b5e 55%, #1d5a7a 100%);
+  color: #ffffff;
+
+  &__photo {
+    flex: none;
+    width: 140px;
+    height: 140px;
+    border-radius: 50% !important;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    background: #e9e2fb;
+    object-fit: cover;
+  }
+
+  &__kicker {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7fd3e6;
+  }
+
+  &__name {
+    margin: 0.3rem 0 0.5rem !important;
+    color: #ffffff !important;
+    font-size: 2.2rem !important;
+    font-weight: 700;
+  }
+
+  &__line {
+    margin: 0;
+    max-width: 560px;
+    color: #cfe0ee;
+    font-size: 1.05rem;
+
+    strong {
+      color: #ffffff;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+
+    .btn-primary-custom {
+      background: #ffffff;
+      color: $navy !important;
+
+      &:hover {
+        background: #e8f1f8;
+      }
+    }
+
+    .btn-secondary-custom {
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.35);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.75rem 1.25rem;
+
+    &__buttons {
+      justify-content: center;
+    }
+  }
+}
+
+// Home: the four areas, with their article counts.
+.pillars,
+.tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.pillar,
+.tool {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid $line;
+  border-radius: 14px;
+  background: #ffffff;
+  color: $ink !important;
+  text-decoration: none !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: rgba($teal, 0.5);
+    box-shadow: 0 6px 18px rgba(15, 27, 42, 0.08);
+    transform: translateY(-2px);
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  &__desc {
+    color: $muted;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  &__count,
+  &__kind {
+    margin-top: auto;
+    padding-top: 0.4rem;
+    color: $teal;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+}
+
+.tool__kind {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar,
+  .tool,
+  .article-item {
+    transition: none;
+  }
+
+  .pillar:hover,
+  .tool:hover {
+    transform: none;
+  }
+}
+
+.pillars {
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+}
+
+.tools {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+// The theme draws its own bullets: not in the article lists.
+.main-content .article-list > li::before {
+  display: none;
+}
+
+.main-content .article-list > li {
+  padding-left: 0.5rem;
+}
+
+// Page titles: the theme draws them very thin; a clearer weight.
+.main-content h1 {
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+// Not a news site: no dates in the article lists.
+.article-list .article-date {
+  display: none;
+}
+
+// The header of the home, compact: picture with its links, then who I am.
+.hero-pro.is-compact {
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+
+  .hero-pro__side {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-pro__photo {
+    width: 92px;
+    height: 92px;
+    border-width: 3px;
+  }
+
+  .hero-pro__links {
+    display: flex;
+    gap: 0.9rem;
+    font-size: 0.82rem;
+
+    a {
+      color: #cfe0ee;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .hero-pro__name {
+    font-size: 1.7rem !important;
+    margin: 0.15rem 0 0.35rem !important;
+  }
+
+  .hero-pro__line {
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: 640px) {
+    padding: 1.25rem;
+  }
+}
+
+.tools {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.tools-more {
+  margin-top: 0.5rem;
+  color: $muted;
+  font-size: 0.92rem;
+}
+
+// A section mascot: small, beside the title rather than in the way.
+.main-content img.mascot {
+  display: block;
+  width: 170px;
+  margin: 0 auto 0.5rem;
+  border-radius: 0;
+}
+
+// A section illustration: a rounded square, medium size.
+.main-content img.section-art {
+  display: block;
+  width: 260px;
+  max-width: 70%;
+  margin: 0.5rem auto 0.5rem;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(15, 27, 42, 0.12);
+}

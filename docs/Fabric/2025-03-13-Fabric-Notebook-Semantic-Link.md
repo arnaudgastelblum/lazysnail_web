@@ -5,7 +5,7 @@ date: 2025-03-13
 categories: "fabric"
 tags: [powerbi, tips]
 comments: true
-parent: Fabric
+parent: Power BI & Fabric
 permalink: /fabric/exploring-power-bi-semantic-models-python-microsoft-fabric
 ---
 # {{ page.title }}

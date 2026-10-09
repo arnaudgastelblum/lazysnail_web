@@ -14,7 +14,20 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: LazySnail
-description: Tips and tools for Power BI, SQL Server, and Microsoft Fabric developers
+description: Arnaud Gastelblum, freelance data consultant. Microsoft Fabric, Power BI and data modeling, with AI in my daily work.
+author: Arnaud Gastelblum
+lang: en
+social:
+  name: Arnaud Gastelblum
+  links:
+    - https://www.linkedin.com/in/arnaud-gastelblum/
+    - https://github.com/arnaudgastelblum
+# The picture LinkedIn and others show when a page is shared (a page can set its own `image`).
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/2026/site/social-card.png
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://lazysnail.net" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -143,7 +156,7 @@ gh_edit_branch: "main" # the branch that your docs is served from
 gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
 
 # Color scheme currently only supports "dark", "light"/nil (default), or a custom scheme that you define
-color_scheme: light
+color_scheme: lazysnail
 
 callouts_level: quiet # or loud
 callouts:
@@ -157,7 +170,7 @@ callouts:
     color: green
   note:
     title: Note
-    color: purple
+    color: blue
   warning:
     title: Warning
     color: red

@@ -6,7 +6,7 @@ categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
 permalink: "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/"
-parent: Power BI
+parent: Power BI & Fabric
 ---
 
 # {{ page.title }}

@@ -6,7 +6,7 @@ categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-sidetools-extensions-a-must-have/"
-parent: Power BI
+parent: Power BI & Fabric
 ---
 # {{ page.title }}
 {: .fs-9 }

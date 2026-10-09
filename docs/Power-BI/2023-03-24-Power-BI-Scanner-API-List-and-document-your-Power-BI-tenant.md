@@ -5,7 +5,7 @@ date: 2023-03-24
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
-parent: Power BI
+parent: Power BI & Fabric
 permalink: /power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant
 ---
 # {{ page.title }}

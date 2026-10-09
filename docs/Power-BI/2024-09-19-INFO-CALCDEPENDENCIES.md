@@ -5,7 +5,7 @@ date: 2024-09-19
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
-parent: Power BI
+parent: Power BI & Fabric
 permalink: /power-bi/analyzing-power-bi-dependencies-with-info-calcdependency
 ---
 # {{ page.title }}

@@ -6,7 +6,7 @@ categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-your-model-matters/"
-parent: Power BI
+parent: Power BI & Fabric
 ---
 
 # {{ page.title }}

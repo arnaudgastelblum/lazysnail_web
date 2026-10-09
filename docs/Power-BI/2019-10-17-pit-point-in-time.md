@@ -6,7 +6,7 @@ categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
 permalink: "/en/pit-point-in-time/"
-parent: Power BI
+parent: Power BI & Fabric
 ---
 # {{ page.title }}
 {: .fs-9 }

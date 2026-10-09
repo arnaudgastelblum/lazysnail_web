@@ -6,7 +6,7 @@ has_children: false
 ---
 # SQL Server
 
-![SQL Server](../assets/2023/SQL-Server_500.png){: .image50}
+![SQL Server](/assets/2026/site/sql-server.webp){: .section-art }
 
 ## All Articles
 {: .section-title }

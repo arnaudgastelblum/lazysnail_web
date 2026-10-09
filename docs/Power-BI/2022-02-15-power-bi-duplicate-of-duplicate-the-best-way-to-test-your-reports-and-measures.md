@@ -6,7 +6,7 @@ categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/"
-parent: Power BI
+parent: Power BI & Fabric
 ---
 # {{ page.title }}
 {: .fs-9 }

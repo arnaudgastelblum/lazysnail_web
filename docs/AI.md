@@ -6,6 +6,10 @@ has_children: false
 ---
 # AI
 
+{:refdef: style="text-align: center;"}
+  ![The Lazysnail AI mascot](/assets/2026/site/ai-snail.webp){: .mascot }
+{: refdef}
+
 ## All Articles
 {: .section-title }
 

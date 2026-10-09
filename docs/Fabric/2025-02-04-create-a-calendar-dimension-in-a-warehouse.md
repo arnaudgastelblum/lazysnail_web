@@ -5,7 +5,7 @@ date: 2025-02-04
 categories: "fabric"
 tags: [powerbi, tips]
 comments: true
-parent: Fabric
+parent: Power BI & Fabric
 permalink: /fabric/create-a-calendar-dimension-in-a-warehouse
 ---
 # {{ page.title }}

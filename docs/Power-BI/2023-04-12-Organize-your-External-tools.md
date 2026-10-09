@@ -5,7 +5,7 @@ date: 2023-04-12
 categories: "power-bi"
 tags: [powerbi, tips]
 comments: true
-parent: Power BI
+parent: Power BI & Fabric
 permalink: /power-bi/Organize-your-External-tools
 ---
 # {{ page.title }}

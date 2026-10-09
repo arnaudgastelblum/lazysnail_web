@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lazy DBT, a small VS Code extension for dbt models
+title: dbt Formatter, a small VS Code extension for dbt models
 date: 2026-08-26
 categories: "other"
 tags: [dbt, vscode, sql]
@@ -16,7 +16,7 @@ parent: Other
 
 {:toc}
 
-Lazy DBT is a free VS Code extension for people who write dbt models. It formats your SQL the dbt way and handles a few other boring tasks from a single right-click menu.
+**dbt Formatter** is a free VS Code extension for people who write dbt models (in VS Code, its menu is called **Lazy DBT**). It formats your SQL the dbt way and handles a few other boring tasks from a single right-click menu.
 
 ## Why I built it
 
