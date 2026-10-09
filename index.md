@@ -79,6 +79,11 @@ permalink: /
 {: .section-title }
 
 <div class="tools">
+  <a class="tool" href="/fabric/fabric-source-atlas">
+    <span class="tool__name">Fabric Source Atlas</span>
+    <span class="tool__desc">Lists every SQL table, view, file and model your semantic models read. Excel inventory and an offline web page.</span>
+    <span class="tool__kind">PowerShell</span>
+  </a>
   <a class="tool" href="/en/lazy-dbt-vs-code-extension/">
     <span class="tool__name">dbt Formatter</span>
     <span class="tool__desc">Formats dbt SQL models the dbt way, writes the schema .yml, shows the lineage. A VS Code extension.</span>

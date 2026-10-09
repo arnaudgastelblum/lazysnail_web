@@ -20,7 +20,7 @@ description: "Power BI and Microsoft Fabric: semantic models, DAX, SQL warehouse
     {% if post.date and post.categories contains "power-bi" or post.date and post.categories contains "fabric" %}
       <li class="article-item">
         <span>
-          {% if post.categories contains "fabric" %}<span class="article-category">Fabric</span>{% endif %}
+          {% if post.categories contains "fabric" %}<span class="article-category">Fabric</span>{% else %}<span class="article-category">Power BI</span>{% endif %}
           <a href="{{ post.url }}">{{ post.title }}</a>
         </span>
         <span class="article-date">{{ post.date | date: "%d %b %Y" }}</span>

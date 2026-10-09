@@ -1,3 +1,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  /* Images with the class "zoomable" open full size over the page; click or Escape closes. No // comments: the site minifies HTML onto one line. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var images = document.querySelectorAll('.main-content img.zoomable');
+    if (!images.length) return;
+    var box = document.createElement('div');
+    box.className = 'zoom-box';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.hidden = true;
+    var big = document.createElement('img');
+    box.appendChild(big);
+    document.body.appendChild(box);
+    function close() { box.hidden = true; document.body.style.overflow = ''; }
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+    images.forEach(function (img) {
+      img.tabIndex = 0;
+      img.title = img.title || 'Click to enlarge';
+      function open() { big.src = img.currentSrc || img.src; big.alt = img.alt; box.hidden = false; document.body.style.overflow = 'hidden'; }
+      img.addEventListener('click', open);
+      img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+  });
+</script>
