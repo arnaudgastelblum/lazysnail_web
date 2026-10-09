@@ -45,6 +45,8 @@ exclude:
    - package-lock.json
    - Rakefile
    - README.md
+   - CLAUDE.md
+   - .claude/
 
 # Set a path/url to a logo that will be displayed instead of the title
 logo: "/assets/logo_lazysnail.png"

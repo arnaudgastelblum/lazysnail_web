@@ -13,6 +13,9 @@ permalink: /obsidian/Obsdian-dataview-tasks
 
 {:toc}
 
+{: .note }
+> **Update, October 2026.** I don't use this Dataview query anymore. I built [Snailkit](/obsidian/snailkit), a free Obsidian plugin that gathers the tasks of all my notes in one list, grouped by tag. The idea below still works if you prefer Dataview.
+
 ![Alt text](../../assets/2023/ObsidianTask.png){: .image80 }
 
 
