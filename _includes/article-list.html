@@ -1,0 +1,34 @@
+{%- comment -%}
+  A list of articles, newest first.
+  Parameters: categories="power-bi,fabric" (optional, default all), limit=8 (optional), chips=false (optional).
+{%- endcomment -%}
+{%- assign wanted = include.categories | split: "," -%}
+{%- assign limit = include.limit | default: 1000 -%}
+{%- assign sorted_pages = site.pages | sort: 'date' | reverse -%}
+{%- assign count = 0 -%}
+<ul class="article-list">
+{%- for post in sorted_pages -%}
+  {%- unless post.date -%}{%- continue -%}{%- endunless -%}
+  {%- if count >= limit -%}{%- break -%}{%- endif -%}
+  {%- assign keep = true -%}
+  {%- if wanted.size > 0 -%}
+    {%- assign keep = false -%}
+    {%- for c in wanted -%}{%- assign category = c | strip -%}{%- if post.categories contains category -%}{%- assign keep = true -%}{%- endif -%}{%- endfor -%}
+  {%- endif -%}
+  {%- unless keep -%}{%- continue -%}{%- endunless -%}
+  {%- assign label = nil -%}
+  {%- assign article_section = nil -%}
+  {%- for s in site.data.sections -%}{%- for cat in s.categories -%}{%- if post.categories contains cat[0] -%}{%- assign label = cat[1] -%}{%- assign article_section = s -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+  {%- assign summary = post.excerpt | default: post.description | strip_html | normalize_whitespace -%}
+  <li class="article-item"{% if article_section %} style="--accent: {{ article_section.accent }}"{% endif %}>
+    <span class="article-icon" aria-hidden="true">{% include section-icon.html key=article_section.key %}</span>
+    <div class="article-copy">
+      <a class="article-link" href="{{ post.url }}">{{ post.title | escape }}</a>
+      {% if include.chips != false and label %}<span class="article-category">{{ label | escape }}</span>{% endif %}
+      {% if summary != empty %}<p class="article-excerpt">{{ summary | escape }}</p>{% endif %}
+    </div>
+    <span class="article-arrow" aria-hidden="true">→</span>
+  </li>
+  {%- assign count = count | plus: 1 -%}
+{%- endfor -%}
+</ul>

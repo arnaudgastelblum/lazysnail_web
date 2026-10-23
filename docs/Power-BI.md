@@ -5,26 +5,29 @@ nav_order: 2
 has_children: false
 description: "Power BI and Microsoft Fabric: semantic models, DAX, SQL warehouses and the tooling around them."
 ---
-# Power BI & Fabric
+{% assign section = site.data.sections | where: "key", "power-bi" | first %}
+{% assign article_count = 0 %}
+{% for article in site.pages %}
+{% if article.date %}
+{% for category in section.categories %}
+{% if article.categories contains category[0] %}
+{% assign article_count = article_count | plus: 1 %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
 
+<header class="section-header" style="--accent: {{ section.accent }}">
+<span class="section-header__icon" aria-hidden="true">{% include section-icon.html key=section.key %}</span>
+<div class="section-header__copy">
+<h1>{{ page.title | escape }}</h1>
 <p class="section-lead">Semantic models first, then DAX, SQL warehouses in Fabric, and the small tools that make a data team faster.</p>
-
-![Power BI and Fabric](/assets/2026/site/fabric-powerbi.webp){: .section-art }
+<p class="section-header__count">{{ article_count }} {% if article_count == 1 %}article{% else %}articles{% endif %}</p>
+</div>
+</header>
 
 ## All Articles
 {: .section-title }
 
-<ul class="article-list">
-  {% assign sorted_pages = site.pages | sort: 'date' | reverse %}
-  {% for post in sorted_pages %}
-    {% if post.date and post.categories contains "power-bi" or post.date and post.categories contains "fabric" %}
-      <li class="article-item">
-        <span>
-          {% if post.categories contains "fabric" %}<span class="article-category">Fabric</span>{% else %}<span class="article-category">Power BI</span>{% endif %}
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </span>
-        <span class="article-date">{{ post.date | date: "%d %b %Y" }}</span>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
+{% include article-list.html categories="power-bi,fabric" %}

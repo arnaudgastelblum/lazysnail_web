@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tools
-nav_order: 6.5
+nav_exclude: true # in the menu as the "My tools" group (_includes/nav-tools.html)
 permalink: /tools/
 description: "Free tools I built: screenshots that explain, Fabric and Power BI helpers, an Obsidian plugin, VS Code extensions."
 ---

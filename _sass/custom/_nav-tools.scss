@@ -1,0 +1,119 @@
+// The tools group of the left menu. Markup in _includes/nav-tools.html, at the end of
+// <nav id="site-nav">. Below the blog sections: a thin rule, a small uppercase title that links
+// to the Tools page, then one entry per tool with a dot in its colour (--accent).
+// The entries reuse the theme's nav-list classes, so sizes, hover and active follow the menu.
+
+.nav-tools {
+  position: relative;
+  margin-top: $sp-4;
+  padding-top: $sp-3;
+  padding-bottom: $sp-2; // on mobile, a breath before the search field
+
+  @include mq(md) {
+    padding-bottom: 0;
+  }
+
+  // The rule, inset to the text column so it stays quiet.
+  &::before {
+    position: absolute;
+    top: 0;
+    right: $gutter-spacing-sm;
+    left: $gutter-spacing-sm;
+    border-top: 1px solid darken($line, 4%);
+    content: "";
+
+    @include mq(md) {
+      right: $gutter-spacing;
+      left: $gutter-spacing;
+    }
+  }
+}
+
+// The title: like the theme's nav-category, but a link to /tools/.
+.site-nav .nav-tools__title {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  min-height: $nav-list-item-height-sm;
+  padding: $sp-1 $nav-list-item-height-sm $sp-1 $gutter-spacing-sm;
+  color: $muted;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  @include fs-2;
+
+  @include mq(md) {
+    min-height: $nav-list-item-height;
+    padding-right: $nav-list-item-height;
+    padding-left: $gutter-spacing;
+  }
+
+  &:hover,
+  &.active {
+    color: $navy;
+    background-image: linear-gradient(-90deg, rgba($feedback-color, 1) 0%, rgba($feedback-color, 0.8) 80%, rgba($feedback-color, 0) 100%);
+  }
+
+  &.active {
+    font-weight: 700;
+  }
+}
+
+.nav-tools__arrow {
+  color: $teal;
+  font-size: 1.1em;
+  letter-spacing: 0;
+}
+
+// The entries. Same specificity as the theme's rule, which comes earlier, so these win.
+.nav-tools__list .nav-list-item .nav-tools__link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: $nav-child-link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color;
+  }
+
+  &.active {
+    color: $ink;
+  }
+}
+
+.nav-tools__dot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent, #{$teal});
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, #{$teal}) 18%, transparent);
+}
+
+.nav-tools__link.active .nav-tools__dot {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, #{$teal}) 32%, transparent);
+}
+
+.nav-tools__name {
+  min-width: 0;
+}
+
+// The sections above: the global link colour of custom.scss is too light on the sidebar
+// (2.9:1). The scheme's link colour passes AA (5.4:1).
+.site-nav .nav-list-link {
+  color: $link-color;
+
+  &:hover {
+    color: darken($link-color, 8%);
+  }
+}
+
+// Visible focus for the whole menu, drawn inside the link so the scrolling menu does not clip it.
+.site-nav .nav-list-link:focus-visible,
+.site-nav .nav-list-expander:focus-visible,
+.site-nav .nav-tools__title:focus-visible {
+  outline: 2px solid $navy;
+  outline-offset: -2px;
+}

@@ -4,21 +4,29 @@ title: SQL Server
 nav_order: 4
 has_children: false
 ---
-# SQL Server
+{% assign section = site.data.sections | where: "key", "sql-server" | first %}
+{% assign article_count = 0 %}
+{% for article in site.pages %}
+{% if article.date %}
+{% for category in section.categories %}
+{% if article.categories contains category[0] %}
+{% assign article_count = article_count | plus: 1 %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
 
-![SQL Server](/assets/2026/site/sql-server.webp){: .section-art }
+<header class="section-header" style="--accent: {{ section.accent }}">
+<span class="section-header__icon" aria-hidden="true">{% include section-icon.html key=section.key %}</span>
+<div class="section-header__copy">
+<h1>{{ page.title | escape }}</h1>
+
+<p class="section-header__count">{{ article_count }} {% if article_count == 1 %}article{% else %}articles{% endif %}</p>
+</div>
+</header>
 
 ## All Articles
 {: .section-title }
 
-<ul class="article-list">
-  {% assign sorted_pages = site.pages | sort: 'date' | reverse %}
-  {% for post in sorted_pages %}
-    {% if post.date and post.categories contains "SQL-Server" %}
-      <li class="article-item">
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        <span class="article-date">{{ post.date | date: "%d %b %Y" }}</span>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
+{% include article-list.html categories="SQL-Server" chips=false %}

@@ -1,0 +1,35 @@
+{%- comment -%}
+  The tools group of the left menu, below the blog sections and the site pages.
+  One entry per tool of _data/tools.yml, in file order: a new tool there appears here.
+  Included at the end of <nav id="site-nav"> in _layouts/default.html, so it scrolls with
+  the menu on desktop and opens with the menu button on mobile.
+  An entry is active on its tool's article. External links carry no icon, like the other entries.
+{%- endcomment -%}
+{%- assign nav_tools = site.data.tools -%}
+{%- if nav_tools and nav_tools.size > 0 -%}
+{%- assign nav_tools_url = "/tools/" -%}
+{%- assign nav_page_url = page.url | append: "/" | replace: "//", "/" -%}
+<div class="nav-tools">
+  <a href="{{ nav_tools_url | relative_url }}" id="nav-tools-title" class="nav-tools__title{% if nav_page_url == nav_tools_url %} active{% endif %}"{% if nav_page_url == nav_tools_url %} aria-current="page"{% endif %}><span>My tools</span><span class="nav-tools__arrow" aria-hidden="true">→</span></a>
+  <ul class="nav-list nav-tools__list" aria-labelledby="nav-tools-title">
+    {%- for tool in nav_tools -%}
+      {%- assign tool_external = false -%}
+      {%- assign tool_active = false -%}
+      {%- if tool.url contains "://" -%}
+        {%- assign tool_external = true -%}
+      {%- else -%}
+        {%- assign tool_url = tool.url | append: "/" | replace: "//", "/" -%}
+        {%- if tool_url == nav_page_url -%}
+          {%- assign tool_active = true -%}
+        {%- endif -%}
+      {%- endif -%}
+      <li class="nav-list-item nav-tools__item{% if tool_active %} active{% endif %}"{% if tool.accent %} style="--accent: {{ tool.accent }}"{% endif %}>
+        <a href="{% if tool_external %}{{ tool.url }}{% else %}{{ tool.url | relative_url }}{% endif %}" class="nav-list-link nav-tools__link{% if tool_active %} active{% endif %}"{% if tool_active %} aria-current="page"{% endif %}>
+          <span class="nav-tools__dot" aria-hidden="true"></span>
+          <span class="nav-tools__name">{{ tool.name }}</span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}

@@ -6,75 +6,65 @@ description: "Arnaud Gastelblum, freelance data consultant. Microsoft Fabric, Po
 permalink: /
 ---
 
-{% assign labels = "power-bi:Power BI|fabric:Fabric|SQL-Server:SQL Server|ai:AI|Obsidian:Obsidian|other:Tools" | split: "|" %}
-
-<section class="hero-pro is-compact">
-  <div class="hero-pro__side">
-    <img class="hero-pro__photo" src="/assets/2023/Arnaud_Cartoon.png" alt="Arnaud Gastelblum">
-    <div class="hero-pro__links">
-      <a href="https://www.linkedin.com/in/arnaud-gastelblum/">LinkedIn</a>
-      <a href="{% link docs/About.md %}">About me</a>
-    </div>
-  </div>
-  <div class="hero-pro__text">
-    <p class="hero-pro__kicker">Freelance data consultant</p>
-    <h1 class="hero-pro__name">Arnaud Gastelblum</h1>
-    <p class="hero-pro__line">I build data models people trust, on <strong>Microsoft Fabric</strong> and <strong>Power BI</strong>. AI is part of my daily work, and my notes live in <strong>Obsidian</strong>.</p>
-  </div>
-</section>
-
-<div class="pillars">
-  {% assign n_bi = 0 %}{% assign n_sql = 0 %}{% assign n_ai = 0 %}{% assign n_obs = 0 %}
-  {% for p in site.pages %}{% if p.date %}
-    {% if p.categories contains "power-bi" or p.categories contains "fabric" %}{% assign n_bi = n_bi | plus: 1 %}{% endif %}
-    {% if p.categories contains "SQL-Server" %}{% assign n_sql = n_sql | plus: 1 %}{% endif %}
-    {% if p.categories contains "ai" %}{% assign n_ai = n_ai | plus: 1 %}{% endif %}
-    {% if p.categories contains "Obsidian" %}{% assign n_obs = n_obs | plus: 1 %}{% endif %}
-  {% endif %}{% endfor %}
-  <a class="pillar" href="{% link docs/Power-BI.md %}">
-    <span class="pillar__name">Power BI &amp; Fabric</span>
-    <span class="pillar__desc">Semantic models, DAX, Fabric warehouses</span>
-    <span class="pillar__count">{{ n_bi }} articles</span>
-  </a>
-  <a class="pillar" href="{% link docs/SQL Server.md %}">
-    <span class="pillar__name">SQL Server</span>
-    <span class="pillar__desc">T-SQL, SSIS, SSMS, the solid ground</span>
-    <span class="pillar__count">{{ n_sql }} articles</span>
-  </a>
-  <a class="pillar" href="{% link docs/AI.md %}">
-    <span class="pillar__name">AI</span>
-    <span class="pillar__desc">Claude Code, Codex, AI in a data job</span>
-    {% assign ai_tools = site.data.tools | where: "ai", true %}
-    <span class="pillar__count">{{ n_ai }} articles · {{ ai_tools.size }} tools</span>
-  </a>
-  <a class="pillar" href="{% link docs/Obsidian.md %}">
-    <span class="pillar__name">Obsidian</span>
-    <span class="pillar__desc">Notes, tasks, a calm way to work</span>
-    <span class="pillar__count">{{ n_obs }} articles</span>
-  </a>
+<section class="home-profile" aria-labelledby="home-name">
+<div class="home-profile__copy">
+<p class="home-eyebrow">Independent data consultant</p>
+<h1 id="home-name">Arnaud Gastelblum</h1>
+<p class="home-profile__title">Data Architect, Microsoft Fabric &amp; Power BI</p>
+<p class="home-profile__intro">I turn business questions into Kimball data models, then build them in SQL on Microsoft Fabric. I deliver Power BI semantic models and coach teams on modelling, SQL and DAX.</p>
+<p class="home-profile__location">Belgium &middot; Hybrid in the Brussels area</p>
+<div class="home-profile__actions">
+<a class="home-profile__primary" href="https://www.linkedin.com/in/arnaud-gastelblum/">Let's talk on LinkedIn <span aria-hidden="true">&rarr;</span></a>
+<a class="home-profile__secondary" href="{% link docs/About.md %}">About me <span aria-hidden="true">&rarr;</span></a>
 </div>
+{% if site.data.profile.available %}
+<p class="home-profile__availability">{{ site.data.profile.availability_label }}</p>
+{% endif %}
+</div>
+<div class="home-profile__visual" style="--accent: #6d5ef5">
+<div class="home-profile__frame"><img src="/assets/2023/Arnaud_Cartoon.png" alt="Cartoon portrait of Arnaud Gastelblum" width="231" height="254"></div>
+<span class="home-profile__chip home-profile__chip--fabric">Microsoft Fabric</span>
+<span class="home-profile__chip home-profile__chip--bi">Power BI</span>
+<span class="home-profile__chip home-profile__chip--kimball">Kimball</span>
+<span class="home-profile__chip home-profile__chip--sql">SQL</span>
+</div>
+</section>
+<div class="home-proof" aria-label="Experience">
+<p><strong>18 years</strong><span>on the Microsoft data platform</span></p>
+<p><strong>Across sectors</strong><span>Lottery, automotive, financial regulation, insurance and retail</span></p>
+</div>
+
+<section class="home-topics" aria-labelledby="home-topics-title">
+<div class="home-topics__heading">
+<p class="home-eyebrow">From my workbench</p>
+<h2 id="home-topics-title">What I write about</h2>
+</div>
+{%- assign ai_tools = site.data.tools | where: "ai", true -%}
+<div class="home-topics__grid">
+{%- for s in site.data.sections -%}
+{%- if s.key == "other" -%}{%- continue -%}{%- endif -%}
+{%- assign n = 0 -%}
+{%- for p in site.pages -%}{%- if p.date -%}{%- assign hit = false -%}{%- for cat in s.categories -%}{%- if p.categories contains cat[0] -%}{%- assign hit = true -%}{%- endif -%}{%- endfor -%}{%- if hit -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endif -%}{%- endfor -%}
+{%- case s.key -%}
+{%- when "power-bi" -%}{%- assign blurb = "How I build semantic models in Fabric, DAX included." -%}
+{%- when "sql-server" -%}{%- assign blurb = "The T-SQL, SSIS and SSAS I use on projects." -%}
+{%- when "ai" -%}{%- assign blurb = "How I work with coding agents day to day." -%}
+{%- when "obsidian" -%}{%- assign blurb = "How I keep my notes and tasks in Obsidian." -%}
+{%- else -%}{%- assign blurb = "" -%}
+{%- endcase -%}
+<article class="home-topic" style="--accent: {{ s.accent }}">
+<div class="home-topic__head"><span class="home-topic__tile">{% include section-icon.html key=s.key %}</span><h3 class="home-topic__name">{{ s.name | escape }}</h3></div>
+<p class="home-topic__blurb">{{ blurb }}</p>
+<a class="home-topic__link" href="{{ s.url }}" aria-label="{{ s.name | escape }}: {{ n }} article{% unless n == 1 %}s{% endunless %}{% if s.key == "ai" %}, {{ ai_tools.size }} tools built with AI{% endif %}"><span class="home-topic__count">{{ n }} article{% unless n == 1 %}s{% endunless %} <span class="home-topic__arrow" aria-hidden="true">&rarr;</span></span>{% if s.key == "ai" %}<span class="home-topic__extra">{{ ai_tools.size }} tools built with AI</span>{% endif %}</a>
+</article>
+{%- endfor -%}
+</div>
+</section>
 
 ## Latest articles
 {: .section-title }
 
-<ul class="article-list">
-  {% assign sorted_pages = site.pages | sort: 'date' | reverse %}
-  {% assign count = 0 %}
-  {% for post in sorted_pages %}
-    {% if post.date and count < 8 %}
-      {% assign label = post.categories %}
-      {% for pair in labels %}{% assign kv = pair | split: ":" %}{% if post.categories contains kv[0] %}{% assign label = kv[1] %}{% endif %}{% endfor %}
-      <li class="article-item">
-        <span>
-          <span class="article-category">{{ label }}</span>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </span>
-        <span class="article-date">{{ post.date | date: "%d %b %Y" }}</span>
-      </li>
-      {% assign count = count | plus: 1 %}
-    {% endif %}
-  {% endfor %}
-</ul>
+{% include article-list.html limit=8 %}
 
 ## Tools I built
 {: .section-title }

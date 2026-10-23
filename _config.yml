@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: LazySnail
-description: Arnaud Gastelblum, freelance data consultant. Microsoft Fabric, Power BI and data modeling, with AI in my daily work.
+description: Arnaud Gastelblum, Data Architect, Microsoft Fabric & Power BI, in Belgium. Data modelling, Fabric and Power BI, with AI in my daily work.
 author: Arnaud Gastelblum
 lang: en
 social:
@@ -29,7 +29,7 @@ defaults:
     values:
       image: /assets/2026/site/social-card.png
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://lazysnail.net" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.lazysnail.net" # the base hostname & protocol for your site, e.g. http://example.com
 
 #permalink: pretty
 permalink: /:categories/:title
@@ -121,9 +121,9 @@ aux_links_new_tab: false
 nav_sort: case_sensitive # Capital letters sorted before lowercase
 
 # External navigation links
+# The tools, Code Formatter included, have their own group in the menu, built from
+# _data/tools.yml by _includes/nav-tools.html.
 nav_external_links:
-  - title: Code Formatter
-    url: https://code.lazysnail.net
  # - title: My GitHub repos
  #   url: https://github.com/arnaudgastelblum
  # - title: YouTube
@@ -182,6 +182,7 @@ callouts:
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 kramdown:
   syntax_highlighter_opts:

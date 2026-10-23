@@ -1134,3 +1134,115 @@ body {
     transform: none;
   }
 }
+
+// ---------------------------------------------------------------------------------------------
+// Home variant B: editorial split. Scoped to the profile, proof strip and topic cards.
+.home-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.75rem;
+  margin: 1rem 0 1.75rem;
+  color: $ink;
+
+  .home-eyebrow { margin: 0 0 0.65rem; }
+  h1 { margin: 0 0 0.6rem; font-size: 2.3rem; line-height: 1.12; }
+  &__title { margin: 0 0 0.9rem; color: $navy; font-size: 1.18rem; font-weight: 600; line-height: 1.4 !important; }
+  &__intro { margin: 0; font-size: 0.94rem; color: $muted; }
+  &__location { margin: 0.8rem 0 1rem; font-size: 0.77rem; color: $muted; }
+  &__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem 1rem; }
+  &__actions a { display: inline-flex; gap: 0.55rem; align-items: center; min-height: 44px; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
+  &__primary { padding: 0.6rem 0.9rem; border-radius: 10px; background: $navy; color: #fff !important; }
+  &__primary:hover { background: #24577d; }
+  &__secondary { color: $navy; }
+  &__secondary:hover { text-decoration: underline !important; }
+  &__availability { display: inline-flex; align-items: center; gap: 0.45rem; margin: 0.9rem 0 0; padding: 0.2rem 0.65rem; border-radius: 999px; background: #eaf5f0; color: #24624a; font-size: 0.73rem; font-weight: 600; }
+  &__availability::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #317857; }
+  &__visual { position: relative; padding: 1.8rem 0.75rem; }
+  &__frame { padding: 1.1rem; border: 1px solid color-mix(in srgb, var(--accent) 22%, white); border-radius: 90px 90px 24px 24px; background: color-mix(in srgb, var(--accent) 12%, white); transform: rotate(3deg); }
+  &__frame img { display: block; width: 100%; height: auto; border-radius: 75px 75px 14px 14px; }
+  &__chip { position: absolute; padding: 0.3rem 0.6rem; border: 1px solid $line; border-radius: 7px; background: #fff; color: $navy; box-shadow: 0 4px 14px rgba($ink, 0.06); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  &__chip--fabric { top: 0.8rem; left: 0; transform: rotate(-5deg); }
+  &__chip--bi { top: 30%; right: 0; transform: rotate(5deg); }
+  &__chip--kimball { bottom: 1.3rem; left: 0; transform: rotate(-4deg); }
+  &__chip--sql { bottom: 0.9rem; right: 0.6rem; transform: rotate(4deg); }
+}
+.main-content .home-eyebrow { color: #526477; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.home-proof {
+  display: grid;
+  grid-template-columns: 0.85fr 2.25fr;
+  gap: 1.15rem;
+  border-top: 1px solid $line;
+  border-bottom: 1px solid $line;
+  padding: 1rem 0;
+  margin-bottom: 1.8rem;
+  p { margin: 0; font-size: 0.74rem; line-height: 1.55; }
+  p + p { border-left: 1px solid $line; padding-left: 1.15rem; }
+  strong { display: block; margin-bottom: 0.3rem; color: $ink; font-size: 0.8rem; }
+  span { display: block; color: $muted; }
+}
+// Topic cards: one row of four compact cards. Each has its section icon in a tile tinted with the
+// section accent, next to the name, then one line and the article count. The count link is
+// stretched over the whole card (its ::after covers it), so the card is one big target.
+.home-topics {
+  margin-bottom: 2.1rem;
+  &__heading { margin-bottom: 0.9rem; }
+  &__heading .home-eyebrow { margin: 0 0 0.3rem; }
+  &__heading h2 { margin: 0; font-size: 1.5rem; font-weight: 650; color: $ink; }
+  &__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.7rem; }
+}
+.home-topic {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 0.8rem 0.85rem 0.75rem;
+  border: 1px solid $line;
+  border-radius: 16px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  &:hover, &:focus-within { border-color: color-mix(in srgb, var(--accent) 55%, white); box-shadow: 0 10px 26px rgba($ink, 0.08); transform: translateY(-2px); }
+  &__head { display: flex; align-items: center; gap: 0.6rem; min-width: 0; }
+  &__tile { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 11px; background: radial-gradient(circle at 25% 15%, rgba(#fff, 0.7), transparent 60%), color-mix(in srgb, var(--accent) 14%, white); color: color-mix(in srgb, var(--accent) 80%, $ink); }
+  &__tile .section-icon { display: block; width: 24px; height: 24px; }
+  // Doubled selectors: the theme's h3 and p rules must not win. The theme sets the h3 size with
+  // !important (typography mixins), so the name needs it too.
+  & &__name { margin: 0; color: $ink; font-size: 0.95rem !important; font-weight: 650; line-height: 1.25; letter-spacing: -0.01em; }
+  & &__blurb { margin: 0.65rem 0 0.7rem; color: $muted; font-size: 0.78rem; line-height: 1.5; }
+  &__link { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; margin-top: auto; color: $navy; font-size: 0.72rem; font-weight: 600; line-height: 1.4; text-decoration: none; }
+  &__link::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+  &__link:hover { color: $ink; }
+  &__count { display: inline-flex; align-items: center; gap: 0.3rem; }
+  &__link:hover &__count { text-decoration: underline; text-underline-offset: 2px; }
+  &__extra { color: $muted; font-weight: 500; }
+  &__arrow { color: var(--accent); font-size: 0.95rem; transition: transform 0.2s ease; }
+  &:hover &__arrow { transform: translateX(3px); }
+}
+// Four cards need a column of about 640 px: two by two on phones, and from 800 px while the
+// sidebar leaves the main column too narrow.
+@media (max-width: 679.98px), (min-width: 800px) and (max-width: 979.98px) {
+  .home-topics__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .home-topics__grid { gap: 0.6rem; }
+  .home-topic { padding: 0.75rem 0.8rem 0.7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-topic, .home-topic__arrow { transition: none; }
+  .home-topic:hover, .home-topic:focus-within { transform: none; }
+  .home-topic:hover .home-topic__arrow { transform: none; }
+}
+.home-profile a:focus-visible, .home-topic a:focus-visible { outline: 3px solid $navy; outline-offset: 4px; border-radius: 4px; }
+@media (max-width: 600px) {
+  .home-profile { grid-template-columns: 1fr; gap: 0.8rem; margin-top: 0.75rem; }
+  .home-profile h1 { font-size: 2.1rem; }
+  .home-profile__visual { width: 210px; justify-self: center; }
+  .home-proof { grid-template-columns: 1fr; gap: 0.8rem; }
+  .home-proof p + p { border-left: 0; padding-left: 0; }
+  .home-proof strong { margin-bottom: 0.1rem; }
+}
+
+// Parts kept in their own files.
+@import "custom/articles";
+@import "custom/nav-tools";

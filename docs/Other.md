@@ -4,21 +4,29 @@ title: Other
 nav_order: 7
 has_children: false
 ---
-# Other
+{% assign section = site.data.sections | where: "key", "other" | first %}
+{% assign article_count = 0 %}
+{% for article in site.pages %}
+{% if article.date %}
+{% for category in section.categories %}
+{% if article.categories contains category[0] %}
+{% assign article_count = article_count | plus: 1 %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
 
-![Other](<../assets/2023/Other copy_500.png>){: .image50 }
+<header class="section-header" style="--accent: {{ section.accent }}">
+<span class="section-header__icon" aria-hidden="true">{% include section-icon.html key=section.key %}</span>
+<div class="section-header__copy">
+<h1>{{ page.title | escape }}</h1>
+
+<p class="section-header__count">{{ article_count }} {% if article_count == 1 %}article{% else %}articles{% endif %}</p>
+</div>
+</header>
 
 ## All Articles
 {: .section-title }
 
-<ul class="article-list">
-  {% assign sorted_pages = site.pages | sort: 'date' | reverse %}
-  {% for post in sorted_pages %}
-    {% if post.date and post.categories contains "other" %}
-      <li class="article-item">
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        <span class="article-date">{{ post.date | date: "%d %b %Y" }}</span>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
+{% include article-list.html categories="other" chips=false %}
