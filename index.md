@@ -44,7 +44,8 @@ permalink: /
   <a class="pillar" href="{% link docs/AI.md %}">
     <span class="pillar__name">AI</span>
     <span class="pillar__desc">Claude Code, Codex, AI in a data job</span>
-    <span class="pillar__count">{{ n_ai }} articles</span>
+    {% assign ai_tools = site.data.tools | where: "ai", true %}
+    <span class="pillar__count">{{ n_ai }} articles · {{ ai_tools.size }} tools</span>
   </a>
   <a class="pillar" href="{% link docs/Obsidian.md %}">
     <span class="pillar__name">Obsidian</span>
@@ -78,32 +79,6 @@ permalink: /
 ## Tools I built
 {: .section-title }
 
-<div class="tools">
-  <a class="tool" href="/tools/snipou">
-    <span class="tool__name">Snipou</span>
-    <span class="tool__desc">A free screenshot and whiteboard app: capture a piece of your screen, annotate it, explain a whole process on a board.</span>
-    <span class="tool__kind">Windows</span>
-  </a>
-  <a class="tool" href="/fabric/fabric-source-atlas">
-    <span class="tool__name">Fabric Source Atlas</span>
-    <span class="tool__desc">Lists every SQL table, view, file and model your semantic models read. Excel inventory and an offline web page.</span>
-    <span class="tool__kind">PowerShell</span>
-  </a>
-  <a class="tool" href="/en/lazy-dbt-vs-code-extension/">
-    <span class="tool__name">dbt Formatter</span>
-    <span class="tool__desc">Formats dbt SQL models the dbt way, writes the schema .yml, shows the lineage. A VS Code extension.</span>
-    <span class="tool__kind">VS Code</span>
-  </a>
-  <a class="tool" href="/obsidian/snailkit">
-    <span class="tool__name">Snailkit</span>
-    <span class="tool__desc">An Obsidian plugin: catch ideas, gather the tasks of all your notes, give your notes a home.</span>
-    <span class="tool__kind">Obsidian</span>
-  </a>
-  <a class="tool" href="/sql-server/make-vs-code-look-and-feel-like-ssms">
-    <span class="tool__name">SSMS in VS Code</span>
-    <span class="tool__desc">Your SSMS habits in VS Code: column selection, Ctrl+R for results, and query shortcuts. An extension to download.</span>
-    <span class="tool__kind">VS Code</span>
-  </a>
-</div>
+{% include tool-cards.html style="compact" home=true %}
 
-<p class="tools-more">Also: <a href="https://code.lazysnail.net">Code Formatter</a> for DAX and SQL in the browser, and <a href="/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/">LazyDAX</a>, a Power BI file to learn DAX.</p>
+<p class="tools-more" style="--accent: #1b8aa6"><a class="tlink" href="/tools/">See all {{ site.data.tools.size }} tools</a></p>

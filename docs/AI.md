@@ -10,6 +10,13 @@ has_children: false
   ![The Lazysnail AI mascot](/assets/2026/site/ai-snail.webp){: .mascot }
 {: refdef}
 
+## Built with AI
+{: .section-title }
+
+<p class="tools-intro">Tools I built with Claude Code, and now Codex too. All free.</p>
+
+{% include tool-cards.html style="compact" ai=true %}
+
 ## All Articles
 {: .section-title }
 

@@ -1,0 +1,50 @@
+{%- comment -%}
+  Cards of the tools in _data/tools.yml.
+  style="featured": the featured tool, big. style="grid": the other tools, with their story and
+  button. style="compact": picture, name and tagline (home page, AI page).
+  home=true: only the home tools. ai=true: only the tools built with AI.
+{%- endcomment -%}
+{%- assign style = include.style | default: "grid" -%}
+{%- if style == "featured" -%}
+{%- assign tool = site.data.tools | where: "featured", true | first -%}
+<article class="tfeatured" style="--accent: {{ tool.accent }}" data-tool>
+  {% include tool-media.html tool=tool %}
+  <div class="tfeatured__body">
+    <p class="tchip">New · {{ tool.kind }}</p>
+    <h2 class="tfeatured__name"><a href="{{ tool.url }}">{{ tool.name }}</a></h2>
+    <p class="tfeatured__tagline">{{ tool.tagline }}</p>
+    <ul class="tfeatured__points">
+      {%- for point in tool.points %}
+      <li>{{ point }}</li>
+      {%- endfor %}
+    </ul>
+    <div class="tactions">
+      {%- if tool.action %}<a class="tbutton" href="{{ tool.action.url }}">{{ tool.action.label }}</a>{% endif %}
+      <a class="tlink" href="{{ tool.url }}">How it works</a>
+    </div>
+  </div>
+</article>
+{%- else -%}
+<div class="tgrid tgrid--{{ style }}">
+{%- for tool in site.data.tools -%}
+  {%- if style == "grid" and tool.featured -%}{%- continue -%}{%- endif -%}
+  {%- if include.home and tool.home != true -%}{%- continue -%}{%- endif -%}
+  {%- if include.ai and tool.ai != true -%}{%- continue -%}{%- endif %}
+  <article class="tcard" style="--accent: {{ tool.accent }}" data-tool>
+    {% include tool-media.html tool=tool %}
+    <div class="tcard__body">
+      <p class="tchip">{{ tool.kind }}</p>
+      <h3 class="tcard__name"><a href="{{ tool.url }}">{{ tool.name }}</a></h3>
+      <p class="tcard__tagline">{{ tool.tagline }}</p>
+      {%- if style == "grid" %}
+      <p class="tcard__desc">{{ tool.desc }}</p>
+      <div class="tactions">
+        {%- if tool.action and tool.action.url != tool.url %}<a class="tbutton tbutton--soft" href="{{ tool.action.url }}">{{ tool.action.label }}</a>{% endif %}
+        <a class="tlink" href="{{ tool.url }}">{% if tool.url contains "://" %}Open it{% else %}How it works{% endif %}</a>
+      </div>
+      {%- endif %}
+    </div>
+  </article>
+{%- endfor %}
+</div>
+{%- endif -%}

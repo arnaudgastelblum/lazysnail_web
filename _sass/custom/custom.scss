@@ -685,3 +685,452 @@ body {
   border-radius: 6px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
+
+
+// ---------------------------------------------------------------------------------------------
+// Tools showcase (Tools page, home, AI page). Cards from _data/tools.yml: a picture in a frame
+// tinted with the tool's colour (--accent), the demo plays on hover (script in head_custom.html).
+
+.thero {
+  position: relative;
+  margin: 0.5rem 0 2rem;
+  padding: 2.2rem 2rem 1.9rem;
+  overflow: hidden;
+  border: 1px solid $line;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 92% 18%, rgba(#6d5ef5, 0.16) 0, transparent 34%),
+    radial-gradient(circle at 78% 92%, rgba(#e0912f, 0.18) 0, transparent 30%),
+    radial-gradient(circle at 8% 100%, rgba($teal, 0.14) 0, transparent 36%),
+    #f6f8fb;
+
+  &__kicker {
+    margin: 0 0 0.4rem;
+    color: $teal;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  &__lead {
+    max-width: 34rem;
+    margin: 0 0 1.2rem;
+    color: $muted;
+    font-size: 1.02rem;
+  }
+
+  @media (max-width: 640px) {
+    padding: 1.6rem 1.25rem 1.4rem;
+  }
+}
+
+.main-content .thero__title {
+  max-width: 36rem;
+  margin: 0 0 0.75rem;
+  color: $ink;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+
+  span {
+    display: inline-block;
+    background: linear-gradient(transparent 62%, rgba(#e0912f, 0.32) 62%, rgba(#e0912f, 0.32) 90%, transparent 90%);
+  }
+
+  @media (max-width: 640px) {
+    font-size: 1.6rem;
+  }
+}
+
+.main-content .thero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid $line;
+    border-radius: 999px;
+    background: rgba(#ffffff, 0.8);
+    color: $muted;
+    font-size: 0.82rem;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  strong {
+    color: $ink;
+  }
+}
+
+// The picture of a tool in its tinted frame. The screenshot peeks out at the bottom.
+.tmedia {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #eef1f6;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(#ffffff, 0.75) 0, transparent 45%),
+    color-mix(in srgb, var(--accent) 16%, #ffffff);
+  text-decoration: none !important;
+
+  img {
+    position: absolute;
+    left: 7%;
+    top: 11%;
+    width: 86%;
+    max-width: none;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 10px 30px rgba(15, 27, 42, 0.22);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+  }
+
+  &__anim {
+    opacity: 0;
+  }
+
+  &.is-playing &__anim {
+    opacity: 1;
+  }
+
+  &__demo {
+    position: absolute;
+    right: 0.7rem;
+    top: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.6rem 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(#ffffff, 0.92);
+    color: $ink;
+    font-size: 0.72rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(15, 27, 42, 0.12);
+    transition: opacity 0.2s ease;
+
+    &::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 7px solid var(--accent);
+    }
+  }
+
+  &.is-playing &__demo {
+    opacity: 0;
+  }
+}
+
+[data-tool]:hover .tmedia img {
+  transform: translateY(-6px);
+}
+
+// Keyboard shortcuts drawn as key caps, for a tool without a picture.
+.tmedia--keys {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tkeys {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: #1f2430;
+  box-shadow: 0 10px 30px rgba(15, 27, 42, 0.25);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  &__caps {
+    display: inline-flex;
+    gap: 0.3rem;
+    min-width: 6.2rem;
+  }
+
+  kbd {
+    min-width: 1.9rem;
+    padding: 0.18rem 0.45rem;
+    border: 1px solid #4a5263;
+    border-bottom-width: 3px;
+    border-radius: 6px;
+    background: #2c3342;
+    color: #f2f4f8;
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    box-shadow: none;
+  }
+
+  &__label {
+    color: #c9d1de;
+    font-size: 0.8rem;
+  }
+}
+
+[data-tool]:hover .tkeys {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+// Small coloured label: the platform.
+.main-content .tchip {
+  display: inline-block;
+  align-self: flex-start;
+  margin: 0 0 0.45rem;
+  padding: 0.12rem 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, #ffffff);
+  color: color-mix(in srgb, var(--accent) 80%, #0f1b2a);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tactions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-top: auto;
+  padding-top: 0.9rem;
+}
+
+.main-content .tbutton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #ffffff !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+}
+
+.main-content .tbutton--soft {
+  padding: 0.4rem 0.85rem;
+  background: color-mix(in srgb, var(--accent) 12%, #ffffff);
+  color: color-mix(in srgb, var(--accent) 80%, #0f1b2a) !important;
+  box-shadow: none;
+
+  &:hover {
+    background: color-mix(in srgb, var(--accent) 20%, #ffffff);
+    box-shadow: none;
+  }
+}
+
+.main-content .tlink {
+  color: $ink !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none !important;
+
+  &::after {
+    content: " →";
+    color: var(--accent);
+  }
+
+  &:hover {
+    color: var(--accent) !important;
+  }
+}
+
+// The featured tool: picture and story side by side.
+.tfeatured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: center;
+  margin: 0 0 2.25rem;
+  padding: 0.75rem;
+  border: 1px solid $line;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 12px 34px rgba(15, 27, 42, 0.07);
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+  }
+
+  &__tagline {
+    margin: 0 0 0.8rem;
+    color: $ink;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    &__body {
+      padding: 0 0.5rem 0.5rem;
+    }
+  }
+}
+
+.main-content .tfeatured__name {
+  margin: 0 0 0.2rem;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  a {
+    color: $ink !important;
+    text-decoration: none !important;
+  }
+}
+
+.main-content .tfeatured__points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin: 0 0 0.45rem;
+    padding-left: 1.4rem;
+    color: $muted;
+    font-size: 0.92rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.15rem;
+      top: 0.45em;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 3px;
+      background: var(--accent);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+// The other tools.
+.tgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 0 0 1.25rem;
+
+  &--compact {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 1rem;
+  }
+}
+
+.tcard {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem;
+  border: 1px solid $line;
+  border-radius: 20px;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, #ffffff);
+    box-shadow: 0 14px 32px rgba(15, 27, 42, 0.09);
+    transform: translateY(-3px);
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0.9rem 0.6rem 0.5rem;
+  }
+
+  &__tagline {
+    margin: 0;
+    color: $ink;
+    font-size: 0.95rem;
+  }
+
+  &__desc {
+    margin: 0.4rem 0 0;
+    color: $muted;
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+}
+
+.main-content .tcard__name {
+  margin: 0 0 0.15rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  a {
+    color: $ink !important;
+    text-decoration: none !important;
+  }
+}
+
+.tgrid--compact .tcard__body {
+  padding: 0.75rem 0.4rem 0.3rem;
+}
+
+.tgrid--compact .tcard__tagline {
+  color: $muted;
+  font-size: 0.88rem;
+}
+
+.tfootnote {
+  margin: 1.5rem 0 0;
+  color: $muted;
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+.tools-intro {
+  margin: 0 0 0.9rem;
+  color: $muted;
+  font-size: 0.92rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tmedia img,
+  .tkeys,
+  .tcard,
+  .main-content .tbutton {
+    transition: none;
+  }
+
+  [data-tool]:hover .tmedia img,
+  [data-tool]:hover .tkeys,
+  .tcard:hover {
+    transform: none;
+  }
+}

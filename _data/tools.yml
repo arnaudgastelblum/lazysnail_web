@@ -1,0 +1,98 @@
+# Tools I built. One list for the Tools page, the home page and the AI page.
+# tagline: what it is for, in a few words. desc: what it does, in one sentence.
+# url: the article. action: the main button (optional).
+# poster: a 16:10 picture. anim: the demo that plays on hover (optional).
+# shortcuts: drawn keyboard shortcuts instead of a picture.
+# accent: the colour of the card. featured: the big card on the Tools page.
+# home: a card on the home page. ai: built with AI (Claude Code, and now Codex too).
+- name: Snipou
+  tagline: Screenshots that explain.
+  desc: Capture a piece of your screen, annotate it, and tell a whole process on a whiteboard.
+  points:
+    - "One hotkey: a region, a window, or just the table inside it."
+    - Numbered steps, arrows and blur, then paste anywhere.
+    - Whiteboards with sixteen themes, clean or hand-drawn.
+  kind: Windows
+  url: /tools/snipou
+  action:
+    label: Download for Windows
+    url: https://github.com/arnaudgastelblum/snipou-releases/releases/latest/download/snipou-setup.exe
+  poster: /assets/2026/tools/snipou.webp
+  anim: /assets/2026/snipou/annotate.gif
+  accent: "#6d5ef5"
+  featured: true
+  home: true
+  ai: true
+
+- name: Fabric Source Atlas
+  tagline: Which tables feed your models?
+  desc: Lists every SQL table, view, file and model your semantic models read, in Excel and an offline web page.
+  kind: PowerShell · Fabric
+  url: /fabric/fabric-source-atlas
+  action:
+    label: Get it on GitHub
+    url: https://github.com/arnaudgastelblum/fabric-source-atlas
+  poster: /assets/2026/tools/fabric-source-atlas.webp
+  anim: /assets/2026/fabric-source-atlas/run-in-terminal.gif
+  accent: "#0f8b7d"
+  home: true
+  ai: true
+
+- name: Snailkit
+  tagline: A calm home for your notes.
+  desc: "An Obsidian plugin: catch ideas, gather the tasks of all your notes, open anything with a mouse gesture."
+  kind: Obsidian
+  url: /obsidian/snailkit
+  action:
+    label: Get it on GitHub
+    url: https://github.com/arnaudgastelblum/snailkit
+  poster: /assets/2026/tools/snailkit.webp
+  anim: /assets/2026/snailkit-launcher/launcher.webp
+  accent: "#e0912f"
+  home: true
+  ai: true
+
+- name: dbt Formatter
+  tagline: Tidy dbt models in one click.
+  desc: Formats dbt SQL the dbt way, writes the schema .yml and shows the lineage.
+  kind: VS Code
+  url: /en/lazy-dbt-vs-code-extension/
+  poster: /assets/2026/tools/dbt-formatter.webp
+  accent: "#f0644a"
+  ai: true
+
+- name: SSMS in VS Code
+  tagline: Your SSMS habits, in VS Code.
+  desc: Column selection, Ctrl+R for the results and your query shortcuts, with an extension to download.
+  kind: VS Code
+  url: /sql-server/make-vs-code-look-and-feel-like-ssms
+  shortcuts:
+    - combo: [Ctrl, R]
+      label: Show or hide the results
+    - combo: [Shift, Alt]
+      label: Drag to select a column
+    - combo: [Ctrl, "1"]
+      label: Run your query shortcuts
+  accent: "#2f6fd1"
+  ai: true
+
+- name: Code Formatter
+  tagline: Clean DAX and SQL in one paste.
+  desc: Paste your code and get it formatted. It runs in the browser, nothing leaves it.
+  kind: Web
+  url: https://code.lazysnail.net
+  action:
+    label: Open it
+    url: https://code.lazysnail.net
+  poster: /assets/2026/tools/code-formatter.webp
+  accent: "#d9488f"
+  ai: true
+
+- name: LazyDAX
+  tagline: Learn DAX on a simple model.
+  desc: A Power BI file to practise DAX and debug your own expressions, also handy for a presentation.
+  kind: Power BI
+  url: /en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/
+  poster: /assets/2026/tools/lazydax.webp
+  accent: "#d9a400"
+  ai: false

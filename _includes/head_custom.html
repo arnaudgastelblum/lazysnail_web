@@ -25,4 +25,30 @@
       img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
     });
   });
+  /* Tool cards: the demo plays while the pointer is over the card, or, on touch screens, while the picture is in view. Never with reduced motion. The animation loads on first play. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var frames = document.querySelectorAll('.tmedia');
+    if (!frames.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function play(frame) {
+      var anim = frame.querySelector('.tmedia__anim');
+      if (!anim) return;
+      if (!anim.getAttribute('src')) anim.src = anim.dataset.src;
+      frame.classList.add('is-playing');
+    }
+    function stop(frame) { frame.classList.remove('is-playing'); }
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      frames.forEach(function (frame) {
+        var card = frame.closest('[data-tool]') || frame;
+        card.addEventListener('mouseenter', function () { play(frame); });
+        card.addEventListener('mouseleave', function () { stop(frame); });
+        card.addEventListener('focusin', function () { play(frame); });
+        card.addEventListener('focusout', function () { stop(frame); });
+      });
+    } else if ('IntersectionObserver' in window) {
+      var watcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { if (entry.intersectionRatio >= 0.6) { play(entry.target); } else { stop(entry.target); } });
+      }, { threshold: [0, 0.6] });
+      frames.forEach(function (frame) { watcher.observe(frame); });
+    }
+  });
 </script>

@@ -1,0 +1,23 @@
+{%- comment -%}
+  The picture of a tool (include.tool) in its coloured frame: the poster, the demo that plays on
+  hover (or when the card is in view on a touch screen), or drawn keyboard shortcuts.
+{%- endcomment -%}
+{%- assign tool = include.tool -%}
+<a class="tmedia{% if tool.shortcuts %} tmedia--keys{% endif %}" href="{{ tool.url }}" tabindex="-1" aria-hidden="true">
+  {%- if tool.shortcuts %}
+  <span class="tkeys">
+    {%- for row in tool.shortcuts %}
+    <span class="tkeys__row">
+      <span class="tkeys__caps">{% for key in row.combo %}<kbd>{{ key }}</kbd>{% endfor %}</span>
+      <span class="tkeys__label">{{ row.label }}</span>
+    </span>
+    {%- endfor %}
+  </span>
+  {%- else %}
+  <img class="tmedia__poster" src="{{ tool.poster }}" alt="" width="1200" height="750" loading="lazy" decoding="async">
+  {%- if tool.anim %}
+  <img class="tmedia__anim" data-src="{{ tool.anim }}" alt="">
+  <span class="tmedia__demo">Demo</span>
+  {%- endif %}
+  {%- endif %}
+</a>
