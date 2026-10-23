@@ -79,6 +79,11 @@ permalink: /
 {: .section-title }
 
 <div class="tools">
+  <a class="tool" href="/tools/snipou">
+    <span class="tool__name">Snipou</span>
+    <span class="tool__desc">A free screenshot and whiteboard app: capture a piece of your screen, annotate it, explain a whole process on a board.</span>
+    <span class="tool__kind">Windows</span>
+  </a>
   <a class="tool" href="/fabric/fabric-source-atlas">
     <span class="tool__name">Fabric Source Atlas</span>
     <span class="tool__desc">Lists every SQL table, view, file and model your semantic models read. Excel inventory and an offline web page.</span>
