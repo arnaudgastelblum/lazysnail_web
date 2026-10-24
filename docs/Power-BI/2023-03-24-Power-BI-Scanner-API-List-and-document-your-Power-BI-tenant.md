@@ -88,7 +88,7 @@ var fun = function lang(l) {
 #---------------------------------
 # Configuration
 
-$configExportFolderPath = "C:\Users\ArnaudGastelblum\Desktop"
+$configExportFolderPath = "C:\Temp"
 $batchSize = 50
 
 
