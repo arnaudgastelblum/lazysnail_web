@@ -32,7 +32,18 @@ permalink: /
 <div class="home-proof" aria-label="Experience">
 <p><strong>18 years</strong><span>on the Microsoft data platform</span></p>
 <p><strong>Across sectors</strong><span>Lottery, automotive, financial regulation, insurance and retail</span></p>
+{%- assign store_tool = site.data.tools | where_exp: "t", "t.store" | first %}
+{% if store_tool %}<p><strong>On the Microsoft Store</strong><span><a href="{{ store_tool.store }}">{{ store_tool.name }}</a>, a free {{ store_tool.kind }} app I built</span></p>{% endif %}
 </div>
+
+<section class="home-tools" aria-labelledby="home-tools-title">
+<div class="home-tools__heading">
+<p class="home-eyebrow">Built for my work, free for yours</p>
+<h2 id="home-tools-title">Tools I built</h2>
+</div>
+{% include tool-cards.html style="featured" level=3 %}
+{% include tool-cards.html style="compact" home=true skip_featured=true more=true %}
+</section>
 
 <section class="home-topics" aria-labelledby="home-topics-title">
 <div class="home-topics__heading">
@@ -65,10 +76,3 @@ permalink: /
 {: .section-title }
 
 {% include article-list.html limit=8 %}
-
-## Tools I built
-{: .section-title }
-
-{% include tool-cards.html style="compact" home=true %}
-
-<p class="tools-more" style="--accent: #1b8aa6"><a class="tlink" href="/tools/">See all {{ site.data.tools.size }} tools</a></p>

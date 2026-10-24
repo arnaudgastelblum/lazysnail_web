@@ -1,6 +1,7 @@
 # Tools I built. One list for the Tools page, the home page and the AI page.
 # tagline: what it is for, in a few words. desc: what it does, in one sentence.
 # url: the article. action: the main button (optional).
+# store: the Microsoft Store listing; its official badge replaces the button.
 # poster: a 16:10 picture. anim: the demo that plays on hover (optional).
 # shortcuts: drawn keyboard shortcuts instead of a picture.
 # accent: the colour of the card. featured: the big card on the Tools page.
@@ -14,9 +15,7 @@
     - Whiteboards with sixteen themes, clean or hand-drawn.
   kind: Windows
   url: /tools/snipou
-  action:
-    label: Download for Windows
-    url: https://github.com/arnaudgastelblum/snipou-releases/releases/latest/download/snipou-setup.exe
+  store: https://apps.microsoft.com/detail/9MZSSPHWZ8BL
   poster: /assets/2026/tools/snipou.webp
   anim: /assets/2026/snipou/annotate.gif
   accent: "#6d5ef5"

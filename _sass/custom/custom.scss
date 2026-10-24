@@ -629,12 +629,6 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.tools-more {
-  margin-top: 0.5rem;
-  color: $muted;
-  font-size: 0.92rem;
-}
-
 // A section mascot: small, beside the title rather than in the way.
 .main-content img.mascot {
   display: block;
@@ -1001,7 +995,7 @@ body {
 
 .main-content .tfeatured__name {
   margin: 0 0 0.2rem;
-  font-size: 1.9rem;
+  font-size: 1.9rem !important;
   font-weight: 700;
   letter-spacing: -0.02em;
 
@@ -1030,6 +1024,7 @@ body {
       top: 0.45em;
       width: 0.55rem;
       height: 0.55rem;
+      margin-left: 0;
       border-radius: 3px;
       background: var(--accent);
       transform: rotate(45deg);
@@ -1107,6 +1102,96 @@ body {
   font-size: 0.88rem;
 }
 
+// The official Microsoft Store badge, used as it is: no rounding, no tint.
+.main-content .tstore {
+  display: inline-flex;
+  border-radius: 5px;
+  line-height: 0;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  img {
+    display: block;
+    width: auto;
+    height: 44px;
+    border-radius: 0;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba($ink, 0.18);
+  }
+
+  &:focus-visible {
+    outline: 3px solid $navy;
+    outline-offset: 3px;
+  }
+}
+
+.main-content .tstore--small img {
+  height: 36px;
+}
+
+.main-content img.store-badge {
+  width: auto;
+  height: 48px;
+  border-radius: 0;
+}
+
+// The last tile of a short grid: how many tools are left, and on what.
+.main-content .tmore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 12rem;
+  padding: 1.2rem 1.3rem;
+  border: 1px dashed color-mix(in srgb, var(--accent) 45%, #ffffff);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(#6d5ef5, 0.12) 0, transparent 42%),
+    radial-gradient(circle at 8% 96%, rgba(#e0912f, 0.14) 0, transparent 40%),
+    $soft;
+  color: $ink !important;
+  text-decoration: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--accent) 75%, #ffffff);
+    box-shadow: 0 14px 32px rgba(15, 27, 42, 0.09);
+    transform: translateY(-3px);
+  }
+
+  &:hover .tlink {
+    color: var(--accent) !important;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $navy;
+    outline-offset: 4px;
+  }
+
+  &__count {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  &__label {
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__kinds {
+    margin: 0.35rem 0 0.9rem;
+    color: $muted;
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+}
+
 .tfootnote {
   margin: 1.5rem 0 0;
   color: $muted;
@@ -1124,13 +1209,17 @@ body {
   .tmedia img,
   .tkeys,
   .tcard,
-  .main-content .tbutton {
+  .main-content .tbutton,
+  .main-content .tstore,
+  .main-content .tmore {
     transition: none;
   }
 
   [data-tool]:hover .tmedia img,
   [data-tool]:hover .tkeys,
-  .tcard:hover {
+  .tcard:hover,
+  .main-content .tstore:hover,
+  .main-content .tmore:hover {
     transform: none;
   }
 }
@@ -1170,7 +1259,7 @@ body {
 .main-content .home-eyebrow { color: #526477; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .home-proof {
   display: grid;
-  grid-template-columns: 0.85fr 2.25fr;
+  grid-template-columns: 0.8fr 1.8fr 1.25fr;
   gap: 1.15rem;
   border-top: 1px solid $line;
   border-bottom: 1px solid $line;
@@ -1180,11 +1269,14 @@ body {
   p + p { border-left: 1px solid $line; padding-left: 1.15rem; }
   strong { display: block; margin-bottom: 0.3rem; color: $ink; font-size: 0.8rem; }
   span { display: block; color: $muted; }
+  a { color: $navy; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: $ink; }
 }
 // Topic cards: one row of four compact cards. Each has its section icon in a tile tinted with the
 // section accent, next to the name, then one line and the article count. The count link is
 // stretched over the whole card (its ::after covers it), so the card is one big target.
-.home-topics {
+.home-topics,
+.home-tools {
   margin-bottom: 2.1rem;
   &__heading { margin-bottom: 0.9rem; }
   &__heading .home-eyebrow { margin: 0 0 0.3rem; }
@@ -1218,6 +1310,14 @@ body {
   &__extra { color: $muted; font-weight: 500; }
   &__arrow { color: var(--accent); font-size: 0.95rem; transition: transform 0.2s ease; }
   &:hover &__arrow { transform: translateX(3px); }
+}
+.home-tools .tfeatured { margin-bottom: 1rem; }
+.home-tools .tgrid { margin-bottom: 0; container-type: inline-size; }
+@container (min-width: 436px) and (max-width: 661.98px) {
+  .main-content .tmore { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; min-height: 0; padding: 1rem 1.3rem; }
+  .main-content .tmore__count { font-size: 1.6rem; }
+  .main-content .tmore__kinds { margin: 0; }
+  .main-content .tmore .tlink { margin-left: auto; }
 }
 // Four cards need a column of about 640 px: two by two on phones, and from 800 px while the
 // sidebar leaves the main column too narrow.

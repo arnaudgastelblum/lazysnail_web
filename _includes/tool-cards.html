@@ -3,15 +3,21 @@
   style="featured": the featured tool, big. style="grid": the other tools, with their story and
   button. style="compact": picture, name and tagline (home page, AI page).
   home=true: only the home tools. ai=true: only the tools built with AI.
+  skip_featured=true: leave out the featured tool (shown big above). more=true: end the grid with
+  a tile to the Tools page that counts the tools left out. level: the heading of the featured
+  tool (2 by default, 3 under a section title).
+  A tool with a store listing shows the official Microsoft Store badge instead of its button.
 {%- endcomment -%}
 {%- assign style = include.style | default: "grid" -%}
+{%- assign badge = "/assets/2026/site/microsoft-store-badge.svg" -%}
 {%- if style == "featured" -%}
 {%- assign tool = site.data.tools | where: "featured", true | first -%}
+{%- assign level = include.level | default: 2 -%}
 <article class="tfeatured" style="--accent: {{ tool.accent }}" data-tool>
   {% include tool-media.html tool=tool %}
   <div class="tfeatured__body">
     <p class="tchip">New · {{ tool.kind }}</p>
-    <h2 class="tfeatured__name"><a href="{{ tool.url }}">{{ tool.name }}</a></h2>
+    <h{{ level }} class="tfeatured__name"><a href="{{ tool.url }}">{{ tool.name }}</a></h{{ level }}>
     <p class="tfeatured__tagline">{{ tool.tagline }}</p>
     <ul class="tfeatured__points">
       {%- for point in tool.points %}
@@ -19,32 +25,51 @@
       {%- endfor %}
     </ul>
     <div class="tactions">
-      {%- if tool.action %}<a class="tbutton" href="{{ tool.action.url }}">{{ tool.action.label }}</a>{% endif %}
+      {%- if tool.store %}<a class="tstore" href="{{ tool.store }}"><img src="{{ badge }}" alt="Download {{ tool.name }} from the Microsoft Store" width="161" height="44"></a>
+      {%- elsif tool.action %}<a class="tbutton" href="{{ tool.action.url }}">{{ tool.action.label }}</a>{% endif %}
       <a class="tlink" href="{{ tool.url }}">How it works</a>
     </div>
   </div>
 </article>
 {%- else -%}
+{%- assign left_out = 0 -%}
+{%- assign left_kinds = "" -%}
 <div class="tgrid tgrid--{{ style }}">
 {%- for tool in site.data.tools -%}
-  {%- if style == "grid" and tool.featured -%}{%- continue -%}{%- endif -%}
-  {%- if include.home and tool.home != true -%}{%- continue -%}{%- endif -%}
-  {%- if include.ai and tool.ai != true -%}{%- continue -%}{%- endif %}
+  {%- if tool.featured -%}{%- if style == "grid" or include.skip_featured -%}{%- continue -%}{%- endif -%}{%- endif -%}
+  {%- assign keep = true -%}
+  {%- if include.home and tool.home != true -%}{%- assign keep = false -%}{%- endif -%}
+  {%- if include.ai and tool.ai != true -%}{%- assign keep = false -%}{%- endif -%}
+  {%- unless keep -%}
+    {%- assign left_out = left_out | plus: 1 -%}
+    {%- assign left_kinds = left_kinds | append: tool.kind | append: " · " -%}
+    {%- continue -%}
+  {%- endunless %}
   <article class="tcard" style="--accent: {{ tool.accent }}" data-tool>
     {% include tool-media.html tool=tool %}
     <div class="tcard__body">
-      <p class="tchip">{{ tool.kind }}</p>
+      <p class="tchip">{% if tool.store %}Microsoft Store{% else %}{{ tool.kind }}{% endif %}</p>
       <h3 class="tcard__name"><a href="{{ tool.url }}">{{ tool.name }}</a></h3>
       <p class="tcard__tagline">{{ tool.tagline }}</p>
       {%- if style == "grid" %}
       <p class="tcard__desc">{{ tool.desc }}</p>
       <div class="tactions">
-        {%- if tool.action and tool.action.url != tool.url %}<a class="tbutton tbutton--soft" href="{{ tool.action.url }}">{{ tool.action.label }}</a>{% endif %}
+        {%- if tool.store %}<a class="tstore tstore--small" href="{{ tool.store }}"><img src="{{ badge }}" alt="Download {{ tool.name }} from the Microsoft Store" width="161" height="44"></a>
+        {%- elsif tool.action and tool.action.url != tool.url %}<a class="tbutton tbutton--soft" href="{{ tool.action.url }}">{{ tool.action.label }}</a>{% endif %}
         <a class="tlink" href="{{ tool.url }}">{% if tool.url contains "://" %}Open it{% else %}How it works{% endif %}</a>
       </div>
       {%- endif %}
     </div>
   </article>
 {%- endfor %}
+{%- if include.more and left_out > 0 %}
+  {%- assign kinds = left_kinds | split: " · " | uniq | join: " · " %}
+  <a class="tmore" href="/tools/" style="--accent: #1b8aa6">
+    <span class="tmore__count">+{{ left_out }}</span>
+    <span class="tmore__label">more tool{% if left_out > 1 %}s{% endif %}</span>
+    <span class="tmore__kinds">{{ kinds }}</span>
+    <span class="tlink">See all {{ site.data.tools.size }} tools</span>
+  </a>
+{%- endif %}
 </div>
 {%- endif -%}
