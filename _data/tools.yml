@@ -8,11 +8,12 @@
 # home: a card on the home page. ai: built with AI (Claude Code, and now Codex too).
 - name: Snipou
   tagline: Screenshots that explain.
-  desc: Capture a piece of your screen, annotate it, and tell a whole process on a whiteboard.
+  desc: Capture or record a piece of your screen, annotate it, tell a whole process on a whiteboard, and edit the video.
   points:
     - "One hotkey: a region, a window, or just the table inside it."
     - Numbered steps, arrows and blur, then paste anywhere.
     - Whiteboards with sixteen themes, clean or hand-drawn.
+    - Screen recordings and a video editor with animated intros and outros.
   kind: Windows
   url: /tools/snipou
   store: https://apps.microsoft.com/detail/9MZSSPHWZ8BL
