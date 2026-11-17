@@ -26,7 +26,6 @@ permalink: /
 <section class="home-section" aria-labelledby="home-tools-title">
 <div class="home-section__head">
 <h2 id="home-tools-title">Tools I vibe coded</h2>
-<a class="home-link" href="/ai/two-ai-developers">How I build with AI</a>
 </div>
 <p class="home-section__sub">Built in my spare time with Claude Code and Codex, and free to use.</p>
 {% include tool-picker.html %}
