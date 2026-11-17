@@ -1,25 +1,28 @@
 {%- comment -%}
-  Home page: every tool of _data/tools.yml, one at a time. A list of names on the left, the chosen
-  tool on the right (picture, tagline, one sentence, text links). Hover or click a name to show it;
-  the script in head_custom.html does the switching. new: true in tools.yml adds "New".
+  Home and Tools pages: every tool of _data/tools.yml. A list of names on the left, a preview of the
+  tool on the right (picture, tagline, one sentence, links). Hovering or focusing a name shows its
+  preview; clicking it opens the tool's page (on a touch screen: the first tap shows, the second opens).
+  The script in head_custom.html does the switching. new: true in tools.yml adds "New".
+  A download on GitHub gets the GitHub badge (_includes/github-badge.html), like the Store badge.
 {%- endcomment -%}
 {%- assign tools = site.data.tools -%}
 <div class="tpicker" data-tpicker>
-  <div class="tpicker__tabs" role="tablist" aria-label="Tools" aria-orientation="vertical">
+  <div class="tpicker__tabs">
     <span class="tpicker__thumb" aria-hidden="true"></span>
     {%- for tool in tools %}
-    <button class="tpicker__tab" type="button" role="tab" id="tpick-tab-{{ forloop.index }}" aria-controls="tpick-panel-{{ forloop.index }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"{% unless forloop.first %} tabindex="-1"{% endunless %}><span class="tpicker__tab-name">{{ tool.name }}</span><span class="tpicker__tab-kind">{% if tool.new %}New · {% endif %}{{ tool.kind }}</span></button>
+    <a class="tpicker__tab{% if forloop.first %} is-selected{% endif %}" href="{{ tool.url }}" data-panel="tpick-panel-{{ forloop.index }}"><span class="tpicker__tab-name">{{ tool.name }}</span><span class="tpicker__tab-kind">{% if tool.new %}New · {% endif %}{{ tool.kind }}</span></a>
     {%- endfor %}
   </div>
   <div class="tpicker__stage">
   {%- for tool in tools %}
-  <article class="tpicker__panel" role="tabpanel" id="tpick-panel-{{ forloop.index }}" aria-labelledby="tpick-tab-{{ forloop.index }}" data-tool{% unless forloop.first %} hidden{% endunless %}>
+  <article class="tpicker__panel" id="tpick-panel-{{ forloop.index }}" data-tool{% unless forloop.first %} hidden{% endunless %}>
     {% include tool-media.html tool=tool %}
     <div class="tpicker__body">
       <h3 class="tpicker__name">{{ tool.tagline }}</h3>
       <p class="tpicker__desc"><strong>{{ tool.name }}.</strong> {{ tool.desc }}</p>
       <p class="tpicker__links">
         {%- if tool.store %}<a class="tpicker__store" href="{{ tool.store }}"><img src="/assets/2026/site/microsoft-store-badge.svg" alt="Get {{ tool.name }} from the Microsoft Store" width="161" height="44"></a>
+        {%- elsif tool.action and tool.action.url contains "github.com" %}{% if tool.action.url contains "/releases/" %}{% assign gh_label = "Download from" %}{% else %}{% assign gh_label = "Get it on" %}{% endif %}{% include github-badge.html url=tool.action.url label=gh_label %}
         {%- elsif tool.action and tool.action.url != tool.url %}<a class="home-link home-link--strong" href="{{ tool.action.url }}">{{ tool.action.label }}</a>{% endif %}
         <a class="home-link" href="{{ tool.url }}">{% if tool.url contains "://" %}Open it{% else %}How it works{% endif %}</a>
       </p>

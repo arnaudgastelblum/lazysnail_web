@@ -414,6 +414,27 @@ $h-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
   &__note { margin-top: 0.9rem !important; color: $h-grey; font-size: 0.8rem; }
 }
 
+// The GitHub badge (_includes/github-badge.html), the twin of the Microsoft Store badge.
+.main-content .gh-badge {
+  display: inline-flex; align-items: center; gap: 9px; height: 37px; padding: 0 14px 0 11px; box-sizing: border-box;
+  border-radius: 5px; background: #202020; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  color: #fff !important; text-decoration: none !important; line-height: 1;
+  transition: transform 0.2s $h-ease;
+  &:hover { transform: translateY(-1px); }
+  &:focus-visible { outline: 2px solid $h-blue; outline-offset: 3px; }
+  &__mark { flex: none; width: 21px; height: 21px; }
+  &__text { display: flex; flex-direction: column; gap: 2px; }
+  &__small { font-size: 9px; font-weight: 500; letter-spacing: 0.01em; }
+  &__big { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+  &--large { height: 48px; gap: 11px; padding: 0 18px 0 14px; border-radius: 6px; }
+  &--large .gh-badge__mark { width: 27px; height: 27px; }
+  &--large .gh-badge__small { font-size: 11px; }
+  &--large .gh-badge__big { font-size: 19px; }
+}
+
+// A download line in an article: the badge, then a text link beside it.
+.main-content .download-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.4rem; }
+
 // Text links with a chevron that moves on hover: the home page, the tools, the end of an article.
 .main-content .home-link {
   display: inline-flex; align-items: center; gap: 0.15rem;
@@ -551,15 +572,15 @@ $h-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
     &__tab {
       position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 0.05rem;
       width: 100%; padding: 0.5rem 0.8rem; border: 0; border-radius: 10px; background: transparent;
-      font: inherit; text-align: left; cursor: pointer;
+      font: inherit; text-align: left; cursor: pointer; color: inherit; text-decoration: none !important;
       &:focus-visible { outline: 2px solid $h-blue; outline-offset: -2px; }
     }
     &__tab-name { color: $h-grey; font-size: 0.95rem; font-weight: 500; transition: color 0.2s ease; }
     &__tab-kind { color: $h-grey; font-size: 0.75rem; transition: color 0.2s ease; }
-    &__tab[aria-selected="true"] .tpicker__tab-name { color: $h-ink; font-weight: 600; }
-    &__tab[aria-selected="true"] .tpicker__tab-kind { color: $h-grey; }
+    &__tab.is-selected .tpicker__tab-name { color: $h-ink; font-weight: 600; }
+    &__tab.is-selected .tpicker__tab-kind { color: $h-grey; }
     &__tab:hover .tpicker__tab-name { color: $h-ink; }
-    &:not(.is-ready) .tpicker__tab[aria-selected="true"] { background: $h-fill; }
+    &:not(.is-ready) .tpicker__tab.is-selected { background: $h-fill; }
 
     &__stage { display: grid; }
     &__panel {

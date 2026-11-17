@@ -34,48 +34,43 @@
       if (img.complete) check(); else img.addEventListener('load', check);
     });
   });
-  /* Home tool picker: one tab per tool, arrows move between them. */
+  /* Tool picker (home and Tools pages): hovering or focusing a name shows its preview; a click follows the link to the tool's page. On a touch screen, the first tap shows the preview and the second opens the page. */
   document.addEventListener('DOMContentLoaded', function () {
+    var canHover = window.matchMedia('(hover: hover)').matches;
     document.querySelectorAll('[data-tpicker]').forEach(function (picker) {
-      var tabs = Array.prototype.slice.call(picker.querySelectorAll('[role=tab]'));
+      var tabs = Array.prototype.slice.call(picker.querySelectorAll('.tpicker__tab'));
       var thumb = picker.querySelector('.tpicker__thumb');
       var hoverTimer = null;
+      function current() { return picker.querySelector('.tpicker__tab.is-selected'); }
       function place() {
-        var tab = picker.querySelector('[role=tab][aria-selected=true]');
+        var tab = current();
         if (!thumb || !tab) return;
         var row = getComputedStyle(tab.parentNode).flexDirection === 'row';
         thumb.style.width = row ? tab.offsetWidth + 'px' : '';
         thumb.style.height = tab.offsetHeight + 'px';
         thumb.style.transform = row ? 'translateX(' + tab.offsetLeft + 'px)' : 'translateY(' + tab.offsetTop + 'px)';
       }
-      function select(tab, focus) {
+      function select(tab) {
         tabs.forEach(function (t) {
           var on = t === tab;
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-          t.tabIndex = on ? 0 : -1;
-          document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+          t.classList.toggle('is-selected', on);
+          document.getElementById(t.dataset.panel).hidden = !on;
         });
         place();
-        if (focus) tab.focus();
       }
       place();
       picker.classList.add('is-ready');
       window.addEventListener('resize', place);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
-      tabs.forEach(function (tab, i) {
-        tab.addEventListener('click', function () { select(tab, false); });
+      tabs.forEach(function (tab) {
         tab.addEventListener('mouseenter', function () {
           clearTimeout(hoverTimer);
-          hoverTimer = setTimeout(function () { select(tab, false); }, 90);
+          hoverTimer = setTimeout(function () { select(tab); }, 90);
         });
         tab.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
-        tab.addEventListener('keydown', function (e) {
-          var next = null;
-          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
-          if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
-          if (e.key === 'Home') next = tabs[0];
-          if (e.key === 'End') next = tabs[tabs.length - 1];
-          if (next) { e.preventDefault(); select(next, true); }
+        tab.addEventListener('focus', function () { select(tab); });
+        tab.addEventListener('click', function (e) {
+          if (!canHover && tab !== current()) { e.preventDefault(); select(tab); }
         });
       });
     });

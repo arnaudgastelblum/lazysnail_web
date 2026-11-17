@@ -91,4 +91,7 @@ Not sure which options to use? Add `/?` and every script shows its examples, eac
 
 ![The help of the launcher: examples of arguments and what they do](/assets/2026/fabric-source-atlas/help-examples.png){: .image80 .zoomable }
 
-**[Get it on GitHub](https://github.com/arnaudgastelblum/fabric-source-atlas)**, free and open source (MIT). The README has every option and a FAQ.
+{% include github-badge.html url="https://github.com/arnaudgastelblum/fabric-source-atlas" size="large" %}
+{: .download-row }
+
+Free and open source (MIT). The README has every option and a FAQ.
