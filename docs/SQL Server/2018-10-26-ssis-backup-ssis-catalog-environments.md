@@ -7,6 +7,8 @@ tags: [other, sql-server]
 comments: true
 permalink: "/en/ssis-backup-ssis-catalog-environments/"
 parent: SQL Server
+excerpt: A T-SQL script that generates the code to recreate an SSIS Catalog folder, environment and variables on another server, then map them to your project parameters.
+image: /assets/2026/social/ssis-backup-ssis-catalog-environments.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

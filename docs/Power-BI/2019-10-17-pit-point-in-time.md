@@ -7,6 +7,8 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/pit-point-in-time/"
 parent: Power BI & Fabric
+excerpt: How to show which records were valid on a chosen date in Power BI, with a disconnected calendar slicer and a DAX measure on ValidFrom and ValidTo. Sample .pbix included.
+image: /assets/2026/social/pit-point-in-time.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -15,7 +17,7 @@ parent: Power BI & Fabric
   ![Point in time](../../assets/2019/PIT/Splash_PIT.webp)
 {: refdef}
 
-# Introduction
+## Introduction
 
 We often have descriptive data in our Power BI models. Data may vary over time and have validity dates. It can become a real headache when creating a data model.
 

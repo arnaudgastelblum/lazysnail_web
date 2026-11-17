@@ -7,6 +7,8 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/pie-chart-is-bad/"
 parent: Power BI & Fabric
+excerpt: Why pie charts are discouraged in data visualization. Two datasets drawn as pie and bar charts show that comparing angles is harder than comparing lengths.
+image: /assets/2026/social/pie-chart-is-bad.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

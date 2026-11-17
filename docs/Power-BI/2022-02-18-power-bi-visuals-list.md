@@ -7,13 +7,15 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-visuals-list/"
 parent: Power BI & Fabric
+excerpt: A visual overview of the Power BI chart types, tested one by one and kept as a reference for choosing the right chart. The LazyDAX .pbix file is on GitHub.
+image: /assets/2026/social/power-bi-visuals-list.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-![powerbi-visuallist](../../assets/2022/PBIDesktop_LazyDAX_Visuals.png)
+![LazyDAX Visuals page showing twelve Power BI chart types](../../assets/2022/PBIDesktop_LazyDAX_Visuals.webp)
 
 {: .note :}
 >A visual guide to help you pick the right Power BI chart for your data. You can download the [Power BI file on GitHub](https://github.com/arnaudgastelblum/LazyDAX/raw/master/LazyDAX.pbix).

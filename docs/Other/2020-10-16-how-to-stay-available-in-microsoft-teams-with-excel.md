@@ -6,7 +6,9 @@ date: 2020-10-16
 tags: [misc]
 comments: true
 permalink: "/en/how-to-stay-available-in-microsoft-teams-with-excel/"
-parent: Other
+parent: "Apps & tips"
+excerpt: An Excel macro that moves and clicks the mouse every five seconds so Microsoft Teams keeps you Available. Download the .xlsm file or copy the VBA code.
+image: /assets/2026/social/how-to-stay-available-in-microsoft-teams-with-excel.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -15,7 +17,7 @@ parent: Other
 {: .no_toc }
 
 
-![](../../assets/2023/TeamsAway.png){: .image80 }
+![Bored person at a desk, a Teams Away status and an idea lightbulb](../../assets/2023/TeamsAway.png){: .image80 }
 
 
 ## Table of contents
@@ -80,7 +82,7 @@ Regardless, if you're reading this, I believe you'd lean towards the former sent
 
 ## What's the Appearance?
 
-![](/assets/2020/10/image-1.png)
+![Excel sheet with the lazysnail.net logo and a Start button](/assets/2020/10/image-1.png)
 
 This is its appearance in Excel.
 Initiate the timer by either clicking the start button, pressing CTRL + L (as in 'lazysnail'), or manually activating the macro titled "DoNotSleep".

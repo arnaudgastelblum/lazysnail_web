@@ -1,28 +1,83 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="LazySnail" href="/feed.xml">
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>
-  /* Images with the class "zoomable" open full size over the page; click or Escape closes. No // comments: the site minifies HTML onto one line. */
+  /* Pictures of an article open full size on click (or Enter); a click or Escape closes. Only pictures shown smaller than their real size, plus any image with the class "zoomable". No // comments: the site minifies HTML onto one line. */
   document.addEventListener('DOMContentLoaded', function () {
-    var images = document.querySelectorAll('.main-content img.zoomable');
+    var images = Array.prototype.slice.call(document.querySelectorAll('.main-content img.zoomable, .main-content .post-body img')).filter(function (img) { return !img.closest('a'); });
     if (!images.length) return;
     var box = document.createElement('div');
     box.className = 'zoom-box';
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Picture, full size');
     box.hidden = true;
     var big = document.createElement('img');
     box.appendChild(big);
     document.body.appendChild(box);
-    function close() { box.hidden = true; document.body.style.overflow = ''; }
+    var opener = null;
+    function close() { box.hidden = true; document.body.style.overflow = ''; if (opener) opener.focus(); }
+    box.tabIndex = -1;
     box.addEventListener('click', close);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
-    images.forEach(function (img) {
+    function enable(img) {
+      if (img.dataset.zoom) return;
+      img.dataset.zoom = '1';
+      img.classList.add('zoomable');
       img.tabIndex = 0;
       img.title = img.title || 'Click to enlarge';
-      function open() { big.src = img.currentSrc || img.src; big.alt = img.alt; box.hidden = false; document.body.style.overflow = 'hidden'; }
+      function open() { opener = img; big.src = img.currentSrc || img.src; big.alt = img.alt; box.hidden = false; document.body.style.overflow = 'hidden'; box.focus(); }
       img.addEventListener('click', open);
       img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    }
+    images.forEach(function (img) {
+      function check() { if (img.classList.contains('zoomable') || img.naturalWidth > img.clientWidth * 1.15) enable(img); }
+      if (img.complete) check(); else img.addEventListener('load', check);
+    });
+  });
+  /* Home tool picker: one tab per tool, arrows move between them. */
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-tpicker]').forEach(function (picker) {
+      var tabs = Array.prototype.slice.call(picker.querySelectorAll('[role=tab]'));
+      var thumb = picker.querySelector('.tpicker__thumb');
+      var hoverTimer = null;
+      function place() {
+        var tab = picker.querySelector('[role=tab][aria-selected=true]');
+        if (!thumb || !tab) return;
+        var row = getComputedStyle(tab.parentNode).flexDirection === 'row';
+        thumb.style.width = row ? tab.offsetWidth + 'px' : '';
+        thumb.style.height = tab.offsetHeight + 'px';
+        thumb.style.transform = row ? 'translateX(' + tab.offsetLeft + 'px)' : 'translateY(' + tab.offsetTop + 'px)';
+      }
+      function select(tab, focus) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+        });
+        place();
+        if (focus) tab.focus();
+      }
+      place();
+      picker.classList.add('is-ready');
+      window.addEventListener('resize', place);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () { select(tab, false); });
+        tab.addEventListener('mouseenter', function () {
+          clearTimeout(hoverTimer);
+          hoverTimer = setTimeout(function () { select(tab, false); }, 90);
+        });
+        tab.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
+        tab.addEventListener('keydown', function (e) {
+          var next = null;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+          if (e.key === 'Home') next = tabs[0];
+          if (e.key === 'End') next = tabs[tabs.length - 1];
+          if (next) { e.preventDefault(); select(next, true); }
+        });
+      });
     });
   });
   /* Tool cards: the demo plays while the pointer is over the card, or, on touch screens, while the picture is in view. Never with reduced motion. The animation loads on first play. */

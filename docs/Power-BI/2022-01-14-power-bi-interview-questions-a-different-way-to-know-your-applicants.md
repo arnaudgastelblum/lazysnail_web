@@ -7,6 +7,8 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-interview-questions-a-different-way-to-know-your-applicants/"
 parent: Power BI & Fabric
+excerpt: A list of 16 open interview questions for Power BI candidates, on DAX, data modeling, Power Query, security, Premium and project approach, to see how they think.
+image: /assets/2026/social/power-bi-interview-questions-a-different-way-to-know-your-applicants.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -22,7 +24,7 @@ One day you will have to recruit or will be involved in a recruitment process fo
 ---
 
 {:refdef: style="text-align: center;"}
-  ![LazySnail](../../assets/2022/01/929FDA43-A2D1-4A82-9C1B-46054865BDAB.jpeg)
+  ![Job interview cartoon: the company relocated and didn't tell him where](../../assets/2022/01/929FDA43-A2D1-4A82-9C1B-46054865BDAB.jpeg)
 {: refdef}
 
 ## Questions list

@@ -7,13 +7,14 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-create-a-calendar-table-automatically/"
 parent: Power BI & Fabric
+excerpt: A ready-to-paste Power Query M function that generates a calendar table in Power BI from a start and end date, with year, quarter, month, day and week columns.
+image: /assets/2026/social/power-bi-create-a-calendar-table-automatically.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-![Alt text](../../assets/2023/DateTable_500.png){: .image40 }
 
 ## Calendar Dimension
 
@@ -25,7 +26,7 @@ Good news, this table can be created in 2 clicks with Power Query (Transform Dat
 
 Go to `transform data` and right click on `Queries` to create a new Blank Query
 
-![](../../assets/2021/07/image-2.png){: .image50 }
+![Power Query right-click menu with New Query, then Blank Query](../../assets/2021/07/image-2.png){: .image50 }
 
 Now Copy the following code and paste it to the blank query create.
 
@@ -58,18 +59,18 @@ in
 ## Run the function
 
 
-![](../../assets/2021/07/image-3.png){: .image90 }
+![Enter Parameters dialog with StartDate, EndDate and Culture fields](../../assets/2021/07/image-3.png){: .image90 }
 
 Choose a `StartDate` and an `EndDate`, click Invoke
 
 
-![](../../assets/2021/07/image-1-1024x366.png){: .image90 }
+![Generated calendar table with year, month, day and week columns](../../assets/2021/07/image-1-1024x366.png){: .image90 }
 
 That's it! You have a beautiful calendar table.
 
 
 
-![](../../assets/2021/07/image-4.png){: .image90 }
+![Mark as date table button in the Calendar table ribbon](../../assets/2021/07/image-4.png){: .image90 }
 
 Do not forget to mark this table as a data table
 

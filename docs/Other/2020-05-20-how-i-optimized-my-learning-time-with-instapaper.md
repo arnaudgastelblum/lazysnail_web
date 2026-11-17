@@ -6,10 +6,9 @@ categories: "other"
 tags: [misc]
 comments: true
 permalink: "/en/how-i-optimized-my-learning-time-with-instapaper/"
-excerpt: I discovered a great tool to improve my learning and reading time. I try
-  in this article to share with you my reading routine and more information on this
-  tool.
-parent: Other
+excerpt: How I use Instapaper to save web articles and read them later, the five features I rely on, and the Kindle integration that sends articles to my e-reader.
+parent: "Apps & tips"
+image: /assets/2026/social/how-i-optimized-my-learning-time-with-instapaper.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

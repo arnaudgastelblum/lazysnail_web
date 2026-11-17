@@ -1,32 +1,11 @@
 ---
 layout: default
-title: Other
+title: "Apps & tips"
 nav_order: 7
 has_children: false
+description: "The apps and extensions I built, and small tips that save time every day."
+permalink: /apps/
+redirect_from:
+  - "/docs/Other"
 ---
-{% assign section = site.data.sections | where: "key", "other" | first %}
-{% assign article_count = 0 %}
-{% for article in site.pages %}
-{% if article.date %}
-{% for category in section.categories %}
-{% if article.categories contains category[0] %}
-{% assign article_count = article_count | plus: 1 %}
-{% break %}
-{% endif %}
-{% endfor %}
-{% endif %}
-{% endfor %}
-
-<header class="section-header" style="--accent: {{ section.accent }}">
-<span class="section-header__icon" aria-hidden="true">{% include section-icon.html key=section.key %}</span>
-<div class="section-header__copy">
-<h1>{{ page.title | escape }}</h1>
-
-<p class="section-header__count">{{ article_count }} {% if article_count == 1 %}article{% else %}articles{% endif %}</p>
-</div>
-</header>
-
-## All Articles
-{: .section-title }
-
-{% include article-list.html categories="other" chips=false %}
+{% include section-page.html key="other" %}

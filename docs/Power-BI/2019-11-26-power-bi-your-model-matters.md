@@ -7,6 +7,8 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-your-model-matters/"
 parent: Power BI & Fabric
+excerpt: Why one well-designed model beats many report-specific ones, and how to get there by denormalizing source tables and brainstorming with users to find facts and dimensions.
+image: /assets/2026/social/power-bi-your-model-matters.jpg
 ---
 
 # {{ page.title }}

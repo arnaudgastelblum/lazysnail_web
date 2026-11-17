@@ -7,6 +7,8 @@ tags: [sql-server, vscode, ssms, productivity, keybindings, extension, query-sho
 comments: true
 permalink: /sql-server/make-vs-code-look-and-feel-like-ssms
 parent: SQL Server
+excerpt: A keybindings.json file and a small VS Code extension that bring SSMS column selection, Ctrl+R and Query Shortcuts such as Ctrl+3 for top 1000 rows to VS Code.
+image: /assets/2026/social/visual-studio-code-ssms.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

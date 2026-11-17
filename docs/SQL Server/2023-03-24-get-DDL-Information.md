@@ -7,6 +7,8 @@ tags: [other, sql-server]
 comments: true
 permalink: "/en/sp_helptext/"
 parent: SQL Server
+excerpt: How to display the code of a stored procedure, view, function or trigger in SQL Server with sp_helptext, plus sp_help for more details on an object.
+image: /assets/2026/social/get-ddl-information.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -21,19 +23,19 @@ parent: SQL Server
 > With this procedure, developers and database administrators can quickly review and analyze the code of a specific object, which can be useful for debugging, optimization, and documentation purposes. 
 
 
-# How to use it?
+## How to use it?
 
 ```sql
 exec sp_helptext 'SchemaName.ObjectName'
 ```
 
-# Example
+## Example
 
-![sp_helptext](../../assets/2023/sp_helptext/sp_helptext.png)
+![sp_helptext on the Website.Customers view returns its CREATE VIEW code line by line](../../assets/2023/sp_helptext/sp_helptext.png)
 
 
-# `sp_help`
+## `sp_help`
 
 In addition you can use `sp_help` procedure to retrieve some interesting informations.
 
-![sp_help](../../assets/2023/sp_helptext/sp_help.png)
+![sp_help on Website.Customers: owner, creation date, columns, types and nullability](../../assets/2023/sp_helptext/sp_help.png)

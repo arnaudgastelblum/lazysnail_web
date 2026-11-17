@@ -7,7 +7,8 @@ tags: [claude-code, codex, ai, workflow]
 comments: true
 parent: AI
 permalink: /ai/two-ai-developers
-description: "One Claude Code conversation that hands work to Claude subagents and to OpenAI's Codex, has each one review the other, and spreads the usage over two subscriptions."
+description: "How I run one Claude Code session that hands work to Claude subagents and to OpenAI Codex, has each review the other, and spreads usage over two plans."
+image: /assets/2026/social/two-ai-developers.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

@@ -1,0 +1,34 @@
+{%- comment -%}
+  A section page: its title, one line from the page's `description`, the number of articles, then
+  the articles in the Mail-style list. Same look as the home page.
+  Parameters: key (a section of _data/sections.yml), categories (optional, defaults to the section's),
+  icons=false (optional: no section picture on each row, when the whole list is one section),
+  tools=true (optional: a link to the tools page, for the AI section).
+{%- endcomment -%}
+{%- assign section = site.data.sections | where: "key", include.key | first -%}
+{%- assign wanted = include.categories -%}
+{%- unless wanted -%}
+{%- assign wanted = "" -%}
+{%- for cat in section.categories -%}{%- assign wanted = wanted | append: cat[0] | append: "," -%}{%- endfor -%}
+{%- endunless -%}
+{%- assign wanted_list = wanted | split: "," -%}
+{%- assign article_count = 0 -%}
+{%- for p in site.pages -%}
+{%- unless p.date -%}{%- continue -%}{%- endunless -%}
+{%- for c in wanted_list -%}{%- assign category = c | strip -%}{%- if category != "" and p.categories contains category -%}{%- assign article_count = article_count | plus: 1 -%}{%- break -%}{%- endif -%}{%- endfor -%}
+{%- endfor %}
+<div class="home">
+<section class="home-section home-section--first" aria-labelledby="section-title">
+<h1 id="section-title">{{ page.title | escape }}</h1>
+{%- if page.description %}
+<p class="home-section__lead">{{ page.description | escape }}</p>
+{%- endif %}
+<p class="home-section__count">{{ article_count }} {% if article_count == 1 %}article{% else %}articles{% endif %}</p>
+{%- if include.tools %}
+<p class="home-sections"><a class="home-link" href="/tools/">Tools I vibe coded</a></p>
+{%- endif %}
+</section>
+<section class="home-section">
+{% include article-list.html categories=wanted icons=include.icons %}
+</section>
+</div>

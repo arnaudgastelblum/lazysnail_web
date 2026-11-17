@@ -1,0 +1,38 @@
+---
+layout: null
+permalink: /feed.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="utf-8"?>
+{%- comment -%} The articles are pages with a date (there is no _posts folder): the 30 most recent. {%- endcomment %}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+<title>{{ site.title | xml_escape }}</title>
+<link>{{ site.url }}/</link>
+<atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+<description>{{ site.description | xml_escape }}</description>
+<language>en</language>
+{%- assign sorted_pages = site.pages | sort: 'date' | reverse -%}
+{%- assign count = 0 -%}
+{%- for post in sorted_pages -%}
+{%- unless post.date -%}{%- continue -%}{%- endunless -%}
+{%- if count >= 30 -%}{%- break -%}{%- endif -%}
+{%- assign summary = post.excerpt | default: post.description | strip_html | normalize_whitespace -%}
+{%- assign picture = post.image -%}
+{%- if count == 0 %}
+<lastBuildDate>{{ post.date | date_to_rfc822 }}</lastBuildDate>
+{%- endif %}
+<item>
+<title>{{ post.title | xml_escape }}</title>
+<link>{{ site.url }}{{ post.url }}</link>
+<guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+<pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+<description>{{ summary | xml_escape }}</description>
+{%- if picture and picture != "/assets/2026/site/social-card.png" %}
+<media:content url="{{ site.url }}{{ picture }}" medium="image" type="image/{% if picture contains '.png' %}png{% elsif picture contains '.webp' %}webp{% else %}jpeg{% endif %}"/>
+{%- endif %}
+</item>
+{%- assign count = count | plus: 1 -%}
+{%- endfor %}
+</channel>
+</rss>

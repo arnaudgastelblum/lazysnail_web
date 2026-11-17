@@ -7,6 +7,8 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/vertical-export-of-reports/"
 parent: Power BI & Fabric
+excerpt: How to export a Power BI Desktop report page to PDF in A4 portrait format, by setting a custom page size of 794 x 1123 pixels.
+image: /assets/2026/social/vertical-export-of-reports.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -24,35 +26,35 @@ But by default, the report will be exported with the standard format of Power BI
 
 First, let's take our wonderful LazyDAX file and create a new page. Here is the default view you have when adding a new page.
 
-![](/assets/2018/08/Regular.png)
+![Blank new report page in Power BI Desktop with the View tab open](/assets/2018/08/Regular.png)
 
 Nothing special until there. What's interesting is the "Page View" button under the "View" tab. Once we click on it, we can select "Actual Size".
 
-![](/assets/2018/08/PageView.png)
+![Page View menu with Actual Size highlighted](/assets/2018/08/PageView.png)
 
 By choosing "Actual Size" we will see the "real" size of the page, based on its dimensions.
 
-![](/assets/2018/08/ActualSize.png)
+![Blank report page at actual size with a horizontal scroll bar](/assets/2018/08/ActualSize.png)
 
 ## Custom page size
 
-Now we can see that the page size exceed the usual limit of the report. But we want to make it like a A4 portrait page right? So, we are not done yet. You can select the "Format" pane of the report page, then "Page Size" and select "Custom" as "Type". Now, we just have to enter the custom size we want. I chose 794*1123 pixels because it is the A4 size at 96 PPI (depending of the printing, you can find more info about it [here](https://www.papersizes.org/a-sizes-in-pixels.htm)).
+Now we can see that the page size exceed the usual limit of the report. But we want to make it like a A4 portrait page right? So, we are not done yet. You can select the "Format" pane of the report page, then "Page Size" and select "Custom" as "Type". Now, we just have to enter the custom size we want. I chose 794*1123 pixels because it is the A4 size at 96 PPI (depending of the printing, you can find more info about it on [papersizes.org: A sizes in pixels](https://www.papersizes.org/a-sizes-in-pixels.htm)).
 
-![](/assets/2018/08/CustomSize.png)
+![Page Size settings set to Custom, 794 by 1123 pixels](/assets/2018/08/CustomSize.png)
 
 Now we have our A4 report page ready to be filled.
 
-![](/assets/2018/08/A4Fill.png)
+![A4 report page with a table, a bar chart and a treemap](/assets/2018/08/A4Fill.png)
 
 ## Exporting to PDF
 
 As you can see, there is now a scroll bar on the right side of the report because of the dimension of the page. We now just have to export as PDF and that's it. You can click on the "File" button and then choose "Export to PDF".
 
-![](/assets/2018/08/Export-1.png)
+![File menu with Export to PDF highlighted](/assets/2018/08/Export-1.png)
 
 You now just have to let Power BI make the work and here is the result.
 
-![](/assets/2018/08/PDF.png)
+![Exported PDF page in A4 portrait with the table and charts](/assets/2018/08/PDF.png)
 
 The last report page is well in portrait format, while the others have been exported in the default format.
 

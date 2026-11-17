@@ -7,14 +7,13 @@ tags: [powerbi, tips]
 comments: true
 parent: Power BI & Fabric
 permalink: /fabric/handling-data-type-conflicts-in-sql-for-merging-tables
+excerpt: A T-SQL script that reads the columns of two tables and generates a UNION ALL query to merge them, converting columns whose data types differ to a common type.
+image: /assets/2026/social/handling-data-type-conflicts-in-sql-for-merging-tables.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 
-{:refdef: style="text-align: center;"}
-  ![image](../../assets/2024/handling-data-type-conflicts-in-sql-for-merging-tables/FeaturedImage.png)
-{: refdef .image50 }
 
 
 ## Handling Data Type Conflicts in SQL Queries

@@ -7,6 +7,8 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures/"
 parent: Power BI & Fabric
+excerpt: A step-by-step way to debug Power BI reports. Duplicate the page, turn the visual into a table, remove filters one by one, test a single row and each measure variable.
+image: /assets/2026/social/power-bi-duplicate-of-duplicate-the-best-way-to-test-your-reports-and-measures.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -17,7 +19,6 @@ parent: Power BI & Fabric
 >A simple but powerful debugging technique for Power BI: duplicate your report pages, strip away the noise, and isolate the problem to understand your measures and filter context.
 
 
-![Alt text](<../../assets/2023/DuplicateOfDuplicate copy_500.png>){: .image60 }
 
 This article seems obvious, but that's something that I do a lot, and this is the first thing I do when somebody asks me a question.
 
@@ -31,7 +32,7 @@ So, yes, I'm duplicating my page!
 
 ## A focus version
 
-![](/assets/2022/02/image-5.png)
+![Whiteboard with the words MyFilters and #MyProblems](/assets/2022/02/image-5.png)
 
 When I have an issue or a question, **the first thing I do** (after crying), **it's duplicate the page**.
 
@@ -49,7 +50,7 @@ Let's call it the "**focus version**"
 
 When I have a cleaner version of my report I can **duplicate it.** (again)
 
-![Introduction To Textures in Direct3D 11](../../assets/2022/02/f6e80202aad027758143bbb97a6f856f.png)
+![Diagram of a texture cube with six faces and mipmap levels](../../assets/2022/02/f6e80202aad027758143bbb97a6f856f.png)
 
 On this new page, I **remove one by one**:
 

@@ -7,11 +7,12 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/create-a-gradient-background-for-power-bi/"
 parent: Power BI & Fabric
+excerpt: How to make a subtle gradient background image for Power BI in Paint.NET, a fix for the rainbow artifacts PowerPoint gradients can show in the Power BI Service.
+image: /assets/2026/social/create-a-gradient-background-for-power-bi-copy.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
-![Alt text](../../assets/2023/PowerBIGradian.png){: .image60 }
 
 Diving deep into data transformation, modeling, and analytics, visualization has traditionally been my Achilles' heel. Nevertheless, I'm ardently working to enhance this skill!
 
@@ -24,7 +25,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 ## Gradient background
 
 {:refdef: style="text-align: center;"}
-![gradiant](../../assets/2022/10/gradiant.jpg)
+![Gradient background from teal to dark blue](../../assets/2022/10/gradiant.jpg)
 {: refdef}
 
 <p>But when it’s time to add some unuseful stuff to our report, what I like the most is to add a gradient background. No need to add a flashy color variation!! I like to switch between one color and his very close variation. Like a “middle blue” to a “dark blue”.</p>
@@ -40,7 +41,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:block {"ref":5367} /--></p>
 <p><!-- wp:heading {"level":1} --></p>
-<h1>Paint.net</h1>
+<h2>Paint.net</h2>
 <p><!-- /wp:heading --></p>
 <p><!-- wp:paragraph --></p>
 <p>Paint .net is my favorite images/graphics editor. It’s free, contains almost everything I need, and is not too complex to understand.</p>
@@ -50,7 +51,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:block {"ref":5367} /--></p>
 <p><!-- wp:heading {"level":1} --></p>
-<h1>How to create a gradient image with paint.net</h1>
+<h2>How to create a gradient image with paint.net</h2>
 <p><!-- /wp:heading --></p>
 <p><!-- wp:paragraph --></p>
 <p>Open Paint .net application and create a new canvas. (I recommend you to keep the same size as you use in your Power BI)</p>
@@ -59,7 +60,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>In the toolbox, choose the Gradient tool</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5356,"width":123,"height":281,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/1.png" alt="" class="wp-image-5356" width="123" height="281" /><br />
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/1.png" alt="Paint.NET toolbox with an arrow on the Gradient tool" class="wp-image-5356" width="123" height="281" /><br />
 <figcaption>Gradient tool</figcaption>
 </figure>
 <p><!-- /wp:image --></p>
@@ -67,7 +68,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>Now that the gradient tool is selected, go to the Colors pane and click "More"</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5357,"width":288,"height":391,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/2_Primary_Secondary.png" alt="" class="wp-image-5357" width="288" height="391" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/2_Primary_Secondary.png" alt="Paint.NET Colors window with an arrow on the More button" class="wp-image-5357" width="288" height="391" /></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:spacer {"height":"33px"} --></p>
 <div style="height:33px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -82,7 +83,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>When it's done, <strong>select the "Secondary" color</strong>. I usually paste the same color as the primary but change the "V" slider to a more lighter value (but very close)</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5358,"width":484,"height":412,"sizeSlug":"full","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/3_Hexa.png" alt="" class="wp-image-5358" width="484" height="412" /></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="../../assets/2022/10/3_Hexa.png" alt="Expanded Colors window with Hex value 1D3557 and V slider" class="wp-image-5358" width="484" height="412" /></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:spacer {"height":"24px"} --></p>
 <div style="height:24px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -91,7 +92,7 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>Go to your canvas and click on the left button of your mouse, drag the cursor and release the button.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5359,"width":622,"height":467,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="../../assets/2022/10/4_Draw-1024x770.png" alt="" class="wp-image-5359" width="622" height="467" /></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="../../assets/2022/10/4_Draw-1024x770.png" alt="Paint.NET canvas filled with a diagonal blue gradient" class="wp-image-5359" width="622" height="467" /></figure>
 <p><!-- /wp:image --></p>
 <p><!-- wp:spacer {"height":"37px"} --></p>
 <div style="height:37px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -100,5 +101,5 @@ In my visual designs, I opt for a minimalist color palette and limit the number 
 <p>Save this image into a .png file and use it in Power BI Desktop.</p>
 <p><!-- /wp:paragraph --></p>
 <p><!-- wp:image {"align":"center","id":5360,"width":666,"height":400,"sizeSlug":"large","linkDestination":"none"} --></p>
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="../../assets/2022/10/5_PowerBI-1024x615.png" alt="" class="wp-image-5360" width="666" height="400" /></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="../../assets/2022/10/5_PowerBI-1024x615.png" alt="Power BI Desktop page with the gradient image as canvas background" class="wp-image-5360" width="666" height="400" /></figure>
 <p><!-- /wp:image --></p>

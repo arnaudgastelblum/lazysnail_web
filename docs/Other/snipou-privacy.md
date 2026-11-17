@@ -4,6 +4,7 @@ title: Snipou privacy policy
 nav_exclude: true
 search_exclude: true
 permalink: /tools/snipou/privacy
+description: "Snipou's privacy policy: it works entirely on your PC, with no account, no telemetry and no analytics."
 ---
 # Snipou privacy policy
 {: .fs-8 }

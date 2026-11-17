@@ -7,7 +7,6 @@ _drafts/
 
 # Ruby
 vendor/
-Gemfile.lock
 
 # Node
 node_modules/
@@ -19,3 +18,6 @@ CLAUDE.md
 # OS files
 .DS_Store
 Thumbs.db
+
+# Private documents dropped at the root (CV): never published
+/CV-*

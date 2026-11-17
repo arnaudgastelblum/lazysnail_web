@@ -7,6 +7,8 @@ tags: [other, sql-server]
 comments: true
 permalink: "/en/ssis-create-environment-from-packages-variables-2/"
 parent: SQL Server
+excerpt: A T-SQL script that reads your deployed SSIS projects and generates the code to create their environments and variables with default values, and to assign them.
+image: /assets/2026/social/ssis-create-environment-from-packages-variables-2.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

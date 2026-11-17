@@ -7,13 +7,12 @@ tags: [powerbi, tips]
 comments: true
 parent: Power BI & Fabric
 permalink: /power-bi/analyzing-power-bi-dependencies-with-info-calcdependency
+excerpt: Five DAX queries using INFO.CALCDEPENDENCY() to see which measures, columns and tables depend on each other in a Power BI model before you change or delete one.
+image: /assets/2026/social/info-calcdependencies.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
-{:refdef: style="text-align: center;"}
-  ![image](../../assets/2024/INFO_CALCDEPENDENCIES/analyzing-power-bi-dependencies-with-info-calcdependency.png)
-{: refdef .image50 }
 
 {:toc}
 
@@ -34,7 +33,7 @@ EVALUATE
 
 This query retrieves all the dependencies within the current Power BI model. It lists every object and its references, which allows you to see how different columns, measures, and tables interact. This is a great starting point for a broad analysis before making any changes to your model.
 
-![](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_1.png)
+![DAX query view listing every INFO.CALCDEPENDENCY row of the model](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_1.webp)
 
 
 
@@ -50,7 +49,7 @@ EVALUATE
 
 In this query, we focus specifically on a measure called “Churn New Customers.” It filters the dependency results to show only the references related to this particular measure. This is useful if you’re planning to modify or delete the measure and want to see all the areas in your model that could be impacted.
 
-![](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_2.png)
+![Dependencies of the Churn New Customers measure on Sales and Calendar](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_2.png)
 
 
 
@@ -73,7 +72,7 @@ Here, we are filtering the dependencies to focus on any references to the “Yea
 
 
 
-![](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_3.png)
+![Measures and a hierarchy referencing the Calendar Year column](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_3.png)
 
 
 
@@ -92,7 +91,7 @@ EVALUATE INFO.CALCDEPENDENCY("QUERY", "EVALUATE {{'Measures Group'[Churn New Cus
 This query allows you to check the dependencies of a specific query involving the “Churn New Customers” measure. By explicitly defining the query, you can ensure that you are analyzing the exact scenario where this measure is used. It’s helpful when troubleshooting specific calculations or exploring the impact of updates on a particular analysis.
 
 
-![](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_4.png)
+![Objects referenced by a query on the Churn New Customers measure](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_4.png)
 
 
 
@@ -118,7 +117,7 @@ EVALUATE
 In this query, we’re looking at a more complex dependency by evaluating a measure with additional filtering. The INFO.CALCDEPENDENCY() function checks how the “Churn New Customers” measure interacts with specific filters, in this case, where the city is “Brussel.” This query helps you understand how changing filters or measures in such a scenario may impact the data.
 
 
-![](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_5.png)
+![Dependencies of Churn New Customers filtered on the city Brussel](../../assets/2024/INFO_CALCDEPENDENCIES/INFO_CALCDEPENDENCY_5.png)
 
 
 

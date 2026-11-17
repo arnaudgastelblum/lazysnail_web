@@ -7,6 +7,8 @@ tags: [other, sql-server]
 comments: true
 permalink: "/en/ssis-log-execution-time/"
 parent: SQL Server
+excerpt: A query on the SSISDB catalog that shows the start time, end time, duration in minutes and last status of each SSIS package, child packages included.
+image: /assets/2026/social/ssis-log-execution-time.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

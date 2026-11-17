@@ -3,7 +3,9 @@
 // to the Tools page, then one entry per tool with a dot in its colour (--accent).
 // The entries reuse the theme's nav-list classes, so sizes, hover and active follow the menu.
 
-.nav-tools {
+// The "Articles" group (_includes/site-menu.html) shares the rule and the title of "My tools".
+.nav-tools,
+.nav-group {
   position: relative;
   margin-top: $sp-4;
   padding-top: $sp-3;
@@ -29,41 +31,86 @@
   }
 }
 
-// The title: like the theme's nav-category, but a link to /tools/.
+// The title: a link to /tools/, with a count and a one-line hook. The list stays folded until the
+// pointer or the keyboard comes in, so the menu stays short; it is open on the tool pages and on
+// touch screens.
 .site-nav .nav-tools__title {
   display: flex;
-  align-items: center;
-  gap: 0.45em;
-  min-height: $nav-list-item-height-sm;
-  padding: $sp-1 $nav-list-item-height-sm $sp-1 $gutter-spacing-sm;
-  color: $muted;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: $sp-2 $nav-list-item-height-sm $sp-2 $gutter-spacing-sm;
+  color: $ink;
   text-decoration: none;
-  text-transform: uppercase;
-  @include fs-2;
 
   @include mq(md) {
-    min-height: $nav-list-item-height;
     padding-right: $nav-list-item-height;
     padding-left: $gutter-spacing;
   }
 
-  &:hover,
-  &.active {
-    color: $navy;
-    background-image: linear-gradient(-90deg, rgba($feedback-color, 1) 0%, rgba($feedback-color, 0.8) 80%, rgba($feedback-color, 0) 100%);
-  }
-
-  &.active {
-    font-weight: 700;
-  }
+  &.active .nav-tools__label { font-weight: 700; }
 }
 
-.nav-tools__arrow {
-  color: $teal;
-  font-size: 1.1em;
-  letter-spacing: 0;
+.nav-tools__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  @include fs-3;
+}
+
+.nav-tools__count {
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: #e9e9ee;
+  color: #6e6e73;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-tools__hint {
+  color: #6e6e73;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  transition: opacity 0.2s ease;
+}
+
+// The drawer: folded to zero height, unfolds with the rows sliding in one after the other.
+.nav-tools__drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  > .nav-tools__list { min-height: 0; overflow: hidden; }
+}
+
+.nav-tools__item {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+.nav-tools.is-open,
+.nav-tools:hover,
+.nav-tools:focus-within {
+  .nav-tools__drawer { grid-template-rows: 1fr; }
+  .nav-tools__item {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i, 0) * 35ms);
+  }
+  .nav-tools__count { background: #1d1d1f; color: #fff; transform: scale(1.1); }
+}
+
+@media (hover: none) {
+  .nav-tools__drawer { grid-template-rows: 1fr; }
+  .nav-tools__item { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-tools__drawer, .nav-tools__item, .nav-tools__count { transition: none; }
 }
 
 // The entries. Same specificity as the theme's rule, which comes earlier, so these win.
@@ -75,7 +122,7 @@
   text-decoration: none;
 
   &:hover {
-    color: $link-color;
+    color: $ink;
   }
 
   &.active {
@@ -83,17 +130,20 @@
   }
 }
 
+// Grey dots; a tool takes its own colour only under the pointer, or when it is the open page.
 .nav-tools__dot {
   flex: 0 0 auto;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--accent, #{$teal});
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, #{$teal}) 18%, transparent);
+  background: #c7c7cc;
+  transition: background 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+.nav-tools__link:hover .nav-tools__dot,
 .nav-tools__link.active .nav-tools__dot {
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, #{$teal}) 32%, transparent);
+  background: var(--accent, #{$teal});
+  transform: scale(1.4);
 }
 
 .nav-tools__name {

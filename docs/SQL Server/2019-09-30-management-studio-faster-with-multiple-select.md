@@ -7,6 +7,8 @@ tags: [other, sql-server]
 comments: true
 permalink: "/en/management-studio-faster-with-multiple-select/"
 parent: SQL Server
+excerpt: How to select a column of text with Alt+Shift and the arrow keys in SSMS or Notepad++, for example to put quotes around a list of values for an IN clause.
+image: /assets/2026/social/management-studio-faster-with-multiple-select.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -29,7 +31,7 @@ I'm delighted to pretend to be Harry Potter, but I think it's time for this litt
 
 You should press the keys **[ALT]** + **[Shift]** simultaneously and move your cursor **[Up]** and / or **[Down]** to select your text.
 
-![](../../assets/2019/SSMS_FasterWithMultipleSelect/MultipleSelect_BasicSelection.webp)
+![Alt+Shift block selection in SSMS adds AS TEST_ aliases to every column](../../assets/2019/SSMS_FasterWithMultipleSelect/MultipleSelect_BasicSelection.webp)
 
 
 ## One useful case
@@ -39,6 +41,6 @@ Sometimes we have to surround our text with **single quotes**. (for example: to 
 **No need to add them one by one and make sure you do not have space at the end**.
 Here is the method:
 
-![](../../assets/2019/SSMS_FasterWithMultipleSelect/MultipleSelect_Surround-1.webp)
+![Multi-line cursor wraps a list of SQL data types in single quotes](../../assets/2019/SSMS_FasterWithMultipleSelect/MultipleSelect_Surround-1.webp)
 
 Like mentioned above, this tip is not an exclusivity in SSMS, you can also do the same in many different text editors.

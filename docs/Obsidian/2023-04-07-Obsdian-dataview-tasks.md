@@ -7,6 +7,8 @@ tags: [obsidian]
 comments: true
 parent: Obsidian
 permalink: /obsidian/Obsdian-dataview-tasks
+excerpt: "Dataview queries that gather the tasks of your whole Obsidian vault into one list, filtered by open status, current file, #todo tag or YAML field."
+image: /assets/2026/social/obsdian-dataview-tasks.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -16,7 +18,6 @@ permalink: /obsidian/Obsdian-dataview-tasks
 {: .note }
 > **Update, October 2026.** I don't use this Dataview query anymore. I built [Snailkit](/obsidian/snailkit), a free Obsidian plugin that gathers the tasks of all my notes in one list, grouped by tag. The idea below still works if you prefer Dataview.
 
-![Alt text](../../assets/2023/ObsidianTask.png){: .image80 }
 
 
 ## Efficient Task Management for Enhanced Productivity 💼
@@ -149,16 +150,16 @@ This assists in pinpointing tasks associated with the specified YAML variable th
 Imagine writing checkbox with multiple #tag
 For example:
 
-![](../../assets/2023/2023-10-06-15-45-19.png)
+![Three Obsidian tasks, each with several tags such as #testArticle](../../assets/2023/2023-10-06-15-45-19.png)
 
 By writing this code into Obsidian
 
-![](../../assets/2023/2023-10-06-15-45-59.png)
+![Dataview query listing open tasks that contain #testArticle, sorted by text](../../assets/2023/2023-10-06-15-45-59.png)
 
 
 I get this result
 
-![](../../assets/2023/2023-10-06-15-46-22.png)
+![Dataview result: the three open #testArticle tasks, sorted alphabetically](../../assets/2023/2023-10-06-15-46-22.png)
 
 
 Tags become really handy when you use them for different purposes, like identifying a project, naming a person, marking a status, or even setting a category.

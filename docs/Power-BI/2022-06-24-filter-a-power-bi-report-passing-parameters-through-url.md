@@ -7,13 +7,14 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/filter-a-power-bi-report-passing-parameters-through-url/"
 parent: Power BI & Fabric
+excerpt: How to filter a Power BI report from its URL with ?filter=, with ready-to-copy examples for numbers, text, lists of values and several fields, and the main limits.
+image: /assets/2026/social/filter-a-power-bi-report-passing-parameters-through-url.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-![Alt text](<../../assets/2023/URLFilter copy_500.png>){: .image60 }
 
 
 Power BI provides a unique feature that adds flexibility to our reports. Though it isn't a recent addition, many may still be unaware of it!
@@ -36,7 +37,7 @@ This feature lets you display a report with filters applied directly via the URL
   
 - It's infeasible to utilize within an iframe for reports "published to web".
 
-Microsoft has penned an insightful article on this very topic. Dive deeper by checking it out [here](https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-url-filters).
+Microsoft has penned an insightful article on this very topic. Dive deeper by checking out [Filter a report using query string parameters in the URL](https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-url-filters).
 
 ## Steps to Implement:
 
@@ -57,10 +58,10 @@ The first part of this expression references the dimension (Table) -> **Calendar
 The second part mentions the attribute in this dimension -> **Year**  
 **eq** translates to **equals**  
 
-![Image](../../assets/2022/06/image-516x1024.png){: .image30 }  
+![Fields pane with the Year column of the Calendar table](../../assets/2022/06/image-516x1024.png){: .image30 }  
 
 
-![Image](../../assets/2022/06/2_Filter_EqualOneYear-1024x750.png){: .image90 }  
+![Report filtered by URL to the year 2022](../../assets/2022/06/2_Filter_EqualOneYear-1024x750.png){: .image90 }  
 
 ## Filter multiple numeric values
 
@@ -69,7 +70,7 @@ The second part mentions the attribute in this dimension -> **Year**
 ```
 
 
-![Image](../../assets/2022/06/3_Filter_2Years-1024x734.png){: .image90 }  
+![Report filtered by URL to the years 2022 and 2023](../../assets/2022/06/3_Filter_2Years-1024x734.png){: .image90 }  
 
 ## Filter on a text value
 
@@ -78,11 +79,11 @@ The second part mentions the attribute in this dimension -> **Year**
 ```
 
 
-![Image](../../assets/2022/06/4_Filter_EqString-1024x709.png){: .image90 }  
+![Report filtered by URL to the Fruit product category](../../assets/2022/06/4_Filter_EqString-1024x709.png){: .image90 }  
 
 ## Filter multiple Text values
 
-![Image](../../assets/2022/06/4_Filter_ListString-1024x727.png){: .image90 }  
+![Report filtered by URL to Belgium and Nederland](../../assets/2022/06/4_Filter_ListString-1024x727.png){: .image90 }  
 
 ## Add Multiple filter on differents attributes
 
@@ -91,11 +92,11 @@ The second part mentions the attribute in this dimension -> **Year**
 ```
 
 
-![Image](../../assets/2022/06/5_MultiplesFilters-1024x584.png){: .image90 }  
+![Report with three URL filters on country, category and year](../../assets/2022/06/5_MultiplesFilters-1024x584.png){: .image90 }  
 
 ## More operators are available
 
-![Image with source caption](../../assets/2022/06/image-1-1024x719.png){: .image90 }    
+![Table of URL filter operators with definitions and examples](../../assets/2022/06/image-1-1024x719.png){: .image90 }    
 *Source: Microsoft website (see url below)*
 
 As initially mentioned, an in-depth explanation can be found on the Microsoft website: [Microsoft Service URL Filters](https://docs.microsoft.com/en-us/power-bi/collaborate-share/service-url-filters)

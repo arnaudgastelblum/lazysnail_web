@@ -7,7 +7,8 @@ tags: [fabric, powerbi, powershell, lineage, documentation]
 comments: true
 parent: Power BI & Fabric
 permalink: /fabric/fabric-source-atlas
-excerpt: Three PowerShell scripts that list every SQL table, view, file and model your Power BI / Fabric semantic models read, in Excel and in an offline web page.
+excerpt: Three PowerShell scripts that export every semantic model of your Fabric workspaces and list the SQL tables, views and files each one reads, in Excel and an offline web page.
+image: /assets/2026/social/fabric-source-atlas.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

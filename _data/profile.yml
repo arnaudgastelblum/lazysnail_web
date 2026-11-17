@@ -1,2 +1,4 @@
 available: false
 availability_label: "Available for new missions"
+# Web3Forms access key of the contact form (docs/Contact.md). Public by design: it can only send to my inbox.
+contact_form_key: "563db517-3274-4195-92f6-20517323100e"

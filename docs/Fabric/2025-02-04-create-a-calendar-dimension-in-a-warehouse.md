@@ -7,19 +7,18 @@ tags: [powerbi, tips]
 comments: true
 parent: Power BI & Fabric
 permalink: /fabric/create-a-calendar-dimension-in-a-warehouse
+excerpt: A SQL query that creates a calendar dimension table in a Fabric Warehouse, one row per day from 1990 to 2050, with date keys, names and month, quarter and year end flags.
+image: /assets/2026/social/create-a-calendar-dimension-in-a-warehouse.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-{:refdef: style="text-align: center;"}
-  ![image](../../assets/2025/create-a-calendar-dimension-in-a-warehouse/FeaturedImage.jpeg)
-{: refdef .image50 }
 
 
 {: .note-title :}
-># Building a Calendar Dimension in Microsoft Fabric
+>Building a Calendar Dimension in Microsoft Fabric
 >
 >In modern data warehousing, a well-structured Calendar Dimension is essential for effective time-based analysis. It serves as a centralized >reference for all date-related attributes, enabling simplified queries and powerful time intelligence calculations. In this post, I’ll walk you >through a comprehensive SQL query that creates a Calendar Dimension table in Microsoft Fabric, designed to streamline your analytical workflows.
 

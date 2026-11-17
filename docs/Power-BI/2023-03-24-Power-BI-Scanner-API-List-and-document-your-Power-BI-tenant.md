@@ -7,13 +7,14 @@ tags: [powerbi, tips]
 comments: true
 parent: Power BI & Fabric
 permalink: /power-bi/Power-BI-Scanner-API-List-and-document-your-Power-BI-tenant
+excerpt: A PowerShell script that calls the Power BI Scanner API to export metadata for all workspaces in your tenant to JSON files, with the admin settings to enable first.
+image: /assets/2026/social/power-bi-scanner-api-list-and-document-your-power-bi-tenant.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-![Alt text](../../assets/2023/PBI_ScannerAPI/PBIScannerAPI.png){: .image50 }
 
 
 ## Introduction

@@ -7,13 +7,14 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/dax-is-case-insensitive/"
 parent: Power BI & Fabric
+excerpt: DAX string comparisons ignore letter case. Three measures filtering on Vegetable, VEGETABLE and VeGeTaBlE return the same count, shown in the LazyDAX file.
+image: /assets/2026/social/dax-is-case-insensitive.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-![Alt text](../../assets/2023/DAXcase_500.png){: .image40 }
 
 
 This week with my colleague <a href="https://www.linkedin.com/in/vincent-philippot-227bb2139/" data-type="URL" data-id="https://www.linkedin.com/in/vincent-philippot-227bb2139/">Vincent Philipot</a>, we learned something that many of you already know. (But maybe not!)
@@ -30,13 +31,13 @@ You can download the [Power BI file on GitHub](https://github.com/arnaudgastelbl
 
 Here is a short description available on <a href="https://en.wikipedia.org/wiki/Case_sensitivity" data-type="URL" data-id="https://en.wikipedia.org/wiki/Case_sensitivity">Wikipedia</a>
 
-<img src="../../assets/2022/01/image.png" alt="" class="wp-image-5136" />
+<img src="../../assets/2022/01/image.png" alt="Wikipedia definition of case sensitivity" class="wp-image-5136" />
 
-But because an example is worth a thousand words, here is some screenshot. (<a href="https://lazysnail.net/en/lazydax/" data-type="URL" data-id="https://lazysnail.net/en/lazydax/">You can download this example in the lazydax file</a>)
+But because an example is worth a thousand words, here is some screenshot. (<a href="/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/" data-type="URL" data-id="/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/">You can download this example in the lazydax file</a>)
 
 In our dataset we have 10 differents Products with a **ProductCategory = Vegetable**
 
-<img src="../../assets/2022/01/image-1.png" alt="" class="wp-image-5139" />
+<img src="../../assets/2022/01/image-1.png" alt="Table of 10 products in the Vegetable category" class="wp-image-5139" />
 
 ---
 
@@ -77,7 +78,7 @@ Nb VeGeTaBlE __ =
 
 And when me and most of my colleagues would expect a different behavior, **results are the same**
 
-<img src="../../assets/2022/01/image-2.png" alt="" class="wp-image-5144" />
+<img src="../../assets/2022/01/image-2.png" alt="Three Vegetable count measures with different letter case, all returning 10" class="wp-image-5144" />
 
 
 ## Conclusion
@@ -85,14 +86,14 @@ And when me and most of my colleagues would expect a different behavior, **resul
 I think I didn't see it before because I have a strong programmer background, and it seems very weird to me.<br />And when I have to filter to a subset of value, I only base my <strong>FILTER </strong>on technical codes that have that kind of soft rules already applied.
 
 
-<a href="https://lazysnail.net/en/lazydax/" data-type="URL" data-id="https://lazysnail.net/en/lazydax/">You can download this example in the lazydax file here</a>
+<a href="/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/" data-type="URL" data-id="/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/">You can download this example in the lazydax file here</a>
 
-![DAX is case insensitive](../../assets/2022/PBIDesktop_DAXisCaseInsensitive.png)
+![DAX is case insensitive](../../assets/2022/PBIDesktop_DAXisCaseInsensitive.webp)
 
 
 ## More articles
 
-After a web search, I saw that our Power BI stars (Data gods in reference to <a href="https://www.kratosbi.com/data-gods" data-type="URL" data-id="https://www.kratosbi.com/data-gods">this list</a> from <a href="https://www.linkedin.com/in/wagnerchris/" data-type="URL" data-id="https://www.linkedin.com/in/wagnerchris/">Christopher Wagner</a>) wrote very nice articles about this subject.
+After a web search, I saw that our Power BI stars (Data gods in reference to <a href="https://www.kratosbi.com/data-gods" data-type="URL" data-id="https://www.kratosbi.com/data-gods">the Data Gods list</a> from <a href="https://www.linkedin.com/in/wagnerchris/" data-type="URL" data-id="https://www.linkedin.com/in/wagnerchris/">Christopher Wagner</a>) wrote very nice articles about this subject.
 
 <a href="https://www.sqlbi.com/articles/letter-case-sensitivity-in-dax-power-bi-and-analysis-services/">Letter case-sensitivity in DAX, Power BI and Analysis Services - SQLBI</a>
 

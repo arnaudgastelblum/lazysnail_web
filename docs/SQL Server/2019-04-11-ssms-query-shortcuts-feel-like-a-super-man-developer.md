@@ -7,6 +7,8 @@ tags: [other, sql-server]
 comments: true
 permalink: "/en/ssms-query-shortcuts-feel-like-a-super-man-developer/"
 parent: SQL Server
+excerpt: How to set up Query Shortcuts in SSMS, with ready-to-paste queries for top 1000 rows, row count, table description and running queries on Ctrl+3 to Ctrl+0.
+image: /assets/2026/social/ssms-query-shortcuts-feel-like-a-super-man-developer.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
@@ -28,7 +30,7 @@ Select the statement you want to execute, Press `CTRL` and `4`
 SSMS will give you the **Nb impacted rows**.
 
 
-![](../../assets/2019/SSMS_QueryShortcuts/SSMS_QueryShortcut.webp)
+![SSMS: select the FROM part of a query, Ctrl+4 returns its row count](../../assets/2019/SSMS_QueryShortcuts/SSMS_QueryShortcut.webp)
 
 
 {: .note :}
@@ -45,7 +47,7 @@ SSMS will give you the **Nb impacted rows**.
 
 Open Management Studio, Go to `Tools > Option…`
 
-![](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-1.webp)
+![SSMS Tools menu with Options highlighted](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-1.webp)
 
 
 Under `Environment > Keyboard > Query Shortcuts`
@@ -54,13 +56,13 @@ You have a list of existing shortcuts. (I don’t change them, but I neither use
 You should now fill each text box with a query.
 
 
-![](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-2.webp)
+![SSMS Options, Query Shortcuts page with empty slots from Ctrl+3 to Ctrl+0](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-2.webp)
 
 
 Queries are available on the next section
 
 
-![](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-3.webp)
+![Query Shortcuts page filled in for Ctrl+3 to Ctrl+6 and Ctrl+0](../../assets/2019/SSMS_QueryShortcuts/SSMS_Query_Shortcut-3.webp)
 
 
 ## Query shortcuts
@@ -98,7 +100,7 @@ EXEC sp_executesql N' SELECT schemas.name ,tables.name ,columns.name ,types.name
 
 Select a table and show a quick description of attributes `(Name, Datatype, size, nullable, identity)`
 
-![](../../assets/2019/SSMS_QueryShortcuts/SSMS_QueryShortcut_Describe.webp)
+![Ctrl+6 on DimPromotion lists its columns, data types, sizes, nullability and identity](../../assets/2019/SSMS_QueryShortcuts/SSMS_QueryShortcut_Describe.webp)
 
 
 

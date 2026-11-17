@@ -1,0 +1,30 @@
+{%- comment -%}
+  The left menu, in three groups:
+  1. the site pages: Home, About me, Contact;
+  2. "Articles" (a title that links to /articles/), then one entry per section of _data/sections.yml;
+  3. "My tools" (_includes/nav-tools.html), included after this one in _layouts/default.html.
+  An article lights up its section. Pages with nav_exclude (Tools I use, YouTube...) stay out.
+{%- endcomment -%}
+{%- assign menu_url = page.url | append: "/" | replace: "//", "/" | replace: ".html/", "/" -%}
+{%- assign menu_pages = "/,/about/,/contact/" | split: "," -%}
+{%- assign menu_names = "Home,About me,Contact" | split: "," -%}
+<ul class="nav-list">
+  {%- for url in menu_pages %}
+  <li class="nav-list-item"><a href="{{ url | relative_url }}" class="nav-list-link{% if menu_url == url %} active{% endif %}"{% if menu_url == url %} aria-current="page"{% endif %}>{{ menu_names[forloop.index0] }}</a></li>
+  {%- endfor %}
+</ul>
+{%- assign article_count = 0 -%}
+{%- for p in site.pages -%}{%- if p.date -%}{%- assign article_count = article_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+<div class="nav-group">
+  <a href="{{ '/articles/' | relative_url }}" id="nav-articles-title" class="nav-tools__title{% if menu_url == '/articles/' %} active{% endif %}"{% if menu_url == '/articles/' %} aria-current="page"{% endif %}>
+    <span class="nav-tools__label">Articles <span class="nav-tools__count">{{ article_count }}</span></span>
+  </a>
+  <ul class="nav-list" aria-labelledby="nav-articles-title">
+    {%- for s in site.data.sections -%}
+      {%- assign on = false -%}
+      {%- if menu_url == s.url -%}{%- assign on = true -%}{%- endif -%}
+      {%- if page.date -%}{%- for cat in s.categories -%}{%- if page.categories contains cat[0] -%}{%- assign on = true -%}{%- endif -%}{%- endfor -%}{%- endif %}
+    <li class="nav-list-item"><a href="{{ s.url | relative_url }}" class="nav-list-link{% if on %} active{% endif %}"{% if menu_url == s.url %} aria-current="page"{% endif %}>{{ s.name }}</a></li>
+    {%- endfor %}
+  </ul>
+</div>

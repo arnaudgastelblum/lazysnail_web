@@ -17,6 +17,7 @@ title: LazySnail
 description: Arnaud Gastelblum, Data Architect, Microsoft Fabric & Power BI, in Belgium. Data modelling, Fabric and Power BI, with AI in my daily work.
 author: Arnaud Gastelblum
 lang: en
+locale: en_US
 social:
   name: Arnaud Gastelblum
   links:
@@ -28,7 +29,7 @@ defaults:
       path: ""
     values:
       image: /assets/2026/site/social-card.png
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.lazysnail.net" # the base hostname & protocol for your site, e.g. http://example.com
 
 #permalink: pretty
@@ -48,26 +49,21 @@ exclude:
    - vendor/cache/
    - vendor/gems/
    - vendor/ruby/
- # specific to the theme website:
-   - bin/
-   - lib/
-   - "*.gemspec"
-   - "*.gem"
+ # repository files that are not pages of the site:
    - LICENSE.txt
-   - package.json
-   - package-lock.json
-   - Rakefile
    - README.md
    - CLAUDE.md
    - .claude/
+   - scripts/
+   - "CV-*"
+   - assets/js/zzzz-search-data.json # the search index, unused while search_enabled is false
 
 # Set a path/url to a logo that will be displayed instead of the title
-logo: "/assets/logo_lazysnail.png"
 
 
 # Enable or disable the site search
 # Supports true (default) or false
-search_enabled: true
+search_enabled: false # no search box: the menu, the sections and /articles/ are enough
 search:
   # Split pages into sections that can be searched individually
   # Supports 1 - 6, default: 2
@@ -87,7 +83,7 @@ search:
   tokenizer_separator: /[\s/]+/
   # Display the relative url in search results
   # Supports true (default) or false
-  rel_url: true
+  rel_url: false
   # Enable or disable the search button that appears in the bottom right corner of every page
   # Supports true or false (default)
   button: false
@@ -98,10 +94,11 @@ enable_copy_code_button: true
 # To disable support for mermaid diagrams (https://mermaid-js.github.io/mermaid/),
 # comment out the `mermaid` and `version` keys below
 # By default, consuming the theme as a gem leaves mermaid disabled; it is opt-in
-mermaid:
-  # Version of mermaid library
-  # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
-  version: "9.1.6"
+# Off: no page draws a diagram, and the library weighs 1 MB on every page.
+# mermaid:
+#   # Version of mermaid library
+#   # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
+#   version: "9.1.6"
   # Put any additional configuration, such as setting the theme, in _includes/mermaid_config.js
   # See also docs/ui-components/code
 
@@ -110,6 +107,8 @@ heading_anchors: true
 
 # Aux links for the upper right navigation
 aux_links:
+  "Contact":
+    - "/contact/"
 #  "YouTube Channel":
 #    - "https://www.youtube.com/channel/UCOEtA2zMVmQg929AMFsIymg/videos"
 
@@ -129,19 +128,18 @@ nav_external_links:
  # - title: YouTube
  #   url: https://www.youtube.com/channel/UCOEtA2zMVmQg929AMFsIymg/videos
  
-enable_copy_code_button: true
 
 # Footer content
 # appears at the bottom of every page's main content
 
 # Back to top link
-back_to_top: true
+back_to_top: false
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2015-2026 Arnaud Gastelblum."
+footer_content: 'Copyright &copy; 2015-2026 Arnaud Gastelblum. <a href="https://www.linkedin.com/in/arnaud-gastelblum/">LinkedIn</a> · <a href="https://github.com/arnaudgastelblum">GitHub</a> · <a href="/feed.xml">RSS</a>'
 
 # Footer last edited timestamp
-last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
+last_edit_timestamp: false # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
 last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
 
@@ -150,7 +148,7 @@ last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https:/
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: false # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/just-the-docs/just-the-docs" # the github URL for your repo
+gh_edit_repository: "https://github.com/arnaudgastelblum/lazysnail_web" # the github URL for your repo
 gh_edit_branch: "main" # the branch that your docs is served from
 # gh_edit_source: docs # the source that your files originate from
 gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
@@ -169,7 +167,6 @@ callouts:
     title: New
     color: green
   note:
-    title: Note
     color: blue
   warning:
     title: Warning
@@ -183,6 +180,13 @@ callouts:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
+
+# No GitHub Pages default theme: the layouts and styles of the site are all in this repository.
+theme: null
+
+sass:
+  style: compressed
 
 kramdown:
   syntax_highlighter_opts:

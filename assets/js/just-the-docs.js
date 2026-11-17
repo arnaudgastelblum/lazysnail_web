@@ -42,7 +42,9 @@ function initNav() {
   jtd.addEvent(menuButton, 'click', function(e){
     e.preventDefault();
 
-    if (menuButton.classList.toggle('nav-open')) {
+    var open = menuButton.classList.toggle('nav-open');
+    menuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
       siteNav.classList.add('nav-open');
       mainHeader.classList.add('nav-open');
     } else {
@@ -99,6 +101,9 @@ function initSearch() {
       });
 
       searchLoaded(index, docs);
+      // Letters typed while the index was loading: show their results now.
+      var typed = document.getElementById('search-input');
+      if (typed && typed.value) typed.dispatchEvent(new KeyboardEvent('keyup'));
     } else {
       console.log('Error loading ajax request. Request status:' + request.status);
     }
@@ -474,7 +479,16 @@ function scrollNav() {
 jtd.onReady(function(){
   initNav();
   {%- if site.search_enabled != false %}
-  initSearch();
+  // The search index (about 250 KB) loads only when the visitor goes to the search box.
+  var searchField = document.getElementById('search-input');
+  var searchStarted = false;
+  var startSearch = function(){ if (searchStarted) return; searchStarted = true; initSearch(); };
+  if (searchField) {
+    searchField.addEventListener('focus', startSearch);
+    searchField.addEventListener('pointerenter', startSearch);
+  } else {
+    startSearch();
+  }
   {%- endif %}
   scrollNav();
 });

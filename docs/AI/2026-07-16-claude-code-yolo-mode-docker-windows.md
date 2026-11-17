@@ -7,7 +7,8 @@ tags: [claude-code, docker, windows]
 comments: true
 parent: AI
 permalink: /ai/claude-code-yolo-mode-docker-windows
-description: "How to run Claude Code with --dangerously-skip-permissions on Windows, inside a Docker container, with a simple 'yolo' PowerShell alias."
+description: "How to run Claude Code without permission prompts on Windows, inside a Docker container that only sees your project folder, started with one PowerShell alias."
+image: /assets/2026/social/claude-code-yolo-mode-docker-windows.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

@@ -7,14 +7,13 @@ tags: [powerbi, tips]
 comments: true
 parent: Power BI & Fabric
 permalink: /fabric/exploring-power-bi-semantic-models-python-microsoft-fabric
+excerpt: A Fabric notebook that uses Semantic Link (sempy) to list a Power BI model's tables and measures, run DAX and SQL queries on it, draw its relationships and check refreshes.
+image: /assets/2026/social/fabric-notebook-semantic-link.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 
-{:refdef: style="text-align: center;"}
-  ![image](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/Python_Lazysnail.jpeg)
-{: refdef .image50 }
 
 
 {:toc}
@@ -78,7 +77,7 @@ The `list_tables()` function in the Semantic Link extension retrieves the list o
 fabric.list_tables("LazyDAX")
 ````
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image.png)
+![Ten tables of the LazyDAX model with description, hidden flag and type](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image.png)
 
 
 ### List Measures from a Power BI Semantic Model
@@ -91,7 +90,7 @@ The `list_measures()` function retrieves all measures from a dataset in a Micros
 fabric.list_measures("LazyDAX")
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-1.png)
+![Measures of the LazyDAX model with expression, data type and display folder](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-1.png)
 
 
 
@@ -115,7 +114,7 @@ SUMMARIZECOLUMNS(
 )
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-2.png)
+![DAX query result: total amount by customer country, Belgium, France, Nederland](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-2.png)
 
 ## Querying a Power BI Semantic Model with SQL  
 
@@ -142,7 +141,7 @@ SELECT *
 FROM pbi.`LazyDAX`.Customer
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-3.png)
+![Spark SQL table view with the 12 rows of the Customer table](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-3.png)
 
 ### Aggregating Data with SQL  
 
@@ -160,9 +159,9 @@ INNER JOIN pbi.`LazyDAX`.Customer
 GROUP BY Customer.Country
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-4.png)
+![Spark SQL result: sum of TotalAmount by country, same totals as DAX](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-4.png)
 
-# Visualizing the Data Model  
+## Visualizing the Data Model  
 
 This section demonstrates how to extract and visualize relationships within a Power BI Semantic Model using the Semantic Link extension in Microsoft Fabric.
 
@@ -177,11 +176,11 @@ relationships = fabric.list_relationships("LazyDAX")
 plot_relationship_metadata(relationships)
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-5.png)
+![Relationship diagram: Customer, Calendar, Product and SalesPerson linked to Sales](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-5.png)
 
-# DAX Semantic Model Information  
+## DAX Semantic Model Information  
 
-## Exploring Active Relationships in a Power BI Semantic Model  
+### Exploring Active Relationships in a Power BI Semantic Model  
 
 This section demonstrates how to retrieve active relationships from a Power BI Semantic Model using a DAX query.
 
@@ -192,9 +191,9 @@ FROM $System.DISCOVER_CALC_DEPENDENCY
 WHERE OBJECT_TYPE = 'ACTIVE_RELATIONSHIP'
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-6.png)
+![Active relationships of LazyDAX with their tables and key columns](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-6.png)
 
-## Column Impact: Who Uses This Column?  
+### Column Impact: Who Uses This Column?  
 
 This section demonstrates how to analyze the impact of a specific column in a Power BI Semantic Model using a DAX query.
 
@@ -208,11 +207,11 @@ FILTER(
 )
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-7.png)
+![Measures and the Date Hierarchy that reference the Calendar Year column](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-7.png)
 
 
 
-# Fabric / Power BI Capacities  
+## Fabric / Power BI Capacities  
 
 [https://learn.microsoft.com/en-us/python/api/semantic-link-sempy/sempy.fabric?view=semantic-link-python#sempy-fabric-list-capacities](https://learn.microsoft.com/en-us/python/api/semantic-link-sempy/sempy.fabric?view=semantic-link-python#sempy-fabric-list-capacities)
 
@@ -220,7 +219,7 @@ FILTER(
 fabric.list_capacities()
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-8.png)
+![Two active capacities in North Europe: a Fabric trial and Premium Per User](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-8.png)
 
 
 ## Exploring M Code in a Power BI Semantic Model  
@@ -232,7 +231,7 @@ fabric.list_expressions(dataset="LazyDAX")
 ```
 
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-9.png)
+![M expressions of the LazyDAX model, such as CreateCalendarDimension](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-9.png)
 
 
 ## List All Existing Workspaces  
@@ -243,7 +242,7 @@ fabric.list_expressions(dataset="LazyDAX")
 fabric.list_workspaces()
 ```
 
-# Listing Semantic Models from a Remote Workspace  
+## Listing Semantic Models from a Remote Workspace  
 
 This section demonstrates how to list all semantic models available in a specific Power BI workspace using Microsoft Fabric.
 
@@ -253,13 +252,13 @@ This section demonstrates how to list all semantic models available in a specifi
 fabric.list_datasets(workspace="YourWorkspace")
 ```
 
-# Tabular - BPA - Best Practice Analyzer  
+## Tabular - BPA - Best Practice Analyzer  
 
 ```python
 fabric.run_model_bpa(dataset="LazyDAX")
 ```
 
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-10.png)
+![Best Practice Analyzer results: DAX expression warnings by rule, object and severity](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-10.png)
 
 ## Checking Refresh Status of a Semantic Model  
 
@@ -270,7 +269,7 @@ import sempy.fabric as fabric
 
 fabric.list_refresh_requests(dataset="LazyDAX")
 ```
-![alt text](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-11.png)
+![Two completed on-demand refreshes of LazyDAX with start and end times](../../assets/2025/exploring-power-bi-semantic-models-python-microsoft-fabric/image-11.png)
 
 
 

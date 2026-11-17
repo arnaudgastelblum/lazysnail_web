@@ -6,10 +6,9 @@ categories: "other"
 tags: [dbt, vscode, sql]
 comments: true
 permalink: "/en/lazy-dbt-vs-code-extension/"
-excerpt: A free VS Code extension that formats dbt SQL models the dbt way and takes
-  care of a few other chores (schema yml, doc() checks, lineage, compiled SQL). One
-  right-click menu, nothing to configure.
-parent: Other
+excerpt: dbt Formatter is a free VS Code extension that formats dbt SQL models to the dbt style guide, generates schema .yml files, checks doc() descriptions and shows lineage.
+parent: "Apps & tips"
+image: /assets/2026/social/lazy-dbt-a-vs-code-extension-for-dbt-models.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

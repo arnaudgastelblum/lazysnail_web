@@ -6,9 +6,23 @@
 # shortcuts: drawn keyboard shortcuts instead of a picture.
 # accent: the colour of the card. featured: the big card on the Tools page.
 # home: a card on the home page. ai: built with AI (Claude Code, and now Codex too).
+- name: Fabric Source Atlas
+  tagline: See which tables feed your Power BI models.
+  desc: PowerShell scripts that scan your Fabric workspaces and list every table, view and file each semantic model reads, in Excel and a web page.
+  kind: PowerShell · Fabric
+  url: /fabric/fabric-source-atlas
+  action:
+    label: Get it on GitHub
+    url: https://github.com/arnaudgastelblum/fabric-source-atlas
+  poster: /assets/2026/tools/fabric-source-atlas.webp
+  anim: /assets/2026/fabric-source-atlas/run-in-terminal.gif
+  accent: "#0f8b7d"
+  home: true
+  ai: true
+
 - name: Snipou
-  tagline: Screenshots that explain.
-  desc: Capture or record a piece of your screen, annotate it, tell a whole process on a whiteboard, and edit the video.
+  tagline: Capture, annotate and record your screen.
+  desc: Grab a region or a window, add numbered steps, arrows and blur, then paste it anywhere. It also records your screen and edits the video.
   points:
     - "One hotkey: a region, a window, or just the table inside it."
     - Numbered steps, arrows and blur, then paste anywhere.
@@ -24,23 +38,29 @@
   home: true
   ai: true
 
-- name: Fabric Source Atlas
-  tagline: Which tables feed your models?
-  desc: Lists every SQL table, view, file and model your semantic models read, in Excel and an offline web page.
-  kind: PowerShell · Fabric
-  url: /fabric/fabric-source-atlas
+# FeedMe: when the Store listing is live, replace `action` by `store: <listing URL>`.
+- name: FeedMe
+  tagline: Your websites, YouTube and Reddit in one reader.
+  desc: Follow sites, channels and subreddits, save articles to read later, highlight and take notes. Free, and everything stays on your PC.
+  points:
+    - Paste an address, FeedMe finds the feed.
+    - A clean reading view, light or dark, and a focus mode.
+    - Read later with offline copies, one click from your browser.
+    - Highlights and notes, gathered in a searchable Notebook.
+  kind: Windows
+  url: /tools/feedme
   action:
-    label: Get it on GitHub
-    url: https://github.com/arnaudgastelblum/fabric-source-atlas
-  poster: /assets/2026/tools/fabric-source-atlas.webp
-  anim: /assets/2026/fabric-source-atlas/run-in-terminal.gif
-  accent: "#0f8b7d"
+    label: Download
+    url: https://github.com/arnaudgastelblum/feedme-releases/releases/latest/download/FeedMe-setup.exe
+  poster: /assets/2026/tools/feedme.webp
+  anim: /assets/2026/feedme/hero.webp
+  accent: "#2563eb"
   home: true
   ai: true
 
 - name: Snailkit
-  tagline: A calm home for your notes.
-  desc: "An Obsidian plugin: catch ideas, gather the tasks of all your notes, open anything with a mouse gesture."
+  tagline: All your Obsidian tasks in one list.
+  desc: "An Obsidian plugin: it gathers the tasks of all your notes, lets you dump ideas and sort them later, and opens anything with a mouse gesture."
   kind: Obsidian
   url: /obsidian/snailkit
   action:
@@ -53,8 +73,8 @@
   ai: true
 
 - name: dbt Formatter
-  tagline: Tidy dbt models in one click.
-  desc: Formats dbt SQL the dbt way, writes the schema .yml and shows the lineage.
+  tagline: Format dbt SQL the dbt way.
+  desc: "A VS Code extension: one right-click formats your model, writes its schema .yml and shows what depends on what."
   kind: VS Code
   url: /en/lazy-dbt-vs-code-extension/
   poster: /assets/2026/tools/dbt-formatter.webp
@@ -62,8 +82,8 @@
   ai: true
 
 - name: SSMS in VS Code
-  tagline: Your SSMS habits, in VS Code.
-  desc: Column selection, Ctrl+R for the results and your query shortcuts, with an extension to download.
+  tagline: SSMS shortcuts in VS Code.
+  desc: "Box selection, Ctrl+R for the results and Ctrl+3 for a SELECT TOP 1000: a shortcuts file and a small extension."
   kind: VS Code
   url: /sql-server/make-vs-code-look-and-feel-like-ssms
   shortcuts:
@@ -77,8 +97,8 @@
   ai: true
 
 - name: Code Formatter
-  tagline: Clean DAX and SQL in one paste.
-  desc: Paste your code and get it formatted. It runs in the browser, nothing leaves it.
+  tagline: Format DAX and SQL in your browser.
+  desc: Paste your code, get it clean and readable. Nothing leaves the page.
   kind: Web
   url: https://code.lazysnail.net
   action:
@@ -89,8 +109,8 @@
   ai: true
 
 - name: LazyDAX
-  tagline: Learn DAX on a simple model.
-  desc: A Power BI file to practise DAX and debug your own expressions, also handy for a presentation.
+  tagline: A Power BI file to practise DAX.
+  desc: A small ready-made model to learn DAX, test your measures or demo a feature in a presentation.
   kind: Power BI
   url: /en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/
   poster: /assets/2026/tools/lazydax.webp

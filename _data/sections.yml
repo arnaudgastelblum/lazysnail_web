@@ -1,35 +1,35 @@
 # The blog sections, in menu order. One list for the home cards, the article chips and the section pages.
 # key: stable id, also the icon name in _includes/section-icon.html
-# url: the section page (pages have no permalink, the URL comes from the file name)
+# url: the section page (its permalink; the old /docs/... addresses redirect to it)
 # categories: the front matter categories it gathers, with the chip label of each
 - key: power-bi
   name: Power BI & Fabric
-  url: /docs/Power-BI
+  url: /power-bi/
   accent: "#0f8b7d"
   categories:
     power-bi: Power BI
     fabric: Fabric
 - key: sql-server
   name: SQL Server
-  url: /docs/SQL%20Server
+  url: /sql-server/
   accent: "#f0644a"
   categories:
     SQL-Server: SQL Server
 - key: ai
   name: AI
-  url: /docs/AI
+  url: /ai/
   accent: "#2f6fd1"
   categories:
     ai: AI
 - key: obsidian
   name: Obsidian
-  url: /docs/Obsidian
+  url: /obsidian/
   accent: "#6d5ef5"
   categories:
     Obsidian: Obsidian
 - key: other
-  name: Other
-  url: /docs/Other
+  name: "Apps & tips"
+  url: /apps/
   accent: "#d9a400"
   categories:
-    other: Tools
+    other: Apps

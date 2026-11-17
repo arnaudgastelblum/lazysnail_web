@@ -7,6 +7,8 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax/"
 parent: Power BI & Fabric
+excerpt: A free Power BI file with a clean star schema and DAX measures grouped by function category, ready for demos, testing measures or learning DAX. Download on GitHub.
+image: /assets/2026/social/lazydax-a-power-bi-file-for-your-presentation-discoveries-or-learn-dax.jpg
 ---
 
 # {{ page.title }}

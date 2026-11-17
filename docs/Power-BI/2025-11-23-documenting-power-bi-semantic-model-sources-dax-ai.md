@@ -7,15 +7,14 @@ tags: [powerbi, tips, documentation, fabric]
 comments: true
 parent: Power BI & Fabric
 permalink: /power-bi/documenting-power-bi-semantic-model-sources-dax-ai
+excerpt: A DAX query that extracts the Power Query M code of every table in a semantic model, and an AI prompt that turns it into documentation of tables and data sources.
+image: /assets/2026/social/documenting-power-bi-semantic-model-sources-dax-ai.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-{:refdef: style="text-align: center;"}
-![image](../../assets/2025/documenting-power-bi-semantic-model-sources-dax-ai/image.png)
-{: refdef .image50 }
 
 
 
@@ -78,18 +77,18 @@ Export this result as text (for example to CSV or copy-paste) to use it in the n
 
 
 
-![alt text](../../assets/2025/documenting-power-bi-semantic-model-sources-dax-ai/image-1.png)
+![LazyDAX semantic model selected in a Power BI Service workspace](../../assets/2025/documenting-power-bi-semantic-model-sources-dax-ai/image-1.png)
 > Run the DAX query directly from Power BI Service (You can also download the Semantic Model and run it in Power BI Desktop)
 > I prefer Power BI Service, it's faster.
 
 
 
-![alt text](../../assets/2025/documenting-power-bi-semantic-model-sources-dax-ai/image-2.png)
+![Write DAX queries button in the semantic model ribbon](../../assets/2025/documenting-power-bi-semantic-model-sources-dax-ai/image-2.png)
 
 
 
 
-![alt text](../../assets/2025/documenting-power-bi-semantic-model-sources-dax-ai/image-3.png)
+![DAX query view listing 12 tables with their M query definitions](../../assets/2025/documenting-power-bi-semantic-model-sources-dax-ai/image-3.png)
 > Run the DAX Evaluate Query to export the table list.
 
 

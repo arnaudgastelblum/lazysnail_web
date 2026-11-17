@@ -7,13 +7,14 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/power-bi-sidetools-extensions-a-must-have/"
 parent: Power BI & Fabric
+excerpt: How Power BI Sidetools exports every DAX measure and Power Query to .dax and .m files, so you can version, reuse and search your model code in Visual Studio Code.
+image: /assets/2026/social/power-bi-sidetools-extensions-a-must-have.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-![Alt text](<../../assets/2023/Sidetools copy_500.png>){: .image50 }
 
 {: .note :}
 >
@@ -43,34 +44,34 @@ Now, imagine that you work on a new project, or somebody sends you a Power BI fi
 Reuse an existing code in a different project.
 - AND the most useful in my opinion! Search into code!
 
-![](../../assets/2022/08/1-Power-BI-Sidetools-button-1024x717.png)
+![Power BI Sidetools button in the External Tools ribbon](../../assets/2022/08/1-Power-BI-Sidetools-button-1024x717.png)
 *Open Power BI Sidetools*
 
 
-![](../../assets/2022/08/2-Power-BI-Sidetools-window-1-300x121.png)
+![Power BI Sidetools window with LazyDAX.pbix loaded](../../assets/2022/08/2-Power-BI-Sidetools-window-1-300x121.png)
 
 
-![](../../assets/2022/08/3-Power-BI-Sidetools-Generate-1-1024x369.png)
+![Sidetools Files menu with the PBI to files option](../../assets/2022/08/3-Power-BI-Sidetools-Generate-1-1024x369.png)
 *Sidetools main window*
 
 
-![](../../assets/2022/08/4-VS-main-directory-1.png)
+![VS Code Explorer with LAYOUT and MODEL folders of LazyDAX.pbix](../../assets/2022/08/4-VS-main-directory-1.png)
 
 
-![](../../assets/2022/08/5-Model-1.png)
+![MODEL folder with DAX and M subfolders and Model.bim](../../assets/2022/08/5-Model-1.png)
 *Folders created by sidetools and opened in Visual Studio Code*
 
 
-![](../../assets/2022/08/7-Measures-779x1024.png)
+![DAX folder tree with one directory per measure display folder](../../assets/2022/08/7-Measures-779x1024.png)
 
 *Directory generated for measures*
 
 
-![](../../assets/2022/08/6-M-Customer-1024x290.png)
+![Customer.m file with its Power Query M code in VS Code](../../assets/2022/08/6-M-Customer-1024x290.png)
 *Example of M code: Customer table*
 
 
-![](../../assets/2022/08/8-Measure-AVERAGEX-1024x424.png)
+![AVERAGEX measure .dax file opened in VS Code](../../assets/2022/08/8-Measure-AVERAGEX-1024x424.png)
 *Example of DAX code: `[AVERAGEX Articles by InvoiceNumber]`*
 
 
@@ -88,7 +89,7 @@ I like the idea to search for:
 - A **measure name**: You can search if a measure is used in another measure.
 
 
-![img](../../assets/2022/08/9-Search-Measure-587x1024.png)
+![VS Code search for UnitPrice across .dax files](../../assets/2022/08/9-Search-Measure-587x1024.png)
 *search example*
 
 
@@ -109,7 +110,7 @@ To know more about this tool, I recommend you to visit the developer website: [h
 
 
 
-# Visual studio code
+## Visual studio code
 
 You download Visual studio code (for free) on [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 
@@ -118,10 +119,10 @@ You download Visual studio code (for free) on [https://code.visualstudio.com/dow
 
 <!-- wp:gallery {"linkTo":"none"} -->
 <figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":5346,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="../../assets/2022/08/10-Power-Query-Extension-1-1024x309.png" alt="" class="wp-image-5346" /></figure>
+<figure class="wp-block-image size-large"><img src="../../assets/2022/08/10-Power-Query-Extension-1-1024x309.png" alt="Power Query / M Language extension page in VS Code" class="wp-image-5346" /></figure>
 <!-- /wp:image -->
 <!-- wp:image {"id":5345,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="../../assets/2022/08/11-DAX-extension-1-1024x349.png" alt="" class="wp-image-5345" /></figure>
+<figure class="wp-block-image size-large"><img src="../../assets/2022/08/11-DAX-extension-1-1024x349.png" alt="DAX for Power BI extension page in VS Code" class="wp-image-5345" /></figure>
 <!-- /wp:image --><br />
 <figcaption class="blocks-gallery-caption">Extension for M and DAX</figcaption>
 </figure>
@@ -130,7 +131,7 @@ You download Visual studio code (for free) on [https://code.visualstudio.com/dow
 <div style="height:51px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 <!-- wp:heading {"level":1} -->
-<h1>I want to download it!</h1>
+<h2>I want to download it!</h2>
 
 
 You can download it from GitHub: <a href="https://github.com/didierterrien/Power-BI-Sidetools">https://github.com/didierterrien/Power-BI-Sidetools</a>

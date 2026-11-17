@@ -7,7 +7,8 @@ tags: [claude-code, testing, ai, workflow]
 comments: true
 parent: AI
 permalink: /ai/ai-tests-real-app
-description: "AI writes code faster than you can test it. Close the loop: let it run a copy of your app, click through it, take screenshots and measure, before you look."
+description: "How to make an AI coding assistant test its own changes in a throwaway copy of your app, with real clicks, screenshots, console checks and timings."
+image: /assets/2026/social/ai-tests-real-app.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

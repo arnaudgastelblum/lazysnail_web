@@ -1,5 +1,2 @@
-{% if site.logo %}
-  <div class="site-logo"></div>
-{% else %}
-  {{ site.title }}
-{% endif %}
+{%- comment -%} The site title: the snail and the name, as text so it stays sharp at any size. {%- endcomment -%}
+<img class="site-snail" src="/assets/2026/site/lazysnail-snail.png" alt="" width="71" height="96"><span class="site-name">{{ site.title }}</span>

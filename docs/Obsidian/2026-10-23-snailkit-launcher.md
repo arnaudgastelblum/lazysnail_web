@@ -7,7 +7,8 @@ tags: [obsidian, plugin, snailkit, productivity]
 comments: true
 parent: Obsidian
 permalink: /obsidian/snailkit-launcher
-excerpt: A mouse gesture that opens a small launcher in Obsidian. Open a note, pick a tab, start a task or a brainstorm, in one move.
+excerpt: A Snailkit feature for Obsidian where a right-click mouse gesture opens a launcher to find or create a note, switch tabs or start a task, plus gestures for any command.
+image: /assets/2026/social/snailkit-launcher.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }

@@ -7,13 +7,14 @@ tags: [powerbi, tips]
 comments: true
 permalink: "/en/your-data-model-first/"
 parent: Power BI & Fabric
+excerpt: Before loading data, sketch your Power BI model on paper with your users. List their key terms, group them into dimensions, then shape the data to fit that view.
+image: /assets/2026/social/your-data-model-first.jpg
 ---
 # {{ page.title }}
 {: .fs-9 }
 
 {:toc}
 
-![Alt text](../../assets/2023/Brainstorming_500.png){: .image50 }
 
 
 As we approach year's end, I wanted to share a special gift with you! It's a topic that I often emphasize with my team and makes up 80% of a successful Power BI journey.
